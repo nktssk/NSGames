@@ -1,0 +1,457 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		26ABAC43C0EAB5E5C54E63CF /* Pods_NSGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A310BA6390AA4C34B5EAB5AD /* Pods_NSGames.framework */; };
+		A178CE5525EFDB89003A50DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178CE5425EFDB89003A50DC /* AppDelegate.swift */; };
+		A178CE5925EFDB89003A50DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178CE5825EFDB89003A50DC /* ViewController.swift */; };
+		A178CE5E25EFDB8B003A50DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A178CE5D25EFDB8B003A50DC /* Assets.xcassets */; };
+		A178CE6125EFDB8B003A50DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A178CE5F25EFDB8B003A50DC /* LaunchScreen.storyboard */; };
+		A1A8B06B25F22856008CDDA4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B06A25F22856008CDDA4 /* Colors.swift */; };
+		A1A8B06E25F247B2008CDDA4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B06D25F247B2008CDDA4 /* SignUpViewController.swift */; };
+		A1A8B07625F250D6008CDDA4 /* BlueTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */; };
+		A1A8B07925F25133008CDDA4 /* BlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07825F25133008CDDA4 /* BlueButton.swift */; };
+		A1A8B07C25F251BC008CDDA4 /* GrayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */; };
+		A1D9953D25EFF071002770AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D9953C25EFF071002770AF /* LoginViewController.swift */; };
+		A1D9954325F00564002770AF /* PrettyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D9954225F00564002770AF /* PrettyTextField.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3D3E85A14F76736513CCCF85 /* Pods-NSGames.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NSGames.release.xcconfig"; path = "Target Support Files/Pods-NSGames/Pods-NSGames.release.xcconfig"; sourceTree = "<group>"; };
+		A178CE5125EFDB89003A50DC /* NSGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A178CE5425EFDB89003A50DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A178CE5825EFDB89003A50DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A178CE5D25EFDB8B003A50DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A178CE6025EFDB8B003A50DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A178CE6225EFDB8B003A50DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1A8B06A25F22856008CDDA4 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		A1A8B06D25F247B2008CDDA4 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTextButton.swift; sourceTree = "<group>"; };
+		A1A8B07825F25133008CDDA4 /* BlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButton.swift; sourceTree = "<group>"; };
+		A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLabel.swift; sourceTree = "<group>"; };
+		A1D9953C25EFF071002770AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A1D9954225F00564002770AF /* PrettyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyTextField.swift; sourceTree = "<group>"; };
+		A310BA6390AA4C34B5EAB5AD /* Pods_NSGames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NSGames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5C7AB1E828C3C48DCD028E7 /* Pods-NSGames.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NSGames.debug.xcconfig"; path = "Target Support Files/Pods-NSGames/Pods-NSGames.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A178CE4E25EFDB89003A50DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26ABAC43C0EAB5E5C54E63CF /* Pods_NSGames.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C340EEDC51C7AC365943C7C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A310BA6390AA4C34B5EAB5AD /* Pods_NSGames.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4C9DA67FF61C48C91E688375 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F5C7AB1E828C3C48DCD028E7 /* Pods-NSGames.debug.xcconfig */,
+				3D3E85A14F76736513CCCF85 /* Pods-NSGames.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A178CE4825EFDB89003A50DC = {
+			isa = PBXGroup;
+			children = (
+				A178CE5325EFDB89003A50DC /* NSGames */,
+				A178CE5225EFDB89003A50DC /* Products */,
+				4C9DA67FF61C48C91E688375 /* Pods */,
+				2C340EEDC51C7AC365943C7C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A178CE5225EFDB89003A50DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A178CE5125EFDB89003A50DC /* NSGames.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A178CE5325EFDB89003A50DC /* NSGames */ = {
+			isa = PBXGroup;
+			children = (
+				A1D9954125F00558002770AF /* CustomUI */,
+				A178CE5425EFDB89003A50DC /* AppDelegate.swift */,
+				A178CE5825EFDB89003A50DC /* ViewController.swift */,
+				A178CE5D25EFDB8B003A50DC /* Assets.xcassets */,
+				A178CE5F25EFDB8B003A50DC /* LaunchScreen.storyboard */,
+				A178CE6225EFDB8B003A50DC /* Info.plist */,
+				A1D9953C25EFF071002770AF /* LoginViewController.swift */,
+				A1A8B06D25F247B2008CDDA4 /* SignUpViewController.swift */,
+			);
+			path = NSGames;
+			sourceTree = "<group>";
+		};
+		A1D9954125F00558002770AF /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				A1A8B06A25F22856008CDDA4 /* Colors.swift */,
+				A1D9954225F00564002770AF /* PrettyTextField.swift */,
+				A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */,
+				A1A8B07825F25133008CDDA4 /* BlueButton.swift */,
+				A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */,
+			);
+			path = CustomUI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A178CE5025EFDB89003A50DC /* NSGames */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A178CE6525EFDB8B003A50DC /* Build configuration list for PBXNativeTarget "NSGames" */;
+			buildPhases = (
+				A147AA2825EFE89E00AB8846 /* Swift Lint */,
+				BF74A7FFE440EB94F77AF022 /* [CP] Check Pods Manifest.lock */,
+				A178CE4D25EFDB89003A50DC /* Sources */,
+				A178CE4E25EFDB89003A50DC /* Frameworks */,
+				A178CE4F25EFDB89003A50DC /* Resources */,
+				675C6580AAA7CE924581D20B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NSGames;
+			productName = NSGames;
+			productReference = A178CE5125EFDB89003A50DC /* NSGames.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A178CE4925EFDB89003A50DC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					A178CE5025EFDB89003A50DC = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = A178CE4C25EFDB89003A50DC /* Build configuration list for PBXProject "NSGames" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A178CE4825EFDB89003A50DC;
+			productRefGroup = A178CE5225EFDB89003A50DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A178CE5025EFDB89003A50DC /* NSGames */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A178CE4F25EFDB89003A50DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A178CE6125EFDB8B003A50DC /* LaunchScreen.storyboard in Resources */,
+				A178CE5E25EFDB8B003A50DC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		675C6580AAA7CE924581D20B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NSGames/Pods-NSGames-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NSGames/Pods-NSGames-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NSGames/Pods-NSGames-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A147AA2825EFE89E00AB8846 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#if [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  #if which swiftlint >/dev/null; then\n    #swiftlint --no-cache --config #~/com.raywenderlich.swiftlint.yml\n # fi\n#fi\n";
+		};
+		BF74A7FFE440EB94F77AF022 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NSGames-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A178CE4D25EFDB89003A50DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1A8B07625F250D6008CDDA4 /* BlueTextButton.swift in Sources */,
+				A1A8B06E25F247B2008CDDA4 /* SignUpViewController.swift in Sources */,
+				A1D9953D25EFF071002770AF /* LoginViewController.swift in Sources */,
+				A1A8B06B25F22856008CDDA4 /* Colors.swift in Sources */,
+				A1D9954325F00564002770AF /* PrettyTextField.swift in Sources */,
+				A178CE5925EFDB89003A50DC /* ViewController.swift in Sources */,
+				A178CE5525EFDB89003A50DC /* AppDelegate.swift in Sources */,
+				A1A8B07925F25133008CDDA4 /* BlueButton.swift in Sources */,
+				A1A8B07C25F251BC008CDDA4 /* GrayLabel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A178CE5F25EFDB8B003A50DC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A178CE6025EFDB8B003A50DC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A178CE6325EFDB8B003A50DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A178CE6425EFDB8B003A50DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A178CE6625EFDB8B003A50DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5C7AB1E828C3C48DCD028E7 /* Pods-NSGames.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = NSGames/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.itis.ios.NSGames;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A178CE6725EFDB8B003A50DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D3E85A14F76736513CCCF85 /* Pods-NSGames.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = NSGames/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.itis.ios.NSGames;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A178CE4C25EFDB89003A50DC /* Build configuration list for PBXProject "NSGames" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A178CE6325EFDB8B003A50DC /* Debug */,
+				A178CE6425EFDB8B003A50DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A178CE6525EFDB8B003A50DC /* Build configuration list for PBXNativeTarget "NSGames" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A178CE6625EFDB8B003A50DC /* Debug */,
+				A178CE6725EFDB8B003A50DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A178CE4925EFDB89003A50DC /* Project object */;
+}
