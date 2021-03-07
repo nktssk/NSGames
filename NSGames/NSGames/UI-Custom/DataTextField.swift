@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  DataTextField.swift
 //  NSGames
 //
 //  Created by Nikita Sosyuk on 03.03.2021.
@@ -7,16 +7,10 @@
 
 import UIKit
 
-class PrettyTextField: UITextField {
+class DataTextField: UITextField {
 
     // MARK: - UI
     private let border = UIView()
-
-    // MARK: - Constants
-    let offset: CGFloat = 8
-    let placeholderSize: CGFloat = 18
-    let interval: TimeInterval = 0.25
-    let color = UIColor.grayLabel
 
     // MARK: - Initialization
     override init(frame: CGRect) {
@@ -24,13 +18,23 @@ class PrettyTextField: UITextField {
         font = UIFont.systemFont(ofSize: 18, weight: .medium)
         clearButtonMode = .whileEditing
         autocapitalizationType = .none
-        returnKeyType = .done
+        autocorrectionType = .no
+        returnKeyType = .next
         setupUI()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupUI()
+    }
+
+    // MARK: - Public Methods
+
+    func incorrectData(message: String) {
+        attributedPlaceholder = NSAttributedString(string: message,
+                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+        border.backgroundColor = .red
+        text = ""
     }
 
     // MARK: - UITextField
@@ -43,7 +47,7 @@ class PrettyTextField: UITextField {
     private func setupUI() {
         borderStyle = .none
         addSubview(border)
-        border.backgroundColor = color
+        border.backgroundColor = .grayLabel
         border.isUserInteractionEnabled = false
     }
 }

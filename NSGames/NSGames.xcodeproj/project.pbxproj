@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		26ABAC43C0EAB5E5C54E63CF /* Pods_NSGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A310BA6390AA4C34B5EAB5AD /* Pods_NSGames.framework */; };
 		A178CE5525EFDB89003A50DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178CE5425EFDB89003A50DC /* AppDelegate.swift */; };
-		A178CE5925EFDB89003A50DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178CE5825EFDB89003A50DC /* ViewController.swift */; };
 		A178CE5E25EFDB8B003A50DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A178CE5D25EFDB8B003A50DC /* Assets.xcassets */; };
 		A178CE6125EFDB8B003A50DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A178CE5F25EFDB8B003A50DC /* LaunchScreen.storyboard */; };
 		A1A8B06B25F22856008CDDA4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B06A25F22856008CDDA4 /* Colors.swift */; };
@@ -17,15 +16,16 @@
 		A1A8B07625F250D6008CDDA4 /* BlueTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */; };
 		A1A8B07925F25133008CDDA4 /* BlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07825F25133008CDDA4 /* BlueButton.swift */; };
 		A1A8B07C25F251BC008CDDA4 /* GrayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */; };
-		A1D9953D25EFF071002770AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D9953C25EFF071002770AF /* LoginViewController.swift */; };
-		A1D9954325F00564002770AF /* PrettyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D9954225F00564002770AF /* PrettyTextField.swift */; };
+		A1C7D66825F50F380087B41F /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C7D66725F50F380087B41F /* ForgotPasswordViewController.swift */; };
+		A1C7D67525F576340087B41F /* CodeVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C7D67425F576340087B41F /* CodeVerifyViewController.swift */; };
+		A1D9953D25EFF071002770AF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D9953C25EFF071002770AF /* SignInViewController.swift */; };
+		A1D9954325F00564002770AF /* DataTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D9954225F00564002770AF /* DataTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3D3E85A14F76736513CCCF85 /* Pods-NSGames.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NSGames.release.xcconfig"; path = "Target Support Files/Pods-NSGames/Pods-NSGames.release.xcconfig"; sourceTree = "<group>"; };
 		A178CE5125EFDB89003A50DC /* NSGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A178CE5425EFDB89003A50DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A178CE5825EFDB89003A50DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A178CE5D25EFDB8B003A50DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A178CE6025EFDB8B003A50DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A178CE6225EFDB8B003A50DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,8 +34,10 @@
 		A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTextButton.swift; sourceTree = "<group>"; };
 		A1A8B07825F25133008CDDA4 /* BlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButton.swift; sourceTree = "<group>"; };
 		A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLabel.swift; sourceTree = "<group>"; };
-		A1D9953C25EFF071002770AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		A1D9954225F00564002770AF /* PrettyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyTextField.swift; sourceTree = "<group>"; };
+		A1C7D66725F50F380087B41F /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		A1C7D67425F576340087B41F /* CodeVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewController.swift; sourceTree = "<group>"; };
+		A1D9953C25EFF071002770AF /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		A1D9954225F00564002770AF /* DataTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTextField.swift; sourceTree = "<group>"; };
 		A310BA6390AA4C34B5EAB5AD /* Pods_NSGames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NSGames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C7AB1E828C3C48DCD028E7 /* Pods-NSGames.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NSGames.debug.xcconfig"; path = "Target Support Files/Pods-NSGames/Pods-NSGames.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,28 +92,45 @@
 		A178CE5325EFDB89003A50DC /* NSGames */ = {
 			isa = PBXGroup;
 			children = (
-				A1D9954125F00558002770AF /* CustomUI */,
-				A178CE5425EFDB89003A50DC /* AppDelegate.swift */,
-				A178CE5825EFDB89003A50DC /* ViewController.swift */,
-				A178CE5D25EFDB8B003A50DC /* Assets.xcassets */,
+				A1C7D67125F575100087B41F /* View */,
+				A1D9954125F00558002770AF /* UI-Custom */,
 				A178CE5F25EFDB8B003A50DC /* LaunchScreen.storyboard */,
+				A178CE5425EFDB89003A50DC /* AppDelegate.swift */,
+				A178CE5D25EFDB8B003A50DC /* Assets.xcassets */,
 				A178CE6225EFDB8B003A50DC /* Info.plist */,
-				A1D9953C25EFF071002770AF /* LoginViewController.swift */,
-				A1A8B06D25F247B2008CDDA4 /* SignUpViewController.swift */,
 			);
 			path = NSGames;
 			sourceTree = "<group>";
 		};
-		A1D9954125F00558002770AF /* CustomUI */ = {
+		A1C7D67125F575100087B41F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A1C7D67225F5751A0087B41F /* Auth */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		A1C7D67225F5751A0087B41F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A1D9953C25EFF071002770AF /* SignInViewController.swift */,
+				A1A8B06D25F247B2008CDDA4 /* SignUpViewController.swift */,
+				A1C7D66725F50F380087B41F /* ForgotPasswordViewController.swift */,
+				A1C7D67425F576340087B41F /* CodeVerifyViewController.swift */,
+			);
+			name = Auth;
+			sourceTree = "<group>";
+		};
+		A1D9954125F00558002770AF /* UI-Custom */ = {
 			isa = PBXGroup;
 			children = (
 				A1A8B06A25F22856008CDDA4 /* Colors.swift */,
-				A1D9954225F00564002770AF /* PrettyTextField.swift */,
+				A1D9954225F00564002770AF /* DataTextField.swift */,
 				A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */,
 				A1A8B07825F25133008CDDA4 /* BlueButton.swift */,
 				A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */,
 			);
-			path = CustomUI;
+			path = "UI-Custom";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,10 +267,11 @@
 			files = (
 				A1A8B07625F250D6008CDDA4 /* BlueTextButton.swift in Sources */,
 				A1A8B06E25F247B2008CDDA4 /* SignUpViewController.swift in Sources */,
-				A1D9953D25EFF071002770AF /* LoginViewController.swift in Sources */,
+				A1D9953D25EFF071002770AF /* SignInViewController.swift in Sources */,
 				A1A8B06B25F22856008CDDA4 /* Colors.swift in Sources */,
-				A1D9954325F00564002770AF /* PrettyTextField.swift in Sources */,
-				A178CE5925EFDB89003A50DC /* ViewController.swift in Sources */,
+				A1D9954325F00564002770AF /* DataTextField.swift in Sources */,
+				A1C7D66825F50F380087B41F /* ForgotPasswordViewController.swift in Sources */,
+				A1C7D67525F576340087B41F /* CodeVerifyViewController.swift in Sources */,
 				A178CE5525EFDB89003A50DC /* AppDelegate.swift in Sources */,
 				A1A8B07925F25133008CDDA4 /* BlueButton.swift in Sources */,
 				A1A8B07C25F251BC008CDDA4 /* GrayLabel.swift in Sources */,
@@ -395,7 +415,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = U72T7VXNG3;
 				INFOPLIST_FILE = NSGames/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -416,7 +436,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = U72T7VXNG3;
 				INFOPLIST_FILE = NSGames/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

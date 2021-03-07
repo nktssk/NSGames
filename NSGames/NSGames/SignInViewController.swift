@@ -1,13 +1,14 @@
 //
-//  SignUpViewController.swift
+//  LoginViewController.swift
 //  NSGames
 //
-//  Created by Nikita Sosyuk on 05.03.2021.
+//  Created by Nikita Sosyuk on 03.03.2021.
 //
 
 import UIKit
+import SnapKit
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
+class SignInViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - UI
 
@@ -17,23 +18,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return iconImageView
     }()
 
-    let signUpLabel: UILabel = {
+    let signInLabel: UILabel = {
         let label = UILabel()
-        label.text = "Создание аккаунта"
+        label.text = "Войти"
         label.font = UIFont.systemFont(ofSize: 30, weight: .heavy)
         return label
-    }()
-
-    let loginTextField: DataTextField = {
-        let textField = DataTextField()
-        textField.placeholder = "Логин"
-        return textField
     }()
 
     let emailTextField: DataTextField = {
         let textField = DataTextField()
         textField.placeholder = "Email"
-        textField.keyboardType = .emailAddress
         return textField
     }()
 
@@ -41,35 +35,35 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let textField = DataTextField()
         textField.placeholder = "Пароль"
         textField.isSecureTextEntry = true
-        return textField
-    }()
-
-    let passwordAgainTextField: DataTextField = {
-        let textField = DataTextField()
-        textField.placeholder = "Пароль"
-        textField.isSecureTextEntry = true
         textField.returnKeyType = .done
         return textField
     }()
 
-    let haveAccount: GrayLabel = {
+    let forgotPasswordButton: BlueTextButton = {
+        let button = BlueTextButton()
+        button.setTitle("Забыли пароль?", for: .normal)
+        button.addTarget(self, action: #selector(forgotPasswordButtonAction), for: .touchUpInside)
+        return button
+    }()
+
+    let haveNoAccount: GrayLabel = {
         let label = GrayLabel()
-        label.text = "Уже есть аккаунт?"
+        label.text = "У вас нет аккаунта?"
         label.font = UIFont.systemFont(ofSize: 15)
         label.tintColor = .grayLabel
         return label
     }()
 
-    var signInButton: BlueTextButton = {
+    let signUpButton: BlueTextButton = {
         let button = BlueTextButton()
-        button.setTitle("Войдите", for: .normal)
-        button.addTarget(self, action: #selector(signInButtonAction), for: .touchUpInside)
+        button.setTitle("Создайте его", for: .normal)
+        button.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
         return button
     }()
 
-    let signUpButton: BlueButton = {
+    let logInButton: BlueButton = {
         let button = BlueButton()
-        button.setTitle("Создать аккаунт", for: .normal)
+        button.setTitle("Войти", for: .normal)
         return button
     }()
 
@@ -98,12 +92,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         constraints()
-        title = "Создание аккаунта"
+        title = "Авторизация"
         view.backgroundColor = .white
-        loginTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        passwordAgainTextField.delegate = self 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -112,23 +104,24 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
-        case loginTextField:
-            emailTextField.becomeFirstResponder()
         case emailTextField:
             passwordTextField.becomeFirstResponder()
-        case passwordTextField:
-            passwordAgainTextField.becomeFirstResponder()
         default:
             textField.resignFirstResponder()
         }
         return false
     }
 
-    // MARK: - obcj func
+    // MARK: - Objc Methods
+    
+    @objc
+    private func signUpButtonAction() {
+        navigationController?.pushViewController(SignUpViewController(), animated: true)
+    }
 
     @objc
-    private func signInButtonAction() {
-        navigationController?.popViewController(animated: true)
+    private func forgotPasswordButtonAction() {
+        navigationController?.pushViewController(ForgotPasswordViewController(), animated: true)
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -143,8 +136,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: - Helpers
-
+    
     private func constraints() {
+
         view.addSubview(scrollView)
 
         scrollView.snp.makeConstraints { (make) in
@@ -158,40 +152,44 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             make.width.height.equalTo(scrollView.snp.width).multipliedBy(0.3)
         }
 
-        scrollView.addSubview(signUpLabel)
-        signUpLabel.snp.makeConstraints { (make) in
+        scrollView.addSubview(signInLabel)
+        signInLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.top.equalTo(iconImageView.snp.bottom).offset(20)
         }
 
-        userDataStackView.addArrangedSubview(loginTextField)
         userDataStackView.addArrangedSubview(emailTextField)
         userDataStackView.addArrangedSubview(passwordTextField)
-        userDataStackView.addArrangedSubview(passwordAgainTextField)
         scrollView.addSubview(userDataStackView)
         userDataStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(signUpLabel.snp.bottom).offset(20)
+            make.top.equalTo(signInLabel.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.85)
         }
 
-        scrollView.addSubview(signUpButton)
-        signUpButton.snp.makeConstraints { (make) in
-            make.top.equalTo(userDataStackView.snp.bottom).offset(50)
+        scrollView.addSubview(forgotPasswordButton)
+        forgotPasswordButton.snp.makeConstraints { (make) in
+            make.right.equalTo(userDataStackView.snp.right)
+            make.top.equalTo(userDataStackView.snp.bottom).offset(10)
+        }
+
+        scrollView.addSubview(logInButton)
+        logInButton.snp.makeConstraints { (make) in
+            make.top.equalTo(forgotPasswordButton.snp.bottom).offset(50)
             make.width.equalToSuperview().multipliedBy(0.85)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
         }
 
-        stackView.addArrangedSubview(haveAccount)
-        stackView.addArrangedSubview(signInButton)
+        stackView.addArrangedSubview(haveNoAccount)
+        stackView.addArrangedSubview(signUpButton)
         scrollView.addSubview(stackView)
         stackView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(signUpButton.snp.bottom).offset(10)
+            make.top.equalTo(logInButton.snp.bottom).offset(10)
             make.bottom.equalToSuperview()
         }
-
+        
     }
 
 }

@@ -7,33 +7,21 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
+class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - UI
 
-    let iconImageView: UIImageView = {
-        let iconImageView = UIImageView()
-        iconImageView.image = UIImage(named: "NSGames-icon")
-        return iconImageView
-    }()
-
-    let signUpLabel: UILabel = {
+    let topLabel: UILabel = {
         let label = UILabel()
-        label.text = "Создание аккаунта"
+        label.text = "Новый пароль"
         label.font = UIFont.systemFont(ofSize: 30, weight: .heavy)
         return label
     }()
 
-    let loginTextField: DataTextField = {
+    let codeTextField: DataTextField = {
         let textField = DataTextField()
-        textField.placeholder = "Логин"
-        return textField
-    }()
-
-    let emailTextField: DataTextField = {
-        let textField = DataTextField()
-        textField.placeholder = "Email"
-        textField.keyboardType = .emailAddress
+        textField.autocapitalizationType = .allCharacters
+        textField.placeholder = "Код из письма"
         return textField
     }()
 
@@ -46,40 +34,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     let passwordAgainTextField: DataTextField = {
         let textField = DataTextField()
-        textField.placeholder = "Пароль"
+        textField.placeholder = "Пароль еще раз"
         textField.isSecureTextEntry = true
         textField.returnKeyType = .done
         return textField
     }()
 
-    let haveAccount: GrayLabel = {
-        let label = GrayLabel()
-        label.text = "Уже есть аккаунт?"
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.tintColor = .grayLabel
-        return label
-    }()
-
-    var signInButton: BlueTextButton = {
-        let button = BlueTextButton()
-        button.setTitle("Войдите", for: .normal)
-        button.addTarget(self, action: #selector(signInButtonAction), for: .touchUpInside)
-        return button
-    }()
-
-    let signUpButton: BlueButton = {
+    let signInButton: BlueButton = {
         let button = BlueButton()
-        button.setTitle("Создать аккаунт", for: .normal)
+        button.setTitle("Войти", for: .normal)
         return button
-    }()
-
-    let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        stackView.axis = .horizontal
-        stackView.spacing = 5
-        return stackView
     }()
 
     let userDataStackView: UIStackView = {
@@ -98,12 +62,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         constraints()
-        title = "Создание аккаунта"
+        title = "Пароль"
         view.backgroundColor = .white
-        loginTextField.delegate = self
-        emailTextField.delegate = self
+        codeTextField.delegate = self
         passwordTextField.delegate = self
-        passwordAgainTextField.delegate = self 
+        passwordAgainTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -112,9 +75,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
-        case loginTextField:
-            emailTextField.becomeFirstResponder()
-        case emailTextField:
+        case codeTextField:
             passwordTextField.becomeFirstResponder()
         case passwordTextField:
             passwordAgainTextField.becomeFirstResponder()
@@ -125,11 +86,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: - obcj func
-
-    @objc
-    private func signInButtonAction() {
-        navigationController?.popViewController(animated: true)
-    }
 
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
@@ -151,45 +107,28 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
 
-        scrollView.addSubview(iconImageView)
-        iconImageView.snp.makeConstraints { (make) in
+        scrollView.addSubview(topLabel)
+        topLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(25)
             make.centerX.equalToSuperview()
-            make.width.height.equalTo(scrollView.snp.width).multipliedBy(0.3)
         }
 
-        scrollView.addSubview(signUpLabel)
-        signUpLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(iconImageView.snp.bottom).offset(20)
-        }
-
-        userDataStackView.addArrangedSubview(loginTextField)
-        userDataStackView.addArrangedSubview(emailTextField)
+        userDataStackView.addArrangedSubview(codeTextField)
         userDataStackView.addArrangedSubview(passwordTextField)
         userDataStackView.addArrangedSubview(passwordAgainTextField)
         scrollView.addSubview(userDataStackView)
         userDataStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(signUpLabel.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
+            make.top.equalTo(topLabel.snp.bottom).offset(20)
             make.width.equalToSuperview().multipliedBy(0.85)
         }
 
-        scrollView.addSubview(signUpButton)
-        signUpButton.snp.makeConstraints { (make) in
+        scrollView.addSubview(signInButton)
+        signInButton.snp.makeConstraints { (make) in
             make.top.equalTo(userDataStackView.snp.bottom).offset(50)
             make.width.equalToSuperview().multipliedBy(0.85)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
-        }
-
-        stackView.addArrangedSubview(haveAccount)
-        stackView.addArrangedSubview(signInButton)
-        scrollView.addSubview(stackView)
-        stackView.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(signUpButton.snp.bottom).offset(10)
-            make.bottom.equalToSuperview()
         }
 
     }
