@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import SnapKit
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
-    // MARK: - UI
+    // MARK: - MVVM propertiesb
+    var viewModel: SignUpViewModel?
 
+    // MARK: - UI
     let iconImageView: UIImageView = {
         let iconImageView = UIImageView()
-        iconImageView.image = UIImage(named: "NSGames-icon")
+        iconImageView.image = #imageLiteral(resourceName: "NSGames-icon")
         return iconImageView
     }()
 
@@ -46,7 +49,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     let passwordAgainTextField: DataTextField = {
         let textField = DataTextField()
-        textField.placeholder = "Пароль"
+        textField.placeholder = "Пароль еще раз"
         textField.isSecureTextEntry = true
         textField.returnKeyType = .done
         return textField
@@ -70,6 +73,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     let signUpButton: BlueButton = {
         let button = BlueButton()
         button.setTitle("Создать аккаунт", for: .normal)
+        button.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
         return button
     }()
 
@@ -91,33 +95,45 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return stackView
     }()
 
+    let errorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "У вас нет аккаунта?"
+        label.font = UIFont.systemFont(ofSize: 15, weight: .heavy)
+        label.numberOfLines = 2
+        label.textColor = .red
+        return label
+    }()
+
     let scrollView = UIScrollView()
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindData()
         constraints()
         title = "Создание аккаунта"
         view.backgroundColor = .white
         loginTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        passwordAgainTextField.delegate = self 
+        passwordAgainTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     // MARK: - UITextFieldDelegate
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case loginTextField:
             emailTextField.becomeFirstResponder()
+
         case emailTextField:
             passwordTextField.becomeFirstResponder()
+
         case passwordTextField:
             passwordAgainTextField.becomeFirstResponder()
+
         default:
             textField.resignFirstResponder()
         }
@@ -125,10 +141,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: - obcj func
-
-    @objc
-    private func signInButtonAction() {
+    @objc private func signInButtonAction() {
         navigationController?.popViewController(animated: true)
+    }
+
+    @objc private func signUpButtonAction() {
+        viewModel?.signUp(login: loginTextField.text ?? "", email: emailTextField.text ?? "", password: passwordTextField.text ?? "", passwordAgain: passwordAgainTextField.text ?? "")
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -137,8 +155,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    @objc
-    private func keyboardWillHide(notification: NSNotification) {
+    @objc private func keyboardWillHide(notification: NSNotification) {
         scrollView.contentSize = scrollView.frame.size
     }
 
@@ -147,19 +164,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     private func constraints() {
         view.addSubview(scrollView)
 
-        scrollView.snp.makeConstraints { (make) in
+        scrollView.snp.makeConstraints { (make: ConstraintMaker) in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
 
         scrollView.addSubview(iconImageView)
-        iconImageView.snp.makeConstraints { (make) in
+        iconImageView.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalToSuperview().offset(25)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(scrollView.snp.width).multipliedBy(0.3)
         }
 
         scrollView.addSubview(signUpLabel)
-        signUpLabel.snp.makeConstraints { (make) in
+        signUpLabel.snp.makeConstraints { (make: ConstraintMaker) in
             make.centerX.equalToSuperview()
             make.top.equalTo(iconImageView.snp.bottom).offset(20)
         }
@@ -169,14 +186,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         userDataStackView.addArrangedSubview(passwordTextField)
         userDataStackView.addArrangedSubview(passwordAgainTextField)
         scrollView.addSubview(userDataStackView)
-        userDataStackView.snp.makeConstraints { (make) in
+        userDataStackView.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalTo(signUpLabel.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.85)
         }
 
         scrollView.addSubview(signUpButton)
-        signUpButton.snp.makeConstraints { (make) in
+        signUpButton.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalTo(userDataStackView.snp.bottom).offset(50)
             make.width.equalToSuperview().multipliedBy(0.85)
             make.centerX.equalToSuperview()
@@ -186,12 +203,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         stackView.addArrangedSubview(haveAccount)
         stackView.addArrangedSubview(signInButton)
         scrollView.addSubview(stackView)
-        stackView.snp.makeConstraints { (make) in
+        stackView.snp.makeConstraints { (make: ConstraintMaker) in
             make.centerX.equalToSuperview()
             make.top.equalTo(signUpButton.snp.bottom).offset(10)
             make.bottom.equalToSuperview()
         }
-
     }
 
+    private func bindData() {
+        viewModel?.signUpError.bind { [weak self] text in
+            guard let self = self else { return }
+            self.errorLabel.text = text
+            self.userDataStackView.addArrangedSubview(self.errorLabel)
+        }
+    }
 }

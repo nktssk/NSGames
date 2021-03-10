@@ -16,8 +16,18 @@
 		A1A8B07625F250D6008CDDA4 /* BlueTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */; };
 		A1A8B07925F25133008CDDA4 /* BlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07825F25133008CDDA4 /* BlueButton.swift */; };
 		A1A8B07C25F251BC008CDDA4 /* GrayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */; };
+		A1C455ED25F91D5100ABD067 /* CodeVerifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455EC25F91D5100ABD067 /* CodeVerifyService.swift */; };
+		A1C455F125F91D7600ABD067 /* SignInError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455F025F91D7600ABD067 /* SignInError.swift */; };
+		A1C455F525F91D8600ABD067 /* SignUpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455F425F91D8600ABD067 /* SignUpError.swift */; };
+		A1C455F825F91DF600ABD067 /* CodeVerifyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455F725F91DF600ABD067 /* CodeVerifyError.swift */; };
+		A1C455FD25F920F100ABD067 /* CodeVerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455FC25F920F100ABD067 /* CodeVerifyViewModel.swift */; };
 		A1C7D66825F50F380087B41F /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C7D66725F50F380087B41F /* ForgotPasswordViewController.swift */; };
 		A1C7D67525F576340087B41F /* CodeVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C7D67425F576340087B41F /* CodeVerifyViewController.swift */; };
+		A1D18A0F25F68B38007A5CF7 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D18A0E25F68B38007A5CF7 /* SignInService.swift */; };
+		A1D18A1325F68FF4007A5CF7 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D18A1225F68FF4007A5CF7 /* SignInViewModel.swift */; };
+		A1D18A1A25F69B74007A5CF7 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D18A1925F69B74007A5CF7 /* Observable.swift */; };
+		A1D379AE25F74C43003FAAF6 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D379AD25F74C43003FAAF6 /* SignUpService.swift */; };
+		A1D379B325F74E19003FAAF6 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D379B225F74E19003FAAF6 /* SignUpViewModel.swift */; };
 		A1D9953D25EFF071002770AF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D9953C25EFF071002770AF /* SignInViewController.swift */; };
 		A1D9954325F00564002770AF /* DataTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D9954225F00564002770AF /* DataTextField.swift */; };
 /* End PBXBuildFile section */
@@ -34,8 +44,18 @@
 		A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTextButton.swift; sourceTree = "<group>"; };
 		A1A8B07825F25133008CDDA4 /* BlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButton.swift; sourceTree = "<group>"; };
 		A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLabel.swift; sourceTree = "<group>"; };
+		A1C455EC25F91D5100ABD067 /* CodeVerifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyService.swift; sourceTree = "<group>"; };
+		A1C455F025F91D7600ABD067 /* SignInError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInError.swift; sourceTree = "<group>"; };
+		A1C455F425F91D8600ABD067 /* SignUpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpError.swift; sourceTree = "<group>"; };
+		A1C455F725F91DF600ABD067 /* CodeVerifyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyError.swift; sourceTree = "<group>"; };
+		A1C455FC25F920F100ABD067 /* CodeVerifyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewModel.swift; sourceTree = "<group>"; };
 		A1C7D66725F50F380087B41F /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		A1C7D67425F576340087B41F /* CodeVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewController.swift; sourceTree = "<group>"; };
+		A1D18A0E25F68B38007A5CF7 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
+		A1D18A1225F68FF4007A5CF7 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		A1D18A1925F69B74007A5CF7 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		A1D379AD25F74C43003FAAF6 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
+		A1D379B225F74E19003FAAF6 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		A1D9953C25EFF071002770AF /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A1D9954225F00564002770AF /* DataTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTextField.swift; sourceTree = "<group>"; };
 		A310BA6390AA4C34B5EAB5AD /* Pods_NSGames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NSGames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,25 +112,49 @@
 		A178CE5325EFDB89003A50DC /* NSGames */ = {
 			isa = PBXGroup;
 			children = (
+				A1D18A0C25F688D1007A5CF7 /* ViewModel */,
+				A1D18A1625F690B7007A5CF7 /* Model */,
+				A1D18A0B25F688C8007A5CF7 /* Services */,
 				A1C7D67125F575100087B41F /* View */,
-				A1D9954125F00558002770AF /* UI-Custom */,
 				A178CE5F25EFDB8B003A50DC /* LaunchScreen.storyboard */,
 				A178CE5425EFDB89003A50DC /* AppDelegate.swift */,
 				A178CE5D25EFDB8B003A50DC /* Assets.xcassets */,
 				A178CE6225EFDB8B003A50DC /* Info.plist */,
+				A1D9954125F00558002770AF /* CustomUI */,
+				A1D18A1825F69B6B007A5CF7 /* Helpers */,
 			);
 			path = NSGames;
+			sourceTree = "<group>";
+		};
+		A1C455EF25F91D6400ABD067 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				A1C455F025F91D7600ABD067 /* SignInError.swift */,
+				A1C455F425F91D8600ABD067 /* SignUpError.swift */,
+				A1C455F725F91DF600ABD067 /* CodeVerifyError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		A1C455FA25F9206800ABD067 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A1D18A0E25F68B38007A5CF7 /* SignInService.swift */,
+				A1D379AD25F74C43003FAAF6 /* SignUpService.swift */,
+				A1C455EC25F91D5100ABD067 /* CodeVerifyService.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		A1C7D67125F575100087B41F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A1C7D67225F5751A0087B41F /* Auth */,
+				A1C7D67225F5751A0087B41F /* Authentication */,
 			);
 			name = View;
 			sourceTree = "<group>";
 		};
-		A1C7D67225F5751A0087B41F /* Auth */ = {
+		A1C7D67225F5751A0087B41F /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
 				A1D9953C25EFF071002770AF /* SignInViewController.swift */,
@@ -118,10 +162,60 @@
 				A1C7D66725F50F380087B41F /* ForgotPasswordViewController.swift */,
 				A1C7D67425F576340087B41F /* CodeVerifyViewController.swift */,
 			);
-			name = Auth;
+			name = Authentication;
 			sourceTree = "<group>";
 		};
-		A1D9954125F00558002770AF /* UI-Custom */ = {
+		A1D18A0B25F688C8007A5CF7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A1D18A0D25F68A8D007A5CF7 /* Authentication */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A1D18A0C25F688D1007A5CF7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A1D18A1125F68FDF007A5CF7 /* Authentication */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A1D18A0D25F68A8D007A5CF7 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A1C455FA25F9206800ABD067 /* Protocol */,
+				A1C455EF25F91D6400ABD067 /* Error */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		A1D18A1125F68FDF007A5CF7 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A1D18A1225F68FF4007A5CF7 /* SignInViewModel.swift */,
+				A1D379B225F74E19003FAAF6 /* SignUpViewModel.swift */,
+				A1C455FC25F920F100ABD067 /* CodeVerifyViewModel.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		A1D18A1625F690B7007A5CF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A1D18A1825F69B6B007A5CF7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A1D18A1925F69B74007A5CF7 /* Observable.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A1D9954125F00558002770AF /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
 				A1A8B06A25F22856008CDDA4 /* Colors.swift */,
@@ -130,7 +224,7 @@
 				A1A8B07825F25133008CDDA4 /* BlueButton.swift */,
 				A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */,
 			);
-			path = "UI-Custom";
+			path = CustomUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,7 +328,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#if [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  #if which swiftlint >/dev/null; then\n    #swiftlint --no-cache --config #~/com.raywenderlich.swiftlint.yml\n # fi\n#fi\n";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		BF74A7FFE440EB94F77AF022 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -265,16 +359,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1D18A0F25F68B38007A5CF7 /* SignInService.swift in Sources */,
 				A1A8B07625F250D6008CDDA4 /* BlueTextButton.swift in Sources */,
+				A1C455F525F91D8600ABD067 /* SignUpError.swift in Sources */,
 				A1A8B06E25F247B2008CDDA4 /* SignUpViewController.swift in Sources */,
+				A1C455FD25F920F100ABD067 /* CodeVerifyViewModel.swift in Sources */,
+				A1C455ED25F91D5100ABD067 /* CodeVerifyService.swift in Sources */,
 				A1D9953D25EFF071002770AF /* SignInViewController.swift in Sources */,
 				A1A8B06B25F22856008CDDA4 /* Colors.swift in Sources */,
 				A1D9954325F00564002770AF /* DataTextField.swift in Sources */,
 				A1C7D66825F50F380087B41F /* ForgotPasswordViewController.swift in Sources */,
+				A1D379B325F74E19003FAAF6 /* SignUpViewModel.swift in Sources */,
+				A1D379AE25F74C43003FAAF6 /* SignUpService.swift in Sources */,
 				A1C7D67525F576340087B41F /* CodeVerifyViewController.swift in Sources */,
+				A1D18A1325F68FF4007A5CF7 /* SignInViewModel.swift in Sources */,
+				A1C455F125F91D7600ABD067 /* SignInError.swift in Sources */,
 				A178CE5525EFDB89003A50DC /* AppDelegate.swift in Sources */,
+				A1D18A1A25F69B74007A5CF7 /* Observable.swift in Sources */,
 				A1A8B07925F25133008CDDA4 /* BlueButton.swift in Sources */,
 				A1A8B07C25F251BC008CDDA4 /* GrayLabel.swift in Sources */,
+				A1C455F825F91DF600ABD067 /* CodeVerifyError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

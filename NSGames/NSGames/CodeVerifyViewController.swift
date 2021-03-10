@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import SnapKit
 
 class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
 
-    // MARK: - UI
+    // MARK: - MVVM propertiesb
+    var viewModel: CodeVerifyViewModel?
 
+    // MARK: - UI
     let topLabel: UILabel = {
         let label = UILabel()
         label.text = "Новый пароль"
@@ -43,6 +46,7 @@ class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
     let signInButton: BlueButton = {
         let button = BlueButton()
         button.setTitle("Войти", for: .normal)
+        button.addTarget(self, action: #selector(signInButtonAction), for: .touchUpInside)
         return button
     }()
 
@@ -55,12 +59,21 @@ class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
         return stackView
     }()
 
+    let errorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "У вас нет аккаунта?"
+        label.font = UIFont.systemFont(ofSize: 15, weight: .heavy)
+        label.numberOfLines = 2
+        label.textColor = .red
+        return label
+    }()
+
     let scrollView = UIScrollView()
 
     // MARK: - Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindData()
         constraints()
         title = "Пароль"
         view.backgroundColor = .white
@@ -72,13 +85,15 @@ class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: - UITextFieldDelegate
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
+
         case codeTextField:
             passwordTextField.becomeFirstResponder()
+
         case passwordTextField:
             passwordAgainTextField.becomeFirstResponder()
+
         default:
             textField.resignFirstResponder()
         }
@@ -86,6 +101,9 @@ class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: - obcj func
+    @objc private func signInButtonAction() {
+        viewModel?.checkCode(code: codeTextField.text ?? "")
+    }
 
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
@@ -93,8 +111,7 @@ class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    @objc
-    private func keyboardWillHide(notification: NSNotification) {
+    @objc private func keyboardWillHide(notification: NSNotification) {
         scrollView.contentSize = scrollView.frame.size
     }
 
@@ -103,12 +120,12 @@ class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
     private func constraints() {
         view.addSubview(scrollView)
 
-        scrollView.snp.makeConstraints { (make) in
+        scrollView.snp.makeConstraints { (make: ConstraintMaker) in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
 
         scrollView.addSubview(topLabel)
-        topLabel.snp.makeConstraints { (make) in
+        topLabel.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalToSuperview().offset(25)
             make.centerX.equalToSuperview()
         }
@@ -117,20 +134,26 @@ class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
         userDataStackView.addArrangedSubview(passwordTextField)
         userDataStackView.addArrangedSubview(passwordAgainTextField)
         scrollView.addSubview(userDataStackView)
-        userDataStackView.snp.makeConstraints { (make) in
+        userDataStackView.snp.makeConstraints { (make: ConstraintMaker) in
             make.centerX.equalToSuperview()
             make.top.equalTo(topLabel.snp.bottom).offset(20)
             make.width.equalToSuperview().multipliedBy(0.85)
         }
 
         scrollView.addSubview(signInButton)
-        signInButton.snp.makeConstraints { (make) in
+        signInButton.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalTo(userDataStackView.snp.bottom).offset(50)
             make.width.equalToSuperview().multipliedBy(0.85)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
         }
-
     }
 
+    private func bindData() {
+        viewModel?.codeVerifyError.bind { [weak self] text in
+            guard let self = self else { return }
+            self.errorLabel.text = text
+            self.userDataStackView.addArrangedSubview(self.errorLabel)
+        }
+    }
 }

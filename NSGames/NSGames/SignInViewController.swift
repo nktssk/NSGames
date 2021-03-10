@@ -10,11 +10,13 @@ import SnapKit
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
 
-    // MARK: - UI
+    // MARK: - MVVM properties
+    var viewModel: SignInViewModel?
 
+    // MARK: - UI
     let iconImageView: UIImageView = {
         let iconImageView = UIImageView()
-        iconImageView.image = UIImage(named: "NSGames-icon")
+        iconImageView.image = #imageLiteral(resourceName: "NSGames-icon")
         return iconImageView
     }()
 
@@ -61,9 +63,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
 
-    let logInButton: BlueButton = {
+    let signInButton: BlueButton = {
         let button = BlueButton()
         button.setTitle("Войти", for: .normal)
+        button.addTarget(self, action: #selector(signInButtonAction), for: .touchUpInside)
         return button
     }()
 
@@ -85,15 +88,24 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         return stackView
     }()
 
+    let errorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "У вас нет аккаунта?"
+        label.font = UIFont.systemFont(ofSize: 15, weight: .heavy)
+        label.numberOfLines = 2
+        label.textColor = .red
+        return label
+    }()
+
     let scrollView = UIScrollView()
 
     // MARK: - Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         constraints()
+        bindData()
         title = "Авторизация"
-        view.backgroundColor = .white
+        //view.backgroundColor = .white
         emailTextField.delegate = self
         passwordTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -101,11 +113,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: - UITextFieldDelegate
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case emailTextField:
             passwordTextField.becomeFirstResponder()
+
         default:
             textField.resignFirstResponder()
         }
@@ -113,14 +125,17 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: - Objc Methods
-    
-    @objc
-    private func signUpButtonAction() {
-        navigationController?.pushViewController(SignUpViewController(), animated: true)
+    @objc private func signUpButtonAction() {
+        let controller = SignUpViewController()
+        controller.viewModel = MockSignUpViewModel(service: MockSignUpService())
+        navigationController?.pushViewController(controller, animated: true)
     }
 
-    @objc
-    private func forgotPasswordButtonAction() {
+    @objc private func signInButtonAction() {
+        viewModel?.signIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
+    }
+
+    @objc private func forgotPasswordButtonAction() {
         navigationController?.pushViewController(ForgotPasswordViewController(), animated: true)
     }
 
@@ -130,30 +145,27 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    @objc
-    private func keyboardWillHide(notification: NSNotification) {
+    @objc private func keyboardWillHide(notification: NSNotification) {
         scrollView.contentSize = scrollView.frame.size
     }
 
     // MARK: - Helpers
-    
     private func constraints() {
-
         view.addSubview(scrollView)
 
-        scrollView.snp.makeConstraints { (make) in
+        scrollView.snp.makeConstraints { (make: ConstraintMaker) in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
 
         scrollView.addSubview(iconImageView)
-        iconImageView.snp.makeConstraints { (make) in
+        iconImageView.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalToSuperview().offset(25)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(scrollView.snp.width).multipliedBy(0.3)
         }
 
         scrollView.addSubview(signInLabel)
-        signInLabel.snp.makeConstraints { (make) in
+        signInLabel.snp.makeConstraints { (make: ConstraintMaker) in
             make.centerX.equalToSuperview()
             make.top.equalTo(iconImageView.snp.bottom).offset(20)
         }
@@ -161,20 +173,20 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         userDataStackView.addArrangedSubview(emailTextField)
         userDataStackView.addArrangedSubview(passwordTextField)
         scrollView.addSubview(userDataStackView)
-        userDataStackView.snp.makeConstraints { (make) in
+        userDataStackView.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalTo(signInLabel.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.85)
         }
 
         scrollView.addSubview(forgotPasswordButton)
-        forgotPasswordButton.snp.makeConstraints { (make) in
+        forgotPasswordButton.snp.makeConstraints { (make: ConstraintMaker) in
             make.right.equalTo(userDataStackView.snp.right)
             make.top.equalTo(userDataStackView.snp.bottom).offset(10)
         }
 
-        scrollView.addSubview(logInButton)
-        logInButton.snp.makeConstraints { (make) in
+        scrollView.addSubview(signInButton)
+        signInButton.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalTo(forgotPasswordButton.snp.bottom).offset(50)
             make.width.equalToSuperview().multipliedBy(0.85)
             make.centerX.equalToSuperview()
@@ -184,12 +196,18 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         stackView.addArrangedSubview(haveNoAccount)
         stackView.addArrangedSubview(signUpButton)
         scrollView.addSubview(stackView)
-        stackView.snp.makeConstraints { (make) in
+        stackView.snp.makeConstraints { (make: ConstraintMaker) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(logInButton.snp.bottom).offset(10)
+            make.top.equalTo(signInButton.snp.bottom).offset(10)
             make.bottom.equalToSuperview()
         }
-        
     }
 
+    private func bindData() {
+        viewModel?.signInError.bind { [weak self] text in
+            guard let self = self else { return }
+            self.errorLabel.text = text
+            self.userDataStackView.addArrangedSubview(self.errorLabel)
+        }
+    }
 }

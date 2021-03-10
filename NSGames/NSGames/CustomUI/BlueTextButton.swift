@@ -19,5 +19,4 @@ class BlueTextButton: UIButton {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
 }

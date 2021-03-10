@@ -1,5 +1,5 @@
 //
-//  BlueButton.swift
+//  GrayLabel.swift
 //  NSGames
 //
 //  Created by Nikita Sosyuk on 05.03.2021.
@@ -7,16 +7,15 @@
 
 import UIKit
 
-class BlueButton: UIButton {
+class GrayLabel: UILabel {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.buttonBlue
-        layer.cornerRadius = 14
+        font = UIFont.systemFont(ofSize: 15)
+        tintColor = .grayLabel
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-
 }

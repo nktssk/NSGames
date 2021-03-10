@@ -31,8 +31,7 @@ class DataTextField: UITextField {
     // MARK: - Public Methods
 
     func incorrectData(message: String) {
-        attributedPlaceholder = NSAttributedString(string: message,
-                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+        attributedPlaceholder = NSAttributedString(string: message, attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
         border.backgroundColor = .red
         text = ""
     }
