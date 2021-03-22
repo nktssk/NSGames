@@ -1,15 +1,11 @@
 //
-//  CodeVerifyService.swift
+//  MockCodeVerifyService.swift
 //  NSGames
 //
-//  Created by Nikita Sosyuk on 10.03.2021.
+//  Created by Nikita Sosyuk on 17.03.2021.
 //
 
 import Foundation
-
-protocol CodeVerifyService {
-    func checkCode(code: String, completion: @escaping (Result<(), CodeVerifyError>) -> Void)
-}
 
 class MockCodeVerifyService: CodeVerifyService {
     func checkCode(code: String, completion: @escaping (Result<(), CodeVerifyError>) -> Void) {

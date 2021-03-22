@@ -107,7 +107,6 @@ opt_in_rules:
   - nesting
   - no_extension_access_modifier
   - no_fallthrough_only
-  - object_literal
   - opening_brace
   - operator_usage_whitespace
   - operator_whitespace

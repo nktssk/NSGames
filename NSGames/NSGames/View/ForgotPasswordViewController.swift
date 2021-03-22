@@ -10,6 +10,9 @@ import SnapKit
 
 class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
 
+    // MARK: - MVVM properties
+    var viewModel: ForgotPasswordViewModel?
+
     // MARK: - UI
     private let iconImageView: UIImageView = {
         let iconImageView = UIImageView()
@@ -39,17 +42,26 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
 
+    let errorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "У вас нет аккаунта?"
+        label.font = UIFont.systemFont(ofSize: 15, weight: .heavy)
+        label.numberOfLines = 2
+        label.textColor = .red
+        return label
+    }()
+
     private let scrollView = UIScrollView()
-    private let loadingView = UIActivityIndicatorView()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        constraints()
-        loadingView.isHidden = true
+        setConstraints()
+        errorLabel.isHidden = true
         title = "Восстановление пароля"
         view.backgroundColor = .white
         emailTextField.delegate = self
+        bindData()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -72,15 +84,11 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     }
 
     @objc private func nextButtonAction() {
-        if let text = emailTextField.text, !text.isEmpty {
-            let controller = CodeVerifyViewController()
-            controller.viewModel = MockCodeVerifyViewModel(service: MockCodeVerifyService())
-            navigationController?.pushViewController(controller, animated: true)
-        }
+        viewModel?.checkEmail(email: emailTextField.text ?? "")
     }
 
     // MARK: - Helpers
-    private func constraints() {
+    private func setConstraints() {
         view.addSubview(scrollView)
 
         scrollView.snp.makeConstraints { (make: ConstraintMaker) in
@@ -107,12 +115,26 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
             make.top.equalTo(forgotPasswordLabel.snp.bottom).offset(20)
         }
 
+        scrollView.addSubview(errorLabel)
+        errorLabel.snp.makeConstraints { (make: ConstraintMaker) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(emailTextField.snp.bottom).offset(20)
+        }
+
         scrollView.addSubview(nextButton)
         nextButton.snp.makeConstraints { (make: ConstraintMaker) in
-            make.top.equalTo(emailTextField.snp.bottom).offset(30)
+            make.top.equalTo(errorLabel.snp.bottom).offset(30)
             make.width.equalToSuperview().multipliedBy(0.85)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
+        }
+    }
+
+    private func bindData() {
+        viewModel?.emailError.bind { [weak self] text in
+            guard let self = self else { return }
+            self.errorLabel.text = text
+            self.errorLabel.isHidden = false
         }
     }
 }

@@ -16,10 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .white
-        let controller = SignInViewController()
-        let viewModel = MockSignInViewModel(service: MockSignInService())
-        controller.viewModel = viewModel
-        window?.rootViewController = UINavigationController(rootViewController: controller)
+//        let controller = SignInViewController()
+//        let viewModel = MockSignInViewModel(service: MockSignInService())
+//        controller.viewModel = viewModel
+        let tapBarController = UITabBarController()
+        tapBarController.viewControllers = [UINavigationController(rootViewController: OfferViewController())]
+        window?.rootViewController = tapBarController
         return true
     }
 }

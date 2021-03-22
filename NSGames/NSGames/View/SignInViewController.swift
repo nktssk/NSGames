@@ -102,10 +102,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        constraints()
+        setConstraints()
         bindData()
         title = "Авторизация"
-        //view.backgroundColor = .white
+        view.backgroundColor = .white
         emailTextField.delegate = self
         passwordTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -136,7 +136,14 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
 
     @objc private func forgotPasswordButtonAction() {
-        navigationController?.pushViewController(ForgotPasswordViewController(), animated: true)
+        let controller = ForgotPasswordViewController()
+        controller.viewModel = MockForgotPasswordViewModel(service: MockForgotPassword())
+        controller.viewModel?.onNextScreen = { [weak controller] in
+            let nextController = CodeVerifyViewController()
+            nextController.viewModel = MockCodeVerifyViewModel(service: MockCodeVerifyService())
+            controller?.navigationController?.pushViewController(nextController, animated: true)
+        }
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -150,7 +157,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: - Helpers
-    private func constraints() {
+    private func setConstraints() {
         view.addSubview(scrollView)
 
         scrollView.snp.makeConstraints { (make: ConstraintMaker) in
@@ -181,7 +188,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
         scrollView.addSubview(forgotPasswordButton)
         forgotPasswordButton.snp.makeConstraints { (make: ConstraintMaker) in
-            make.right.equalTo(userDataStackView.snp.right)
+            make.trailing.equalTo(userDataStackView.snp.trailing)
             make.top.equalTo(userDataStackView.snp.bottom).offset(10)
         }
 

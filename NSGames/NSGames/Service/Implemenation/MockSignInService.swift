@@ -1,15 +1,11 @@
 //
-//  SignInService.swift
+//  MockSignInService.swift
 //  NSGames
 //
-//  Created by Nikita Sosyuk on 08.03.2021.
+//  Created by Nikita Sosyuk on 17.03.2021.
 //
 
 import Foundation
-
-protocol SignInService {
-    func signIn(email: String, password: String, completion: @escaping (Result<(), SignInError>) -> Void)
-}
 
 class MockSignInService: SignInService {
     func signIn(email: String, password: String, completion: @escaping (Result<(), SignInError>) -> Void) {
