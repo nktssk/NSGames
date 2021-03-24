@@ -10,6 +10,9 @@ import SnapKit
 
 class OfferViewController: UIViewController {
 
+    // MARK: - MVVM properties
+    var viewModel: OfferViewModel?
+
     // MARK: - UI
     let offerTypeContol: UISegmentedControl = {
         let items = ["Покупка", "Обмен"]
@@ -81,10 +84,16 @@ class OfferViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Предложение"
+        view.backgroundColor = .white
         setUI()
         setConstraints()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     // MARK: - Objc Methods
@@ -104,7 +113,7 @@ class OfferViewController: UIViewController {
     }
 
     @objc private func gamesButtonAction() {
-        #warning(Coordinator)
+        viewModel?.selectGames(id: 123)
     }
 
     @objc private func keyboardWillShow(notification: NSNotification) {

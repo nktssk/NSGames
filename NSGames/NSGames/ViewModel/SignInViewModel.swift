@@ -8,27 +8,25 @@
 import Foundation
 
 protocol SignInViewModel {
-    var onSuccesAuth: (() -> Void)? { get set }
-    var onRegScreen: (() -> Void)? { get set }
-    var signInError: Observable<String?> { get set }
+    var signInError: ObservableUI<String?> { get set }
+    var coordinator: AuthenticationCoordinator { get set }
 
     func signIn(email: String, password: String)
     func registration()
+    func forgotPassword()
 }
 
 class MockSignInViewModel: SignInViewModel {
 
     var signInService: SignInService
+    var coordinator: AuthenticationCoordinator
 
-    init(service: SignInService) {
+    init(service: SignInService, coordinator: AuthenticationCoordinator) {
         signInService = service
+        self.coordinator = coordinator
     }
 
-    // MARK: - Business logic properties
-    var onSuccesAuth: (() -> Void)?
-    var onRegScreen: (() -> Void)?
-
-    var signInError: Observable<String?> = Observable(nil)
+    var signInError: ObservableUI<String?> = ObservableUI(nil)
 
     // MARK: - SignInViewModel
     func signIn(email: String, password: String) {
@@ -44,7 +42,7 @@ class MockSignInViewModel: SignInViewModel {
         signInService.signIn(email: email, password: password) { [weak self] result in
             switch result {
             case .success:
-                self?.onSuccesAuth?()
+                self?.coordinator.authFinished()
 
             case .failure(let error):
                 switch error {
@@ -58,6 +56,10 @@ class MockSignInViewModel: SignInViewModel {
     }
 
     func registration() {
-        onRegScreen?()
+        coordinator.registration()
+    }
+
+    func forgotPassword() {
+        coordinator.forgotPassword()
     }
 }

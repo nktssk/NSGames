@@ -10,6 +10,9 @@ import SnapKit
 
 class HomeScreenViewController: UIViewController {
 
+    // MARK: - MVVM properties
+    var viewModel: HomeScreenViewModel?
+
     // MARK: - UI
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -26,9 +29,6 @@ class HomeScreenViewController: UIViewController {
         return activityIndicator
     }()
 
-    var viewModel = MockHomeScreenViewModel(service: MockHomeScreenService())
-    private var data = [HomeScreenCellConfig]()
-
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +37,13 @@ class HomeScreenViewController: UIViewController {
         setNavigationBarStyle()
         setTabBarStyle()
         constraints()
+        bindData()
         getData()
     }
 
-    // MARK: - Objc Methods
-    @objc private func profileButtonAction() {
-        print("lol")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     // MARK: - Private Methods
@@ -53,6 +54,7 @@ class HomeScreenViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
 
         navigationController?.navigationBar.barTintColor = UIColor.grayLight
@@ -88,24 +90,20 @@ class HomeScreenViewController: UIViewController {
     private func getData() {
         collectionView.isHidden = true
         indicator.isHidden = false
-        viewModel.getData { [weak self] result in
-            switch result {
-            case .success(let newData):
-                self?.data += newData
+        viewModel?.getData { [weak self] in
+            if let collectionView = self?.collectionView {
                 self?.indicator.isHidden = true
-                if let collectionView = self?.collectionView {
-                    UIView.transition(with: collectionView, duration: 0.6,
-                                      options: .transitionCrossDissolve,
-                                      animations: {
-                                        collectionView.isHidden = false
-                                      })
-                }
-                self?.collectionView.reloadData()
-
-            case .failure:
-                print("lolol")
+                UIView.transition(with: collectionView, duration: 0.6,
+                                  options: .transitionCrossDissolve,
+                                  animations: {
+                                    collectionView.isHidden = false
+                                  })
             }
         }
+    }
+
+    private func bindData() {
+        viewModel?.items.observe(on: self) { [weak self] _ in self?.collectionView.reloadData() }
     }
 }
 
@@ -113,7 +111,7 @@ class HomeScreenViewController: UIViewController {
 extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        data.count
+        viewModel?.items.value.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -121,7 +119,9 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             return UICollectionViewCell()
         }
         cell.delegate = self
-        cell.setData(configuration: data[indexPath.row])
+        if let data = viewModel?.items.value[indexPath.row] {
+            cell.setData(configuration: data)
+        }
         return cell
     }
 
@@ -136,15 +136,12 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        #warning(Coordinator)
+        viewModel?.detailView(at: indexPath.row)
     }
 }
 
 extension HomeScreenViewController: HomeScreenCellDelegate {
     func likeAd(config: HomeScreenCellConfig) {
-        if let index = data.firstIndex(where: { $0.id == config.id }) {
-            data[index] = config
-        }
-        viewModel.likeAd(id: config.id)
+        viewModel?.likeAd(id: config.id)
     }
 }

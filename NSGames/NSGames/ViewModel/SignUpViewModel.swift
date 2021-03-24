@@ -9,7 +9,7 @@ import Foundation
 
 protocol SignUpViewModel {
     var onSuccesReg: (() -> Void)? { get set }
-    var signUpError: Observable<String?> { get set }
+    var signUpError: ObservableUI<String?> { get set }
 
     func signUp(login: String, email: String, password: String, passwordAgain: String)
 }
@@ -25,7 +25,7 @@ class MockSignUpViewModel: SignUpViewModel {
     // MARK: - Business logic properties
     var onSuccesReg: (() -> Void)?
 
-    var signUpError: Observable<String?> = Observable(nil)
+    var signUpError: ObservableUI<String?> = ObservableUI(nil)
 
     // MARK: - SignInViewModel
     func signUp(login: String, email: String, password: String, passwordAgain: String) {

@@ -115,7 +115,9 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
             configuration.isLiked = true
         }
         self.configuration = configuration
-        delegate?.likeAd(config: configuration)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) { [weak delegate] in
+            delegate?.likeAd(config: configuration)
+        }
     }
 
     // MARK: - Private Methods

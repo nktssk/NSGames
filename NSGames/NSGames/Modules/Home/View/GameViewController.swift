@@ -8,10 +8,10 @@
 import UIKit
 import SnapKit
 
-class GamePageViewController: UIViewController {
+class GameViewController: UIViewController {
 
     // MARK: - MVVM properties
-    var viewModel: SignInViewModel?
+    var viewModel: GameViewModel?
 
     // MARK: - UI
     let imageSlider: UICollectionView = {
@@ -87,13 +87,13 @@ class GamePageViewController: UIViewController {
         return scrollView
     }()
 
-    private let images: [UIImage] = [#imageLiteral(resourceName: "NSGames-icon"), #imageLiteral(resourceName: "NSGames-icon"), #imageLiteral(resourceName: "NSGames-icon"), #imageLiteral(resourceName: "NSGames-icon"), #imageLiteral(resourceName: "NSGames-icon")]
+    private let images: [UIImage] = [#imageLiteral(resourceName: "maxresdefault-2"), #imageLiteral(resourceName: "images"), #imageLiteral(resourceName: "NSGames-icon"), #imageLiteral(resourceName: "images"), #imageLiteral(resourceName: "post-251122-0-08963900-1449639672")]
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "Игра"
+        title = "Объявление"
         setData()
         setCollectionView()
         setPageControl()
@@ -105,15 +105,20 @@ class GamePageViewController: UIViewController {
         scrollView.contentSize = CGSize(width: view.frame.width, height: height)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+
     // MARK: - Objc Methods
     @objc private func readyButtonAction() {
+        viewModel?.makeOffer(id: 13)
         UIView.transition(with: readyButton, duration: 0.3,
                           options: .transitionCrossDissolve,
                           animations: { [weak self] in
                             self?.readyButton.backgroundColor = UIColor.greenButton
                             self?.readyButton.setTitle("Предложение отправлено.", for: .normal)
                           })
-        #warning(viewModel)
     }
 
     // MARK: - Helpers
@@ -135,7 +140,7 @@ class GamePageViewController: UIViewController {
         scrollView.addSubview(pageControl)
         pageControl.snp.makeConstraints { (make: ConstraintMaker) in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(imageSlider.snp.bottom)
+            make.bottom.equalTo(imageSlider.snp.bottom).inset(4)
             make.height.equalTo(8)
         }
 
@@ -185,7 +190,7 @@ class GamePageViewController: UIViewController {
     }
 }
 
-extension GamePageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         images.count

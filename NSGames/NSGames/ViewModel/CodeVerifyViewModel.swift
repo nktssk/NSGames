@@ -8,23 +8,22 @@
 import Foundation
 
 protocol CodeVerifyViewModel {
-    var onSuccesReg: (() -> Void)? { get set }
-    var codeVerifyError: Observable<String?> { get set }
+    var codeVerifyError: ObservableUI<String?> { get set }
+    var coordinator: AuthenticationCoordinator { get set }
 
     func checkCode(code: String)
 }
 
 class MockCodeVerifyViewModel: CodeVerifyViewModel {
     var codeVerifyService: CodeVerifyService
+    var coordinator: AuthenticationCoordinator
 
-    init(service: CodeVerifyService) {
-        codeVerifyService = service
+    init(service: CodeVerifyService, coordinator: AuthenticationCoordinator) {
+        self.codeVerifyService = service
+        self.coordinator = coordinator
     }
 
-    // MARK: - Business logic properties
-    var onSuccesReg: (() -> Void)?
-
-    var codeVerifyError: Observable<String?> = Observable(nil)
+    var codeVerifyError: ObservableUI<String?> = ObservableUI(nil)
 
     // MARK: - CodeVerifyViewModel
     func checkCode(code: String) {
@@ -34,7 +33,7 @@ class MockCodeVerifyViewModel: CodeVerifyViewModel {
         codeVerifyService.checkCode(code: code) { [weak self] result in
             switch result {
             case .success:
-                self?.onSuccesReg?()
+                self?.coordinator.authFinished()
 
             case .failure(let error):
                 switch error {

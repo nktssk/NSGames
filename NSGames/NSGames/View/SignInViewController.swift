@@ -126,9 +126,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Objc Methods
     @objc private func signUpButtonAction() {
-        let controller = SignUpViewController()
-        controller.viewModel = MockSignUpViewModel(service: MockSignUpService())
-        navigationController?.pushViewController(controller, animated: true)
+        viewModel?.registration()
     }
 
     @objc private func signInButtonAction() {
@@ -136,14 +134,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
 
     @objc private func forgotPasswordButtonAction() {
-        let controller = ForgotPasswordViewController()
-        controller.viewModel = MockForgotPasswordViewModel(service: MockForgotPassword())
-        controller.viewModel?.onNextScreen = { [weak controller] in
-            let nextController = CodeVerifyViewController()
-            nextController.viewModel = MockCodeVerifyViewModel(service: MockCodeVerifyService())
-            controller?.navigationController?.pushViewController(nextController, animated: true)
-        }
-        navigationController?.pushViewController(controller, animated: true)
+        viewModel?.forgotPassword()
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {

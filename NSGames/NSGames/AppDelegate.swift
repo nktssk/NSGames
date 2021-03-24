@@ -11,17 +11,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var mainCoordinator: MainCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        window?.backgroundColor = .white
-//        let controller = SignInViewController()
-//        let viewModel = MockSignInViewModel(service: MockSignInService())
-//        controller.viewModel = viewModel
-        let tapBarController = UITabBarController()
-        tapBarController.viewControllers = [UINavigationController(rootViewController: OfferViewController())]
-        window?.rootViewController = tapBarController
+        mainCoordinator = MainCoordinator()
+        mainCoordinator?.start()
         return true
     }
 }
