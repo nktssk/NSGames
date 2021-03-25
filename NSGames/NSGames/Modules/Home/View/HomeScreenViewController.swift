@@ -41,11 +41,6 @@ class HomeScreenViewController: UIViewController {
         getData()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-
     // MARK: - Private Methods
     private func setNavigationBarStyle() {
         title = "NSGames"

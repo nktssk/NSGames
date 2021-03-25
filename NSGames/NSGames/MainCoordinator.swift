@@ -11,11 +11,12 @@ class MainCoordinator {
     private let window = UIWindow()
 
     func start() {
+        window.makeKeyAndVisible()
+
         if !isAuthorized() {
             let coordinator = AuthenticationCoordinator()
             coordinator.mainCoordinator = self
             window.backgroundColor = .white
-            window.makeKeyAndVisible()
             window.rootViewController = coordinator.start()
         } else {
         }
@@ -27,6 +28,7 @@ class MainCoordinator {
 
     private func isAuthorized() -> Bool {
         #warning("Check token")
+        // TODO: jgjhg
         return false
     }
 }

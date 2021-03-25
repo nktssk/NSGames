@@ -17,10 +17,11 @@ protocol HomeScreenViewModel {
 
 class MockHomeScreenViewModel: HomeScreenViewModel {
 
+    var items: Observable<[HomeScreenCellConfig]> = Observable([])
+
     private let queue = DispatchQueue.global(qos: .background)
     private let service: HomeScreenService
     private let coordinator: HomeCoordinator
-    var items: Observable<[HomeScreenCellConfig]> = Observable([])
 
     init(service: HomeScreenService, coordinator: HomeCoordinator) {
         self.service = service

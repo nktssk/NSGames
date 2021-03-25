@@ -91,11 +91,6 @@ class OfferViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
-    }
-
     // MARK: - Objc Methods
     @objc private func changeType() {
         switch offerTypeContol.selectedSegmentIndex {

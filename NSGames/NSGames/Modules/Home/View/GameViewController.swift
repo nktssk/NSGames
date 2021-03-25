@@ -87,7 +87,7 @@ class GameViewController: UIViewController {
         return scrollView
     }()
 
-    private let images: [UIImage] = [#imageLiteral(resourceName: "maxresdefault-2"), #imageLiteral(resourceName: "images"), #imageLiteral(resourceName: "NSGames-icon"), #imageLiteral(resourceName: "images"), #imageLiteral(resourceName: "post-251122-0-08963900-1449639672")]
+    private let images: [UIImage] = [#imageLiteral(resourceName: "1025088688"), #imageLiteral(resourceName: "15e1c713762f8b5e8e63038d098f0bae"), #imageLiteral(resourceName: "5_big"), #imageLiteral(resourceName: "mTlgY5FIoaRc25_Eu4RJ_Q")]
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -103,11 +103,6 @@ class GameViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         let height = imageSlider.frame.height + stackView.frame.height + readyButton.frame.height + dateLabel.frame.height + 10
         scrollView.contentSize = CGSize(width: view.frame.width, height: height)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     // MARK: - Objc Methods

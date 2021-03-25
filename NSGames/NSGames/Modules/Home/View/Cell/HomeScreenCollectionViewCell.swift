@@ -107,17 +107,15 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
             likeButton.setImage(#imageLiteral(resourceName: "Heart"), for: .normal)
             configuration.isLiked = false
         } else {
-            let pulse = PulseAnimation(radius: likeButton.frame.width * 1.3, postion: likeButton.center)
-            pulse.animationDuration = 0.7
-            pulse.backgroundColor = #colorLiteral(red: 0.2271029055, green: 0.5911584496, blue: 0.994132936, alpha: 1)
-            stackView.layer.insertSublayer(pulse, below: stackView.layer)
-            likeButton.setImage(#imageLiteral(resourceName: "SelectedHeart"), for: .normal)
+//            let pulse = PulseAnimation(radius: likeButton.frame.width * 1.3, postion: likeButton.center)
+//            pulse.animationDuration = 0.3
+//            pulse.backgroundColor = #colorLiteral(red: 0.2271029055, green: 0.5911584496, blue: 0.994132936, alpha: 1)
+//            stackView.layer.insertSublayer(pulse, below: stackView.layer)
+//            likeButton.setImage(#imageLiteral(resourceName: "SelectedHeart"), for: .normal)
             configuration.isLiked = true
         }
         self.configuration = configuration
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) { [weak delegate] in
-            delegate?.likeAd(config: configuration)
-        }
+        delegate?.likeAd(config: configuration)
     }
 
     // MARK: - Private Methods

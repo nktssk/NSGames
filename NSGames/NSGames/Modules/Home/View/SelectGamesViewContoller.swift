@@ -33,21 +33,12 @@ class SelectGamesViewContoller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Выберите игры"
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Поиск"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
         tableView.register(SelectGameViewCell.self, forCellReuseIdentifier: cellId)
         tableView.delegate = self
         tableView.dataSource = self
+        setNavigationStyle()
         setConstraints()
         games.sort()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     // MARK: - Private Methods
@@ -56,6 +47,14 @@ class SelectGamesViewContoller: UIViewController {
         tableView.snp.makeConstraints { (make: ConstraintMaker) in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+
+    private func setNavigationStyle() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Поиск"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
 }
 
