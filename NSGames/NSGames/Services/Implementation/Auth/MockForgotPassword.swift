@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MockForgotPassword: ForgotPasswordService {
+class MockForgotPassword: ForgotPasswordServiceProtocol {
     func checkEmail(email: String, completion: @escaping (Result<(), ForgotPasswordError>) -> Void) {
         if email == "abc" {
             completion(.success(()))

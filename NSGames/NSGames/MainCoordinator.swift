@@ -12,23 +12,22 @@ class MainCoordinator {
 
     func start() {
         window.makeKeyAndVisible()
-
         if !isAuthorized() {
             let coordinator = AuthenticationCoordinator()
             coordinator.mainCoordinator = self
             window.backgroundColor = .white
-            window.rootViewController = coordinator.start()
+            window.rootViewController = coordinator.getFirstViewController()
         } else {
         }
     }
 
     func authFinished() {
-        window.rootViewController = TabBarCoordinator().start()
+        let tabBarCoordinator = TabBarCoordinator()
+        window.rootViewController = tabBarCoordinator.getFirstViewController()
     }
 
     private func isAuthorized() -> Bool {
-        #warning("Check token")
-        // TODO: jgjhg
+        // TODO: Check token
         return false
     }
 }

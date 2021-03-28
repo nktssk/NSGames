@@ -7,14 +7,13 @@
 
 import UIKit
 
-class AuthenticationCoordinator {
+class AuthenticationCoordinator: Coordinator {
     let navigationController = UINavigationController()
     var mainCoordinator: MainCoordinator?
 
-    func start() -> UIViewController {
+    func getFirstViewController() -> UIViewController {
         let controller = SignInViewController()
         controller.viewModel = MockSignInViewModel(service: MockSignInService(), coordinator: self)
-        controller.viewModel?.coordinator = self
         navigationController.pushViewController(controller, animated: true)
         return navigationController
     }

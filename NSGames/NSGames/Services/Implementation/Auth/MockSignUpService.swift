@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MockSignUpService: SignUpService {
+class MockSignUpService: SignUpServiceProtocol {
     func signUp(login: String, email: String, password: String, completion: @escaping (Result<(), SignUpError>) -> Void) {
         if login == "123" && email == "123@gmail.com" {
             return completion(.success(()))

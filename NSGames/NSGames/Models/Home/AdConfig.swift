@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct HomeScreenCellConfig {
+struct AdConfig {
     let id: Int
     let image: UIImage
     let name: String

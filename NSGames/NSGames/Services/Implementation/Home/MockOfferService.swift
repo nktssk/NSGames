@@ -7,5 +7,5 @@
 
 import Foundation
 
-class MockOfferService: OfferService {
+class MockOfferService: OfferServiceProtocol {
 }

@@ -62,7 +62,6 @@ opt_in_rules:
   - colon
   - comma
   - compiler_protocol_init
-  - contains_over_first_not_nil
   - control_statement
   - convenience_type
   - custom_rules
@@ -228,9 +227,6 @@ comma:
   severity: error
 
 compiler_protocol_init:
-  severity: error
-
-contains_over_first_not_nil:
   severity: error
 
 control_statement:

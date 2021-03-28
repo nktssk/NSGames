@@ -16,9 +16,9 @@ protocol SignUpViewModel {
 
 class MockSignUpViewModel: SignUpViewModel {
 
-    var signUpService: SignUpService
+    private let signUpService: SignUpServiceProtocol
 
-    init(service: SignUpService) {
+    init(service: SignUpServiceProtocol) {
         signUpService = service
     }
 

@@ -12,7 +12,7 @@ class GrayLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         font = UIFont.systemFont(ofSize: 15)
-        tintColor = .grayLabel
+        textColor = .grayLabel
     }
 
     required init?(coder: NSCoder) {

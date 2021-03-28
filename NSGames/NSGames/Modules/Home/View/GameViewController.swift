@@ -11,7 +11,7 @@ import SnapKit
 class GameViewController: UIViewController {
 
     // MARK: - MVVM properties
-    var viewModel: GameViewModel?
+    var viewModel: GameViewModelProtocol?
 
     // MARK: - UI
     let imageSlider: UICollectionView = {
@@ -55,22 +55,6 @@ class GameViewController: UIViewController {
         return button
     }()
 
-    let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        return stackView
-    }()
-
-    let dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.textColor = .grayLabel
-        return label
-    }()
-
     let staticDescriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "Описание: "
@@ -80,6 +64,32 @@ class GameViewController: UIViewController {
         return label
     }()
 
+    let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        return stackView
+    }()
+
+    let parameterStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        return stackView
+    }()
+
+    let staticStateLabel: GrayLabel = {
+        let label = GrayLabel()
+        label.text = "Состояние"
+        return label
+    }()
+
+    let dateLabel = GrayLabel()
+
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
@@ -87,27 +97,33 @@ class GameViewController: UIViewController {
         return scrollView
     }()
 
-    private let images: [UIImage] = [#imageLiteral(resourceName: "1025088688"), #imageLiteral(resourceName: "15e1c713762f8b5e8e63038d098f0bae"), #imageLiteral(resourceName: "5_big"), #imageLiteral(resourceName: "mTlgY5FIoaRc25_Eu4RJ_Q")]
+    // MARK: - Properties
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh MMM"
+        return formatter
+    }()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Объявление"
-        setData()
+        bindData()
         setCollectionView()
         setPageControl()
+        addSubviews()
         setConstraints()
+        viewModel?.getData()
     }
 
     override func viewDidLayoutSubviews() {
-        let height = imageSlider.frame.height + stackView.frame.height + readyButton.frame.height + dateLabel.frame.height + 10
-        scrollView.contentSize = CGSize(width: view.frame.width, height: height)
+        scrollView.contentSize = CGSize(width: view.frame.width, height: imageSlider.frame.height + stackView.frame.height + readyButton.frame.height + dateLabel.frame.height + 10)
     }
 
     // MARK: - Objc Methods
     @objc private func readyButtonAction() {
-        viewModel?.makeOffer(id: 13)
+        viewModel?.makeOffer()
         UIView.transition(with: readyButton, duration: 0.3,
                           options: .transitionCrossDissolve,
                           animations: { [weak self] in
@@ -116,15 +132,12 @@ class GameViewController: UIViewController {
                           })
     }
 
-    // MARK: - Helpers
+    // MARK: - Private Methods
     private func setConstraints() {
-        view.addSubview(scrollView)
-
         scrollView.snp.makeConstraints { (make: ConstraintMaker) in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
 
-        scrollView.addSubview(imageSlider)
         imageSlider.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalToSuperview()
             make.centerX.equalToSuperview()
@@ -132,33 +145,39 @@ class GameViewController: UIViewController {
             make.height.equalToSuperview().multipliedBy(0.4)
         }
 
-        scrollView.addSubview(pageControl)
         pageControl.snp.makeConstraints { (make: ConstraintMaker) in
             make.centerX.equalToSuperview()
             make.bottom.equalTo(imageSlider.snp.bottom).inset(4)
             make.height.equalTo(8)
         }
 
-        stackView.addArrangedSubview(gameNameLabel)
-        stackView.addArrangedSubview(priceLabel)
-        stackView.addArrangedSubview(readyButton)
-        stackView.addArrangedSubview(staticDescriptionLabel)
-        stackView.addArrangedSubview(descriptionLabel)
         readyButton.snp.makeConstraints { (make: ConstraintMaker) in
             make.height.equalTo(45)
         }
-        scrollView.addSubview(stackView)
+
         stackView.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalTo(imageSlider.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.9)
         }
 
-        scrollView.addSubview(dateLabel)
         dateLabel.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalTo(stackView.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
         }
+    }
+
+    private func addSubviews() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(imageSlider)
+        scrollView.addSubview(pageControl)
+        stackView.addArrangedSubview(gameNameLabel)
+        stackView.addArrangedSubview(priceLabel)
+        stackView.addArrangedSubview(readyButton)
+        stackView.addArrangedSubview(staticDescriptionLabel)
+        stackView.addArrangedSubview(descriptionLabel)
+        scrollView.addSubview(stackView)
+        scrollView.addSubview(dateLabel)
     }
 
     private func setCollectionView() {
@@ -168,34 +187,42 @@ class GameViewController: UIViewController {
     }
 
     private func setPageControl() {
-        pageControl.numberOfPages = images.count
         pageControl.currentPage = 0
         pageControl.pageIndicatorTintColor = .grayLight
         pageControl.currentPageIndicatorTintColor = .buttonBlue
         pageControl.alpha = 0.6
     }
 
-    private func setData() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh MMM"
-        priceLabel.text = "2999" + " ₽"
-        dateLabel.text = dateFormatter.string(from: Date())
-        descriptionLabel.text = "Добрый день! \n Мы зaнимаeмcя продажей цифpовыx веpcий игp для кoнcолeй Хbox One! \n Пoкупая у нас вы получаeтe: \n 1) Выгoдные цeны на игры и подписки Gаmе pass, Livе Gold, Gаmе рass Ultimatе для вaшей конcоли. \n 2) Cтабильную теxничeскую пoддepжку на периoд иcпользовaния товaрa. \n 3) Вoзможность дoбaвитьcя в нaшу  группу в вк и веceлo пообщаться, получить последние новости в сфере гейминга. \n \n RDR 2 ХВОХ ОNе цифровой ключ."
-        gameNameLabel.text = "Red Dead Redemtion 2"
+    private func bindData() {
+        viewModel?.imageItems.observe(on: self) { [weak self] values in
+            self?.pageControl.numberOfPages = values.count
+            self?.imageSlider.reloadData()
+        }
+        viewModel?.game.observe(on: self) { [weak self] game in
+            if let game = game {
+                self?.priceLabel.text = "\(game.price) ₽"
+                self?.dateLabel.text = self?.dateFormatter.string(from: Date())
+                self?.descriptionLabel.text = game.description
+                self?.gameNameLabel.text = game.title
+            }
+        }
     }
 }
 
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        images.count
+        viewModel?.imageItems.value.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier, for: indexPath) as? ImageCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.setImage(image: images[indexPath.row])
+        if let imageFromViewModel = viewModel?.imageItems.value[indexPath.row] {
+            cell.setImage(image: imageFromViewModel)
+        }
         return cell
     }
 

@@ -7,30 +7,31 @@
 
 import UIKit
 
-class HomeCoordinator {
+class HomeCoordinator: Coordinator {
     let navigationController = UINavigationController()
 
-    func start() -> UIViewController {
+    func getFirstViewController() -> UIViewController {
         let homeScreen = HomeScreenViewController()
         homeScreen.viewModel = MockHomeScreenViewModel(service: MockHomeScreenService(), coordinator: self)
         navigationController.pushViewController(homeScreen, animated: true)
         return navigationController
     }
 
-    func detailView(id: Int) {
+    func goToDetailView(id: Int) {
         let controller = GameViewController()
-        controller.viewModel = MockGameViewModel(service: MockHomeScreenService(), coordinator: self)
+        controller.viewModel = MockGameViewModel(service: MockGameService(), coordinator: self, id: id)
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func makeOffer(id: Int) {
+    func goToOfferView(id: Int) {
         let controller = OfferViewController()
-        controller.viewModel = MockOfferViewModel(service: MockOfferService(), coordinator: self)
+        controller.viewModel = MockOfferViewModel(service: MockOfferService(), coordinator: self, id: id)
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func selectGames(id: Int) {
+    func goToSelectGamesView(id: Int) {
         let controller = SelectGamesViewContoller()
+        controller.viewModel = SelectGamesViewModel(service: MockSelectGamesService(), coordinator: self, id: id)
         navigationController.pushViewController(controller, animated: true)
     }
 }

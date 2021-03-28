@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ForgotPasswordService {
+protocol ForgotPasswordServiceProtocol {
     func checkEmail(email: String, completion: @escaping (Result<(), ForgotPasswordError>) -> Void)
 }

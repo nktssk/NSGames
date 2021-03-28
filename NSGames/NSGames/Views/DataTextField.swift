@@ -46,7 +46,7 @@ class DataTextField: UITextField {
     private func setupUI() {
         borderStyle = .none
         addSubview(border)
-        border.backgroundColor = .grayLabel
+        border.backgroundColor = .grayView
         border.isUserInteractionEnabled = false
     }
 }

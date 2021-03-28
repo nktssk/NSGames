@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol HomeScreenService {
-    func getData(completion: (Result<[HomeScreenCellConfig], Error>) -> Void)
+protocol HomeScreenServiceProtocol {
+    func getData(completion: @escaping (Result<[AdConfig], Error>) -> Void)
     func likeAd(id: Int)
 }

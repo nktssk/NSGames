@@ -7,5 +7,5 @@
 
 import Foundation
 
-protocol OfferService {
+protocol OfferServiceProtocol {
 }

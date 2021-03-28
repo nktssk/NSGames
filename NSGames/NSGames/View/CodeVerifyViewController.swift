@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
+class CodeVerifyViewController: UIViewController {
 
     // MARK: - MVVM propertiesb
     var viewModel: CodeVerifyViewModel?
@@ -74,6 +74,7 @@ class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindData()
+        addSubviews()
         setConstraints()
         title = "Пароль"
         view.backgroundColor = .white
@@ -84,23 +85,7 @@ class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    // MARK: - UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField {
-
-        case codeTextField:
-            passwordTextField.becomeFirstResponder()
-
-        case passwordTextField:
-            passwordAgainTextField.becomeFirstResponder()
-
-        default:
-            textField.resignFirstResponder()
-        }
-        return false
-    }
-
-    // MARK: - obcj func
+    // MARK: - Objc Methods
     @objc private func signInButtonAction() {
         viewModel?.checkCode(code: codeTextField.text ?? "")
     }
@@ -115,32 +100,33 @@ class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
         scrollView.contentSize = scrollView.frame.size
     }
 
-    // MARK: - Helpers
+    // MARK: - Private Methods
+    private func addSubviews() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(topLabel)
+        userDataStackView.addArrangedSubview(codeTextField)
+        userDataStackView.addArrangedSubview(passwordTextField)
+        userDataStackView.addArrangedSubview(passwordAgainTextField)
+        scrollView.addSubview(userDataStackView)
+        scrollView.addSubview(signInButton)
+    }
 
     private func setConstraints() {
-        view.addSubview(scrollView)
-
         scrollView.snp.makeConstraints { (make: ConstraintMaker) in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
 
-        scrollView.addSubview(topLabel)
         topLabel.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalToSuperview().offset(25)
             make.centerX.equalToSuperview()
         }
 
-        userDataStackView.addArrangedSubview(codeTextField)
-        userDataStackView.addArrangedSubview(passwordTextField)
-        userDataStackView.addArrangedSubview(passwordAgainTextField)
-        scrollView.addSubview(userDataStackView)
         userDataStackView.snp.makeConstraints { (make: ConstraintMaker) in
             make.centerX.equalToSuperview()
             make.top.equalTo(topLabel.snp.bottom).offset(20)
             make.width.equalToSuperview().multipliedBy(0.85)
         }
 
-        scrollView.addSubview(signInButton)
         signInButton.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalTo(userDataStackView.snp.bottom).offset(50)
             make.width.equalToSuperview().multipliedBy(0.85)
@@ -155,5 +141,23 @@ class CodeVerifyViewController: UIViewController, UITextFieldDelegate {
             self.errorLabel.text = text
             self.userDataStackView.addArrangedSubview(self.errorLabel)
         }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension CodeVerifyViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+
+        case codeTextField:
+            passwordTextField.becomeFirstResponder()
+
+        case passwordTextField:
+            passwordAgainTextField.becomeFirstResponder()
+
+        default:
+            textField.resignFirstResponder()
+        }
+        return false
     }
 }

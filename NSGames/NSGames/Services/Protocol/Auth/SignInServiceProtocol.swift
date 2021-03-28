@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol SignInService {
+protocol SignInServiceProtocol {
     func signIn(email: String, password: String, completion: @escaping (Result<(), SignInError>) -> Void)
 }

@@ -7,30 +7,29 @@
 
 import Foundation
 
-protocol HomeScreenViewModel {
-    var items: Observable<[HomeScreenCellConfig]> { get set }
+protocol HomeScreenViewModelProtocol {
+    var items: Observable<[AdConfig]> { get set }
 
     func getData(completion: @escaping () -> Void)
     func likeAd(id: Int)
     func detailView(at: Int)
 }
 
-class MockHomeScreenViewModel: HomeScreenViewModel {
+class MockHomeScreenViewModel: HomeScreenViewModelProtocol {
 
-    var items: Observable<[HomeScreenCellConfig]> = Observable([])
+    var items: Observable<[AdConfig]> = Observable([])
 
     private let queue = DispatchQueue.global(qos: .background)
-    private let service: HomeScreenService
+    private let service: HomeScreenServiceProtocol
     private let coordinator: HomeCoordinator
 
-    init(service: HomeScreenService, coordinator: HomeCoordinator) {
+    init(service: HomeScreenServiceProtocol, coordinator: HomeCoordinator) {
         self.service = service
         self.coordinator = coordinator
     }
 
     func getData(completion: @escaping () -> Void) {
-        queue.async { [weak self] in
-            sleep(5)
+        queue.asyncAfter(deadline: .now() + 5) { [weak self] in
             self?.service.getData { result in
                 switch result {
                 case .success(let newData):
@@ -40,7 +39,8 @@ class MockHomeScreenViewModel: HomeScreenViewModel {
                     }
 
                 case .failure:
-                    #warning("must be alert")
+                    break
+                    // TODO: must be alert
                 }
             }
         }
@@ -54,6 +54,6 @@ class MockHomeScreenViewModel: HomeScreenViewModel {
     }
 
     func detailView(at id: Int) {
-        coordinator.detailView(id: id)
+        coordinator.goToDetailView(id: id)
     }
 }

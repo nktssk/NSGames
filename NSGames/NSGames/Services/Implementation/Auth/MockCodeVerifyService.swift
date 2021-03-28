@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MockCodeVerifyService: CodeVerifyService {
+class MockCodeVerifyService: CodeVerifyServiceProtocol {
     func checkCode(code: String, completion: @escaping (Result<(), CodeVerifyError>) -> Void) {
         if code == "LOLOLO" {
             return completion(.success(()))

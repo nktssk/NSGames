@@ -9,7 +9,6 @@ import Foundation
 
 protocol SignInViewModel {
     var signInError: ObservableUI<String?> { get set }
-    var coordinator: AuthenticationCoordinator { get set }
 
     func signIn(email: String, password: String)
     func registration()
@@ -18,15 +17,15 @@ protocol SignInViewModel {
 
 class MockSignInViewModel: SignInViewModel {
 
-    var signInService: SignInService
-    var coordinator: AuthenticationCoordinator
+    var signInError: ObservableUI<String?> = ObservableUI(nil)
 
-    init(service: SignInService, coordinator: AuthenticationCoordinator) {
+    private let signInService: SignInServiceProtocol
+    private let coordinator: AuthenticationCoordinator
+
+    init(service: SignInServiceProtocol, coordinator: AuthenticationCoordinator) {
         signInService = service
         self.coordinator = coordinator
     }
-
-    var signInError: ObservableUI<String?> = ObservableUI(nil)
 
     // MARK: - SignInViewModel
     func signIn(email: String, password: String) {

@@ -11,7 +11,7 @@ import SnapKit
 class HomeScreenViewController: UIViewController {
 
     // MARK: - MVVM properties
-    var viewModel: HomeScreenViewModel?
+    var viewModel: HomeScreenViewModelProtocol?
 
     // MARK: - UI
     let collectionView: UICollectionView = {
@@ -35,7 +35,7 @@ class HomeScreenViewController: UIViewController {
         view.backgroundColor = .white
         setCollectionView()
         setNavigationBarStyle()
-        setTabBarStyle()
+        addSubviews()
         constraints()
         bindData()
         getData()
@@ -43,7 +43,7 @@ class HomeScreenViewController: UIViewController {
 
     // MARK: - Private Methods
     private func setNavigationBarStyle() {
-        title = "NSGames"
+        title = "Главная"
 
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
@@ -54,6 +54,7 @@ class HomeScreenViewController: UIViewController {
 
         navigationController?.navigationBar.barTintColor = UIColor.grayLight
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
     }
 
     private func setCollectionView() {
@@ -63,23 +64,22 @@ class HomeScreenViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: 14, left: HomeScreenCellCollectionConstants.leftDistance, bottom: 14, right: HomeScreenCellCollectionConstants.rightDistance)
     }
 
-    private func constraints() {
+    private func addSubviews() {
         view.addSubview(collectionView)
+        view.addSubview(indicator)
+    }
+
+    private func constraints() {
         collectionView.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.bottom.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
         }
 
-        view.addSubview(indicator)
         indicator.snp.makeConstraints { (make: ConstraintMaker) in
             make.centerX.equalTo(view.safeAreaLayoutGuide)
             make.centerY.equalTo(view.safeAreaLayoutGuide)
             make.height.width.equalTo(view.snp.width).multipliedBy(0.5)
         }
-    }
-
-    private func setTabBarStyle() {
-        tabBarItem = UITabBarItem(title: "Главная", image: UIImage(named: "house.fill"), tag: 0)
     }
 
     private func getData() {
@@ -135,8 +135,9 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 }
 
+// MARK: - HomeScreenCellDelegate
 extension HomeScreenViewController: HomeScreenCellDelegate {
-    func likeAd(config: HomeScreenCellConfig) {
+    func likeAd(config: AdConfig) {
         viewModel?.likeAd(id: config.id)
     }
 }

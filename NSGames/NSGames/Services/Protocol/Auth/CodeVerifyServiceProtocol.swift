@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol CodeVerifyService {
+protocol CodeVerifyServiceProtocol {
     func checkCode(code: String, completion: @escaping (Result<(), CodeVerifyError>) -> Void)
 }

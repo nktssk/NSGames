@@ -15,13 +15,13 @@ protocol ForgotPasswordViewModel {
 }
 
 class MockForgotPasswordViewModel: ForgotPasswordViewModel {
-    var onNextScreen: (() -> Void)?
 
+    var onNextScreen: (() -> Void)?
     var emailError: ObservableUI<String?> = ObservableUI(nil)
 
-    var forgotPasswordService: ForgotPasswordService
+    private let forgotPasswordService: ForgotPasswordServiceProtocol
 
-    init(service: ForgotPasswordService) {
+    init(service: ForgotPasswordServiceProtocol) {
         forgotPasswordService = service
     }
 

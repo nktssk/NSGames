@@ -11,7 +11,7 @@ import SnapKit
 class OfferViewController: UIViewController {
 
     // MARK: - MVVM properties
-    var viewModel: OfferViewModel?
+    var viewModel: OfferViewModelProtocol?
 
     // MARK: - UI
     let offerTypeContol: UISegmentedControl = {
@@ -86,6 +86,7 @@ class OfferViewController: UIViewController {
         title = "Предложение"
         view.backgroundColor = .white
         setUI()
+        addSubviews()
         setConstraints()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -134,25 +135,29 @@ class OfferViewController: UIViewController {
     }
 
     // MARK: - Private Methods
-    private func setConstraints() {
+    private func addSubviews() {
         view.addSubview(offerTypeContol)
+        view.addSubview(stackView)
+        stackView.addArrangedSubview(descriptionTextField)
+        stackView.addArrangedSubview(priceTextField)
+        view.addSubview(submitButton)
+        gamesStackView.addArrangedSubview(gamesLabel)
+        gamesStackView.addArrangedSubview(gamesButton)
+    }
+
+    private func setConstraints() {
         offerTypeContol.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.5)
         }
 
-        view.addSubview(stackView)
         stackView.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalTo(offerTypeContol.snp.bottom).offset(14)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.85)
         }
 
-        stackView.addArrangedSubview(descriptionTextField)
-        stackView.addArrangedSubview(priceTextField)
-
-        view.addSubview(submitButton)
         submitButton.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalTo(stackView.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
@@ -160,8 +165,6 @@ class OfferViewController: UIViewController {
             make.width.equalToSuperview().multipliedBy(0.65)
         }
 
-        gamesStackView.addArrangedSubview(gamesLabel)
-        gamesStackView.addArrangedSubview(gamesButton)
         gamesButton.snp.contentHuggingHorizontalPriority = 251
     }
 

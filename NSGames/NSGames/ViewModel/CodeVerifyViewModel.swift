@@ -9,21 +9,21 @@ import Foundation
 
 protocol CodeVerifyViewModel {
     var codeVerifyError: ObservableUI<String?> { get set }
-    var coordinator: AuthenticationCoordinator { get set }
 
     func checkCode(code: String)
 }
 
 class MockCodeVerifyViewModel: CodeVerifyViewModel {
-    var codeVerifyService: CodeVerifyService
-    var coordinator: AuthenticationCoordinator
 
-    init(service: CodeVerifyService, coordinator: AuthenticationCoordinator) {
+    var codeVerifyError: ObservableUI<String?> = ObservableUI(nil)
+
+    private let coordinator: AuthenticationCoordinator
+    private let codeVerifyService: CodeVerifyServiceProtocol
+
+    init(service: CodeVerifyServiceProtocol, coordinator: AuthenticationCoordinator) {
         self.codeVerifyService = service
         self.coordinator = coordinator
     }
-
-    var codeVerifyError: ObservableUI<String?> = ObservableUI(nil)
 
     // MARK: - CodeVerifyViewModel
     func checkCode(code: String) {

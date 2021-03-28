@@ -8,10 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol HomeScreenCellDelegate: AnyObject {
+    func likeAd(config: AdConfig)
+}
+
 class HomeScreenCollectionViewCell: UICollectionViewCell {
 
     static let identifier = "HomeScreenCollectionViewCell"
-    private var configuration: HomeScreenCellConfig?
+    private var configuration: AdConfig?
     weak var delegate: HomeScreenCellDelegate?
 
     // MARK: - UI
@@ -88,7 +92,7 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
         likeButton.setImage(#imageLiteral(resourceName: "Heart"), for: .normal)
     }
 
-    func setData(configuration: HomeScreenCellConfig) {
+    func setData(configuration: AdConfig) {
         self.configuration = configuration
         imageView.image = configuration.image
         nameLabel.text = configuration.name

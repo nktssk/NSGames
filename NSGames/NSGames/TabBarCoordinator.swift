@@ -7,12 +7,17 @@
 
 import UIKit
 
-class TabBarCoordinator {
+class TabBarCoordinator: Coordinator {
+    let tabBarController = UITabBarController()
+    let homeCoordinator = HomeCoordinator()
+    let chatCoordinator = ChatCoordinator()
 
-    func start() -> UIViewController {
-        let tabBarController = UITabBarController()
-        let homeCoordinator = HomeCoordinator()
-        tabBarController.viewControllers = [homeCoordinator.start()]
+    func getFirstViewController() -> UIViewController {
+        let homeController = homeCoordinator.getFirstViewController()
+        homeController.tabBarItem = UITabBarItem(title: "Главная", image: UIImage(named: "house.fill"), tag: 0)
+        let chatController = chatCoordinator.getFirstViewController()
+        chatController.tabBarItem = UITabBarItem(title: "Чат", image: UIImage(named: "paperplane.fill"), tag: 0)
+        tabBarController.viewControllers = [homeController, chatController]
         return tabBarController
     }
 }
