@@ -9,6 +9,7 @@ import Foundation
 
 protocol HomeScreenViewModelProtocol {
     var items: Observable<[AdConfig]> { get set }
+    var error: Observable<String?> { get set }
 
     func getData(completion: @escaping () -> Void)
     func likeAd(id: Int)
@@ -18,6 +19,7 @@ protocol HomeScreenViewModelProtocol {
 class MockHomeScreenViewModel: HomeScreenViewModelProtocol {
 
     var items: Observable<[AdConfig]> = Observable([])
+    var error: Observable<String?> = Observable(nil)
 
     private let queue = DispatchQueue.global(qos: .background)
     private let service: HomeScreenServiceProtocol

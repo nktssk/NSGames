@@ -10,4 +10,5 @@ import Foundation
 enum SignInError: Error {
     case wrongData
     case noConnection
+    case badRequest
 }

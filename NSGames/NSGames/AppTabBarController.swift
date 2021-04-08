@@ -13,11 +13,14 @@ class AppTabBarController: UITabBarController {
         super.init(nibName: nil, bundle: nil)
         let homeCoordinator = HomeCoordinator()
         let chatCoordinator = ChatCoordinator()
+        let profileCoordinator = ProfileCoordinator()
         let homeController = homeCoordinator.getStartViewController()
         homeController.tabBarItem = UITabBarItem(title: "Главная", image: UIImage(named: "house.fill"), tag: 0)
         let chatController = chatCoordinator.getStartViewController()
         chatController.tabBarItem = UITabBarItem(title: "Чат", image: UIImage(named: "paperplane.fill"), tag: 0)
-        self.viewControllers = [homeController, chatController]
+        let profileController = profileCoordinator.getStartViewController()
+        profileController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(named: "paperplane.fill"), tag: 0)
+        self.viewControllers = [homeController, chatController, profileController]
     }
 
     required init?(coder: NSCoder) {

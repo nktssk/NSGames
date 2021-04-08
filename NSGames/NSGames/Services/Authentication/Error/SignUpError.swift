@@ -10,4 +10,5 @@ import Foundation
 enum SignUpError: Error {
     case emailIsOccupied
     case noConnection
+    case badRequest
 }

@@ -9,7 +9,7 @@ import Foundation
 
 protocol ChatViewModelProtocol {
     var title: Observable<String> { get set }
-    var error: Observable<String> { get set }
+    var error: Observable<String?> { get set }
     var items: Observable<[Message]> { get set }
 
     func sendMessage(text content: String)
@@ -18,7 +18,7 @@ protocol ChatViewModelProtocol {
 
 class ChatViewModel: ChatViewModelProtocol {
     var title: Observable<String> = Observable("")
-    var error: Observable<String> = Observable("")
+    var error: Observable<String?> = Observable(nil)
     var items: Observable<[Message]> = Observable([])
 
     let myId = KeychainService.getChatId()
@@ -38,24 +38,24 @@ class ChatViewModel: ChatViewModelProtocol {
             service.setListeners(myId: myId, to: otherUserId) { [weak self] result in
                 switch result {
                 case .failure(let error):
-                    print(error)
-                // TODO: alert
+                    self?.error.value = "Ошибка с подключением к сети + \n \(error.localizedDescription)"
                 case .success(let array):
                     DispatchQueue.main.async {
                         self?.items.value = array
                     }
                 }
             }
+        } else {
+            error.value = InetErrorNames.localData
         }
     }
 
     func sendMessage(text content: String) {
         if let id = myId {
             let message = Message(content: content, created: Date(), senderId: id)
-            service.sendMessage(myId: id, to: otherUserId, message: message) { flag in
+            service.sendMessage(myId: id, to: otherUserId, message: message) { [weak self] flag in
                 if flag == false {
-                    print("error")
-                    // TODO: Alert inet
+                    self?.error.value = InetErrorNames.failedConnection
                 }
             }
         }

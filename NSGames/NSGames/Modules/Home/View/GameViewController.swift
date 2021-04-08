@@ -220,6 +220,12 @@ class GameViewController: UIViewController {
                 self?.gameNameLabel.text = game.title
             }
         }
+        viewModel?.error.observe(on: self) { [weak self] value in
+            if let self = self, let value = value {
+                AlertPresenter.showAlert(controller: self, text: value)
+            }
+        }
+        
     }
 
     private func dateToString(date: Date) -> String {

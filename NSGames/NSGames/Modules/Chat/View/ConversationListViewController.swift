@@ -37,6 +37,11 @@ class ConversationListViewController: UIViewController {
         viewModel?.items.observe(on: self) { [weak self] _ in
             self?.tableView.reloadData()
         }
+        viewModel?.error.observe(on: self) {[weak self] value in
+            if let self = self, let value = value {
+                AlertPresenter.showAlert(controller: self, text: value)
+            }
+        }
     }
 
     private func addSubviews() {

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CodeVerifyServiceProtocol {
-    func checkCode(code: String, completion: @escaping (Result<(), CodeVerifyError>) -> Void)
+    func checkCode(password: String, email: String, code: String, completion: @escaping (Result<(), CodeVerifyError>) -> Void)
 }

@@ -46,19 +46,21 @@ class MockSignInViewModel: SignInViewModel {
             case .failure(let error):
                 switch error {
                 case .noConnection:
-                    self?.signInError.value = "Нет соединения"
+                    self?.signInError.value = "Нет соединения."
                 case .wrongData:
-                    self?.signInError.value = "Неверные данные"
+                    self?.signInError.value = "Неверные данные."
+                case .badRequest:
+                    self?.signInError.value = "Ошибка сервера."
                 }
             }
         }
     }
 
     func registration() {
-        coordinator.registration()
+        coordinator.goToSignUpView()
     }
 
     func forgotPassword() {
-        coordinator.forgotPassword()
+        coordinator.goToForgotPasswordView()
     }
 }

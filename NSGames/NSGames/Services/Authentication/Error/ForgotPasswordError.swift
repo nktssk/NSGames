@@ -8,5 +8,7 @@
 import Foundation
 
 enum ForgotPasswordError: Error {
+    case noConnection
     case wrongEmail
+    case badRequest
 }

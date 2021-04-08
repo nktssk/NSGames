@@ -13,6 +13,7 @@ class MainCoordinator {
     func start() {
         window.makeKeyAndVisible()
         window.backgroundColor = .white
+       // KeychainService.deleteAll()
         if KeychainService.getToken() != nil {
             goToTabBar()
         } else {

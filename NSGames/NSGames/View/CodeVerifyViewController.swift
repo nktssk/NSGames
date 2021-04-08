@@ -23,7 +23,6 @@ class CodeVerifyViewController: UIViewController {
 
     let codeTextField: DataTextField = {
         let textField = DataTextField()
-        textField.autocapitalizationType = .allCharacters
         textField.placeholder = "Код из письма"
         return textField
     }()
@@ -87,7 +86,12 @@ class CodeVerifyViewController: UIViewController {
 
     // MARK: - Objc Methods
     @objc private func signInButtonAction() {
-        viewModel?.checkCode(code: codeTextField.text ?? "")
+        if  let password = passwordTextField.text, !password.isEmpty, passwordTextField.text == passwordAgainTextField.text {
+            viewModel?.checkCode(code: codeTextField.text ?? "", password: password)
+        } else {
+            self.errorLabel.text = "Пароли не совпадают"
+            self.userDataStackView.addArrangedSubview(self.errorLabel)
+        }
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {

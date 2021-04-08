@@ -10,24 +10,24 @@ import Alamofire
 
 class RestSignUpService: SignUpServiceProtocol {
     func signUp(username: String, email: String, password: String, completion: @escaping (Result<(), SignUpError>) -> Void) {
-        let user = SignUpForm(email: email, password: password, username: username)
+        let responseBody = [ResponseBodyPropertyName.email: email,
+                            ResponseBodyPropertyName.password: password,
+                            ResponseBodyPropertyName.username: username]
 
-        AF.request("http://localhost/signUp", method: .post, parameters: user, encoder: JSONParameterEncoder.default).responseJSON { response in
-//            response.statusCode
-            if response.error != nil {
-                return completion(.failure(.noConnection))
-            }
-            if let data = response.data {
-                return completion(.success(()))
-                do {
-                    // TODO: - Error
-                    let data = try JSONDecoder().decode(AuthResponse.self, from: data)
-                    KeychainService.saveToken(data.token)
+        AF.request(AuthRequestPath.singUp,
+                   method: .post,
+                   parameters: responseBody,
+                   encoder: JSONParameterEncoder.default).responseJSON { response in
+                    if response.error != nil {
+                        return completion(.failure(.noConnection))
+                    }
+                    if response.response?.statusCode == 440 {
+                        return completion(.failure(.emailIsOccupied))
+                    }
+                    if let statusCode = response.response?.statusCode, !(200...300).contains(statusCode) {
+                        return completion(.failure(.badRequest))
+                    }
                     return completion(.success(()))
-                } catch {
-                    return completion(.success(()))
-                }
-            }
         }
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol ConversationListViewModelProtocol {
     var items: Observable<[Conversation]> { get set }
+    var error: Observable<String?> { get set }
 
     func setup()
     func didSelectItem(at: Int)

@@ -8,7 +8,6 @@
 import Foundation
 
 protocol SignUpViewModel {
-    var onSuccesReg: (() -> Void)? { get set }
     var signUpError: ObservableUI<String?> { get set }
 
     func signUp(login: String, email: String, password: String, passwordAgain: String)
@@ -17,13 +16,12 @@ protocol SignUpViewModel {
 class MockSignUpViewModel: SignUpViewModel {
 
     private let signUpService: SignUpServiceProtocol
+    private let coordinator: AuthenticationCoordinator
 
-    init(service: SignUpServiceProtocol) {
+    init(service: SignUpServiceProtocol, coordinator: AuthenticationCoordinator) {
         signUpService = service
+        self.coordinator = coordinator
     }
-
-    // MARK: - Business logic properties
-    var onSuccesReg: (() -> Void)?
 
     var signUpError: ObservableUI<String?> = ObservableUI(nil)
 
@@ -47,7 +45,7 @@ class MockSignUpViewModel: SignUpViewModel {
         signUpService.signUp(username: login, email: email, password: password) { [weak self] result in
             switch result {
             case .success:
-                self?.onSuccesReg?()
+                self?.coordinator.popView()
 
             case .failure(let error):
                 switch error {
@@ -55,6 +53,8 @@ class MockSignUpViewModel: SignUpViewModel {
                     self?.signUpError.value = "Нет соединения."
                 case .emailIsOccupied:
                     self?.signUpError.value = "Email уже занят."
+                case .badRequest:
+                    self?.signUpError.value = "Ошибка сервера."
                 }
             }
         }

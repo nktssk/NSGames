@@ -9,6 +9,7 @@ import Foundation
 
 class ConversationListViewModel: ConversationListViewModelProtocol {
     var items: Observable<[Conversation]> = Observable([])
+    var error: Observable<String?> = Observable(nil)
 
     private let service: ConversationsFirebaseServiceProtocol
     private let coordinator: ChatCoordinator
@@ -24,8 +25,7 @@ class ConversationListViewModel: ConversationListViewModelProtocol {
             service.setListeners(to: id) { [weak self] result in
                 switch result {
                 case .failure(let error):
-                    print(error)
-                // TODO: alert
+                    self?.error.value = "Ошибка с подключением к сети + \n \(error.localizedDescription)"
                 case .success(let array):
                     DispatchQueue.main.async {
                         self?.items.value = array
@@ -33,7 +33,7 @@ class ConversationListViewModel: ConversationListViewModelProtocol {
                 }
             }
         } else {
-            // TODO: alert
+            error.value = InetErrorNames.failedConnection
         }
     }
 

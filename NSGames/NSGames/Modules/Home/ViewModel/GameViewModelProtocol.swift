@@ -10,6 +10,7 @@ import UIKit
 protocol GameViewModelProtocol {
     var imageItems: Observable<[UIImage]> { get set }
     var gameSreenConfig: Observable<GameSreenConfig?> { get set }
+    var error: Observable<String?> { get set }
 
     func getData()
     func makeOffer()
@@ -20,6 +21,7 @@ class MockGameViewModel: GameViewModelProtocol {
 
     // MARK: - Properties
     var imageItems: Observable<[UIImage]> = Observable([])
+    var error: Observable<String?> = Observable(nil)
     var gameSreenConfig: Observable<GameSreenConfig?> = Observable(nil)
 
     private let id: Int
@@ -40,8 +42,7 @@ class MockGameViewModel: GameViewModelProtocol {
                 self?.gameSreenConfig.value = config
 
             case .failure:
-                // TODO: -error
-                print("error")
+                self?.error.value = InetErrorNames.failedConnection
             }
         }
 
@@ -51,8 +52,7 @@ class MockGameViewModel: GameViewModelProtocol {
                 self?.imageItems.value = images
 
             case .failure:
-                // TODO: -error
-                print("error")
+                self?.error.value = InetErrorNames.failedConnection
             }
         }
     }

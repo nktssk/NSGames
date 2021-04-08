@@ -11,7 +11,7 @@ protocol CodeVerifyViewModel {
     var email: String { get set }
     var codeVerifyError: ObservableUI<String?> { get set }
 
-    func checkCode(code: String)
+    func checkCode(code: String, password: String)
 }
 
 class MockCodeVerifyViewModel: CodeVerifyViewModel {
@@ -29,11 +29,11 @@ class MockCodeVerifyViewModel: CodeVerifyViewModel {
     }
 
     // MARK: - CodeVerifyViewModel
-    func checkCode(code: String) {
+    func checkCode(code: String, password: String) {
         if code.isEmpty {
             return codeVerifyError.value = "Пожалуйста, введите код"
         }
-        codeVerifyService.checkCode(code: code) { [weak self] result in
+        codeVerifyService.checkCode(password: password, email: email, code: code) { [weak self] result in
             switch result {
             case .success:
                 self?.coordinator.authFinished()
@@ -45,6 +45,9 @@ class MockCodeVerifyViewModel: CodeVerifyViewModel {
 
                 case .codeNotCorrect:
                     self?.codeVerifyError.value = "Код введен некорректно."
+
+                case .badRequest:
+                    self?.codeVerifyError.value = "Ошибка сервера."
                 }
             }
         }

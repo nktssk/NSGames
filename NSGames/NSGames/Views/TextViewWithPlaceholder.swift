@@ -49,7 +49,7 @@ class TextViewWithPlaceholder: UITextView, UITextViewDelegate {
         if let placeholderLabel = self.viewWithTag(100) as? UILabel {
             let labelWidth = self.frame.width
             let labelHeight = placeholderLabel.frame.height
-            placeholderLabel.frame = CGRect(x: self.textContainerInset.left, y: self.textContainerInset.top, width: labelWidth, height: labelHeight)
+            placeholderLabel.frame = CGRect(x: self.textContainerInset.left + 2, y: self.textContainerInset.top, width: labelWidth, height: labelHeight)
             placeholderLabel.textAlignment = .left
         }
     }

@@ -23,7 +23,7 @@ class ChatViewController: UIViewController {
 
     let inputTextView: TextViewWithPlaceholder = {
         let textView = TextViewWithPlaceholder()
-        textView.textContainerInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        textView.textContainerInset = UIEdgeInsets(top: 4, left: 6, bottom: 4, right: 4)
         textView.placeholder = "Введите текст сообщения"
         textView.isScrollEnabled = false
         textView.backgroundColor = .grayVeryLight
@@ -92,6 +92,11 @@ class ChatViewController: UIViewController {
         viewModel?.title.observe(on: self) { [weak self] value in
             self?.title = value
         }
+        viewModel?.error.observe(on: self) { [weak self] value in
+            if let self = self, let value = value {
+                AlertPresenter.showAlert(controller: self, text: value)
+            }
+        }
     }
 
     private func addSubviews() {
@@ -113,10 +118,6 @@ class ChatViewController: UIViewController {
             make.bottom.equalToSuperview().inset(8)
             make.trailing.equalToSuperview().inset(8)
             make.leading.equalToSuperview().offset(8)
-        }
-
-        inputTextView.snp.makeConstraints { (make: ConstraintMaker) in
-            make.leading.equalToSuperview().offset(10)
         }
 
         sendButton.snp.makeConstraints { (make: ConstraintMaker) in

@@ -21,24 +21,26 @@ class AuthenticationCoordinator: Coordinator {
         return navigationController
     }
 
-    func registration() {
+    func goToSignUpView() {
         let controller = SignUpViewController()
-        controller.viewModel = MockSignUpViewModel(service: RestSignUpService())
-        controller.viewModel?.onSuccesReg = { [weak controller] in
-            controller?.navigationController?.popViewController(animated: true)
-        }
+        controller.viewModel = MockSignUpViewModel(service: RestSignUpService(), coordinator: self)
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func forgotPassword() {
+    func goToForgotPasswordView() {
         let controller = ForgotPasswordViewController()
-        controller.viewModel = MockForgotPasswordViewModel(service: RestForgotPassword())
-        controller.viewModel?.onNextScreen = { [weak controller] email in
-            let nextController = CodeVerifyViewController()
-            nextController.viewModel = MockCodeVerifyViewModel(service: MockCodeVerifyService(), coordinator: self, email: email)
-            controller?.navigationController?.pushViewController(nextController, animated: true)
-        }
+        controller.viewModel = MockForgotPasswordViewModel(service: RestForgotPassword(), coordinator: self)
         navigationController.pushViewController(controller, animated: true)
+    }
+
+    func goToCodeVerifyView(email: String) {
+        let nextController = CodeVerifyViewController()
+        nextController.viewModel = MockCodeVerifyViewModel(service: RestCodeVerifyService(), coordinator: self, email: email)
+        navigationController.pushViewController(nextController, animated: true)
+    }
+
+    func popView() {
+        navigationController.popViewController(animated: true)
     }
 
     func authFinished() {

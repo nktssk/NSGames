@@ -10,4 +10,5 @@ import Foundation
 enum CodeVerifyError: Error {
     case codeNotCorrect
     case noConnection
+    case badRequest
 }

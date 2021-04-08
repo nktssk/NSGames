@@ -559,8 +559,8 @@ type_body_length:
 
 type_name:
   min_length:
-    warning: 3
-    error: 3
+    warning: 2
+    error: 2
   max_length:
     warning: 50
     error: 50
