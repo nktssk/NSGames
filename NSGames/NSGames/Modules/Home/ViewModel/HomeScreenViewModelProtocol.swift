@@ -29,7 +29,7 @@ class MockHomeScreenViewModel: HomeScreenViewModelProtocol {
     }
 
     func getData(completion: @escaping () -> Void) {
-        queue.asyncAfter(deadline: .now() + 5) { [weak self] in
+        queue.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.service.getData { result in
                 switch result {
                 case .success(let newData):

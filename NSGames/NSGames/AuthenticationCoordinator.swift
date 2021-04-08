@@ -11,16 +11,19 @@ class AuthenticationCoordinator: Coordinator {
     let navigationController = UINavigationController()
     var mainCoordinator: MainCoordinator?
 
-    func getFirstViewController() -> UIViewController {
+    init() {
         let controller = SignInViewController()
-        controller.viewModel = MockSignInViewModel(service: MockSignInService(), coordinator: self)
+        controller.viewModel = MockSignInViewModel(service: RestSignInService(), coordinator: self)
         navigationController.pushViewController(controller, animated: true)
+    }
+
+    func getStartViewController() -> UIViewController {
         return navigationController
     }
 
     func registration() {
         let controller = SignUpViewController()
-        controller.viewModel = MockSignUpViewModel(service: MockSignUpService())
+        controller.viewModel = MockSignUpViewModel(service: RestSignUpService())
         controller.viewModel?.onSuccesReg = { [weak controller] in
             controller?.navigationController?.popViewController(animated: true)
         }
@@ -29,16 +32,16 @@ class AuthenticationCoordinator: Coordinator {
 
     func forgotPassword() {
         let controller = ForgotPasswordViewController()
-        controller.viewModel = MockForgotPasswordViewModel(service: MockForgotPassword())
-        controller.viewModel?.onNextScreen = { [weak controller] in
+        controller.viewModel = MockForgotPasswordViewModel(service: RestForgotPassword())
+        controller.viewModel?.onNextScreen = { [weak controller] email in
             let nextController = CodeVerifyViewController()
-            nextController.viewModel = MockCodeVerifyViewModel(service: MockCodeVerifyService(), coordinator: self)
+            nextController.viewModel = MockCodeVerifyViewModel(service: MockCodeVerifyService(), coordinator: self, email: email)
             controller?.navigationController?.pushViewController(nextController, animated: true)
         }
         navigationController.pushViewController(controller, animated: true)
     }
 
     func authFinished() {
-        mainCoordinator?.authFinished()
+        mainCoordinator?.goToTabBar()
     }
 }

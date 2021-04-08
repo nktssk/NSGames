@@ -10,10 +10,13 @@ import UIKit
 class HomeCoordinator: Coordinator {
     let navigationController = UINavigationController()
 
-    func getFirstViewController() -> UIViewController {
+    init() {
         let homeScreen = HomeScreenViewController()
         homeScreen.viewModel = MockHomeScreenViewModel(service: MockHomeScreenService(), coordinator: self)
         navigationController.pushViewController(homeScreen, animated: true)
+    }
+
+    func getStartViewController() -> UIViewController {
         return navigationController
     }
 
@@ -32,6 +35,12 @@ class HomeCoordinator: Coordinator {
     func goToSelectGamesView(id: Int) {
         let controller = SelectGamesViewContoller()
         controller.viewModel = SelectGamesViewModel(service: MockSelectGamesService(), coordinator: self, id: id)
+        navigationController.pushViewController(controller, animated: true)
+    }
+
+    func goToChat(messageId: String, username: String) {
+        let controller = ChatViewController()
+        controller.viewModel = ChatViewModel(service: ChatFireBaseService.shared, id: messageId, title: username)
         navigationController.pushViewController(controller, animated: true)
     }
 }

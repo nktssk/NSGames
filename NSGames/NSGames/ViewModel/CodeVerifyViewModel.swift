@@ -8,6 +8,7 @@
 import Foundation
 
 protocol CodeVerifyViewModel {
+    var email: String { get set }
     var codeVerifyError: ObservableUI<String?> { get set }
 
     func checkCode(code: String)
@@ -15,14 +16,16 @@ protocol CodeVerifyViewModel {
 
 class MockCodeVerifyViewModel: CodeVerifyViewModel {
 
+    var email: String
     var codeVerifyError: ObservableUI<String?> = ObservableUI(nil)
 
     private let coordinator: AuthenticationCoordinator
     private let codeVerifyService: CodeVerifyServiceProtocol
 
-    init(service: CodeVerifyServiceProtocol, coordinator: AuthenticationCoordinator) {
+    init(service: CodeVerifyServiceProtocol, coordinator: AuthenticationCoordinator, email: String) {
         self.codeVerifyService = service
         self.coordinator = coordinator
+        self.email = email
     }
 
     // MARK: - CodeVerifyViewModel

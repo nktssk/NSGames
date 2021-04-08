@@ -10,10 +10,13 @@ import UIKit
 class ChatCoordinator: Coordinator {
     private let navigationController = UINavigationController()
 
-    func getFirstViewController() -> UIViewController {
+    init() {
         let controller = ConversationListViewController()
         controller.viewModel = ConversationListViewModel(service: ConversationFirebaseService.shared, coordinator: self)
         navigationController.pushViewController(controller, animated: true)
+    }
+
+    func getStartViewController() -> UIViewController {
         return navigationController
     }
 

@@ -8,5 +8,5 @@
 import UIKit
 
 protocol Coordinator {
-    func getFirstViewController() -> UIViewController
+    func getStartViewController() -> UIViewController
 }

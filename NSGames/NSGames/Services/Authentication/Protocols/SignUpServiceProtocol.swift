@@ -8,5 +8,5 @@
 import Foundation
 
 protocol SignUpServiceProtocol {
-    func signUp(login: String, email: String, password: String, completion: @escaping (Result<(), SignUpError>) -> Void)
+    func signUp(username: String, email: String, password: String, completion: @escaping (Result<(), SignUpError>) -> Void)
 }

@@ -12,7 +12,7 @@ class ConversationListViewModel: ConversationListViewModelProtocol {
 
     private let service: ConversationsFirebaseServiceProtocol
     private let coordinator: ChatCoordinator
-    let myId = UserDefaults.standard.string(forKey: UserDefaultsNames.myId)
+    let myId = KeychainService.getChatId()
 
     init(service: ConversationsFirebaseServiceProtocol, coordinator: ChatCoordinator) {
         self.service = service

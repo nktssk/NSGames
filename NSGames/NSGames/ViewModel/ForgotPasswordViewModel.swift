@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ForgotPasswordViewModel {
-    var onNextScreen: (() -> Void)? { get set }
+    var onNextScreen: ((String) -> Void)? { get set }
     var emailError: ObservableUI<String?> { get set }
 
     func checkEmail(email: String)
@@ -16,7 +16,7 @@ protocol ForgotPasswordViewModel {
 
 class MockForgotPasswordViewModel: ForgotPasswordViewModel {
 
-    var onNextScreen: (() -> Void)?
+    var onNextScreen: ((String) -> Void)?
     var emailError: ObservableUI<String?> = ObservableUI(nil)
 
     private let forgotPasswordService: ForgotPasswordServiceProtocol
@@ -32,7 +32,7 @@ class MockForgotPasswordViewModel: ForgotPasswordViewModel {
             forgotPasswordService.checkEmail(email: email) { [weak self] result in
                 switch result {
                 case .success:
-                    self?.onNextScreen?()
+                    self?.onNextScreen?(email)
 
                 case .failure(let error):
                     switch error {

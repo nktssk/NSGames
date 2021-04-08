@@ -47,14 +47,12 @@ class HomeScreenViewController: UIViewController {
 
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.placeholder = "Поиск"
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
 
         navigationController?.navigationBar.barTintColor = UIColor.grayLight
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
     }
 
     private func setCollectionView() {
@@ -87,7 +85,7 @@ class HomeScreenViewController: UIViewController {
         indicator.isHidden = false
         viewModel?.getData { [weak self] in
             if let collectionView = self?.collectionView {
-                self?.indicator.isHidden = true
+                self?.indicator.removeFromSuperview()
                 UIView.transition(with: collectionView, duration: 0.6,
                                   options: .transitionCrossDissolve,
                                   animations: {
@@ -98,7 +96,9 @@ class HomeScreenViewController: UIViewController {
     }
 
     private func bindData() {
-        viewModel?.items.observe(on: self) { [weak self] _ in self?.collectionView.reloadData() }
+        viewModel?.items.observe(on: self) { [weak self] _ in
+            self?.collectionView.reloadData()
+        }
     }
 }
 
@@ -122,10 +122,10 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height: CGFloat
-        if view.frame.height * 0.25 < 170 {
-            height = 170
+        if view.frame.height * 0.26 < 190 {
+            height = 190
         } else {
-            height = view.frame.height * 0.25
+            height = view.frame.height * 0.26
         }
         return CGSize(width: HomeScreenCellCollectionConstants.itemWidth, height: height)
     }

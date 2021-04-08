@@ -9,6 +9,7 @@ import Foundation
 
 protocol ChatViewModelProtocol {
     var title: Observable<String> { get set }
+    var error: Observable<String> { get set }
     var items: Observable<[Message]> { get set }
 
     func sendMessage(text content: String)
@@ -17,9 +18,10 @@ protocol ChatViewModelProtocol {
 
 class ChatViewModel: ChatViewModelProtocol {
     var title: Observable<String> = Observable("")
+    var error: Observable<String> = Observable("")
     var items: Observable<[Message]> = Observable([])
 
-    let myId = UserDefaults.standard.string(forKey: UserDefaultsNames.myId) ?? "nil"
+    let myId = KeychainService.getChatId()
     private let service: ChatFireBaseServiceProtocol
     private let otherUserId: String
     private let titleSrting: String
@@ -32,25 +34,29 @@ class ChatViewModel: ChatViewModelProtocol {
 
     func setup() {
         title.value = titleSrting
-        service.setListeners(to: otherUserId) { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print(error)
+        if let myId = myId {
+            service.setListeners(myId: myId, to: otherUserId) { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    print(error)
                 // TODO: alert
-            case .success(let array):
-                DispatchQueue.main.async {
-                    self?.items.value = array
+                case .success(let array):
+                    DispatchQueue.main.async {
+                        self?.items.value = array
+                    }
                 }
             }
         }
     }
 
     func sendMessage(text content: String) {
-        let message = Message(content: content, created: Date(), senderId: myId)
-        service.sendMessage(to: otherUserId, message: message) { flag in
-            if flag == false {
-                print("error")
-                // TODO: Alert inet
+        if let id = myId {
+            let message = Message(content: content, created: Date(), senderId: id)
+            service.sendMessage(myId: id, to: otherUserId, message: message) { flag in
+                if flag == false {
+                    print("error")
+                    // TODO: Alert inet
+                }
             }
         }
     }

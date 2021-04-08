@@ -8,6 +8,6 @@
 import UIKit
 
 protocol GameServiceProtocol {
-    func getStringData(id: Int, completion: @escaping (Result<GameConfig, Error>) -> Void)
+    func getStringData(id: Int, completion: @escaping (Result<GameSreenConfig, Error>) -> Void)
     func getImages(id: Int, completion: @escaping (Result<[UIImage], Error>) -> Void)
 }

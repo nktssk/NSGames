@@ -21,11 +21,14 @@ class ChatViewController: UIViewController {
         return table
     }()
 
-    let inputTextView: UITextView = {
-        let textView = UITextView()
+    let inputTextView: TextViewWithPlaceholder = {
+        let textView = TextViewWithPlaceholder()
         textView.textContainerInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
-        textView.backgroundColor = .grayView
+        textView.placeholder = "Введите текст сообщения"
+        textView.isScrollEnabled = false
+        textView.backgroundColor = .grayVeryLight
         textView.layer.cornerRadius = 10
+        textView.isScrollEnabled = true
         textView.font = UIFont.systemFont(ofSize: 14, weight: .light)
         return textView
     }()
@@ -43,7 +46,7 @@ class ChatViewController: UIViewController {
         stackView.alignment = .fill
         stackView.axis = .horizontal
         stackView.spacing = 5
-        stackView.backgroundColor = .grayVeryLight
+        stackView.backgroundColor = .white
         stackView.layer.cornerRadius = 4
         return stackView
     }()
@@ -124,7 +127,7 @@ class ChatViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalTo(view.safeAreaLayoutGuide)
             make.trailing.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalTo(sendStackView.snp.top)
+            make.bottom.equalTo(sendStackView.snp.top).inset(4)
         }
     }
 }

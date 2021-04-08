@@ -44,7 +44,7 @@ class MockSignUpViewModel: SignUpViewModel {
         if password != passwordAgain {
             return signUpError.value = "Пароли не совпадают."
         }
-        signUpService.signUp(login: login, email: email, password: password) { [weak self] result in
+        signUpService.signUp(username: login, email: email, password: password) { [weak self] result in
             switch result {
             case .success:
                 self?.onSuccesReg?()

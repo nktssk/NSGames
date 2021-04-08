@@ -25,8 +25,6 @@ class GameViewController: UIViewController {
         return collectionView
     }()
 
-    let pageControl = UIPageControl()
-
     let gameNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
@@ -55,6 +53,15 @@ class GameViewController: UIViewController {
         return button
     }()
 
+    let chatButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .greenButton
+        button.layer.cornerRadius = 14
+        button.setTitle("Написать", for: .normal)
+        button.addTarget(self, action: #selector(goToChat), for: .touchUpInside)
+        return button
+    }()
+
     let staticDescriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "Описание: "
@@ -64,7 +71,7 @@ class GameViewController: UIViewController {
         return label
     }()
 
-    let stackView: UIStackView = {
+    let gameInfoStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fill
         stackView.alignment = .fill
@@ -88,14 +95,15 @@ class GameViewController: UIViewController {
         return label
     }()
 
-    let dateLabel = GrayLabel()
-
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
         scrollView.bounces = true
         return scrollView
     }()
+
+    let pageControl = UIPageControl()
+    let dateLabel = GrayLabel()
 
     // MARK: - Properties
     let dateFormatter: DateFormatter = {
@@ -112,13 +120,9 @@ class GameViewController: UIViewController {
         bindData()
         setCollectionView()
         setPageControl()
+        viewModel?.getData()
         addSubviews()
         setConstraints()
-        viewModel?.getData()
-    }
-
-    override func viewDidLayoutSubviews() {
-        scrollView.contentSize = CGSize(width: view.frame.width, height: imageSlider.frame.height + stackView.frame.height + readyButton.frame.height + dateLabel.frame.height + 10)
     }
 
     // MARK: - Objc Methods
@@ -128,11 +132,29 @@ class GameViewController: UIViewController {
                           options: .transitionCrossDissolve,
                           animations: { [weak self] in
                             self?.readyButton.backgroundColor = UIColor.greenButton
-                            self?.readyButton.setTitle("Предложение отправлено.", for: .normal)
+                            self?.readyButton.setTitle("Предложение отправлено!", for: .normal)
                           })
     }
 
+    @objc private func goToChat() {
+        viewModel?.goToChat()
+    }
+
     // MARK: - Private Methods
+    private func addSubviews() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(imageSlider)
+        scrollView.addSubview(pageControl)
+        gameInfoStackView.addArrangedSubview(gameNameLabel)
+        gameInfoStackView.addArrangedSubview(priceLabel)
+        gameInfoStackView.addArrangedSubview(readyButton)
+        gameInfoStackView.addArrangedSubview(chatButton)
+        gameInfoStackView.addArrangedSubview(staticDescriptionLabel)
+        gameInfoStackView.addArrangedSubview(descriptionLabel)
+        scrollView.addSubview(gameInfoStackView)
+        scrollView.addSubview(dateLabel)
+    }
+
     private func setConstraints() {
         scrollView.snp.makeConstraints { (make: ConstraintMaker) in
             make.edges.equalTo(view.safeAreaLayoutGuide)
@@ -140,13 +162,13 @@ class GameViewController: UIViewController {
 
         imageSlider.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalToSuperview()
-            make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.4)
+            make.trailing.leading.equalToSuperview()
         }
 
         pageControl.snp.makeConstraints { (make: ConstraintMaker) in
-            make.centerX.equalToSuperview()
+            make.centerX.equalTo(imageSlider)
             make.bottom.equalTo(imageSlider.snp.bottom).inset(4)
             make.height.equalTo(8)
         }
@@ -155,29 +177,21 @@ class GameViewController: UIViewController {
             make.height.equalTo(45)
         }
 
-        stackView.snp.makeConstraints { (make: ConstraintMaker) in
+        chatButton.snp.makeConstraints { (make: ConstraintMaker) in
+            make.height.equalTo(45)
+        }
+
+        gameInfoStackView.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalTo(imageSlider.snp.bottom).offset(10)
-            make.centerX.equalToSuperview()
+            make.centerX.equalTo(imageSlider)
             make.width.equalToSuperview().multipliedBy(0.9)
         }
 
         dateLabel.snp.makeConstraints { (make: ConstraintMaker) in
-            make.top.equalTo(stackView.snp.bottom).offset(10)
+            make.top.equalTo(gameInfoStackView.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(10)
         }
-    }
-
-    private func addSubviews() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(imageSlider)
-        scrollView.addSubview(pageControl)
-        stackView.addArrangedSubview(gameNameLabel)
-        stackView.addArrangedSubview(priceLabel)
-        stackView.addArrangedSubview(readyButton)
-        stackView.addArrangedSubview(staticDescriptionLabel)
-        stackView.addArrangedSubview(descriptionLabel)
-        scrollView.addSubview(stackView)
-        scrollView.addSubview(dateLabel)
     }
 
     private func setCollectionView() {
@@ -198,14 +212,27 @@ class GameViewController: UIViewController {
             self?.pageControl.numberOfPages = values.count
             self?.imageSlider.reloadData()
         }
-        viewModel?.game.observe(on: self) { [weak self] game in
+        viewModel?.gameSreenConfig.observe(on: self) { [weak self] game in
             if let game = game {
                 self?.priceLabel.text = "\(game.price) ₽"
-                self?.dateLabel.text = self?.dateFormatter.string(from: Date())
+                self?.dateLabel.text = self?.dateToString(date: game.date)
                 self?.descriptionLabel.text = game.description
                 self?.gameNameLabel.text = game.title
             }
         }
+    }
+
+    private func dateToString(date: Date) -> String {
+        if Calendar.current.isDateInToday(date) {
+            dateFormatter.dateFormat = "Сегодня в HH:mm"
+            return dateFormatter.string(from: date)
+        }
+        if Calendar.current.isDateInYesterday(date) {
+            dateFormatter.dateFormat = "Вчера в HH:mm"
+        } else {
+            dateFormatter.dateFormat = "dd MMMM в HH:mm"
+        }
+        return dateFormatter.string(from: date)
     }
 }
 

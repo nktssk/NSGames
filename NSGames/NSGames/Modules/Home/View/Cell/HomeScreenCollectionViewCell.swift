@@ -22,20 +22,21 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 14
-        imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 13)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 2
         return label
     }()
 
     let timeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         label.textColor = UIColor.grayLabel
         label.numberOfLines = 2
         return label
@@ -65,10 +66,18 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
 
+    // MARK: - Properties
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        return dateFormatter
+    }()
+
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .white
+        addSubviews()
         setConstraints()
     }
 
@@ -92,6 +101,7 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
         likeButton.setImage(#imageLiteral(resourceName: "Heart"), for: .normal)
     }
 
+    // MARK: - Public UI Methods
     func setData(configuration: AdConfig) {
         self.configuration = configuration
         imageView.image = configuration.image
@@ -99,7 +109,7 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
         if configuration.isLiked {
             likeButton.setImage(#imageLiteral(resourceName: "SelectedHeart"), for: .normal)
         }
-        timeLabel.text = Date.toString(date: configuration.date)
+        timeLabel.text = dateToString(date: configuration.date)
     }
 
     // MARK: - Objc Methods
@@ -111,11 +121,6 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
             likeButton.setImage(#imageLiteral(resourceName: "Heart"), for: .normal)
             configuration.isLiked = false
         } else {
-//            let pulse = PulseAnimation(radius: likeButton.frame.width * 1.3, postion: likeButton.center)
-//            pulse.animationDuration = 0.3
-//            pulse.backgroundColor = #colorLiteral(red: 0.2271029055, green: 0.5911584496, blue: 0.994132936, alpha: 1)
-//            stackView.layer.insertSublayer(pulse, below: stackView.layer)
-//            likeButton.setImage(#imageLiteral(resourceName: "SelectedHeart"), for: .normal)
             configuration.isLiked = true
         }
         self.configuration = configuration
@@ -123,30 +128,46 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - Private Methods
-    private func setConstraints() {
+    private func addSubviews() {
         contentView.addSubview(imageView)
-        imageView.snp.makeConstraints { (make: ConstraintMaker) in
-            make.height.equalTo(contentView.snp.width).multipliedBy(0.7)
-            make.top.equalToSuperview().offset(10)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-        }
-
         contentView.addSubview(infoStackView)
         stackView.addArrangedSubview(nameLabel)
         stackView.addArrangedSubview(likeButton)
         infoStackView.addArrangedSubview(stackView)
         infoStackView.addArrangedSubview(timeLabel)
+    }
+
+    private func setConstraints() {
+        imageView.snp.makeConstraints { (make: ConstraintMaker) in
+            make.height.equalTo(contentView.snp.width).multipliedBy(0.8)
+            make.top.equalToSuperview().offset(6)
+            make.leading.equalToSuperview().offset(6)
+            make.trailing.equalToSuperview().inset(6)
+        }
+
         infoStackView.snp.makeConstraints { (make: ConstraintMaker) in
-            make.top.equalTo(imageView.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().offset(-10)
-            make.bottom.equalToSuperview().offset(-10)
+            make.top.equalTo(imageView.snp.bottom).offset(6)
+            make.leading.equalToSuperview().offset(6)
+            make.trailing.equalToSuperview().inset(6)
+            make.bottom.equalToSuperview().inset(6)
         }
 
         likeButton.snp.makeConstraints { (make: ConstraintMaker) in
             make.height.equalTo(infoStackView.snp.width).multipliedBy(0.15)
             make.width.equalTo(infoStackView.snp.width).multipliedBy(0.15 * 48 / 45)
         }
+    }
+
+    private func dateToString(date: Date) -> String {
+        if Calendar.current.isDateInToday(date) {
+            dateFormatter.dateFormat = "Сегодня в HH:mm"
+            return dateFormatter.string(from: date)
+        }
+        if Calendar.current.isDateInYesterday(date) {
+            dateFormatter.dateFormat = "Вчера в HH:mm"
+        } else {
+            dateFormatter.dateFormat = "dd MMMM в HH:mm"
+        }
+        return dateFormatter.string(from: date)
     }
 }

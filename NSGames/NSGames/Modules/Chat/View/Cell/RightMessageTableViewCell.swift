@@ -18,11 +18,7 @@ class RightMessageTableViewCell: UITableViewCell {
     static let identifier = "RightMessageTableViewCell"
 
     // MARK: - UI
-    let messageView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 14
-        return view
-    }()
+    let messageView = ShadowView()
 
     let messageTextLabel: UILabel = {
         let label = UILabel()
@@ -94,12 +90,13 @@ class RightMessageTableViewCell: UITableViewCell {
     }
 
     private func makeConstraints() {
-        messageTextLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 249), for: .vertical)
+        messageTextLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 240), for: .vertical)
+        dateLabel.setContentCompressionResistancePriority(UILayoutPriority(751), for: .vertical)
         messageView.snp.makeConstraints { (make: ConstraintMaker) in
             make.width.lessThanOrEqualToSuperview().multipliedBy(0.7)
             make.bottom.equalToSuperview().inset(4)
             make.top.equalToSuperview().offset(4)
-            make.trailing.equalToSuperview().inset(4)
+            make.trailing.equalToSuperview().inset(8)
         }
 
         stackView.snp.makeConstraints { (make: ConstraintMaker) in

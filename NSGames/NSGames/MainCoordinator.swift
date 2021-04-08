@@ -12,22 +12,17 @@ class MainCoordinator {
 
     func start() {
         window.makeKeyAndVisible()
-        if !isAuthorized() {
+        window.backgroundColor = .white
+        if KeychainService.getToken() != nil {
+            goToTabBar()
+        } else {
             let coordinator = AuthenticationCoordinator()
             coordinator.mainCoordinator = self
-            window.backgroundColor = .white
-            window.rootViewController = coordinator.getFirstViewController()
-        } else {
+            window.rootViewController = coordinator.getStartViewController()
         }
     }
 
-    func authFinished() {
-        let tabBarCoordinator = TabBarCoordinator()
-        window.rootViewController = tabBarCoordinator.getFirstViewController()
-    }
-
-    private func isAuthorized() -> Bool {
-        // TODO: Check token
-        return false
+    func goToTabBar() {
+        window.rootViewController = AppTabBarController()
     }
 }

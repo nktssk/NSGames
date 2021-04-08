@@ -13,11 +13,7 @@ class LeftMessageTableViewCell: UITableViewCell {
     static let identifier = "LeftMessageTableViewCell"
 
     // MARK: - UI
-    let messageView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 14
-        return view
-    }()
+    let messageView = ShadowView()
 
     let messageTextLabel: UILabel = {
         let label = UILabel()
@@ -73,7 +69,7 @@ class LeftMessageTableViewCell: UITableViewCell {
                 dateLabel.textColor = .white
 
             case .from:
-                messageView.backgroundColor = .grayLabel
+                messageView.backgroundColor = .grayView
                 messageTextLabel.textColor = .black
                 dateLabel.textColor = .black
             }
@@ -90,11 +86,12 @@ class LeftMessageTableViewCell: UITableViewCell {
 
     private func makeConstraints() {
         messageTextLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 249), for: .vertical)
+        dateLabel.setContentCompressionResistancePriority(UILayoutPriority(751), for: .vertical)
         messageView.snp.makeConstraints { (make: ConstraintMaker) in
             make.width.lessThanOrEqualToSuperview().multipliedBy(0.7)
             make.bottom.equalToSuperview().inset(4)
             make.top.equalToSuperview().offset(4)
-            make.leading.equalToSuperview().offset(4)
+            make.leading.equalToSuperview().offset(8)
         }
 
         stackView.snp.makeConstraints { (make: ConstraintMaker) in

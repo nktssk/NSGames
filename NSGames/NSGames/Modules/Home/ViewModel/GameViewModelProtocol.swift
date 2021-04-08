@@ -9,17 +9,18 @@ import UIKit
 
 protocol GameViewModelProtocol {
     var imageItems: Observable<[UIImage]> { get set }
-    var game: Observable<GameConfig?> { get set }
+    var gameSreenConfig: Observable<GameSreenConfig?> { get set }
 
     func getData()
     func makeOffer()
+    func goToChat()
 }
 
 class MockGameViewModel: GameViewModelProtocol {
 
     // MARK: - Properties
     var imageItems: Observable<[UIImage]> = Observable([])
-    var game: Observable<GameConfig?> = Observable(nil)
+    var gameSreenConfig: Observable<GameSreenConfig?> = Observable(nil)
 
     private let id: Int
     private let service: GameServiceProtocol
@@ -36,7 +37,7 @@ class MockGameViewModel: GameViewModelProtocol {
         service.getStringData(id: id) { [weak self] result in
             switch result {
             case .success(let config):
-                self?.game.value = config
+                self?.gameSreenConfig.value = config
 
             case .failure:
                 // TODO: -error
@@ -58,5 +59,11 @@ class MockGameViewModel: GameViewModelProtocol {
 
     func makeOffer() {
         coordinator.goToOfferView(id: id)
+    }
+
+    func goToChat() {
+        if let data = gameSreenConfig.value {
+            coordinator.goToChat(messageId: data.messageId, username: data.profile.username)
+        }
     }
 }

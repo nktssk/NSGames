@@ -150,16 +150,16 @@ class SignUpViewController: UIViewController {
         userDataStackView.addArrangedSubview(emailTextField)
         userDataStackView.addArrangedSubview(passwordTextField)
         userDataStackView.addArrangedSubview(passwordAgainTextField)
-        scrollView.addSubview(userDataStackView)
-        scrollView.addSubview(signUpButton)
         stackView.addArrangedSubview(haveAccount)
         stackView.addArrangedSubview(signInButton)
+        scrollView.addSubview(userDataStackView)
+        scrollView.addSubview(signUpButton)
         scrollView.addSubview(stackView)
     }
 
     private func setConstraints() {
         scrollView.snp.makeConstraints { (make: ConstraintMaker) in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.edges.equalTo(view)
         }
 
         iconImageView.snp.makeConstraints { (make: ConstraintMaker) in
@@ -187,8 +187,9 @@ class SignUpViewController: UIViewController {
         }
 
         stackView.snp.makeConstraints { (make: ConstraintMaker) in
-            make.centerX.equalToSuperview()
             make.top.equalTo(signUpButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(10)
         }
     }
 
