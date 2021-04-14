@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ChatCoordinatorProtocol: Coordinator {
+    func goToChatView(id: String, username: String)
+}
+
 class ChatCoordinator: Coordinator {
     private let navigationController = UINavigationController()
 

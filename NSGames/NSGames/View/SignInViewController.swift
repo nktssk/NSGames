@@ -63,8 +63,8 @@ class SignInViewController: UIViewController {
         return button
     }()
 
-    let signInButton: BlueButton = {
-        let button = BlueButton()
+    let signInButton: RoundedButton = {
+        let button = RoundedButton()
         button.setTitle("Войти", for: .normal)
         button.addTarget(self, action: #selector(signInButtonAction), for: .touchUpInside)
         return button

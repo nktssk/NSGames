@@ -51,9 +51,9 @@ class ChatViewModel: ChatViewModelProtocol {
     }
 
     func sendMessage(text content: String) {
-        if let id = myId {
-            let message = Message(content: content, created: Date(), senderId: id)
-            service.sendMessage(myId: id, to: otherUserId, message: message) { [weak self] flag in
+        if let myId = myId {
+            let message = Message(content: content, created: Date(), senderId: myId)
+            service.sendMessage(myId: myId, to: otherUserId, message: message) { [weak self] flag in
                 if flag == false {
                     self?.error.value = InetErrorNames.failedConnection
                 }

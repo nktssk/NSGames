@@ -395,7 +395,6 @@ modifier_order:
   preferred_modifier_order:
     - 'acl'
     - 'setterACL'
-    - 'override'
     - 'owned'
     - 'mutators'
     - 'final'

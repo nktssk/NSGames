@@ -89,9 +89,6 @@ class ChatViewController: UIViewController {
         viewModel?.items.observe(on: self) { [weak self] _ in
             self?.tableView.reloadData()
         }
-        viewModel?.title.observe(on: self) { [weak self] value in
-            self?.title = value
-        }
         viewModel?.error.observe(on: self) { [weak self] value in
             if let self = self, let value = value {
                 AlertPresenter.showAlert(controller: self, text: value)

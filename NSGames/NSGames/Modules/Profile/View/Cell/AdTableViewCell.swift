@@ -60,7 +60,7 @@ class AdTableViewCell: UITableViewCell {
         stackView.distribution = .equalSpacing
         stackView.alignment = .fill
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 5
         return stackView
     }()
 
@@ -97,7 +97,7 @@ class AdTableViewCell: UITableViewCell {
     }
 
     // MARK: - Public UI Methods
-    func setData(configuration: Ad) {
+    func setData(configuration: AdTableViewCellConfig) {
         nameLabel.text = configuration.name
         numberOfOffersLabel.text = "\(configuration.numberOfOffers)"
         numberOfViewsLabel.text = "\(configuration.views)"

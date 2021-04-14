@@ -70,8 +70,8 @@ class SignUpViewController: UIViewController {
         return button
     }()
 
-    let signUpButton: BlueButton = {
-        let button = BlueButton()
+    let signUpButton: RoundedButton = {
+        let button = RoundedButton()
         button.setTitle("Создать аккаунт", for: .normal)
         button.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
         return button

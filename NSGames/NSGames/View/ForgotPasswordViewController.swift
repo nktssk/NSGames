@@ -35,8 +35,8 @@ class ForgotPasswordViewController: UIViewController {
         return textField
     }()
 
-    private let nextButton: BlueButton = {
-        let button = BlueButton()
+    private let nextButton: RoundedButton = {
+        let button = RoundedButton()
         button.setTitle("Далее", for: .normal)
         button.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
         return button
