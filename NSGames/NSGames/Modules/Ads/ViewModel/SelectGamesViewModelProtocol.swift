@@ -38,11 +38,10 @@ class SelectGamesViewModel: SelectGamesViewModelProtocol {
 
     func getData() {
         if let id = offerId {
-            print(id)
+
         } else {
-            getAllData()
+            getAllGames()
         }
-        // TODO: - get by id
     }
 
     func selectGame(index: Int) {
@@ -86,8 +85,22 @@ class SelectGamesViewModel: SelectGamesViewModelProtocol {
         games.value = filteredGames
     }
 
-    private func getAllData() {
-        service.getGamesArray { [weak self] result in
+    private func getAllGames() {
+        service.getAllGames { [weak self] result in
+            switch result {
+            case .success(let array):
+                self?.allGamesList = array
+                self?.games.value = array
+
+            case .failure:
+                // TODO: - error
+                break
+            }
+        }
+    }
+
+    private func getGames(id: Int) {
+        service.getGamesArray(id: id) { [weak self] result in
             switch result {
             case .success(let array):
                 self?.allGamesList = array

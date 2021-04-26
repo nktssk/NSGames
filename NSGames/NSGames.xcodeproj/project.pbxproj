@@ -18,7 +18,7 @@
 		A1340D542610743700439E1F /* GameSreenConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1340D532610743700439E1F /* GameSreenConfig.swift */; };
 		A1340D5D2610879E00439E1F /* SelectGamesViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1340D5C2610879E00439E1F /* SelectGamesViewModelProtocol.swift */; };
 		A1340D62261091FC00439E1F /* SelectGamesServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1340D61261091FC00439E1F /* SelectGamesServiceProtocol.swift */; };
-		A1340D652610951800439E1F /* MockSelectGamesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1340D642610951800439E1F /* MockSelectGamesService.swift */; };
+		A1340D652610951800439E1F /* SelectGamesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1340D642610951800439E1F /* SelectGamesService.swift */; };
 		A1381F66260E3A1700BDF8CD /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1381F65260E3A1600BDF8CD /* Message.swift */; };
 		A1381F69260E3DDD00BDF8CD /* ConversationFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1381F68260E3DDD00BDF8CD /* ConversationFirebaseService.swift */; };
 		A1381FA2260E476900BDF8CD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1381FA1260E476900BDF8CD /* GoogleService-Info.plist */; };
@@ -54,9 +54,8 @@
 		A15ABA17261F2B2F00A549C7 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15ABA16261F2B2F00A549C7 /* AdTableViewCell.swift */; };
 		A16578EE25FCD917005F19C8 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16578ED25FCD917005F19C8 /* HomeScreenViewController.swift */; };
 		A16C873D25FF9CD900AC15AD /* HomeScreenServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C873C25FF9CD900AC15AD /* HomeScreenServiceProtocol.swift */; };
-		A16C874125FF9DE500AC15AD /* MockHomeSreenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C874025FF9DE500AC15AD /* MockHomeSreenService.swift */; };
+		A16C874125FF9DE500AC15AD /* HomeScreenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C874025FF9DE500AC15AD /* HomeScreenService.swift */; };
 		A1721D262625DD9100BFD38C /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1721D252625DD9100BFD38C /* FavoritesCoordinator.swift */; };
-		A1721D342625E29000BFD38C /* MockFavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1721D332625E29000BFD38C /* MockFavoriteService.swift */; };
 		A1721D4D2625E5B700BFD38C /* CreateAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1721D4C2625E5B700BFD38C /* CreateAdViewController.swift */; };
 		A1721D512625E5FD00BFD38C /* CreateAdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1721D502625E5FD00BFD38C /* CreateAdViewModel.swift */; };
 		A1721D552625E61200BFD38C /* CreateAdCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1721D542625E61200BFD38C /* CreateAdCoordinator.swift */; };
@@ -79,7 +78,7 @@
 		A189E27A260B5A5B0051D578 /* AdCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189E279260B5A5B0051D578 /* AdCoordinator.swift */; };
 		A189E27D260B61260051D578 /* GameViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189E27C260B61260051D578 /* GameViewModelProtocol.swift */; };
 		A189E287260B62350051D578 /* GameServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189E286260B62350051D578 /* GameServiceProtocol.swift */; };
-		A189E28B260B629A0051D578 /* MockGameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189E28A260B629A0051D578 /* MockGameService.swift */; };
+		A189E28B260B629A0051D578 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189E28A260B629A0051D578 /* GameService.swift */; };
 		A189E28E260B65510051D578 /* OfferViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189E28D260B65510051D578 /* OfferViewModelProtocol.swift */; };
 		A189E291260B65C80051D578 /* OfferServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189E290260B65C80051D578 /* OfferServiceProtocol.swift */; };
 		A189E294260B65E70051D578 /* MockOfferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189E293260B65E70051D578 /* MockOfferService.swift */; };
@@ -93,6 +92,10 @@
 		A1A8B07625F250D6008CDDA4 /* BlueTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */; };
 		A1A8B07925F25133008CDDA4 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07825F25133008CDDA4 /* RoundedButton.swift */; };
 		A1A8B07C25F251BC008CDDA4 /* GrayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */; };
+		A1B9EFE7262C985E00E799E2 /* CreateAdServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9EFE6262C985E00E799E2 /* CreateAdServiceProtocol.swift */; };
+		A1B9EFEC262C994700E799E2 /* CreateAdServiceNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9EFEB262C994700E799E2 /* CreateAdServiceNames.swift */; };
+		A1B9EFF0262C99C000E799E2 /* CreateAdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9EFEF262C99C000E799E2 /* CreateAdService.swift */; };
+		A1B9EFF4262C9E7C00E799E2 /* CreateAdError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9EFF3262C9E7C00E799E2 /* CreateAdError.swift */; };
 		A1C455ED25F91D5100ABD067 /* CodeVerifyServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455EC25F91D5100ABD067 /* CodeVerifyServiceProtocol.swift */; };
 		A1C455F125F91D7600ABD067 /* SignInError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455F025F91D7600ABD067 /* SignInError.swift */; };
 		A1C455F525F91D8600ABD067 /* SignUpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455F425F91D8600ABD067 /* SignUpError.swift */; };
@@ -110,6 +113,11 @@
 		A1D85FE62602528B00A6F7C6 /* HomeScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D85FE52602528B00A6F7C6 /* HomeScreenViewModelProtocol.swift */; };
 		A1D9953D25EFF071002770AF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D9953C25EFF071002770AF /* SignInViewController.swift */; };
 		A1D9954325F00564002770AF /* DataTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D9954225F00564002770AF /* DataTextField.swift */; };
+		A1E04656263403D80027521D /* AdDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E04655263403D80027521D /* AdDto.swift */; };
+		A1E04683263556820027521D /* AdsServiceNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E04682263556820027521D /* AdsServiceNames.swift */; };
+		A1E04687263557180027521D /* AdServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E04686263557180027521D /* AdServiceError.swift */; };
+		A1E0468B2635584C0027521D /* BaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E0468A2635584C0027521D /* BaseUrl.swift */; };
+		A1E046AC263585310027521D /* HeaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E046AB263585310027521D /* HeaderService.swift */; };
 		A1E1548325FF51C4000F2007 /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1548225FF51C4000F2007 /* PulseAnimation.swift */; };
 		A1F67DEB25FE823D0007636E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F67DEA25FE823D0007636E /* Date.swift */; };
 /* End PBXBuildFile section */
@@ -126,7 +134,7 @@
 		A1340D532610743700439E1F /* GameSreenConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSreenConfig.swift; sourceTree = "<group>"; };
 		A1340D5C2610879E00439E1F /* SelectGamesViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGamesViewModelProtocol.swift; sourceTree = "<group>"; };
 		A1340D61261091FC00439E1F /* SelectGamesServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGamesServiceProtocol.swift; sourceTree = "<group>"; };
-		A1340D642610951800439E1F /* MockSelectGamesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSelectGamesService.swift; sourceTree = "<group>"; };
+		A1340D642610951800439E1F /* SelectGamesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGamesService.swift; sourceTree = "<group>"; };
 		A1381F65260E3A1600BDF8CD /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		A1381F68260E3DDD00BDF8CD /* ConversationFirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationFirebaseService.swift; sourceTree = "<group>"; };
 		A1381FA1260E476900BDF8CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/Downloads_S/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -162,9 +170,8 @@
 		A15ABA16261F2B2F00A549C7 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
 		A16578ED25FCD917005F19C8 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		A16C873C25FF9CD900AC15AD /* HomeScreenServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenServiceProtocol.swift; sourceTree = "<group>"; };
-		A16C874025FF9DE500AC15AD /* MockHomeSreenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeSreenService.swift; sourceTree = "<group>"; };
+		A16C874025FF9DE500AC15AD /* HomeScreenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenService.swift; sourceTree = "<group>"; };
 		A1721D252625DD9100BFD38C /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
-		A1721D332625E29000BFD38C /* MockFavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFavoriteService.swift; sourceTree = "<group>"; };
 		A1721D4C2625E5B700BFD38C /* CreateAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdViewController.swift; sourceTree = "<group>"; };
 		A1721D502625E5FD00BFD38C /* CreateAdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdViewModel.swift; sourceTree = "<group>"; };
 		A1721D542625E61200BFD38C /* CreateAdCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdCoordinator.swift; sourceTree = "<group>"; };
@@ -189,7 +196,7 @@
 		A189E279260B5A5B0051D578 /* AdCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCoordinator.swift; sourceTree = "<group>"; };
 		A189E27C260B61260051D578 /* GameViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelProtocol.swift; sourceTree = "<group>"; };
 		A189E286260B62350051D578 /* GameServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServiceProtocol.swift; sourceTree = "<group>"; };
-		A189E28A260B629A0051D578 /* MockGameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameService.swift; sourceTree = "<group>"; };
+		A189E28A260B629A0051D578 /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 		A189E28D260B65510051D578 /* OfferViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferViewModelProtocol.swift; sourceTree = "<group>"; };
 		A189E290260B65C80051D578 /* OfferServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferServiceProtocol.swift; sourceTree = "<group>"; };
 		A189E293260B65E70051D578 /* MockOfferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOfferService.swift; sourceTree = "<group>"; };
@@ -203,6 +210,10 @@
 		A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTextButton.swift; sourceTree = "<group>"; };
 		A1A8B07825F25133008CDDA4 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLabel.swift; sourceTree = "<group>"; };
+		A1B9EFE6262C985E00E799E2 /* CreateAdServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdServiceProtocol.swift; sourceTree = "<group>"; };
+		A1B9EFEB262C994700E799E2 /* CreateAdServiceNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdServiceNames.swift; sourceTree = "<group>"; };
+		A1B9EFEF262C99C000E799E2 /* CreateAdService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdService.swift; sourceTree = "<group>"; };
+		A1B9EFF3262C9E7C00E799E2 /* CreateAdError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdError.swift; sourceTree = "<group>"; };
 		A1C455EC25F91D5100ABD067 /* CodeVerifyServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyServiceProtocol.swift; sourceTree = "<group>"; };
 		A1C455F025F91D7600ABD067 /* SignInError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInError.swift; sourceTree = "<group>"; };
 		A1C455F425F91D8600ABD067 /* SignUpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpError.swift; sourceTree = "<group>"; };
@@ -220,6 +231,11 @@
 		A1D85FE52602528B00A6F7C6 /* HomeScreenViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModelProtocol.swift; sourceTree = "<group>"; };
 		A1D9953C25EFF071002770AF /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A1D9954225F00564002770AF /* DataTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTextField.swift; sourceTree = "<group>"; };
+		A1E04655263403D80027521D /* AdDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDto.swift; sourceTree = "<group>"; };
+		A1E04682263556820027521D /* AdsServiceNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsServiceNames.swift; sourceTree = "<group>"; };
+		A1E04686263557180027521D /* AdServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdServiceError.swift; sourceTree = "<group>"; };
+		A1E0468A2635584C0027521D /* BaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUrl.swift; sourceTree = "<group>"; };
+		A1E046AB263585310027521D /* HeaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderService.swift; sourceTree = "<group>"; };
 		A1E1548225FF51C4000F2007 /* PulseAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseAnimation.swift; sourceTree = "<group>"; };
 		A1F67DEA25FE823D0007636E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		A310BA6390AA4C34B5EAB5AD /* Pods_NSGames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NSGames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -287,6 +303,7 @@
 			children = (
 				A1418B1F25FE246900FF13CC /* AdCollectionViewCellConfig.swift */,
 				A1340D532610743700439E1F /* GameSreenConfig.swift */,
+				A1E04655263403D80027521D /* AdDto.swift */,
 			);
 			path = Ads;
 			sourceTree = "<group>";
@@ -332,7 +349,7 @@
 				A1949CFC261E575B0028EBC8 /* Chat */,
 				A13880AE262054CF00DA1604 /* Profile */,
 				A1949D09261E58780028EBC8 /* Keychain */,
-				A1721D302625E20000BFD38C /* Favorites */,
+				A1B9EFE3262C981E00E799E2 /* CreateAd */,
 				A1949CFF261E57710028EBC8 /* Authentication */,
 				A10547BA260B926C00FEB2FD /* Observable.swift */,
 				A1D18A1925F69B74007A5CF7 /* ObservableUI.swift */,
@@ -367,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				A178CE5D25EFDB8B003A50DC /* Assets.xcassets */,
+				A1E0468A2635584C0027521D /* BaseUrl.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -423,14 +441,6 @@
 			isa = PBXGroup;
 			children = (
 				A1721D252625DD9100BFD38C /* FavoritesCoordinator.swift */,
-			);
-			path = Favorites;
-			sourceTree = "<group>";
-		};
-		A1721D302625E20000BFD38C /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-				A1721D332625E29000BFD38C /* MockFavoriteService.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -541,10 +551,18 @@
 		A1846222260C6651008D159F /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				A18606A826308E6400B79E51 /* CoreData */,
 				A1846227260C66A0008D159F /* Conversation.swift */,
 				A1381F65260E3A1600BDF8CD /* Message.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		A18606A826308E6400B79E51 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		A1949CFC261E575B0028EBC8 /* Chat */ = {
@@ -614,6 +632,7 @@
 			children = (
 				A1949D05261E57B30028EBC8 /* Protocols */,
 				A1949D03261E57AC0028EBC8 /* Implementation */,
+				A1E04685263557000027521D /* Error */,
 			);
 			path = Ads;
 			sourceTree = "<group>";
@@ -621,10 +640,11 @@
 		A1949D03261E57AC0028EBC8 /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
-				A16C874025FF9DE500AC15AD /* MockHomeSreenService.swift */,
-				A189E28A260B629A0051D578 /* MockGameService.swift */,
+				A1E04682263556820027521D /* AdsServiceNames.swift */,
+				A16C874025FF9DE500AC15AD /* HomeScreenService.swift */,
+				A189E28A260B629A0051D578 /* GameService.swift */,
 				A189E293260B65E70051D578 /* MockOfferService.swift */,
-				A1340D642610951800439E1F /* MockSelectGamesService.swift */,
+				A1340D642610951800439E1F /* SelectGamesService.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -656,6 +676,7 @@
 			children = (
 				A1D05D5F261BAA1F007F757F /* KeychainNames.swift */,
 				A1D05D5B261BA962007F757F /* KeychainService.swift */,
+				A1E046AB263585310027521D /* HeaderService.swift */,
 			);
 			path = Keychain;
 			sourceTree = "<group>";
@@ -684,6 +705,41 @@
 				A1418B3125FE2FC100FF13CC /* HomeScreenCellCollectionConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		A1B9EFE3262C981E00E799E2 /* CreateAd */ = {
+			isa = PBXGroup;
+			children = (
+				A1B9EFE4262C983800E799E2 /* Protocol */,
+				A1B9EFE5262C983D00E799E2 /* Implementation */,
+				A1B9EFF2262C9E6100E799E2 /* Error */,
+			);
+			path = CreateAd;
+			sourceTree = "<group>";
+		};
+		A1B9EFE4262C983800E799E2 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A1B9EFE6262C985E00E799E2 /* CreateAdServiceProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		A1B9EFE5262C983D00E799E2 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				A1B9EFEB262C994700E799E2 /* CreateAdServiceNames.swift */,
+				A1B9EFEF262C99C000E799E2 /* CreateAdService.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		A1B9EFF2262C9E6100E799E2 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				A1B9EFF3262C9E7C00E799E2 /* CreateAdError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		A1C7D67225F5751A0087B41F /* Authentication */ = {
@@ -735,6 +791,14 @@
 				A18ED8BA261211BF0053AE37 /* TextViewWithPlaceholder.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A1E04685263557000027521D /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				A1E04686263557180027521D /* AdServiceError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		A1E1548125FF51B2000F2007 /* Animations */ = {
@@ -889,6 +953,7 @@
 			files = (
 				A100522B2602024C002E807E /* RestForgotPassword.swift in Sources */,
 				A1381F66260E3A1700BDF8CD /* Message.swift in Sources */,
+				A1B9EFF0262C99C000E799E2 /* CreateAdService.swift in Sources */,
 				A1D18A0F25F68B38007A5CF7 /* SignInServiceProtocol.swift in Sources */,
 				A100522E260202F5002E807E /* ForgotPasswordError.swift in Sources */,
 				A184622F260CA331008D159F /* ConversationListViewModelProtocol.swift in Sources */,
@@ -899,9 +964,12 @@
 				A14DBF9A2601FD0400705AB9 /* RestCodeVerifyService.swift in Sources */,
 				A118FA0F260F3F60005D2F4D /* Coordinator.swift in Sources */,
 				A189E27A260B5A5B0051D578 /* AdCoordinator.swift in Sources */,
+				A1B9EFF4262C9E7C00E799E2 /* CreateAdError.swift in Sources */,
+				A1B9EFE7262C985E00E799E2 /* CreateAdServiceProtocol.swift in Sources */,
+				A1E046AC263585310027521D /* HeaderService.swift in Sources */,
 				A15ABA17261F2B2F00A549C7 /* AdTableViewCell.swift in Sources */,
 				A1886A4626078BDF006A41F4 /* OfferViewController.swift in Sources */,
-				A16C874125FF9DE500AC15AD /* MockHomeSreenService.swift in Sources */,
+				A16C874125FF9DE500AC15AD /* HomeScreenService.swift in Sources */,
 				A13880BE26205FE900DA1604 /* DetailOfferViewService.swift in Sources */,
 				A189E294260B65E70051D578 /* MockOfferService.swift in Sources */,
 				A1C455F525F91D8600ABD067 /* SignUpError.swift in Sources */,
@@ -914,14 +982,16 @@
 				A14DBF942601FCF700705AB9 /* RestSignInService.swift in Sources */,
 				A1381F69260E3DDD00BDF8CD /* ConversationFirebaseService.swift in Sources */,
 				A13880A526203FD700DA1604 /* DetailViewModelProtocol.swift in Sources */,
+				A1E04656263403D80027521D /* AdDto.swift in Sources */,
 				A1C455FD25F920F100ABD067 /* CodeVerifyViewModel.swift in Sources */,
 				A1C455ED25F91D5100ABD067 /* CodeVerifyServiceProtocol.swift in Sources */,
 				A1F67DEB25FE823D0007636E /* Date.swift in Sources */,
 				A189E291260B65C80051D578 /* OfferServiceProtocol.swift in Sources */,
-				A1340D652610951800439E1F /* MockSelectGamesService.swift in Sources */,
+				A1340D652610951800439E1F /* SelectGamesService.swift in Sources */,
 				A100522826020223002E807E /* ForgotPasswordServiceProtocol.swift in Sources */,
 				A1D9953D25EFF071002770AF /* SignInViewController.swift in Sources */,
 				A1381FBA260E681B00BDF8CD /* ConversationListViewModel.swift in Sources */,
+				A1E04683263556820027521D /* AdsServiceNames.swift in Sources */,
 				A1D05D60261BAA1F007F757F /* KeychainNames.swift in Sources */,
 				A189E269260B31720051D578 /* MainCoordinator.swift in Sources */,
 				A1721D4D2625E5B700BFD38C /* CreateAdViewController.swift in Sources */,
@@ -935,12 +1005,13 @@
 				A1D9954325F00564002770AF /* DataTextField.swift in Sources */,
 				A13880B22620552100DA1604 /* ProfileViewServiceProtocol.swift in Sources */,
 				A1340D5D2610879E00439E1F /* SelectGamesViewModelProtocol.swift in Sources */,
-				A189E28B260B629A0051D578 /* MockGameService.swift in Sources */,
+				A189E28B260B629A0051D578 /* GameService.swift in Sources */,
 				A1381FCA260F0F9D00BDF8CD /* LeftMessageTableViewCell.swift in Sources */,
 				A15ABA01261F1E6C00A549C7 /* ProfileViewController.swift in Sources */,
 				A15AB9EE261F011B00A549C7 /* InetErrorNames.swift in Sources */,
 				A17D8FD9261F7441009669EC /* DetailOfferViewConroller.swift in Sources */,
 				A184622B260C66DE008D159F /* ConversationTableViewCell.swift in Sources */,
+				A1B9EFEC262C994700E799E2 /* CreateAdServiceNames.swift in Sources */,
 				A1C7D66825F50F380087B41F /* ForgotPasswordViewController.swift in Sources */,
 				A1D379B325F74E19003FAAF6 /* SignUpViewModel.swift in Sources */,
 				A1846228260C66A0008D159F /* Conversation.swift in Sources */,
@@ -948,6 +1019,7 @@
 				A1D379AE25F74C43003FAAF6 /* SignUpServiceProtocol.swift in Sources */,
 				A17D8FDF261F748B009669EC /* OfferDetailViewController.swift in Sources */,
 				A1C7D67525F576340087B41F /* CodeVerifyViewController.swift in Sources */,
+				A1E04687263557180027521D /* AdServiceError.swift in Sources */,
 				A15AB9F3261F025100A549C7 /* AuthServiceNames.swift in Sources */,
 				A118FA14260F4E62005D2F4D /* SelectGameTableViewCell.swift in Sources */,
 				A15ABA13261F236000A549C7 /* ProfileHeaderView.swift in Sources */,
@@ -972,12 +1044,12 @@
 				A1A8B07925F25133008CDDA4 /* RoundedButton.swift in Sources */,
 				A1721D262625DD9100BFD38C /* FavoritesCoordinator.swift in Sources */,
 				A1D85FE62602528B00A6F7C6 /* HomeScreenViewModelProtocol.swift in Sources */,
+				A1E0468B2635584C0027521D /* BaseUrl.swift in Sources */,
 				A1A8B07C25F251BC008CDDA4 /* GrayLabel.swift in Sources */,
 				A10052312602038D002E807E /* ForgotPasswordViewModel.swift in Sources */,
 				A195FFBA260942DC00D3E34F /* Game.swift in Sources */,
 				A184623F260CA54A008D159F /* ConversationsFirebaseServiceProtocol.swift in Sources */,
 				A1381FB0260E622900BDF8CD /* FirebaseNames.swift in Sources */,
-				A1721D342625E29000BFD38C /* MockFavoriteService.swift in Sources */,
 				A10547BB260B926C00FEB2FD /* Observable.swift in Sources */,
 				A15ABA04261F1E9E00A549C7 /* ProfileViewModelProtocol.swift in Sources */,
 				A13880A826203FFF00DA1604 /* Offer.swift in Sources */,

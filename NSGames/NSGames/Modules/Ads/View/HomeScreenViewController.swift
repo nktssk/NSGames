@@ -35,6 +35,13 @@ class HomeScreenViewController: UIViewController {
         return activityIndicator
     }()
 
+    // MARK: - Properties
+    let refreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(updateData), for: .valueChanged)
+        return control
+    }()
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +52,11 @@ class HomeScreenViewController: UIViewController {
         constraints()
         bindData()
         getData()
+    }
+
+    // MARK: - Objc Methods
+    @objc func updateData() {
+        viewModel?.getData(completion: nil)
     }
 
     // MARK: - Private Methods
@@ -66,6 +78,7 @@ class HomeScreenViewController: UIViewController {
     }
 
     private func setCollectionView() {
+        collectionView.refreshControl = refreshControl
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(HomeScreenCollectionViewCell.self, forCellWithReuseIdentifier: HomeScreenCollectionViewCell.identifier)
@@ -108,6 +121,7 @@ class HomeScreenViewController: UIViewController {
     private func bindData() {
         viewModel?.items.observe(on: self) { [weak self] _ in
             self?.collectionView.reloadData()
+            self?.refreshControl.endRefreshing()
         }
         viewModel?.error.observe(on: self) { [weak self] value in
             if let self = self, let value = value {

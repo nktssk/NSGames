@@ -27,10 +27,10 @@ class CreateAdViewModel: CreateAdViewModelProtocol {
     var error: Observable<String?> = Observable(nil)
 
     private var hadNewImage = false
-    private let service: GameServiceProtocol
+    private let service: CreateAdServiceProtocol
     private let coordinator: CreateAdCoordinatorProtocol
 
-    init(service: GameServiceProtocol, coordinator: CreateAdCoordinatorProtocol) {
+    init(service: CreateAdServiceProtocol, coordinator: CreateAdCoordinatorProtocol) {
         self.service = service
         self.coordinator = coordinator
     }
@@ -58,24 +58,32 @@ class CreateAdViewModel: CreateAdViewModelProtocol {
         setNoImage()
     }
 
-    func sendData(name: String, price: String?, description: String) {
-        // TODO: - service
-    }
-
     func sendData(name: String?, price: String?, description: String) {
-        if name == nil {
+        guard let name = name else {
             return error.value = "Нужно заполнить название игры"
         }
         if description.isEmpty {
             return error.value = "Нужно заполнить описание"
         }
-        if price == nil || selectedGames.value.isEmpty {
+        if price == nil && selectedGames.value.isEmpty {
             return error.value = "Нужно выбрать игры для обмена или написать цену игры"
         }
         if !hadNewImage {
             return error.value = "Нужна хотя бы одна фотография для объявления"
         }
-        // TODO: - service
+
+        var data = [Data]()
+        for image in imageItems.value {
+            if let jpegData = image.jpegData(compressionQuality: 1) {
+                data.append(jpegData)
+            }
+        }
+
+        let ad = AdForm(title: name, price: Double(price ?? "") ?? 0, description: description, games: selectedGames.value)
+
+        service.uploadAd(images: data, ad: ad) { _ in
+        }
+
         imageItems.value = []
         selectedGames.value = []
     }

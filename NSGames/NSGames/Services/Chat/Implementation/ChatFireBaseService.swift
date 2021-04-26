@@ -10,6 +10,7 @@ import Firebase
 
 class ChatFireBaseService: ChatFireBaseServiceProtocol {
     public static let shared = ChatFireBaseService()
+    var otherUserName: String = ""
 
     private init() { }
 
@@ -23,11 +24,13 @@ class ChatFireBaseService: ChatFireBaseServiceProtocol {
         let messageData: [String: Any] = ["content": message.content,
                                           "created": message.created,
                                           "senderId": myId]
+        let otherLastMessageData: [String: Any] = ["lastMessageText": message.content,
+                                                   "lastActivity": Timestamp(date: message.created),
+                                                   "username": UserDefaults.standard.string(forKey: FirebaseNames.username) ?? "NoName"]
         let lastMessageData: [String: Any] = ["lastMessageText": message.content,
                                               "lastActivity": Timestamp(date: message.created),
-                                              "username": "Test"]
-        // TODO: - change username
-        otherUserConversation.setData(lastMessageData, merge: true)
+                                              "username": otherUserName]
+        otherUserConversation.setData(otherLastMessageData, merge: true)
         otherUserMessages.addDocument(data: messageData)
         myMessages.addDocument(data: messageData)
         myConversation.setData(lastMessageData, merge: true)

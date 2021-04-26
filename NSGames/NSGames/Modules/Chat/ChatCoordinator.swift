@@ -26,6 +26,7 @@ class ChatCoordinator: Coordinator {
 
     func goToChatView(id: String, username: String) {
         let controller = ChatViewController()
+        ChatFireBaseService.shared.otherUserName = username
         controller.viewModel = ChatViewModel(service: ChatFireBaseService.shared, id: id, title: username)
         navigationController.pushViewController(controller, animated: true)
     }

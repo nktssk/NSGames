@@ -213,6 +213,8 @@ PODS:
     - abseil/base/config
     - abseil/meta/type_traits
   - Alamofire (5.4.1)
+  - AlamofireNetworkActivityLogger (3.4.0):
+    - Alamofire (~> 5.4.0)
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
     - BoringSSL-GRPC/Interface (= 0.0.7)
@@ -286,19 +288,23 @@ PODS:
   - nanopb/decode (2.30907.0)
   - nanopb/encode (2.30907.0)
   - PromisesObjC (1.2.12)
+  - SkeletonView (1.15.0)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - AlamofireNetworkActivityLogger
   - Firebase/Firestore (= 7.8)
   - KeychainAccess (~> 4.1)
   - Kingfisher (~> 6.0)
+  - SkeletonView
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   trunk:
     - abseil
     - Alamofire
+    - AlamofireNetworkActivityLogger
     - BoringSSL-GRPC
     - Firebase
     - FirebaseCore
@@ -313,11 +319,13 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - SkeletonView
     - SnapKit
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  AlamofireNetworkActivityLogger: 162ab8aee00e6267a4304d7cc134e13ccfe3bcc5
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   Firebase: 1e0d6610f21bdd131231525d7ee78f7f9e64e606
   FirebaseCore: 049029df3096e5c118917029be7da75ee16f3b1b
@@ -332,8 +340,9 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  SkeletonView: cac18a3ac4f893b09d99e65072d806ef08377aae
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: d0e956f03ca2038743a6910ad80736014080e5f0
+PODFILE CHECKSUM: e69cb4a1fb61e0f9e908437d900a81f05ba943a3
 
 COCOAPODS: 1.10.1

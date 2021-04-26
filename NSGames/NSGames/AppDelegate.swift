@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import AlamofireNetworkActivityLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mainCoordinator = MainCoordinator()
         mainCoordinator?.start()
         FirebaseApp.configure()
+        NetworkActivityLogger.shared.level = .debug
+        NetworkActivityLogger.shared.startLogging()
         return true
     }
 }

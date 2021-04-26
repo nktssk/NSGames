@@ -18,4 +18,5 @@ enum FirebaseNames {
     static let messageContent = "content"
     static let messageDate = "created"
     static let messageSender = "senderId"
+    static let username = "usernameDF"
 }

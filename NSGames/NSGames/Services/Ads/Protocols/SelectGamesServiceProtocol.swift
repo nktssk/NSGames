@@ -8,5 +8,6 @@
 import Foundation
 
 protocol SelectGamesServiceProtocol {
-    func getGamesArray(completion: @escaping (Result<[Game], Error>) -> Void)
+    func getGamesArray(id: Int, completion: @escaping (Result<[Game], AdServiceError>) -> Void)
+    func getAllGames(completion: @escaping (Result<[Game], AdServiceError>) -> Void)
 }

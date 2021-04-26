@@ -24,16 +24,16 @@ class ChatViewModel: ChatViewModelProtocol {
     let myId = KeychainService.getChatId()
     private let service: ChatFireBaseServiceProtocol
     private let otherUserId: String
-    private let titleSrting: String
+    private let titleString: String
 
     init(service: ChatFireBaseServiceProtocol, id: String, title: String) {
         self.service = service
         otherUserId = id
-        titleSrting = title
+        self.titleString = title
     }
 
     func setup() {
-        title.value = titleSrting
+        self.title.value = titleString
         if let myId = myId {
             service.setListeners(myId: myId, to: otherUserId) { [weak self] result in
                 switch result {

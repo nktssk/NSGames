@@ -12,7 +12,8 @@ struct GameSreenConfig {
     let title: String
     let description: String
     let messageId: String
-    let price: Int
+    let price: Double
     let date: Date
     let username: String
+    let photoNames: [String]
 }

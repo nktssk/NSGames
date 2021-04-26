@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 protocol HomeScreenCellDelegate: AnyObject {
     func likeAd(config: AdCollectionViewCellConfig)
@@ -104,7 +105,9 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
     // MARK: - Public UI Methods
     func setData(configuration: AdCollectionViewCellConfig) {
         self.configuration = configuration
-        imageView.image = configuration.image
+        if let url = URL(string: BaseUrl.imageUrl + configuration.image) {
+            imageView.kf.setImage(with: url)
+        }
         nameLabel.text = configuration.name
         if configuration.isLiked {
             likeButton.setImage(#imageLiteral(resourceName: "SelectedHeart"), for: .normal)

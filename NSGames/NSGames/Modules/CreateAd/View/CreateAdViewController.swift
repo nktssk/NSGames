@@ -134,6 +134,14 @@ class CreateAdViewController: UIViewController {
         return button
     }()
 
+    let doneButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("", for: .normal)
+        button.setTitleColor(.gray, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        return button
+    }()
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,7 +165,7 @@ class CreateAdViewController: UIViewController {
     // MARK: - Objc Methods
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            scrollView.contentSize = CGSize(width: scrollView.frame.width, height: scrollView.frame.height + keyboardSize.height + 30)
+            scrollView.contentSize = CGSize(width: scrollView.frame.width, height: scrollView.frame.height + keyboardSize.height)
         }
     }
 
@@ -268,17 +276,15 @@ class CreateAdViewController: UIViewController {
     private func setupTextViewAndFields() {
         nameTextField.delegate = self
         priceTextField.delegate = self
-
-        let toolbar = UIToolbar()
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-                                        target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done,
-                                         target: self, action: #selector(doneButtonTapped))
-
-        toolbar.setItems([flexSpace, doneButton], animated: true)
-        toolbar.sizeToFit()
-
-        descriptionTextView.inputAccessoryView = toolbar
+//
+//        let toolbar = UIToolbar()
+//        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+//                                        target: nil, action: nil)
+//
+//        toolbar.setItems([flexSpace, doneButton], animated: true)
+//        toolbar.sizeToFit()
+//
+//        descriptionTextView.inputAccessoryView = toolbar
     }
 
     private func setNavigationBar() {

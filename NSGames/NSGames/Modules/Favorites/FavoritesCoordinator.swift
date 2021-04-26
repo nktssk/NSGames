@@ -12,7 +12,7 @@ class FavoritesCoordinator: AdsCoordinatorProtocol {
 
     init() {
         let homeScreen = HomeScreenViewController()
-        homeScreen.viewModel = MockHomeScreenViewModel(service: MockFavoriteService(), coordinator: self)
+        homeScreen.viewModel = MockHomeScreenViewModel(service: HomeScreenService(), coordinator: self)
         homeScreen.style = .favorites
         navigationController.pushViewController(homeScreen, animated: true)
     }
@@ -23,7 +23,7 @@ class FavoritesCoordinator: AdsCoordinatorProtocol {
 
     func goToDetailView(id: Int) {
         let controller = GameViewController()
-        controller.viewModel = MockGameViewModel(service: MockGameService(), coordinator: self, id: id)
+        controller.viewModel = MockGameViewModel(service: GameService(), coordinator: self, id: id)
         navigationController.pushViewController(controller, animated: true)
     }
 
@@ -35,7 +35,7 @@ class FavoritesCoordinator: AdsCoordinatorProtocol {
 
     func goToSelectGamesView(id: Int) {
         let controller = SelectGamesViewContoller()
-        controller.viewModel = SelectGamesViewModel(service: MockSelectGamesService(), coordinator: self, id: id)
+        controller.viewModel = SelectGamesViewModel(service: SelectGamesService(), coordinator: self, id: id)
         navigationController.pushViewController(controller, animated: true)
     }
 

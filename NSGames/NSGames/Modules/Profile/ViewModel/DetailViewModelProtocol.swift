@@ -33,12 +33,12 @@ class DetailViewModel: DetailViewModelProtocol {
     }
 
     func setup() {
-        items.value = [Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeList: [11, 12, 14], description: "Готов забрать сегодня", chatId: "12345"),
-                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeList: [11, 12, 14], description: "Готов забрать сегодня", chatId: "12345"),
-                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeList: [11, 12, 14], description: "Готов забрать сегодня", chatId: "12345"),
-                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeList: [11, 12, 14], description: "Готов забрать сегодня", chatId: "12345"),
-                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeList: [11, 12, 14], description: "Готов забрать сегодня", chatId: "12345"),
-                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeList: [11, 12, 14], description: "Готов забрать сегодня", chatId: "12345")]
+        items.value = [Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeListCount: 0, description: "Готов забрать сегодня", chatId: "12345"),
+                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeListCount: 0, description: "Готов забрать сегодня", chatId: "12345"),
+                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeListCount: 0, description: "Готов забрать сегодня", chatId: "12345"),
+                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeListCount: 0, description: "Готов забрать сегодня", chatId: "12345"),
+                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeListCount: nil, description: "Готов забрать сегодня", chatId: "12345"),
+                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeListCount: 3, description: "Готов забрать сегодня", chatId: "12345")]
     }
 
     func goToChat(id: Int) {

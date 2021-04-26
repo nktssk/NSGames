@@ -138,9 +138,10 @@ class OfferDetailTableViewCell: UITableViewCell {
             descriprionLabel.removeFromSuperview()
             staticDescriprionLabel.removeFromSuperview()
         }
-        if let trade = configuration.tradeList {
-            tradeListButton.setTitle("\(trade.count) игр для обмена", for: .normal)
+        if let count = configuration.tradeListCount {
+            tradeListButton.setTitle("\(count) игр для обмена", for: .normal)
         } else {
+            tradeLabel.removeFromSuperview()
             tradeListButton.removeFromSuperview()
         }
         offer = configuration

@@ -29,13 +29,15 @@ class ProfileCoordinator: Coordinator {
 
     func goToChat(messageId: String, username: String) {
         let controller = ChatViewController()
+        ChatFireBaseService.shared.otherUserName = username
         controller.viewModel = ChatViewModel(service: ChatFireBaseService.shared, id: messageId, title: username)
         navigationController.pushViewController(controller, animated: true)
     }
 
     func showTradeList(id: Int) {
         let controller = SelectGamesViewContoller()
-        controller.viewModel = SelectGamesViewModel(service: MockSelectGamesService(), coordinator: AdCoordinator(), id: id)
+        let viewModel = SelectGamesViewModel(service: SelectGamesService(), coordinator: AdCoordinator(), id: id)
+        controller.viewModel = viewModel
         navigationController.pushViewController(controller, animated: true)
     }
 }

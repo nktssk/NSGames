@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol GameViewModelProtocol {
     var imageItems: Observable<[UIImage]> { get set }
@@ -35,21 +36,25 @@ class MockGameViewModel: GameViewModelProtocol {
     }
 
     func getData() {
-        // TODO: request
         service.getStringData(id: id) { [weak self] result in
             switch result {
             case .success(let config):
                 self?.gameSreenConfig.value = config
+                for image in config.photoNames {
+                    if let url = URL(string: BaseUrl.imageUrl + image) {
+                        KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil, completionHandler: { result in
+                            switch result {
+                            case .success(let downloadedImage):
+                                DispatchQueue.main.async {
+                                    self?.imageItems.value.append(downloadedImage.image)
+                                }
 
-            case .failure:
-                self?.error.value = InetErrorNames.failedConnection
-            }
-        }
-
-        service.getImages(id: id) { [weak self] result in
-            switch result {
-            case .success(let images):
-                self?.imageItems.value = images
+                            default:
+                                break
+                            }
+                        })
+                    }
+                }
 
             case .failure:
                 self?.error.value = InetErrorNames.failedConnection

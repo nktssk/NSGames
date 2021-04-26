@@ -94,6 +94,9 @@ class ChatViewController: UIViewController {
                 AlertPresenter.showAlert(controller: self, text: value)
             }
         }
+        viewModel?.title.observe(on: self) { [weak self] value in
+            self?.title = value
+        }
     }
 
     private func addSubviews() {

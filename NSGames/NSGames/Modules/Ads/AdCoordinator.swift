@@ -28,7 +28,7 @@ class AdCoordinator: AdsCoordinatorProtocol {
 
     init() {
         let homeScreen = HomeScreenViewController()
-        homeScreen.viewModel = MockHomeScreenViewModel(service: MockHomeScreenService(), coordinator: self)
+        homeScreen.viewModel = MockHomeScreenViewModel(service: HomeScreenService(), coordinator: self)
         navigationController.pushViewController(homeScreen, animated: true)
     }
 
@@ -38,7 +38,7 @@ class AdCoordinator: AdsCoordinatorProtocol {
 
     func goToDetailView(id: Int) {
         let controller = GameViewController()
-        controller.viewModel = MockGameViewModel(service: MockGameService(), coordinator: self, id: id)
+        controller.viewModel = MockGameViewModel(service: GameService(), coordinator: self, id: id)
         navigationController.pushViewController(controller, animated: true)
     }
 
@@ -50,12 +50,13 @@ class AdCoordinator: AdsCoordinatorProtocol {
 
     func goToSelectGamesView(id: Int) {
         let controller = SelectGamesViewContoller()
-        controller.viewModel = SelectGamesViewModel(service: MockSelectGamesService(), coordinator: self, id: id)
+        controller.viewModel = SelectGamesViewModel(service: SelectGamesService(), coordinator: self, id: id)
         navigationController.pushViewController(controller, animated: true)
     }
 
     func goToChat(messageId: String, username: String) {
         let controller = ChatViewController()
+        ChatFireBaseService.shared.otherUserName = username
         controller.viewModel = ChatViewModel(service: ChatFireBaseService.shared, id: messageId, title: username)
         navigationController.pushViewController(controller, animated: true)
     }

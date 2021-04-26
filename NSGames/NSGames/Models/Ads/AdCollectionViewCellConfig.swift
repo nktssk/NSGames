@@ -7,10 +7,14 @@
 
 import UIKit
 
-struct AdCollectionViewCellConfig {
+struct AdCollectionViewCellConfig: Equatable {
     let id: Int
-    let image: UIImage
+    let image: String
     let name: String
-    var isLiked: Bool
     let date: Date
+    var isLiked: Bool
+
+    static func == (first: AdCollectionViewCellConfig, second: AdCollectionViewCellConfig) -> Bool {
+        return first.id == second.id
+    }
 }

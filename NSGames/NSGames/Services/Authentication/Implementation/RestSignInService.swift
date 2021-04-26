@@ -29,6 +29,7 @@ class RestSignInService: SignInServiceProtocol {
                             let data = try JSONDecoder().decode(SignInResponse.self, from: data)
                             KeychainService.saveToken(data.token)
                             KeychainService.saveChatId(data.user.chatId)
+                            UserDefaults.standard.setValue(data.user.username, forKey: FirebaseNames.username)
                             return completion(.success(()))
                         } catch {
                             return completion(.failure(.wrongData))
