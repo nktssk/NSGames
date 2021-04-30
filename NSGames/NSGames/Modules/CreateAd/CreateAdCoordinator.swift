@@ -10,11 +10,13 @@ import UIKit
 protocol CreateAdCoordinatorProtocol: Coordinator, SelectGameCoordinatorProtocol {
     func goToSelectGamesView()
     func goToSelectGamesView(games: [Int])
+    func goToProfilePage()
 }
 
 class CreateAdCoordinator: CreateAdCoordinatorProtocol {
 
     let navigationController = UINavigationController()
+    var tabBarCoordinator: AppTabBarController?
 
     func getStartViewController() -> UIViewController {
         let controller = CreateAdViewController()
@@ -34,6 +36,10 @@ class CreateAdCoordinator: CreateAdCoordinatorProtocol {
         controller.viewModel = SelectGamesViewModel(service: SelectGamesService(), coordinator: self, id: nil)
         controller.viewModel?.selected = games
         navigationController.pushViewController(controller, animated: true)
+    }
+
+    func goToProfilePage() {
+        tabBarCoordinator?.setProfileVC()
     }
 
     func choosen(games: [Int]) {

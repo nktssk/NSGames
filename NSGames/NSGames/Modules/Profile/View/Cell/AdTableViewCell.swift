@@ -13,12 +13,27 @@ class AdTableViewCell: UITableViewCell {
     static let identifier = "AdTableViewCell"
 
     // MARK: - UI
+    let backView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 14
+        view.backgroundColor = .white
+        return view
+    }()
+
     let nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         return label
+    }()
+
+    let adImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 14
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        return imageView
     }()
 
     let numberOfOffersLabel: UILabel = {
@@ -32,7 +47,7 @@ class AdTableViewCell: UITableViewCell {
     let staticNumberOfOffersLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
-        label.text = "Количество предложений ⚠️"
+        label.text = "Количество предложений 🗂"
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
@@ -58,9 +73,9 @@ class AdTableViewCell: UITableViewCell {
     let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .equalSpacing
-        stackView.alignment = .fill
+        stackView.alignment = .center
         stackView.axis = .vertical
-        stackView.spacing = 5
+        stackView.spacing = 10
         return stackView
     }()
 
@@ -87,7 +102,9 @@ class AdTableViewCell: UITableViewCell {
     // MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        accessoryType = .disclosureIndicator
+        contentView.backgroundColor = .clear
+        selectionStyle = .none
+
         addSubviews()
         setConstraints()
     }
@@ -101,29 +118,41 @@ class AdTableViewCell: UITableViewCell {
         nameLabel.text = configuration.name
         numberOfOffersLabel.text = "\(configuration.numberOfOffers)"
         numberOfViewsLabel.text = "\(configuration.views)"
+        guard let url = URL(string: BaseUrl.imageUrl + configuration.photo) else { return }
+        adImageView.kf.setImage(with: url)
     }
 
     // MARK: - Private Methods
     private func addSubviews() {
-        contentView.addSubview(stackView)
+        contentView.addSubview(backView)
+        backView.addSubview(stackView)
         offerStackView.addArrangedSubview(staticNumberOfOffersLabel)
         offerStackView.addArrangedSubview(numberOfOffersLabel)
         viewsStackView.addArrangedSubview(staticNumberOfViewsLabel)
         viewsStackView.addArrangedSubview(numberOfViewsLabel)
         stackView.addArrangedSubview(nameLabel)
+        stackView.addArrangedSubview(adImageView)
         stackView.addArrangedSubview(offerStackView)
         stackView.addArrangedSubview(viewsStackView)
     }
 
     private func setConstraints() {
-        staticNumberOfOffersLabel.snp.contentHuggingHorizontalPriority = 0
-        numberOfOffersLabel.snp.contentHuggingHorizontalPriority = 1000
-        staticNumberOfViewsLabel.snp.contentHuggingHorizontalPriority = 0
-        numberOfViewsLabel.snp.contentHuggingHorizontalPriority = 1000
+        staticNumberOfViewsLabel.snp.contentCompressionResistanceHorizontalPriority = 1000
+        staticNumberOfOffersLabel.snp.contentCompressionResistanceHorizontalPriority = 1000
+
+        backView.snp.makeConstraints { (make: ConstraintMaker) in
+            make.top.left.equalToSuperview().offset(10)
+            make.bottom.right.equalToSuperview().inset(10)
+        }
+
+        adImageView.snp.makeConstraints { (make: ConstraintMaker) in
+            make.width.equalToSuperview().multipliedBy(0.4)
+            make.height.equalTo(adImageView.snp.width)
+        }
 
         stackView.snp.makeConstraints { (make: ConstraintMaker) in
-            make.top.leading.equalToSuperview().offset(6)
-            make.bottom.trailing.equalToSuperview().inset(6)
+            make.top.left.equalToSuperview().offset(12)
+            make.bottom.right.equalToSuperview().inset(12)
         }
     }
 }

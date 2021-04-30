@@ -12,6 +12,7 @@ protocol ProfileViewModelProtocol {
     var userInfo: Observable <UserInfo?> { get set }
 
     func setup()
+    func quit()
     func didSelectItem(at: Int)
 }
 
@@ -29,8 +30,20 @@ class ProfileViewModel: ProfileViewModelProtocol {
     }
 
     func setup() {
-        items.value = [AdTableViewCellConfig(id: 100, name: "Red Dead Redemtion", numberOfOffers: 10, views: 500)]
         userInfo.value = UserInfo(username: "Nktlckr", email: "nikitashelov@gmail.com")
+        service.getAds { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.items.value = data
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    func quit() {
+        coordinator.goToAuth()
     }
 
     func didSelectItem(at index: Int) {

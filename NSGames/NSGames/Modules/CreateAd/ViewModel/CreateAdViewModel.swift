@@ -41,15 +41,16 @@ class CreateAdViewModel: CreateAdViewModelProtocol {
 
     func addImage(image: UIImage) {
         if !hadNewImage {
-            hadNewImage = true
             imageItems.value.removeAll()
         }
         imageItems.value.append(image)
+        hadNewImage = true
     }
 
     func setNoImage() {
-        if imageItems.value.isEmpty, let image = UIImage(named: "noImage") {
+        if imageItems.value.isEmpty, let image = UIImage(named: "NoImagePhoto") {
             imageItems.value = [image]
+            hadNewImage = false
         }
     }
 
@@ -74,14 +75,21 @@ class CreateAdViewModel: CreateAdViewModelProtocol {
 
         var data = [Data]()
         for image in imageItems.value {
-            if let jpegData = image.jpegData(compressionQuality: 1) {
+            if let jpegData = image.jpegData(compressionQuality: 0.5) {
                 data.append(jpegData)
             }
         }
 
         let ad = AdForm(title: name, price: Double(price ?? "") ?? 0, description: description, games: selectedGames.value)
 
-        service.uploadAd(images: data, ad: ad) { _ in
+        service.uploadAd(images: data, ad: ad) { [weak self] result in
+            switch result {
+            case .success:
+                self?.coordinator.goToProfilePage()
+
+            case .failure:
+                break
+            }
         }
 
         imageItems.value = []

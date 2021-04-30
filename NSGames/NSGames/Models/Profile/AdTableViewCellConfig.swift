@@ -11,5 +11,6 @@ struct AdTableViewCellConfig {
     let id: Int
     let name: String
     let numberOfOffers: Int
+    let photo: String
     let views: Int
 }

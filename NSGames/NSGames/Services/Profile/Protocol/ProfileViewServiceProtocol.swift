@@ -8,6 +8,6 @@
 import Foundation
 
 protocol ProfileViewServiceProtocol {
-    func getUserInfo(completion: @escaping (Result<UserInfo, Error>) -> Void)
-    func getAds(completion: @escaping (Result<[AdTableViewCellConfig], Error>) -> Void)
+    func getUserInfo(completion: @escaping (Result<UserInfo, ProfileServiceError>) -> Void)
+    func getAds(completion: @escaping (Result<[AdTableViewCellConfig], ProfileServiceError>) -> Void)
 }

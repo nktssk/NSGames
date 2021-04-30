@@ -24,11 +24,23 @@ class ProfileViewController: UIViewController {
         bindData()
         addSubviews()
         setConstraints()
+        tableView.separatorStyle = .none
         tableView.tableHeaderView = header
         tableView.register(AdTableViewCell.self, forCellReuseIdentifier: AdTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         viewModel?.setup()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Выйти", style: .done, target: self, action: #selector(exitButtonAction))
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel?.setup()
+    }
+
+    // MARK: - Objc Methods
+    @objc func exitButtonAction() {
+        viewModel?.quit()
     }
 
     // MARK: - Private Methods
@@ -69,11 +81,46 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if let ad = viewModel?.items.value[indexPath.row] {
             cell.setData(configuration: ad)
         }
+        cell.backgroundColor = tableView.backgroundColor
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        viewModel?.didSelectItem(at: indexPath.row)
+
+        guard let cell = tableView.cellForRow(at: indexPath) as? AdTableViewCell else { return }
+        cell.backView.snp.removeConstraints()
+        cell.backView.snp.makeConstraints { (make: ConstraintMaker) in
+            make.edges.equalToSuperview()
+        }
+
+        UIView.animate(withDuration: 1,
+                       delay: 0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 10,
+                       options: [.curveEaseInOut],
+                       animations: { [unowned cell] in
+                        cell.layoutIfNeeded()
+                        cell.backView.layer.cornerRadius = 0
+                       },
+                       completion: { [weak cell, viewModel] _ in
+                        cell?.backView.snp.removeConstraints()
+                        cell?.backView.snp.makeConstraints { (make: ConstraintMaker) in
+                            make.top.left.equalToSuperview().offset(10)
+                            make.bottom.right.equalToSuperview().inset(10)
+                        }
+                        UIView.animate(withDuration: 0.2,
+                                       delay: 0,
+                                       usingSpringWithDamping: 1,
+                                       initialSpringVelocity: 10,
+                                       options: .curveEaseInOut,
+                                       animations: {
+                                        cell?.backView.layer.cornerRadius = 14
+                                        cell?.layoutIfNeeded()
+                                       },
+                                       completion: { _ in
+                                        viewModel?.didSelectItem(at: indexPath.row)
+                                       })
+                       })
     }
 }

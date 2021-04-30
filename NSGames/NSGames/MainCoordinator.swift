@@ -13,17 +13,35 @@ class MainCoordinator {
     func start() {
         window.makeKeyAndVisible()
         window.backgroundColor = .white
-        KeychainService.deleteAll()
-        if KeychainService.getToken() != nil {
-            goToTabBar()
-        } else {
-            let coordinator = AuthenticationCoordinator()
-            coordinator.mainCoordinator = self
-            window.rootViewController = coordinator.getStartViewController()
-        }
+        let coordinator = OnboardingCoordinator()
+        coordinator.mainCoordinator = self
+        setRootViewController(coordinator.getStartViewController(), duration: 1)
     }
 
     func goToTabBar() {
-        window.rootViewController = AppTabBarController()
+        let contoller = AppTabBarController(mainCoordinator: self)
+        setRootViewController(contoller, duration: 0.25)
+    }
+
+    func onboardingAnimationFinish() {
+//        KeychainService.deleteAll()
+        if KeychainService.getToken() != nil {
+            goToTabBar()
+        } else {
+//            goToTabBar()
+            let coordinator = AuthenticationCoordinator()
+            coordinator.mainCoordinator = self
+            setRootViewController(coordinator.getStartViewController(), duration: 0.25)
+        }
+    }
+
+    func setRootViewController(_ vc: UIViewController, duration: TimeInterval) {
+        window.rootViewController = vc
+        window.makeKeyAndVisible()
+        UIView.transition(with: window,
+                          duration: duration,
+                          options: .transitionCrossDissolve,
+                          animations: nil,
+                          completion: nil)
     }
 }

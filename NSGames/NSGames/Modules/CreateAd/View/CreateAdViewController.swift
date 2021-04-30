@@ -158,8 +158,6 @@ class CreateAdViewController: UIViewController {
         tradeListButton.addTarget(self, action: #selector(tradeListButtonAction), for: .touchUpInside)
         deleteButton.addTarget(self, action: #selector(deleteButtonAction), for: .touchUpInside)
         addImageButton.addTarget(self, action: #selector(addImageButtonAction), for: .touchUpInside)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     // MARK: - Objc Methods
@@ -233,7 +231,7 @@ class CreateAdViewController: UIViewController {
         imageSlider.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.4)
+            make.height.equalTo(imageSlider.snp.width).multipliedBy(3.0 / 4.0)
             make.trailing.leading.equalToSuperview()
         }
 

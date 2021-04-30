@@ -54,6 +54,7 @@ class SelectGamesViewContoller: UIViewController {
     private func bindData() {
         viewModel?.games.observe(on: self) { [weak self] _ in
             self?.tableView.reloadData()
+            self?.animateTable()
         }
     }
 
@@ -70,6 +71,26 @@ class SelectGamesViewContoller: UIViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonAction))
+    }
+
+    private func animateTable() {
+        for cell in tableView.visibleCells {
+            cell.transform = CGAffineTransform(translationX: 0, y: tableView.frame.height)
+        }
+
+        var delay = 0
+        for cell in tableView.visibleCells {
+            cell.alpha = 0.3
+            UIView.animate(withDuration: 1 - 0.02 * Double(delay),
+                           delay: 0.05 * Double(delay),
+                           options: [.curveEaseInOut],
+                           animations: {
+                            cell.transform = .identity
+                            cell.alpha = 1.0
+                           },
+                           completion: nil)
+            delay += 1
+        }
     }
 }
 

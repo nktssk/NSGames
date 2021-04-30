@@ -9,14 +9,19 @@ import UIKit
 
 class AppTabBarController: UITabBarController {
 
+    let mainCoordinator: MainCoordinator
     let adCoordinator = AdCoordinator()
     let chatCoordinator = ChatCoordinator()
     let profileCoordinator = ProfileCoordinator()
     let favoritesCoordinator = FavoritesCoordinator()
     let createAdCoordinator = CreateAdCoordinator()
 
-    init() {
+    init(mainCoordinator: MainCoordinator) {
+        self.mainCoordinator = mainCoordinator
         super.init(nibName: nil, bundle: nil)
+
+        createAdCoordinator.tabBarCoordinator = self
+        profileCoordinator.mainCoordinator = mainCoordinator
         let homeController = adCoordinator.getStartViewController()
         homeController.tabBarItem = UITabBarItem(title: "Главная",
                                                  image: UIImage(named: "house.fill"),
@@ -43,6 +48,10 @@ class AppTabBarController: UITabBarController {
                                                      tag: 0)
 
         self.viewControllers = [homeController, favoritesController, createAdController, chatController, profileController]
+    }
+
+    func setProfileVC() {
+        selectedIndex = 4
     }
 
     required init?(coder: NSCoder) {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class DetailOfferViewService: DetailOfferViewServiceProtocol {
     func getOffers(id: Int, completion: @escaping (Result<[Offer], Error>) -> Void) {

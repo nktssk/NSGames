@@ -27,14 +27,23 @@ class CreateAdService: CreateAdServiceProtocol {
                         return completion(.failure(.badRequest))
                     }
 
+                    let group = DispatchGroup()
                     for image in images {
-                        AF.upload(multipartFormData: { (multipart: MultipartFormData) in multipart.append(image, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg") },
-                                  to: CreateAdPath.uploadPhoto + "\(id)",
-                                  headers: HeaderService.shared.getHeaders()).responseJSON { response in
+                        group.enter()
+                        AF.upload(multipartFormData: { multipart in
+                                    multipart.append(image, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
+                                  }, to: CreateAdPath.uploadPhoto + "\(id)",
+                                     headers: HeaderService.shared.getHeaders()).responseJSON { response in
                                         if let statusCode = response.response?.statusCode, !(200...300).contains(statusCode) {
                                         return completion(.failure(.badRequest))
                                         }
+                                    group.leave()
                         }
+                    }
+                    group.wait()
+
+                    DispatchQueue.main.async {
+                        return completion(.success(()))
                     }
         }
     }

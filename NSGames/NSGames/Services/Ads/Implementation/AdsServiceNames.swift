@@ -19,7 +19,7 @@ struct AdFeedDto: Codable {
     let id: Int
     let liked: Bool
     let name: String
-    //let date: Date
+//    let date: Date
     let photoName: String
 }
 

@@ -34,6 +34,11 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(controller, animated: true)
     }
 
+    func goToAuth() {
+        KeychainService.deleteAll()
+        mainCoordinator?.start()
+    }
+
     func showTradeList(id: Int) {
         let controller = SelectGamesViewContoller()
         let viewModel = SelectGamesViewModel(service: SelectGamesService(), coordinator: AdCoordinator(), id: id)
