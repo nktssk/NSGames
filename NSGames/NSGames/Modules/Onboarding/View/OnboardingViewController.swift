@@ -67,11 +67,11 @@ class OnboardingViewController: UIViewController {
     }
 
     private func sticksFirstAnimation() {
-        let leftNewPoint = CGPoint(x: ConstantSize.stickSize().width / 2.5 + backgroundImageView.frame.origin.x + 0.1 * ConstantSize.backgroundWidth() + 13,
+        let leftNewPoint = CGPoint(x: ConstantSize.stickSize().width / 2.5 + backgroundImageView.frame.origin.x + 0.1 * ConstantSize.backgroundWidth() + 12,
                                    y: ConstantSize.stickSize().height / 2.2 + backgroundImageView.frame.origin.y + 0.21 * ConstantSize.backgroundWidth())
 //        let leftPointAnimation = moveAnimation(fromPoint: leftStickImageView.center, toPoint: leftNewPoint)
 
-        let rightNewPoint = CGPoint(x: ConstantSize.stickSize().width / 2.3 + backgroundImageView.frame.origin.x + 0.55 * ConstantSize.backgroundWidth() - 13,
+        let rightNewPoint = CGPoint(x: ConstantSize.stickSize().width / 2.3 + backgroundImageView.frame.origin.x + 0.55 * ConstantSize.backgroundWidth() - 12,
                                     y: ConstantSize.stickSize().height / 2.2 + backgroundImageView.frame.origin.y + 0.35 * ConstantSize.backgroundWidth())
 //        let rightPointAnimation = moveAnimation(fromPoint: rightStickImageView.center, toPoint: rightNewPoint)
 

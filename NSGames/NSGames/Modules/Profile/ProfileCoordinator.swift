@@ -39,7 +39,7 @@ class ProfileCoordinator: Coordinator {
         mainCoordinator?.start()
     }
 
-    func showTradeList(id: Int) {
+    func goToTradeList(id: Int) {
         let controller = SelectGamesViewContoller()
         let viewModel = SelectGamesViewModel(service: SelectGamesService(), coordinator: AdCoordinator(), id: id)
         controller.viewModel = viewModel

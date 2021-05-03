@@ -9,7 +9,33 @@ import Foundation
 import Alamofire
 
 class DetailOfferViewService: DetailOfferViewServiceProtocol {
-    func getOffers(id: Int, completion: @escaping (Result<[Offer], Error>) -> Void) {
-        return completion(.success([Offer(id: 1, username: "Pasandep", price: 123, tradeListCount: 0, description: "Могу забрать сегодня", chatId: "12345")]))
+    func getOffers(id: Int, completion: @escaping (Result<[Offer], AdServiceError>) -> Void) {
+        AF.request(ProfileRequestPath.detail + "/\(id)",
+                   method: .get,
+                   headers: HeaderService.shared.getHeaders()).responseJSON(queue: DispatchQueue.global(qos: .userInitiated)) { response in
+                    if response.error != nil {
+                        return completion(.failure(.noConnection))
+                    }
+                    if let statusCode = response.response?.statusCode, !(200...300).contains(statusCode) {
+                        return completion(.failure(.badRequest))
+                    }
+                    if let data = response.data {
+                        do {
+                            let offers = try JSONDecoder().decode([DetailOfferDto].self, from: data)
+                            var configs = [Offer]()
+                            for offer in offers {
+                                configs.append(Offer(id: offer.id,
+                                                     username: offer.name,
+                                                     price: offer.price,
+                                                     tradeListCount: offer.countOfTradeList,
+                                                     description: offer.description,
+                                                     chatId: offer.chatId))
+                            }
+                            return completion(.success(configs))
+                        } catch {
+                            return completion(.failure(.wrongData))
+                        }
+                    }
+        }
     }
 }

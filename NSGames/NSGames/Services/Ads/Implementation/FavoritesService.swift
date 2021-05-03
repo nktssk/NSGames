@@ -1,20 +1,17 @@
 //
-//  ProfileViewService.swift
+//  FavoritesService.swift
 //  NSGames
 //
-//  Created by Nikita Sosyuk on 09.04.2021.
+//  Created by Nikita Sosyuk on 02.05.2021.
 //
 
 import Foundation
 import Alamofire
 
-class ProfileViewService: ProfileViewServiceProtocol {
-    func getUserInfo(completion: @escaping (Result<UserInfo, ProfileServiceError>) -> Void) {
-        return completion(.success(UserInfo(username: "Nikita Sosyuk", email: "nikitashelov@gmail.com")))
-    }
+class FavoritesService: HomeScreenServiceProtocol {
+    func getData(completion: @escaping (Result<[AdCollectionViewCellConfig], AdServiceError>) -> Void) {
 
-    func getAds(completion: @escaping (Result<[AdTableViewCellConfig], ProfileServiceError>) -> Void) {
-        AF.request(ProfileRequestPath.ads,
+        AF.request(AdsRequestPath.favorites,
                    method: .get,
                    parameters: nil,
                    headers: HeaderService.shared.getHeaders()).responseJSON(queue: DispatchQueue.global(qos: .userInitiated)) { response in
@@ -26,10 +23,10 @@ class ProfileViewService: ProfileViewServiceProtocol {
                     }
                     if let data = response.data {
                         do {
-                            let ads = try JSONDecoder().decode([ProfileAdDto].self, from: data)
-                            var configs = [AdTableViewCellConfig]()
+                            let ads = try JSONDecoder().decode([AdFeedDto].self, from: data)
+                            var configs = [AdCollectionViewCellConfig]()
                             for ad in ads {
-                                configs.append(AdTableViewCellConfig(id: ad.id, name: ad.title, numberOfOffers: ad.countOffers, photo: ad.firstPhoto, views: ad.countViews))
+                                configs.append(AdCollectionViewCellConfig(id: ad.id, image: ad.photoName, name: ad.name, date: Date(), isLiked: ad.liked))
                             }
                             return completion(.success(configs))
                         } catch {
@@ -39,10 +36,12 @@ class ProfileViewService: ProfileViewServiceProtocol {
         }
     }
 
-    func deleteAd(id: Int, completion: @escaping (Result<Void, ProfileServiceError>) -> Void) {
-        AF.request(ProfileRequestPath.delete + "/\(id)",
-                   method: .delete,
-                   headers: HeaderService.shared.getHeaders()).responseJSON(queue: DispatchQueue.global(qos: .userInitiated)) { response in
+    func likeAd(id: Int, completion: @escaping (Result<Void, AdServiceError>) -> Void) {
+        AF.request(AdsRequestPath.like,
+                   method: .post,
+                   parameters: ["id": id],
+                   encoder: JSONParameterEncoder.default,
+                   headers: HeaderService.shared.getHeaders()).responseJSON { response in
                     if response.error != nil {
                         return completion(.failure(.noConnection))
                     }

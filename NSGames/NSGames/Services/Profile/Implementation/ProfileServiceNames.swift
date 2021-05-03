@@ -9,6 +9,8 @@ import Foundation
 
 enum ProfileRequestPath {
     static let ads = "http://localhost/user/ads"
+    static let detail = "http://localhost/ad/offers"
+    static let delete = "http://localhost/ad/delete"
 }
 
 struct ProfileAdDto: Codable {
@@ -21,4 +23,13 @@ struct ProfileAdDto: Codable {
     let countOffers: Int
     let countViews: Int
     let firstPhoto: String
+}
+
+struct DetailOfferDto: Codable {
+    let id: Int
+    let price: Double?
+    let chatId: String
+    let name: String
+    let description: String
+    let countOfTradeList: Int?
 }

@@ -8,4 +8,5 @@
 import Foundation
 
 protocol OfferServiceProtocol {
+    func sendOffer(offer: OfferDto, completion: @escaping (Result<Void, AdServiceError>) -> Void)
 }

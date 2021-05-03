@@ -21,7 +21,9 @@ protocol SelectGameCoordinatorProtocol {
 
 class AdCoordinator: AdsCoordinatorProtocol {
     func choosen(games: [Int]) {
-        // TO DO: - Logic
+        navigationController.popViewController(animated: true)
+        guard let controller = navigationController.topViewController as? OfferViewController else { fatalError() }
+        controller.viewModel?.selectedGames.value = games
     }
 
     let navigationController = UINavigationController()
@@ -44,7 +46,7 @@ class AdCoordinator: AdsCoordinatorProtocol {
 
     func goToOfferView(id: Int) {
         let controller = OfferViewController()
-        controller.viewModel = MockOfferViewModel(service: MockOfferService(), coordinator: self, id: id)
+        controller.viewModel = MockOfferViewModel(service: OfferService(), coordinator: self, id: id)
         navigationController.pushViewController(controller, animated: true)
     }
 

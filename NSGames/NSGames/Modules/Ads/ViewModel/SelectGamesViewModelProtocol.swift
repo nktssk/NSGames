@@ -38,6 +38,7 @@ class SelectGamesViewModel: SelectGamesViewModelProtocol {
 
     func getData() {
         if let id = offerId {
+            getGames(id: id)
         } else {
             getAllGames()
         }

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol DetailOfferViewServiceProtocol {
-    func getOffers(id: Int, completion: @escaping (Result<[Offer], Error>) -> Void)
+    func getOffers(id: Int, completion: @escaping (Result<[Offer], AdServiceError>) -> Void)
 }

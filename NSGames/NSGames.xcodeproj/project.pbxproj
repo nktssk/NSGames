@@ -35,6 +35,7 @@
 		A13880B826205D3300DA1604 /* ProfileViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13880B726205D3300DA1604 /* ProfileViewService.swift */; };
 		A13880BB26205FBA00DA1604 /* DetailOfferViewServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13880BA26205FBA00DA1604 /* DetailOfferViewServiceProtocol.swift */; };
 		A13880BE26205FE900DA1604 /* DetailOfferViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13880BD26205FE900DA1604 /* DetailOfferViewService.swift */; };
+		A13DCEF8263EF3160030E47E /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13DCEF7263EF3160030E47E /* FavoritesService.swift */; };
 		A1418B1B25FE1C6F00FF13CC /* HomeScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1418B1A25FE1C6F00FF13CC /* HomeScreenCollectionViewCell.swift */; };
 		A1418B2025FE246900FF13CC /* AdCollectionViewCellConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1418B1F25FE246900FF13CC /* AdCollectionViewCellConfig.swift */; };
 		A1418B3225FE2FC100FF13CC /* HomeScreenCellCollectionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1418B3125FE2FC100FF13CC /* HomeScreenCellCollectionConstants.swift */; };
@@ -83,7 +84,7 @@
 		A189E28B260B629A0051D578 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189E28A260B629A0051D578 /* GameService.swift */; };
 		A189E28E260B65510051D578 /* OfferViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189E28D260B65510051D578 /* OfferViewModelProtocol.swift */; };
 		A189E291260B65C80051D578 /* OfferServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189E290260B65C80051D578 /* OfferServiceProtocol.swift */; };
-		A189E294260B65E70051D578 /* MockOfferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189E293260B65E70051D578 /* MockOfferService.swift */; };
+		A189E294260B65E70051D578 /* OfferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189E293260B65E70051D578 /* OfferService.swift */; };
 		A18ED8B22611F7EE0053AE37 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18ED8B12611F7EE0053AE37 /* ShadowView.swift */; };
 		A18ED8BB261211C00053AE37 /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18ED8BA261211BF0053AE37 /* TextViewWithPlaceholder.swift */; };
 		A1949D0F261EFAA90028EBC8 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1949D0E261EFAA90028EBC8 /* AlertPresenter.swift */; };
@@ -155,6 +156,7 @@
 		A13880B726205D3300DA1604 /* ProfileViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewService.swift; sourceTree = "<group>"; };
 		A13880BA26205FBA00DA1604 /* DetailOfferViewServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOfferViewServiceProtocol.swift; sourceTree = "<group>"; };
 		A13880BD26205FE900DA1604 /* DetailOfferViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOfferViewService.swift; sourceTree = "<group>"; };
+		A13DCEF7263EF3160030E47E /* FavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesService.swift; sourceTree = "<group>"; };
 		A1418B1A25FE1C6F00FF13CC /* HomeScreenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1418B1F25FE246900FF13CC /* AdCollectionViewCellConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCollectionViewCellConfig.swift; sourceTree = "<group>"; };
 		A1418B3125FE2FC100FF13CC /* HomeScreenCellCollectionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCellCollectionConstants.swift; sourceTree = "<group>"; };
@@ -205,7 +207,7 @@
 		A189E28A260B629A0051D578 /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 		A189E28D260B65510051D578 /* OfferViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferViewModelProtocol.swift; sourceTree = "<group>"; };
 		A189E290260B65C80051D578 /* OfferServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferServiceProtocol.swift; sourceTree = "<group>"; };
-		A189E293260B65E70051D578 /* MockOfferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOfferService.swift; sourceTree = "<group>"; };
+		A189E293260B65E70051D578 /* OfferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferService.swift; sourceTree = "<group>"; };
 		A18ED8B12611F7EE0053AE37 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		A18ED8BA261211BF0053AE37 /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		A1949D0E261EFAA90028EBC8 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
@@ -662,8 +664,9 @@
 				A1E04682263556820027521D /* AdsServiceNames.swift */,
 				A16C874025FF9DE500AC15AD /* HomeScreenService.swift */,
 				A189E28A260B629A0051D578 /* GameService.swift */,
-				A189E293260B65E70051D578 /* MockOfferService.swift */,
+				A189E293260B65E70051D578 /* OfferService.swift */,
 				A1340D642610951800439E1F /* SelectGamesService.swift */,
+				A13DCEF7263EF3160030E47E /* FavoritesService.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -1008,7 +1011,7 @@
 				A16C874125FF9DE500AC15AD /* HomeScreenService.swift in Sources */,
 				A1E046B32636B1340027521D /* OnboardingCoordinator.swift in Sources */,
 				A13880BE26205FE900DA1604 /* DetailOfferViewService.swift in Sources */,
-				A189E294260B65E70051D578 /* MockOfferService.swift in Sources */,
+				A189E294260B65E70051D578 /* OfferService.swift in Sources */,
 				A1C455F525F91D8600ABD067 /* SignUpError.swift in Sources */,
 				A1340D62261091FC00439E1F /* SelectGamesServiceProtocol.swift in Sources */,
 				A14DBF972601FCFF00705AB9 /* RestSignUpService.swift in Sources */,
@@ -1020,6 +1023,7 @@
 				A1381F69260E3DDD00BDF8CD /* ConversationFirebaseService.swift in Sources */,
 				A1E046B72636B2050027521D /* OnboardingViewController.swift in Sources */,
 				A13880A526203FD700DA1604 /* DetailViewModelProtocol.swift in Sources */,
+				A13DCEF8263EF3160030E47E /* FavoritesService.swift in Sources */,
 				A1E04656263403D80027521D /* AdDto.swift in Sources */,
 				A1C455FD25F920F100ABD067 /* CodeVerifyViewModel.swift in Sources */,
 				A1C455ED25F91D5100ABD067 /* CodeVerifyServiceProtocol.swift in Sources */,

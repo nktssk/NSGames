@@ -8,10 +8,14 @@
 import Foundation
 
 protocol OfferViewModelProtocol {
-    func selectGames(id: Int)
+    var selectedGames: Observable<[Int]> { get set }
+
+    func selectGames()
+    func sendOffer(description: String, price: Double?)
 }
 
 class MockOfferViewModel: OfferViewModelProtocol {
+    var selectedGames: Observable<[Int]> = Observable([])
 
     private let coordinator: AdsCoordinatorProtocol
     private let service: OfferServiceProtocol
@@ -23,7 +27,13 @@ class MockOfferViewModel: OfferViewModelProtocol {
         self.id = id
     }
 
-    func selectGames(id: Int) {
+    func selectGames() {
         coordinator.goToSelectGamesView(id: id)
+    }
+
+    func sendOffer(description: String, price: Double?) {
+        service.sendOffer(offer: OfferDto(adId: id, price: price, tradeList: selectedGames.value, description: description)) { result in
+            print("done")
+        }
     }
 }

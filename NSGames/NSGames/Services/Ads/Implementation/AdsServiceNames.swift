@@ -13,6 +13,8 @@ enum AdsRequestPath {
     static let detail = "http://localhost/ad/detail"
     static let tradeList = "http://localhost/ad/tradeList/"
     static let allGameList = "http://localhost/game/getAll"
+    static let favorites = "http://localhost/ad/favorites"
+    static let offer = "http://localhost/ad/createOffer"
 }
 
 struct AdFeedDto: Codable {
@@ -39,4 +41,11 @@ struct AdDetailDto: Codable {
 struct GameDto: Codable {
     let id: Int
     let name: String
+}
+
+struct OfferDto: Codable {
+    let adId: Int
+    let price: Double?
+    let tradeList: [Int]
+    let description: String
 }

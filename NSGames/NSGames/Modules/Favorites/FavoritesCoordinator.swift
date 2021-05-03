@@ -8,12 +8,18 @@
 import UIKit
 
 class FavoritesCoordinator: AdsCoordinatorProtocol {
+    func choosen(games: [Int]) {
+        navigationController.popViewController(animated: true)
+        guard let controller = navigationController.topViewController as? OfferViewController else { fatalError() }
+        controller.viewModel?.selectedGames.value = games
+    }
+
     let navigationController = UINavigationController()
 
     init() {
         let homeScreen = HomeScreenViewController()
-        homeScreen.viewModel = MockHomeScreenViewModel(service: HomeScreenService(), coordinator: self)
         homeScreen.style = .favorites
+        homeScreen.viewModel = MockHomeScreenViewModel(service: FavoritesService(), coordinator: self)
         navigationController.pushViewController(homeScreen, animated: true)
     }
 
@@ -29,7 +35,7 @@ class FavoritesCoordinator: AdsCoordinatorProtocol {
 
     func goToOfferView(id: Int) {
         let controller = OfferViewController()
-        controller.viewModel = MockOfferViewModel(service: MockOfferService(), coordinator: self, id: id)
+        controller.viewModel = MockOfferViewModel(service: OfferService(), coordinator: self, id: id)
         navigationController.pushViewController(controller, animated: true)
     }
 
@@ -41,11 +47,8 @@ class FavoritesCoordinator: AdsCoordinatorProtocol {
 
     func goToChat(messageId: String, username: String) {
         let controller = ChatViewController()
+        ChatFireBaseService.shared.otherUserName = username
         controller.viewModel = ChatViewModel(service: ChatFireBaseService.shared, id: messageId, title: username)
         navigationController.pushViewController(controller, animated: true)
-    }
-
-    func choosen(games: [Int]) {
-        // TODO: - something
     }
 }

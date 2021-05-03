@@ -33,12 +33,15 @@ class DetailViewModel: DetailViewModelProtocol {
     }
 
     func setup() {
-        items.value = [Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeListCount: 0, description: "Готов забрать сегодня", chatId: "12345"),
-                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeListCount: 0, description: "Готов забрать сегодня", chatId: "12345"),
-                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeListCount: 0, description: "Готов забрать сегодня", chatId: "12345"),
-                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeListCount: 0, description: "Готов забрать сегодня", chatId: "12345"),
-                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeListCount: nil, description: "Готов забрать сегодня", chatId: "12345"),
-                       Offer(id: 1, username: "Nikita Sosyuk", price: 1400, tradeListCount: 3, description: "Готов забрать сегодня", chatId: "12345")]
+        service.getOffers(id: id) { [weak self] result in
+            switch result {
+            case .success(let offers):
+                self?.items.value = offers
+
+            case .failure:
+                break
+            }
+        }
     }
 
     func goToChat(id: Int) {
@@ -49,7 +52,7 @@ class DetailViewModel: DetailViewModelProtocol {
 
     func showTradeList(id: Int) {
         if let id = items.value.first(where: { $0.id == id })?.id {
-            coordinator.showTradeList(id: id)
+            coordinator.goToTradeList(id: id)
         }
     }
 }

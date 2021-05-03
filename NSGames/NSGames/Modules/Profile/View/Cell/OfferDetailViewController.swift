@@ -22,6 +22,13 @@ class OfferDetailTableViewCell: UITableViewCell {
     weak var delegate: OfferDetailTableViewCellDelegate?
 
     // MARK: - UI
+    let backView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 14
+        view.backgroundColor = .white
+        return view
+    }()
+
     let usernameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
@@ -104,6 +111,9 @@ class OfferDetailTableViewCell: UITableViewCell {
         setConstraints()
         writeButton.addTarget(self, action: #selector(writeButtonAction), for: .touchUpInside)
         tradeListButton.addTarget(self, action: #selector(tradeListButtonAction), for: .touchUpInside)
+
+        backView.layer.borderWidth = 1
+        backView.layer.borderColor = UIColor.lightGray.cgColor
     }
 
     required init?(coder: NSCoder) {
@@ -149,7 +159,8 @@ class OfferDetailTableViewCell: UITableViewCell {
 
     // MARK: - Private Methods
     private func addSubviews() {
-        contentView.addSubview(stackView)
+        contentView.addSubview(backView)
+        backView.addSubview(stackView)
         stackView.addArrangedSubview(usernameLabel)
         stackView.addArrangedSubview(staticPriceLabel)
         stackView.addArrangedSubview(priceLabel)
@@ -161,6 +172,11 @@ class OfferDetailTableViewCell: UITableViewCell {
     }
 
     private func setConstraints() {
+        backView.snp.makeConstraints { (make: ConstraintMaker) in
+            make.top.left.equalToSuperview().offset(10)
+            make.bottom.right.equalToSuperview().inset(10)
+        }
+
         writeButton.snp.makeConstraints { (make: ConstraintMaker) in
             make.height.equalTo(44)
             make.trailing.equalToSuperview().inset(10)

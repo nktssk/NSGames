@@ -24,7 +24,7 @@ class MainCoordinator {
     }
 
     func onboardingAnimationFinish() {
-//        KeychainService.deleteAll()
+        KeychainService.deleteAll()
         if KeychainService.getToken() != nil {
             goToTabBar()
         } else {

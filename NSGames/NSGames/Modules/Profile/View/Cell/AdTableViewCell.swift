@@ -107,6 +107,10 @@ class AdTableViewCell: UITableViewCell {
 
         addSubviews()
         setConstraints()
+
+        backView.layer.shadowRadius = 6
+        backView.layer.shadowOpacity = 0.15
+        backView.layer.shadowPath = UIBezierPath(rect: bounds.offsetBy(dx: 0, dy: 6)).cgPath
     }
 
     required init?(coder: NSCoder) {
@@ -139,6 +143,7 @@ class AdTableViewCell: UITableViewCell {
     private func setConstraints() {
         staticNumberOfViewsLabel.snp.contentCompressionResistanceHorizontalPriority = 1000
         staticNumberOfOffersLabel.snp.contentCompressionResistanceHorizontalPriority = 1000
+        nameLabel.snp.contentCompressionResistanceVerticalPriority = 1000
 
         backView.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.left.equalToSuperview().offset(10)
@@ -146,8 +151,8 @@ class AdTableViewCell: UITableViewCell {
         }
 
         adImageView.snp.makeConstraints { (make: ConstraintMaker) in
-            make.width.equalToSuperview().multipliedBy(0.4)
-            make.height.equalTo(adImageView.snp.width)
+            make.width.lessThanOrEqualToSuperview().multipliedBy(0.4)
+            make.height.lessThanOrEqualTo(adImageView.snp.width)
         }
 
         stackView.snp.makeConstraints { (make: ConstraintMaker) in

@@ -158,23 +158,32 @@ class CreateAdViewController: UIViewController {
         tradeListButton.addTarget(self, action: #selector(tradeListButtonAction), for: .touchUpInside)
         deleteButton.addTarget(self, action: #selector(deleteButtonAction), for: .touchUpInside)
         addImageButton.addTarget(self, action: #selector(addImageButtonAction), for: .touchUpInside)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     // MARK: - Objc Methods
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            scrollView.contentSize = CGSize(width: scrollView.frame.width, height: scrollView.frame.height + keyboardSize.height)
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            scrollView.snp.removeConstraints()
+            scrollView.snp.makeConstraints { (make: ConstraintMaker) in
+                make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+                make.bottom.equalToSuperview().inset(keyboardSize.height)
+            }
         }
     }
 
     @objc private func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            scrollView.bounds.origin.y -= keyboardSize.height
+        scrollView.snp.removeConstraints()
+        scrollView.snp.makeConstraints { (make: ConstraintMaker) in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
 
     @objc func doneButtonTapped() {
-        descriptionTextView.endEditing(true)
+        nameTextField.resignFirstResponder()
+        priceTextField.resignFirstResponder()
+        descriptionTextView.resignFirstResponder()
     }
 
     @objc func doneBarButtonAction() {
@@ -274,15 +283,22 @@ class CreateAdViewController: UIViewController {
     private func setupTextViewAndFields() {
         nameTextField.delegate = self
         priceTextField.delegate = self
-//
-//        let toolbar = UIToolbar()
-//        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-//                                        target: nil, action: nil)
-//
-//        toolbar.setItems([flexSpace, doneButton], animated: true)
-//        toolbar.sizeToFit()
-//
-//        descriptionTextView.inputAccessoryView = toolbar
+
+        let doneToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        doneToolbar.barStyle = UIBarStyle.default
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(doneButtonTapped))
+
+        var items = [UIBarButtonItem]()
+        items.append(flexSpace)
+        items.append(done)
+
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+
+        nameTextField.inputAccessoryView = doneToolbar
+        priceTextField.inputAccessoryView = doneToolbar
+        descriptionTextView.inputAccessoryView = doneToolbar
     }
 
     private func setNavigationBar() {

@@ -17,6 +17,10 @@ class ProfileViewController: UIViewController {
     let tableView = UITableView(frame: CGRect.zero, style: .grouped)
     let header = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 5))
 
+    // MARK: - Properties
+    private var isAnimated = false
+    private var indexPathOfAnimated: IndexPath?
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +37,30 @@ class ProfileViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Выйти", style: .done, target: self, action: #selector(exitButtonAction))
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel?.setup()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if isAnimated, let indexPath = indexPathOfAnimated {
+            guard let cell = tableView.cellForRow(at: indexPath) as? AdTableViewCell else { return }
+
+            cell.backView.snp.updateConstraints { (make: ConstraintMaker) in
+                make.top.left.equalToSuperview().offset(10)
+                make.bottom.right.equalToSuperview().inset(10)
+            }
+            UIView.animate(withDuration: 1,
+                           delay: 0,
+                           usingSpringWithDamping: 0.9,
+                           initialSpringVelocity: 15,
+                           options: .curveEaseInOut,
+                           animations: { [weak cell] in
+                            cell?.backView.layer.cornerRadius = 14
+                            cell?.layoutIfNeeded()
+                           })
+        }
     }
 
     // MARK: - Objc Methods
@@ -85,6 +110,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            viewModel?.deleteAd(index: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
@@ -103,24 +135,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                         cell.layoutIfNeeded()
                         cell.backView.layer.cornerRadius = 0
                        },
-                       completion: { [weak cell, viewModel] _ in
-                        cell?.backView.snp.removeConstraints()
-                        cell?.backView.snp.makeConstraints { (make: ConstraintMaker) in
-                            make.top.left.equalToSuperview().offset(10)
-                            make.bottom.right.equalToSuperview().inset(10)
-                        }
-                        UIView.animate(withDuration: 0.2,
-                                       delay: 0,
-                                       usingSpringWithDamping: 1,
-                                       initialSpringVelocity: 10,
-                                       options: .curveEaseInOut,
-                                       animations: {
-                                        cell?.backView.layer.cornerRadius = 14
-                                        cell?.layoutIfNeeded()
-                                       },
-                                       completion: { _ in
-                                        viewModel?.didSelectItem(at: indexPath.row)
-                                       })
+                       completion: { [weak self] _ in
+                        self?.isAnimated = true
+                        self?.indexPathOfAnimated = indexPath
+                        self?.viewModel?.didSelectItem(at: indexPath.row)
                        })
-    }
+        }
 }

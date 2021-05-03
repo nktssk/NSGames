@@ -88,6 +88,7 @@ class OfferViewController: UIViewController {
         setUI()
         addSubviews()
         setConstraints()
+        bindData()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -109,7 +110,7 @@ class OfferViewController: UIViewController {
     }
 
     @objc private func gamesButtonAction() {
-        viewModel?.selectGames(id: 123)
+        viewModel?.selectGames()
     }
 
     @objc private func keyboardWillShow(notification: NSNotification) {
@@ -132,6 +133,28 @@ class OfferViewController: UIViewController {
     }
 
     @objc private func submitButtonAction() {
+        guard let description = descriptionTextField.text, !description.isEmpty else {
+            AlertPresenter.showAlert(controller: self, text: "Добавьте описание")
+            return
+        }
+
+        switch offerTypeContol.selectedSegmentIndex {
+        case 0:
+            if let priceText = priceTextField.text, !priceText.isEmpty, let price = Double(priceText) {
+                viewModel?.sendOffer(description: description, price: price)
+            } else {
+                AlertPresenter.showAlert(controller: self, text: "Добавьте цену")
+            }
+
+        case 1:
+            if let value = viewModel?.selectedGames.value, value.isEmpty {
+                AlertPresenter.showAlert(controller: self, text: "Нужно выбрать хотя бы одну игру")
+            }
+            viewModel?.sendOffer(description: description, price: nil)
+
+        default:
+            break
+        }
     }
 
     // MARK: - Private Methods
@@ -174,6 +197,12 @@ class OfferViewController: UIViewController {
         view.addGestureRecognizer(tap)
         priceTextField.delegate = self
         descriptionTextField.delegate = self
+    }
+
+    private func bindData() {
+        viewModel?.selectedGames.observe(on: self) { [weak self] value in
+            self?.gamesButton.setTitle("Выбрано игр - \(value.count)", for: .normal)
+        }
     }
 }
 
