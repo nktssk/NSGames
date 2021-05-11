@@ -10,6 +10,7 @@ import Foundation
 protocol ProfileViewModelProtocol {
     var items: Observable<[AdTableViewCellConfig]> { get set }
     var userInfo: Observable <UserInfo?> { get set }
+    var error: Observable<String?> { get set }
 
     func quit()
     func setup()
@@ -21,6 +22,7 @@ class ProfileViewModel: ProfileViewModelProtocol {
 
     var items: Observable<[AdTableViewCellConfig]> = Observable([])
     var userInfo: Observable<UserInfo?> = Observable(nil)
+    var error: Observable<String?> = Observable(nil)
 
     private let service: ProfileViewServiceProtocol
     private let coordinator: ProfileCoordinator
@@ -31,7 +33,16 @@ class ProfileViewModel: ProfileViewModelProtocol {
     }
 
     func setup() {
-        userInfo.value = UserInfo(username: "Nktlckr", email: "nikitashelov@gmail.com")
+        service.getUserInfo { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.userInfo.value = data
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+
         service.getAds { [weak self] result in
             switch result {
             case .success(let data):
@@ -44,7 +55,15 @@ class ProfileViewModel: ProfileViewModelProtocol {
     }
 
     func quit() {
-        coordinator.goToAuth()
+        service.logout { [weak self] result in
+            switch result {
+            case .success:
+                self?.coordinator.goToAuth()
+
+            case .failure:
+                self?.error.value = "Ошибка при выходе"
+            }
+        }
     }
 
     func didSelectItem(at index: Int) {

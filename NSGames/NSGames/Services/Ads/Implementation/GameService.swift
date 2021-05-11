@@ -24,7 +24,7 @@ class GameService: GameServiceProtocol {
                     }
                     if let data = response.data {
                         do {
-                            let ad = try JSONDecoder().decode(AdDetailDto.self, from: data)
+                            let ad = try MyJSONDecoder().decode(AdDetailDto.self, from: data)
                             let result = GameSreenConfig(id: ad.id, title: ad.title, description: ad.description, messageId: ad.chatId, price: ad.price, date: Date(), username: ad.username, photoNames: ad.photoNames)
                             return completion(.success(result))
                         } catch {

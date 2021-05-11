@@ -46,6 +46,16 @@ class GameViewController: UIViewController {
         return label
     }()
 
+    var sended = false {
+        didSet {
+            UIView.animate(withDuration: 1,
+                           animations: { [weak self] in
+                            self?.readyButton.backgroundColor = UIColor.greenButton
+                            self?.readyButton.setTitle("Предложение отправлено!", for: .normal)
+                           })
+        }
+    }
+
     let readyButton: RoundedButton = {
         let button = RoundedButton()
         button.setTitle("Готов купить!", for: .normal)
@@ -117,6 +127,9 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Объявление"
+        if ProcessInfo.processInfo.environment["animation"] == "true" {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Закрыть", style: .done, target: self, action: #selector(closeButtonAction))
+        }
         bindData()
         setCollectionView()
         setPageControl()
@@ -128,16 +141,14 @@ class GameViewController: UIViewController {
     // MARK: - Objc Methods
     @objc private func readyButtonAction() {
         viewModel?.makeOffer()
-        UIView.transition(with: readyButton, duration: 0.3,
-                          options: .transitionCrossDissolve,
-                          animations: { [weak self] in
-                            self?.readyButton.backgroundColor = UIColor.greenButton
-                            self?.readyButton.setTitle("Предложение отправлено!", for: .normal)
-                          })
     }
 
     @objc private func goToChat() {
         viewModel?.goToChat()
+    }
+
+    @objc private func closeButtonAction() {
+        viewModel?.close()
     }
 
     // MARK: - Private Methods

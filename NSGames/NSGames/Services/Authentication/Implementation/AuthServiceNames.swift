@@ -8,10 +8,10 @@
 import Foundation
 
 enum AuthRequestPath {
-    static let singIn = "http://localhost/signIn"
-    static let singUp = "http://localhost/signUp"
-    static let forgotPassword = "http://localhost/forgotPassword/sendEmail"
-    static let changePassword = "http://localhost/forgotPassword/changePassword"
+    static let singIn = "http://192.168.0.100:80/signIn"
+    static let singUp = "http://192.168.0.100:80/signUp"
+    static let forgotPassword = "http://192.168.0.100:80/forgotPassword/sendEmail"
+    static let changePassword = "http://192.168.0.100:80/forgotPassword/changePassword"
 }
 
 enum ResponseBodyPropertyName {

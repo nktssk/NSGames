@@ -39,6 +39,7 @@
 		A1418B1B25FE1C6F00FF13CC /* HomeScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1418B1A25FE1C6F00FF13CC /* HomeScreenCollectionViewCell.swift */; };
 		A1418B2025FE246900FF13CC /* AdCollectionViewCellConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1418B1F25FE246900FF13CC /* AdCollectionViewCellConfig.swift */; };
 		A1418B3225FE2FC100FF13CC /* HomeScreenCellCollectionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1418B3125FE2FC100FF13CC /* HomeScreenCellCollectionConstants.swift */; };
+		A148C3CA2643FF0900B078F5 /* MyJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A148C3C92643FF0900B078F5 /* MyJSONDecoder.swift */; };
 		A14A29EB2608DC33005266E8 /* SelectGamesViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14A29EA2608DC33005266E8 /* SelectGamesViewContoller.swift */; };
 		A14DBF942601FCF700705AB9 /* RestSignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DBF932601FCF700705AB9 /* RestSignInService.swift */; };
 		A14DBF972601FCFF00705AB9 /* RestSignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DBF962601FCFF00705AB9 /* RestSignUpService.swift */; };
@@ -89,6 +90,7 @@
 		A18ED8BB261211C00053AE37 /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18ED8BA261211BF0053AE37 /* TextViewWithPlaceholder.swift */; };
 		A1949D0F261EFAA90028EBC8 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1949D0E261EFAA90028EBC8 /* AlertPresenter.swift */; };
 		A195FFBA260942DC00D3E34F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A195FFB9260942DC00D3E34F /* Game.swift */; };
+		A19A934926427DD600734211 /* AdsTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19A934826427DD600734211 /* AdsTransition.swift */; };
 		A19F89082607563800E95875 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19F89072607563800E95875 /* GameViewController.swift */; };
 		A1A8B06B25F22856008CDDA4 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B06A25F22856008CDDA4 /* UIColor.swift */; };
 		A1A8B06E25F247B2008CDDA4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B06D25F247B2008CDDA4 /* SignUpViewController.swift */; };
@@ -160,6 +162,7 @@
 		A1418B1A25FE1C6F00FF13CC /* HomeScreenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1418B1F25FE246900FF13CC /* AdCollectionViewCellConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCollectionViewCellConfig.swift; sourceTree = "<group>"; };
 		A1418B3125FE2FC100FF13CC /* HomeScreenCellCollectionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCellCollectionConstants.swift; sourceTree = "<group>"; };
+		A148C3C92643FF0900B078F5 /* MyJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJSONDecoder.swift; sourceTree = "<group>"; };
 		A14A29EA2608DC33005266E8 /* SelectGamesViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGamesViewContoller.swift; sourceTree = "<group>"; };
 		A14DBF932601FCF700705AB9 /* RestSignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestSignInService.swift; sourceTree = "<group>"; };
 		A14DBF962601FCFF00705AB9 /* RestSignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestSignUpService.swift; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 		A18ED8BA261211BF0053AE37 /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		A1949D0E261EFAA90028EBC8 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		A195FFB9260942DC00D3E34F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		A19A934826427DD600734211 /* AdsTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsTransition.swift; sourceTree = "<group>"; };
 		A19F89072607563800E95875 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A1A8B06A25F22856008CDDA4 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		A1A8B06D25F247B2008CDDA4 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -844,6 +848,7 @@
 			isa = PBXGroup;
 			children = (
 				A1E1548225FF51C4000F2007 /* PulseAnimation.swift */,
+				A19A934826427DD600734211 /* AdsTransition.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -853,6 +858,7 @@
 			children = (
 				A1A8B06A25F22856008CDDA4 /* UIColor.swift */,
 				A1F67DEA25FE823D0007636E /* Date.swift */,
+				A148C3C92643FF0900B078F5 /* MyJSONDecoder.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1040,6 +1046,7 @@
 				A189E26D260B33480051D578 /* AuthenticationCoordinator.swift in Sources */,
 				A1886A2226075F98006A41F4 /* ImageCollectionViewCell.swift in Sources */,
 				A189E287260B62350051D578 /* GameServiceProtocol.swift in Sources */,
+				A19A934926427DD600734211 /* AdsTransition.swift in Sources */,
 				A16C873D25FF9CD900AC15AD /* HomeScreenServiceProtocol.swift in Sources */,
 				A1E1548325FF51C4000F2007 /* PulseAnimation.swift in Sources */,
 				A1A8B06B25F22856008CDDA4 /* UIColor.swift in Sources */,
@@ -1073,6 +1080,7 @@
 				A13880BB26205FBA00DA1604 /* DetailOfferViewServiceProtocol.swift in Sources */,
 				A15ABA0A261F206500A549C7 /* UserInfo.swift in Sources */,
 				A1D18A1325F68FF4007A5CF7 /* SignInViewModel.swift in Sources */,
+				A148C3CA2643FF0900B078F5 /* MyJSONDecoder.swift in Sources */,
 				A1381FA9260E605E00BDF8CD /* ChatFireBaseServiceProtocol.swift in Sources */,
 				A184621E260C65FD008D159F /* ConversationListViewController.swift in Sources */,
 				A1C455F125F91D7600ABD067 /* SignInError.swift in Sources */,

@@ -8,9 +8,11 @@
 import Foundation
 
 enum ProfileRequestPath {
-    static let ads = "http://localhost/user/ads"
-    static let detail = "http://localhost/ad/offers"
-    static let delete = "http://localhost/ad/delete"
+    static let ads = "http://192.168.0.100:80/user/ads"
+    static let userInfo = "http://192.168.0.100:80/user/info"
+    static let detail = "http://192.168.0.100:80/ad/offers"
+    static let delete = "http://192.168.0.100:80/ad/delete"
+    static let logout = "http://192.168.0.100:80/user/logout"
 }
 
 struct ProfileAdDto: Codable {
@@ -18,7 +20,7 @@ struct ProfileAdDto: Codable {
     let title: String
     let description: String
     let price: Double
-    // let date: Date
+    let date: Date
     let countTradeGames: Int
     let countOffers: Int
     let countViews: Int

@@ -104,6 +104,7 @@ class CreateAdViewController: UIViewController {
 
     let priceTextField: UITextField = {
         let textField = UITextField()
+        textField.keyboardType = .numberPad
         textField.borderStyle = .roundedRect
         return textField
     }()

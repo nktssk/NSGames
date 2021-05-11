@@ -16,7 +16,7 @@ protocol HomeScreenCellDelegate: AnyObject {
 class HomeScreenCollectionViewCell: UICollectionViewCell {
 
     static let identifier = "HomeScreenCollectionViewCell"
-    private var configuration: AdCollectionViewCellConfig?
+    var configuration: AdCollectionViewCellConfig?
     weak var delegate: HomeScreenCellDelegate?
 
     // MARK: - UI

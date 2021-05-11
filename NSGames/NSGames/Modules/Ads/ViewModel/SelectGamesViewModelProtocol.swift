@@ -23,21 +23,25 @@ class SelectGamesViewModel: SelectGamesViewModelProtocol {
     var games: Observable<[Game]> = Observable([])
     var isFiltering = false
     var selected = [Int]()
+    var offerId: Int?
 
     private let coordinator: SelectGameCoordinatorProtocol
     private let service: SelectGamesServiceProtocol
-    private let offerId: Int?
+    private let adId: Int?
     private var allGamesList = [Game]()
     private var filteredGames = [Game]()
 
     init(service: SelectGamesServiceProtocol, coordinator: SelectGameCoordinatorProtocol, id: Int?) {
         self.service = service
         self.coordinator = coordinator
-        self.offerId = id
+        self.adId = id
     }
 
     func getData() {
-        if let id = offerId {
+        if offerId != nil {
+            return getOfferGames()
+        }
+        if let id = adId {
             getGames(id: id)
         } else {
             getAllGames()
@@ -87,6 +91,20 @@ class SelectGamesViewModel: SelectGamesViewModelProtocol {
 
     private func getAllGames() {
         service.getAllGames { [weak self] result in
+            switch result {
+            case .success(let array):
+                self?.allGamesList = array
+                self?.games.value = array
+
+            case .failure:
+                // TODO: - error
+                break
+            }
+        }
+    }
+
+    private func getOfferGames() {
+        service.getTradeGamesArray(id: offerId!) { [weak self] result in
             switch result {
             case .success(let array):
                 self?.allGamesList = array

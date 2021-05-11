@@ -82,6 +82,11 @@ class ProfileViewController: UIViewController {
                 self?.header.setInfo(data: data)
             }
         }
+        viewModel?.error.observe(on: self) { [weak self] value in
+            if let self = self, let value = value {
+                AlertPresenter.showAlert(controller: self, text: value)
+            }
+        }
     }
 
     private func setConstraints() {

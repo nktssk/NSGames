@@ -23,7 +23,7 @@ class FavoritesService: HomeScreenServiceProtocol {
                     }
                     if let data = response.data {
                         do {
-                            let ads = try JSONDecoder().decode([AdFeedDto].self, from: data)
+                            let ads = try MyJSONDecoder().decode([AdFeedDto].self, from: data)
                             var configs = [AdCollectionViewCellConfig]()
                             for ad in ads {
                                 configs.append(AdCollectionViewCellConfig(id: ad.id, image: ad.photoName, name: ad.name, date: Date(), isLiked: ad.liked))
@@ -51,4 +51,6 @@ class FavoritesService: HomeScreenServiceProtocol {
                     return completion(.success(()))
         }
     }
+
+    func searchAd(startWith: String, completion: @escaping (Result<[AdCollectionViewCellConfig], AdServiceError>) -> Void) { }
 }

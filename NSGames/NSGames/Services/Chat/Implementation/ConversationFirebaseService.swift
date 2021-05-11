@@ -48,8 +48,4 @@ class ConversationFirebaseService: ConversationsFirebaseServiceProtocol {
             }
         })
     }
-
-    func createNewConversation(to otherUserId: String) {
-        // TODO: username
-    }
 }

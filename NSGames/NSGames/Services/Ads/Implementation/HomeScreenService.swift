@@ -23,10 +23,10 @@ class HomeScreenService: HomeScreenServiceProtocol {
                     }
                     if let data = response.data {
                         do {
-                            let ads = try JSONDecoder().decode([AdFeedDto].self, from: data)
+                            let ads = try MyJSONDecoder().decode([AdFeedDto].self, from: data)
                             var configs = [AdCollectionViewCellConfig]()
                             for ad in ads {
-                                configs.append(AdCollectionViewCellConfig(id: ad.id, image: ad.photoName, name: ad.name, date: Date(), isLiked: ad.liked))
+                                configs.append(AdCollectionViewCellConfig(id: ad.id, image: ad.photoName, name: ad.name, date: ad.date, isLiked: ad.liked))
                             }
                             return completion(.success(configs))
                         } catch {
@@ -49,6 +49,32 @@ class HomeScreenService: HomeScreenServiceProtocol {
                         return completion(.failure(.badRequest))
                     }
                     return completion(.success(()))
+        }
+    }
+
+    func searchAd(startWith name: String, completion: @escaping (Result<[AdCollectionViewCellConfig], AdServiceError>) -> Void) {
+        AF.request(AdsRequestPath.search + name,
+                   method: .get,
+                   parameters: nil,
+                   headers: HeaderService.shared.getHeaders()).responseJSON(queue: DispatchQueue.global(qos: .userInitiated)) { response in
+                    if response.error != nil {
+                        return completion(.failure(.noConnection))
+                    }
+                    if let statusCode = response.response?.statusCode, !(200...300).contains(statusCode) {
+                        return completion(.failure(.badRequest))
+                    }
+                    if let data = response.data {
+                        do {
+                            let ads = try MyJSONDecoder().decode([AdFeedDto].self, from: data)
+                            var configs = [AdCollectionViewCellConfig]()
+                            for ad in ads {
+                                configs.append(AdCollectionViewCellConfig(id: ad.id, image: ad.photoName, name: ad.name, date: ad.date, isLiked: ad.liked))
+                            }
+                            return completion(.success(configs))
+                        } catch {
+                            return completion(.failure(.wrongData))
+                        }
+                    }
         }
     }
 }

@@ -31,7 +31,7 @@ class CreateAdService: CreateAdServiceProtocol {
                     for image in images {
                         group.enter()
                         AF.upload(multipartFormData: { multipart in
-                                    multipart.append(image, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
+                                    multipart.append(image, withName: "photo", fileName: "adPhoto.jpeg", mimeType: "image/jpeg")
                                   }, to: CreateAdPath.uploadPhoto + "\(id)",
                                      headers: HeaderService.shared.getHeaders()).responseJSON { response in
                                         if let statusCode = response.response?.statusCode, !(200...300).contains(statusCode) {

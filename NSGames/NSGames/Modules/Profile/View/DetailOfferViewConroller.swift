@@ -16,9 +16,19 @@ class DetailOfferViewConroller: UIViewController {
     // MARK: - UI
     let tableView = UITableView()
 
+    let noLabel: GrayLabel = {
+        let label = GrayLabel()
+        label.text = "Нет предложений для показа."
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         title = viewModel?.title
         bindData()
         addSubviews()
@@ -33,17 +43,32 @@ class DetailOfferViewConroller: UIViewController {
     // MARK: - Private Methods
     private func addSubviews() {
         view.addSubview(tableView)
+        view.addSubview(noLabel)
     }
 
     private func bindData() {
-        viewModel?.items.observe(on: self) { [weak self] _ in
-            self?.tableView.reloadData()
+        viewModel?.items.observe(on: self) { [weak self] value in
+            guard let self = self else { return }
+            if value.isEmpty {
+                self.noLabel.isHidden = false
+                self.tableView.isHidden = true
+            } else {
+                self.noLabel.isHidden = true
+                self.tableView.isHidden = false
+                self.tableView.reloadData()
+            }
         }
     }
 
     private func setConstraints() {
         tableView.snp.makeConstraints { (make: ConstraintMaker) in
             make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+
+        noLabel.snp.makeConstraints { (make: ConstraintMaker) in
+            make.centerY.equalTo(view.safeAreaLayoutGuide)
+            make.leading.equalToSuperview().inset(10)
+            make.trailing.equalToSuperview().offset(10)
         }
     }
 }

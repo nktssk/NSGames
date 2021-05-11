@@ -32,8 +32,10 @@ class MockOfferViewModel: OfferViewModelProtocol {
     }
 
     func sendOffer(description: String, price: Double?) {
-        service.sendOffer(offer: OfferDto(adId: id, price: price, tradeList: selectedGames.value, description: description)) { result in
-            print("done")
+        service.sendOffer(offer: OfferDto(adId: id, price: price, tradeList: selectedGames.value, description: description)) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.coordinator.sendedOffer()
+            }
         }
     }
 }

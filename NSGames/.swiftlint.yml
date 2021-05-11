@@ -305,8 +305,8 @@ function_body_length:
   error: 40
 
 function_parameter_count:
-  warning: 4
-  error: 4
+  warning: 6
+  error: 8
   ignores_default_parameters: false
 
 generic_type_name:

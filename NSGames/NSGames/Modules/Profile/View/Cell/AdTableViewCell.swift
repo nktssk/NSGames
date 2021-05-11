@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol AdTableDelegate: AnyObject {
+    func updateTable()
+}
+
 class AdTableViewCell: UITableViewCell {
 
     static let identifier = "AdTableViewCell"
@@ -99,6 +103,9 @@ class AdTableViewCell: UITableViewCell {
         return stackView
     }()
 
+    // MARK: - Properties
+    weak var delegate: AdTableDelegate?
+
     // MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -123,7 +130,7 @@ class AdTableViewCell: UITableViewCell {
         numberOfOffersLabel.text = "\(configuration.numberOfOffers)"
         numberOfViewsLabel.text = "\(configuration.views)"
         guard let url = URL(string: BaseUrl.imageUrl + configuration.photo) else { return }
-        adImageView.kf.setImage(with: url)
+        adImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "OnboardingBackground"))
     }
 
     // MARK: - Private Methods
@@ -141,9 +148,15 @@ class AdTableViewCell: UITableViewCell {
     }
 
     private func setConstraints() {
-        staticNumberOfViewsLabel.snp.contentCompressionResistanceHorizontalPriority = 1000
-        staticNumberOfOffersLabel.snp.contentCompressionResistanceHorizontalPriority = 1000
-        nameLabel.snp.contentCompressionResistanceVerticalPriority = 1000
+        if !backView.constraints.isEmpty {
+            stackView.snp.removeConstraints()
+            backView.snp.removeConstraints()
+            adImageView.snp.removeConstraints()
+        } else {
+            staticNumberOfViewsLabel.snp.contentCompressionResistanceHorizontalPriority = 1000
+            staticNumberOfOffersLabel.snp.contentCompressionResistanceHorizontalPriority = 1000
+            nameLabel.snp.contentCompressionResistanceVerticalPriority = 1000
+        }
 
         backView.snp.makeConstraints { (make: ConstraintMaker) in
             make.top.left.equalToSuperview().offset(10)

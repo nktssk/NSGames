@@ -42,6 +42,7 @@ class ProfileCoordinator: Coordinator {
     func goToTradeList(id: Int) {
         let controller = SelectGamesViewContoller()
         let viewModel = SelectGamesViewModel(service: SelectGamesService(), coordinator: AdCoordinator(), id: id)
+        viewModel.offerId = id
         controller.viewModel = viewModel
         navigationController.pushViewController(controller, animated: true)
     }

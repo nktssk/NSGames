@@ -13,9 +13,10 @@ protocol GameViewModelProtocol {
     var gameSreenConfig: Observable<GameSreenConfig?> { get set }
     var error: Observable<String?> { get set }
 
+    func close()
     func getData()
-    func makeOffer()
     func goToChat()
+    func makeOffer()
 }
 
 class MockGameViewModel: GameViewModelProtocol {
@@ -60,6 +61,10 @@ class MockGameViewModel: GameViewModelProtocol {
                 self?.error.value = InetErrorNames.failedConnection
             }
         }
+    }
+
+    func close() {
+        coordinator.close()
     }
 
     func makeOffer() {

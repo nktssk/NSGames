@@ -29,18 +29,32 @@ class HomeScreenViewController: UIViewController {
         return collectionView
     }()
 
+    let noAdsLabel: GrayLabel = {
+        let label = GrayLabel()
+        label.text = "Нет объявлений для показа."
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+
     let indicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.startAnimating()
         return activityIndicator
     }()
 
-    // MARK: - Properties
+    let searchController = UISearchController(searchResultsController: nil)
+
     let refreshControl: UIRefreshControl = {
         let control = UIRefreshControl()
         control.addTarget(self, action: #selector(updateData), for: .valueChanged)
         return control
     }()
+
+    // MARK: - Properties
+    var selectedView: HomeScreenCollectionViewCell?
+    private var timer: Timer?
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -66,9 +80,9 @@ class HomeScreenViewController: UIViewController {
         } else {
             title = "Главная"
 
-            let searchController = UISearchController(searchResultsController: nil)
             searchController.obscuresBackgroundDuringPresentation = false
             searchController.searchBar.placeholder = "Поиск"
+            searchController.searchBar.delegate = self
             navigationItem.searchController = searchController
             navigationItem.hidesSearchBarWhenScrolling = false
             definesPresentationContext = true
@@ -88,6 +102,7 @@ class HomeScreenViewController: UIViewController {
     private func addSubviews() {
         view.addSubview(collectionView)
         view.addSubview(indicator)
+        view.addSubview(noAdsLabel)
     }
 
     private func constraints() {
@@ -101,14 +116,21 @@ class HomeScreenViewController: UIViewController {
             make.centerY.equalTo(view.safeAreaLayoutGuide)
             make.height.width.equalTo(view.snp.width).multipliedBy(0.5)
         }
+
+        noAdsLabel.snp.makeConstraints { (make: ConstraintMaker) in
+            make.centerY.equalTo(view.safeAreaLayoutGuide)
+            make.leading.equalToSuperview().inset(10)
+            make.trailing.equalToSuperview().offset(10)
+        }
     }
 
     private func getData() {
         collectionView.isHidden = true
         indicator.isHidden = false
+        noAdsLabel.isHidden = true
         viewModel?.getData { [weak self] in
             if let collectionView = self?.collectionView {
-                self?.indicator.removeFromSuperview()
+                self?.indicator.isHidden = true
                 UIView.transition(with: collectionView, duration: 0.6,
                                   options: .transitionCrossDissolve,
                                   animations: {
@@ -119,9 +141,28 @@ class HomeScreenViewController: UIViewController {
     }
 
     private func bindData() {
-        viewModel?.items.observe(on: self) { [weak self] _ in
-            self?.collectionView.reloadData()
-            self?.refreshControl.endRefreshing()
+        viewModel?.items.observe(on: self) { [weak self] value in
+            guard let self = self else { return }
+            self.refreshControl.endRefreshing()
+
+            if value.isEmpty {
+                self.collectionView.isHidden = true
+                UIView.transition(with: self.view,
+                                  duration: 1,
+                                  options: .transitionCrossDissolve,
+                                  animations: {
+                                    self.noAdsLabel.isHidden = false
+                                  })
+            } else {
+                self.noAdsLabel.isHidden = true
+                self.collectionView.reloadData()
+                self.indicator.isHidden = true
+                UIView.transition(with: self.collectionView, duration: 0.4,
+                                  options: .transitionCrossDissolve,
+                                  animations: { [weak self] in
+                                    self?.collectionView.isHidden = false
+                                  })
+            }
         }
         viewModel?.error.observe(on: self) { [weak self] value in
             if let self = self, let value = value {
@@ -160,6 +201,7 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedView = collectionView.cellForItem(at: indexPath) as? HomeScreenCollectionViewCell
         viewModel?.detailView(at: indexPath.row)
     }
 }
@@ -168,5 +210,22 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
 extension HomeScreenViewController: HomeScreenCellDelegate {
     func likeAd(config: AdCollectionViewCellConfig) {
         viewModel?.likeAd(id: config.id)
+    }
+}
+
+// MARK: - UISearchControllerDelegate
+extension HomeScreenViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false, block: { [weak self] value in
+            self?.collectionView.isHidden = true
+            self?.indicator.isHidden = false
+            self?.indicator.startAnimating()
+            self?.viewModel?.searchAds(text: searchText)
+        })
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        getData()
     }
 }

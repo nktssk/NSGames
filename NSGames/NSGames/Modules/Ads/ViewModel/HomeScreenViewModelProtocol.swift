@@ -12,12 +12,12 @@ protocol HomeScreenViewModelProtocol {
     var error: Observable<String?> { get set }
 
     func getData(completion: (() -> Void)?)
+    func searchAds(text: String)
     func likeAd(id: Int)
     func detailView(at: Int)
 }
 
-class MockHomeScreenViewModel: HomeScreenViewModelProtocol {
-
+class HomeScreenViewModel: HomeScreenViewModelProtocol {
     var items: Observable<[AdCollectionViewCellConfig]> = Observable([])
     var error: Observable<String?> = Observable(nil)
 
@@ -35,20 +35,13 @@ class MockHomeScreenViewModel: HomeScreenViewModelProtocol {
             self?.service.getData { result in
                 switch result {
                 case .success(let newData):
-                    guard var newItems = self?.items.value else { return }
-                    for data in newData {
-                        if !newItems.contains(data) {
-                            newItems.append(data)
-                        }
-                    }
-                    self?.items.value = newItems
+                    self?.items.value = newData
                     DispatchQueue.main.async {
                         completion?()
                     }
 
                 case .failure:
-                    break
-                    // TODO: must be alert
+                    self?.error.value = "Ошибка при загрузке данных"
                 }
             }
         }
@@ -63,5 +56,19 @@ class MockHomeScreenViewModel: HomeScreenViewModelProtocol {
 
     func detailView(at index: Int) {
         coordinator.goToDetailView(id: items.value[index].id)
+    }
+
+    func searchAds(text: String) {
+        let searchText = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !searchText.isEmpty else { return }
+        service.searchAd(startWith: searchText) { [weak self] result in
+            switch result {
+            case .success(let newData):
+                self?.items.value = newData
+
+            case .failure:
+                self?.error.value = "Ошибка при загрузке данных"
+            }
+        }
     }
 }

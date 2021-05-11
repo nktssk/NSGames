@@ -8,8 +8,8 @@
 import Foundation
 
 enum CreateAdPath {
-    static let createAd = "http://localhost/ad/create"
-    static let uploadPhoto = "http://localhost/ad/uploadPhoto/"
+    static let createAd = "http://192.168.0.100:80/ad/create"
+    static let uploadPhoto = "http://192.168.0.100:80/ad/uploadPhoto/"
 }
 
 enum CreateAdResponseBodyPropertyName {
