@@ -48,7 +48,7 @@ class OfferDetailTableViewCell: UITableViewCell {
     let staticDescriprionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.text = "✍️ Комментарий:"
+        label.text = L10n.comment
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
@@ -57,7 +57,7 @@ class OfferDetailTableViewCell: UITableViewCell {
     let tradeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.text = "🤝 Обмен на: "
+        label.text = L10n.tradeTo
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
@@ -66,7 +66,7 @@ class OfferDetailTableViewCell: UITableViewCell {
     let staticPriceLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.text = "🪙 Предложенная цена:"
+        label.text = L10n.offerPrice
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label

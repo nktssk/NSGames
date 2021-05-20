@@ -14,7 +14,7 @@ class ProfileHeaderView: UIView {
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = #imageLiteral(resourceName: "me-animoji")
+        imageView.image = Asset.meAnimoji.image
         imageView.layer.cornerRadius = imageView.layer.bounds.height / 2
         imageView.tintColor = .grayView
         return imageView

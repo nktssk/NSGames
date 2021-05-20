@@ -15,7 +15,7 @@ class OfferViewController: UIViewController {
 
     // MARK: - UI
     let offerTypeContol: UISegmentedControl = {
-        let items = ["Покупка", "Обмен"]
+        let items = [L10n.buy, L10n.trade]
         let control = UISegmentedControl(items: items)
         control.selectedSegmentIndex = 0
         control.addTarget(self, action: #selector(changeType), for: .valueChanged)
@@ -35,27 +35,27 @@ class OfferViewController: UIViewController {
         let textField = UITextField()
         textField.keyboardType = .numberPad
         textField.borderStyle = .roundedRect
-        textField.placeholder = "Введите желаемую цену."
+        textField.placeholder = L10n.preferPrice
         return textField
     }()
 
     let descriptionTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
-        textField.placeholder = "Комментарий к предложению."
+        textField.placeholder = L10n.commentToOffer
         return textField
     }()
 
     let submitButton: RoundedButton = {
         let button = RoundedButton()
-        button.setTitle("Предложить", for: .normal)
+        button.setTitle(L10n.submit, for: .normal)
         button.addTarget(self, action: #selector(submitButtonAction), for: .touchUpInside)
         return button
     }()
 
     let gamesButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Выбрать", for: .normal)
+        button.setTitle(L10n.choose, for: .normal)
         button.setTitleColor(.buttonBlue, for: .normal)
         button.setTitleColor(.grayLight, for: .highlighted)
         button.addTarget(self, action: #selector(gamesButtonAction), for: .touchUpInside)
@@ -64,7 +64,7 @@ class OfferViewController: UIViewController {
 
     let gamesLabel: UILabel = {
         let label = UILabel()
-        label.text = "Игры для обмена: "
+        label.text = L10n.tradeGames
         return label
     }()
 

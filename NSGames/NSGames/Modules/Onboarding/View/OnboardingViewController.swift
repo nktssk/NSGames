@@ -20,7 +20,7 @@ class OnboardingViewController: UIViewController {
 
         let imageView = UIImageView(frame: CGRect(origin: point,
                                                   size: size))
-        imageView.image = #imageLiteral(resourceName: "OnboardingBackground")
+        imageView.image = Asset.onboardingBackground.image
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -29,7 +29,7 @@ class OnboardingViewController: UIViewController {
         let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: -ConstantSize.stickSize().width,
                                                                   y: ConstantSize.stickSize().height / 2.2 + backgroundImageView.frame.origin.y + 0.21 * ConstantSize.backgroundWidth()),
                                                   size: ConstantSize.stickSize()))
-        imageView.image = #imageLiteral(resourceName: "Vector-1")
+        imageView.image = Asset.vector1.image
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -38,7 +38,7 @@ class OnboardingViewController: UIViewController {
         let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: UIScreen.main.bounds.width + ConstantSize.stickSize().width,
                                                                   y: ConstantSize.stickSize().height / 2.2 + backgroundImageView.frame.origin.y + 0.35 * ConstantSize.backgroundWidth()),
                                                   size: ConstantSize.stickSize()))
-        imageView.image = #imageLiteral(resourceName: "Vector")
+        imageView.image = Asset.vector.image
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()

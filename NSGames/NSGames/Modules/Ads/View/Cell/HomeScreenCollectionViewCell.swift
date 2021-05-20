@@ -45,7 +45,7 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
 
     let likeButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "Heart"), for: .normal)
+        button.setImage(Asset.heart.image, for: .normal)
         return button
     }()
 
@@ -99,7 +99,7 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
-        likeButton.setImage(#imageLiteral(resourceName: "Heart"), for: .normal)
+        likeButton.setImage(Asset.heart.image, for: .normal)
     }
 
     // MARK: - Public UI Methods
@@ -110,7 +110,7 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
         }
         nameLabel.text = configuration.name
         if configuration.isLiked {
-            likeButton.setImage(#imageLiteral(resourceName: "SelectedHeart"), for: .normal)
+            likeButton.setImage(Asset.selectedHeart.image, for: .normal)
         }
         timeLabel.text = dateToString(date: configuration.date)
     }
@@ -121,7 +121,7 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
             return
         }
         if configuration.isLiked {
-            likeButton.setImage(#imageLiteral(resourceName: "Heart"), for: .normal)
+            likeButton.setImage(Asset.heart.image, for: .normal)
             configuration.isLiked = false
         } else {
             configuration.isLiked = true

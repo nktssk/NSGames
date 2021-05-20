@@ -8,11 +8,11 @@
 import Foundation
 
 enum ProfileRequestPath {
-    static let ads = "http://192.168.0.100:80/user/ads"
-    static let userInfo = "http://192.168.0.100:80/user/info"
-    static let detail = "http://192.168.0.100:80/ad/offers"
-    static let delete = "http://192.168.0.100:80/ad/delete"
-    static let logout = "http://192.168.0.100:80/user/logout"
+    static let ads = BaseUrl.host + "/user/ads"
+    static let userInfo = BaseUrl.host + "/user/info"
+    static let detail = BaseUrl.host + "/ad/offers"
+    static let delete = BaseUrl.host + "/ad/delete"
+    static let logout = BaseUrl.host + "/user/logout"
 }
 
 struct ProfileAdDto: Codable {

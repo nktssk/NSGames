@@ -16,40 +16,40 @@ class SignUpViewController: UIViewController {
     // MARK: - UI
     let iconImageView: UIImageView = {
         let iconImageView = UIImageView()
-        iconImageView.image = #imageLiteral(resourceName: "NSGames-icon")
+        iconImageView.image = Asset.nsGamesIcon.image
         return iconImageView
     }()
 
     let signUpLabel: UILabel = {
         let label = UILabel()
-        label.text = "Создание аккаунта"
+        label.text = L10n.creatingAccount
         label.font = UIFont.systemFont(ofSize: 30, weight: .heavy)
         return label
     }()
 
     let loginTextField: DataTextField = {
         let textField = DataTextField()
-        textField.placeholder = "Логин"
+        textField.placeholder = L10n.login
         return textField
     }()
 
     let emailTextField: DataTextField = {
         let textField = DataTextField()
-        textField.placeholder = "Email"
+        textField.placeholder = L10n.email
         textField.keyboardType = .emailAddress
         return textField
     }()
 
     let passwordTextField: DataTextField = {
         let textField = DataTextField()
-        textField.placeholder = "Пароль"
+        textField.placeholder = L10n.password
         textField.isSecureTextEntry = true
         return textField
     }()
 
     let passwordAgainTextField: DataTextField = {
         let textField = DataTextField()
-        textField.placeholder = "Пароль еще раз"
+        textField.placeholder = L10n.passwordAgain
         textField.isSecureTextEntry = true
         textField.returnKeyType = .done
         return textField
@@ -57,7 +57,7 @@ class SignUpViewController: UIViewController {
 
     let haveAccount: GrayLabel = {
         let label = GrayLabel()
-        label.text = "Уже есть аккаунт?"
+        label.text = L10n.haveAccount
         label.font = UIFont.systemFont(ofSize: 15)
         label.tintColor = .grayLabel
         return label
@@ -65,7 +65,7 @@ class SignUpViewController: UIViewController {
 
     var signInButton: BlueTextButton = {
         let button = BlueTextButton()
-        button.setTitle("Войдите", for: .normal)
+        button.setTitle(L10n.logIn, for: .normal)
         button.addTarget(self, action: #selector(signInButtonAction), for: .touchUpInside)
         return button
     }()
@@ -97,7 +97,7 @@ class SignUpViewController: UIViewController {
 
     let errorLabel: UILabel = {
         let label = UILabel()
-        label.text = "У вас нет аккаунта?"
+        label.text = L10n.haveNoAccount
         label.font = UIFont.systemFont(ofSize: 15, weight: .heavy)
         label.numberOfLines = 2
         label.textColor = .red
@@ -112,7 +112,7 @@ class SignUpViewController: UIViewController {
         bindData()
         addSubviews()
         setConstraints()
-        title = "Создание аккаунта"
+        title = L10n.creatingAccount
         view.backgroundColor = .white
         loginTextField.delegate = self
         emailTextField.delegate = self

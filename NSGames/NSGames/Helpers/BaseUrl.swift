@@ -8,5 +8,6 @@
 import Foundation
 
 enum BaseUrl {
-    static let imageUrl = "http://192.168.0.100:80/image/"
+    static let host = "http://localhost"
+    static let imageUrl = host + "/image/"
 }

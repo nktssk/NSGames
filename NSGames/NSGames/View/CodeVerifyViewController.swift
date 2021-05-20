@@ -16,27 +16,27 @@ class CodeVerifyViewController: UIViewController {
     // MARK: - UI
     let topLabel: UILabel = {
         let label = UILabel()
-        label.text = "Новый пароль"
+        label.text = L10n.newPassword
         label.font = UIFont.systemFont(ofSize: 30, weight: .heavy)
         return label
     }()
 
     let codeTextField: DataTextField = {
         let textField = DataTextField()
-        textField.placeholder = "Код из письма"
+        textField.placeholder = L10n.newPassword
         return textField
     }()
 
     let passwordTextField: DataTextField = {
         let textField = DataTextField()
-        textField.placeholder = "Пароль"
+        textField.placeholder = L10n.password
         textField.isSecureTextEntry = true
         return textField
     }()
 
     let passwordAgainTextField: DataTextField = {
         let textField = DataTextField()
-        textField.placeholder = "Пароль еще раз"
+        textField.placeholder = L10n.passwordAgain
         textField.isSecureTextEntry = true
         textField.returnKeyType = .done
         return textField
@@ -44,7 +44,7 @@ class CodeVerifyViewController: UIViewController {
 
     let signInButton: RoundedButton = {
         let button = RoundedButton()
-        button.setTitle("Войти", for: .normal)
+        button.setTitle(L10n.signIn, for: .normal)
         button.addTarget(self, action: #selector(signInButtonAction), for: .touchUpInside)
         return button
     }()
@@ -60,7 +60,7 @@ class CodeVerifyViewController: UIViewController {
 
     let errorLabel: UILabel = {
         let label = UILabel()
-        label.text = "У вас нет аккаунта?"
+        label.text = L10n.haveNoAccount
         label.font = UIFont.systemFont(ofSize: 15, weight: .heavy)
         label.numberOfLines = 2
         label.textColor = .red
@@ -75,7 +75,7 @@ class CodeVerifyViewController: UIViewController {
         bindData()
         addSubviews()
         setConstraints()
-        title = "Пароль"
+        title = L10n.password
         view.backgroundColor = .white
         codeTextField.delegate = self
         passwordTextField.delegate = self
@@ -89,7 +89,7 @@ class CodeVerifyViewController: UIViewController {
         if  let password = passwordTextField.text, !password.isEmpty, passwordTextField.text == passwordAgainTextField.text {
             viewModel?.checkCode(code: codeTextField.text ?? "", password: password)
         } else {
-            self.errorLabel.text = "Пароли не совпадают"
+            self.errorLabel.text = L10n.passwordDif
             self.userDataStackView.addArrangedSubview(self.errorLabel)
         }
     }

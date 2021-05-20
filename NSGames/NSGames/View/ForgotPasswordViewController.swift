@@ -16,20 +16,20 @@ class ForgotPasswordViewController: UIViewController {
     // MARK: - UI
     private let iconImageView: UIImageView = {
         let iconImageView = UIImageView()
-        iconImageView.image = #imageLiteral(resourceName: "NSGames-icon")
+        iconImageView.image = Asset.nsGamesIcon.image
         return iconImageView
     }()
 
     private let forgotPasswordLabel: UILabel = {
         let label = UILabel()
-        label.text = "Введите email"
+        label.text = L10n.enterEmail
         label.font = UIFont.systemFont(ofSize: 30, weight: .heavy)
         return label
     }()
 
     private let emailTextField: DataTextField = {
         let textField = DataTextField()
-        textField.placeholder = "Email"
+        textField.placeholder = L10n.email
         textField.keyboardType = .emailAddress
         textField.returnKeyType = .done
         return textField
@@ -37,14 +37,14 @@ class ForgotPasswordViewController: UIViewController {
 
     private let nextButton: RoundedButton = {
         let button = RoundedButton()
-        button.setTitle("Далее", for: .normal)
+        button.setTitle(L10n.next, for: .normal)
         button.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
         return button
     }()
 
     let errorLabel: UILabel = {
         let label = UILabel()
-        label.text = "У вас нет аккаунта?"
+        label.text = L10n.haveNoAccount
         label.font = UIFont.systemFont(ofSize: 15, weight: .heavy)
         label.numberOfLines = 2
         label.textColor = .red

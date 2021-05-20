@@ -51,7 +51,7 @@ class AdTableViewCell: UITableViewCell {
     let staticNumberOfOffersLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
-        label.text = "Количество предложений 🗂"
+        label.text = L10n.numberOfOffers
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
@@ -68,7 +68,7 @@ class AdTableViewCell: UITableViewCell {
     let staticNumberOfViewsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
-        label.text = "Количество просмотров 👀"
+        label.text = L10n.numberOfViews
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
@@ -130,7 +130,7 @@ class AdTableViewCell: UITableViewCell {
         numberOfOffersLabel.text = "\(configuration.numberOfOffers)"
         numberOfViewsLabel.text = "\(configuration.views)"
         guard let url = URL(string: BaseUrl.imageUrl + configuration.photo) else { return }
-        adImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "OnboardingBackground"))
+        adImageView.kf.setImage(with: url, placeholder: Asset.onboardingBackground.image)
     }
 
     // MARK: - Private Methods

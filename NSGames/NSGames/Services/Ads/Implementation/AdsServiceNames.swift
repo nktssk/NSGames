@@ -8,15 +8,15 @@
 import Foundation
 
 enum AdsRequestPath {
-    static let feed = "http://192.168.0.100:80/ad/feed"
-    static let like = "http://192.168.0.100:80/ad/like"
-    static let detail = "http://192.168.0.100:80/ad/detail"
-    static let search = "http://192.168.0.100:80/ad/search/"
-    static let tradeList = "http://192.168.0.100:80/ad/tradeList/"
-    static let offerTradeList = "http://192.168.0.100:80/ad/offerGameList/"
-    static let allGameList = "http://192.168.0.100:80/game/getAll"
-    static let favorites = "http://192.168.0.100:80/ad/favorites"
-    static let offer = "http://192.168.0.100:80/ad/createOffer"
+    static let feed = BaseUrl.host + "/ad/feed"
+    static let like = BaseUrl.host + "/ad/like"
+    static let detail = BaseUrl.host + "/ad/detail"
+    static let search = BaseUrl.host + "/ad/search/"
+    static let tradeList = BaseUrl.host + "/ad/tradeList/"
+    static let offerTradeList = BaseUrl.host + "/ad/offerGameList/"
+    static let allGameList = BaseUrl.host + "/game/getAll"
+    static let favorites = BaseUrl.host + "/ad/favorites"
+    static let offer = BaseUrl.host + "/ad/createOffer"
 }
 
 struct AdFeedDto: Codable {

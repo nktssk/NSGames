@@ -68,6 +68,7 @@
 		A178CE6125EFDB8B003A50DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A178CE5F25EFDB8B003A50DC /* LaunchScreen.storyboard */; };
 		A17D8FD9261F7441009669EC /* DetailOfferViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D8FD8261F7441009669EC /* DetailOfferViewConroller.swift */; };
 		A17D8FDF261F748B009669EC /* OfferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D8FDE261F748B009669EC /* OfferDetailViewController.swift */; };
+		A17F8E24264BBA1900DE2460 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A17F8E22264BBA1900DE2460 /* Localizable.strings */; };
 		A184621E260C65FD008D159F /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A184621D260C65FD008D159F /* ConversationListViewController.swift */; };
 		A1846228260C66A0008D159F /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1846227260C66A0008D159F /* Conversation.swift */; };
 		A184622B260C66DE008D159F /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A184622A260C66DE008D159F /* ConversationTableViewCell.swift */; };
@@ -127,6 +128,8 @@
 		A1E046B72636B2050027521D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E046B62636B2050027521D /* OnboardingViewController.swift */; };
 		A1E1548325FF51C4000F2007 /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1548225FF51C4000F2007 /* PulseAnimation.swift */; };
 		A1F67DEB25FE823D0007636E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F67DEA25FE823D0007636E /* Date.swift */; };
+		A1FEE876264AC0BC009C89A3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE874264AC0BC009C89A3 /* Assets.swift */; };
+		A1FEE877264AC0BC009C89A3 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE875264AC0BC009C89A3 /* Strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -193,6 +196,7 @@
 		A178CE6225EFDB8B003A50DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A17D8FD8261F7441009669EC /* DetailOfferViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOfferViewConroller.swift; sourceTree = "<group>"; };
 		A17D8FDE261F748B009669EC /* OfferDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailViewController.swift; sourceTree = "<group>"; };
+		A17F8E23264BBA1900DE2460 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = NSGames/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A184621D260C65FD008D159F /* ConversationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		A1846227260C66A0008D159F /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		A184622A260C66DE008D159F /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 		A1E046B62636B2050027521D /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		A1E1548225FF51C4000F2007 /* PulseAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseAnimation.swift; sourceTree = "<group>"; };
 		A1F67DEA25FE823D0007636E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		A1FEE874264AC0BC009C89A3 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		A1FEE875264AC0BC009C89A3 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		A310BA6390AA4C34B5EAB5AD /* Pods_NSGames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NSGames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C7AB1E828C3C48DCD028E7 /* Pods-NSGames.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NSGames.debug.xcconfig"; path = "Target Support Files/Pods-NSGames/Pods-NSGames.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -283,6 +289,24 @@
 				3D3E85A14F76736513CCCF85 /* Pods-NSGames.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A106DF452656C10100367D18 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A10547BA260B926C00FEB2FD /* Observable.swift */,
+				A1D18A1925F69B74007A5CF7 /* ObservableUI.swift */,
+				A148C3C92643FF0900B078F5 /* MyJSONDecoder.swift */,
+				A1E0468A2635584C0027521D /* BaseUrl.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A106DF462656C12E00367D18 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		A13880AE262054CF00DA1604 /* Profile */ = {
@@ -362,14 +386,13 @@
 		A14DBFA72601FE7200705AB9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A106DF462656C12E00367D18 /* CoreData */,
 				A1949D02261E579A0028EBC8 /* Ads */,
 				A1949CFC261E575B0028EBC8 /* Chat */,
 				A13880AE262054CF00DA1604 /* Profile */,
 				A1949D09261E58780028EBC8 /* Keychain */,
 				A1B9EFE3262C981E00E799E2 /* CreateAd */,
 				A1949CFF261E57710028EBC8 /* Authentication */,
-				A10547BA260B926C00FEB2FD /* Observable.swift */,
-				A1D18A1925F69B74007A5CF7 /* ObservableUI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -400,8 +423,8 @@
 		A14DBFAB2601FEC700705AB9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A178CE5D25EFDB8B003A50DC /* Assets.xcassets */,
-				A1E0468A2635584C0027521D /* BaseUrl.swift */,
+				A17F8E22264BBA1900DE2460 /* Localizable.strings */,
+				A1FEE86E264AB928009C89A3 /* SwiftGen */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -517,6 +540,7 @@
 		A178CE5325EFDB89003A50DC /* NSGames */ = {
 			isa = PBXGroup;
 			children = (
+				A106DF452656C10100367D18 /* Helpers */,
 				A14DBFA72601FE7200705AB9 /* Services */,
 				A14DBF9D2601FDCD00705AB9 /* Modules */,
 				A1D18A1625F690B7007A5CF7 /* Models */,
@@ -858,9 +882,18 @@
 			children = (
 				A1A8B06A25F22856008CDDA4 /* UIColor.swift */,
 				A1F67DEA25FE823D0007636E /* Date.swift */,
-				A148C3C92643FF0900B078F5 /* MyJSONDecoder.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A1FEE86E264AB928009C89A3 /* SwiftGen */ = {
+			isa = PBXGroup;
+			children = (
+				A1FEE874264AC0BC009C89A3 /* Assets.swift */,
+				A1FEE875264AC0BC009C89A3 /* Strings.swift */,
+				A178CE5D25EFDB8B003A50DC /* Assets.xcassets */,
+			);
+			path = SwiftGen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -871,6 +904,7 @@
 			buildConfigurationList = A178CE6525EFDB8B003A50DC /* Build configuration list for PBXNativeTarget "NSGames" */;
 			buildPhases = (
 				BF74A7FFE440EB94F77AF022 /* [CP] Check Pods Manifest.lock */,
+				A1FEE878264AC110009C89A3 /* SwiftGen */,
 				A147AA2825EFE89E00AB8846 /* Swift Lint */,
 				A178CE4D25EFDB89003A50DC /* Sources */,
 				A178CE4E25EFDB89003A50DC /* Frameworks */,
@@ -893,7 +927,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					A178CE5025EFDB89003A50DC = {
 						CreatedOnToolsVersion = 12.4;
@@ -924,6 +958,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A178CE6125EFDB8B003A50DC /* LaunchScreen.storyboard in Resources */,
+				A17F8E24264BBA1900DE2460 /* Localizable.strings in Resources */,
 				A1545D5A263BF08900E14484 /* GoogleService-Info.plist in Resources */,
 				A178CE5E25EFDB8B003A50DC /* Assets.xcassets in Resources */,
 			);
@@ -967,6 +1002,24 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		A1FEE878264AC110009C89A3 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT\"/SwiftGen/bin/swiftgen\n";
+		};
 		BF74A7FFE440EB94F77AF022 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1004,6 +1057,7 @@
 				A184622F260CA331008D159F /* ConversationListViewModelProtocol.swift in Sources */,
 				A1949D0F261EFAA90028EBC8 /* AlertPresenter.swift in Sources */,
 				A1A8B07625F250D6008CDDA4 /* BlueTextButton.swift in Sources */,
+				A1FEE876264AC0BC009C89A3 /* Assets.swift in Sources */,
 				A1381FAC260E609900BDF8CD /* ChatFireBaseService.swift in Sources */,
 				A15AB9FD261F1E2600A549C7 /* ProfileCoordinator.swift in Sources */,
 				A14DBF9A2601FD0400705AB9 /* RestCodeVerifyService.swift in Sources */,
@@ -1111,6 +1165,7 @@
 				A1846242260CA630008D159F /* ChatCoordinator.swift in Sources */,
 				A16578EE25FCD917005F19C8 /* HomeScreenViewController.swift in Sources */,
 				A189E275260B556E0051D578 /* AppTabBarController.swift in Sources */,
+				A1FEE877264AC0BC009C89A3 /* Strings.swift in Sources */,
 				A1418B1B25FE1C6F00FF13CC /* HomeScreenCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1126,6 +1181,14 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		A17F8E22264BBA1900DE2460 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A17F8E23264BBA1900DE2460 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1133,6 +1196,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1194,6 +1258,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

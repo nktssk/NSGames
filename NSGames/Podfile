@@ -13,5 +13,6 @@ target 'NSGames' do
   pod 'Firebase/Firestore', '7.8'
   pod 'AlamofireNetworkActivityLogger'
   pod 'SkeletonView'
+  pod 'SwiftGen'
 
 end
