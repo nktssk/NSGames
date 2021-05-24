@@ -12,5 +12,4 @@ struct Conversation {
     let username: String
     let lastActivity: Date?
     let lastMessageText: String?
-    let isRead: Bool?
 }

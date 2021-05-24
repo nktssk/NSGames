@@ -11,7 +11,7 @@ import SnapKit
 class ForgotPasswordViewController: UIViewController {
 
     // MARK: - MVVM properties
-    var viewModel: ForgotPasswordViewModel?
+    var viewModel: ForgotPasswordViewModelProtocol?
 
     // MARK: - UI
     private let iconImageView: UIImageView = {

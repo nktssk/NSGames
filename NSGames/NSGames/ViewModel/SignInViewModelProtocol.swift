@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SignInViewModel {
+protocol SignInViewModelProtocol {
     var signInError: ObservableUI<String?> { get set }
 
     func signIn(email: String, password: String)
@@ -15,7 +15,7 @@ protocol SignInViewModel {
     func forgotPassword()
 }
 
-class MockSignInViewModel: SignInViewModel {
+class SignInViewModel: SignInViewModelProtocol {
 
     var signInError: ObservableUI<String?> = ObservableUI(nil)
 

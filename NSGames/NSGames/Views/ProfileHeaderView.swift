@@ -11,11 +11,10 @@ import SnapKit
 class ProfileHeaderView: UIView {
 
     // MARK: - UI
-    lazy var imageView: UIImageView = {
+    var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = Asset.meAnimoji.image
-        imageView.layer.cornerRadius = imageView.layer.bounds.height / 2
         imageView.tintColor = .grayView
         return imageView
     }()
@@ -53,18 +52,13 @@ class ProfileHeaderView: UIView {
         backgroundColor = .white
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        imageView.layer.cornerRadius = imageView.frame.height / 2
-    }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Public UI Methods
     func setImage(image: UIImage) {
-        imageView.image = image
+        userImageView.image = image
     }
 
     func setInfo(data: UserInfo) {
@@ -74,7 +68,7 @@ class ProfileHeaderView: UIView {
 
     // MARK: - Private Methods
     private func addSubviews() {
-        addSubview(imageView)
+        addSubview(userImageView)
         addSubview(stackView)
         stackView.addArrangedSubview(usernameLabel)
         stackView.addArrangedSubview(emailLabel)
@@ -88,10 +82,10 @@ class ProfileHeaderView: UIView {
             make.height.equalTo(45)
         }
 
-        imageView.snp.makeConstraints { (make: ConstraintMaker) in
+        userImageView.snp.makeConstraints { (make: ConstraintMaker) in
             make.bottom.equalTo(stackView.snp.top)
             make.top.equalToSuperview().offset(5)
-            make.height.equalTo(imageView.snp.width).dividedBy(0.9)
+            make.height.equalTo(userImageView.snp.width).dividedBy(0.9)
             make.centerX.equalToSuperview()
         }
     }

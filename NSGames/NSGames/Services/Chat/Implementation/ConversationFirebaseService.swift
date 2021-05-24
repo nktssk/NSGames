@@ -30,9 +30,8 @@ class ConversationFirebaseService: ConversationsFirebaseServiceProtocol {
                     let id = doc.documentID
                     if let usernname = data[FirebaseNames.conversationUsername] as? String,
                        let lastMessage = data[FirebaseNames.conversationLastMessage] as? String?,
-                       let lastActivity = data[FirebaseNames.conversationLastActivity] as? Timestamp?,
-                       let isRead = data[FirebaseNames.conversationIsRead] as? Bool? {
-                        conversations.append(Conversation(id: id, username: usernname, lastActivity: lastActivity?.dateValue(), lastMessageText: lastMessage, isRead: isRead))
+                       let lastActivity = data[FirebaseNames.conversationLastActivity] as? Timestamp? {
+                        conversations.append(Conversation(id: id, username: usernname, lastActivity: lastActivity?.dateValue(), lastMessageText: lastMessage))
                     }
                 }
                 conversations.sort { first, second -> Bool in

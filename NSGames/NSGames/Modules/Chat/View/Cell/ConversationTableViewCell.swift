@@ -58,13 +58,7 @@ class ConversationTableViewCell: UITableViewCell {
 
         dateLastMessageLabel.text = prepareDate(date: model.lastActivity) ?? "-"
 
-        if let bool = model.isRead {
-            if bool {
-                lastMessageLabel.font = .systemFont(ofSize: 19, weight: .regular)
-            } else {
-                lastMessageLabel.font = .systemFont(ofSize: 19, weight: .bold)
-            }
-        }
+        lastMessageLabel.font = .systemFont(ofSize: 19, weight: .regular)
     }
 
     // MARK: - Private Methods

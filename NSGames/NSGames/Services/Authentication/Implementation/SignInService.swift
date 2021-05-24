@@ -9,10 +9,10 @@ import Foundation
 import Alamofire
 import KeychainAccess
 
-class RestSignInService: SignInServiceProtocol {
+class SignInService: SignInServiceProtocol {
     func signIn(email: String, password: String, completion: @escaping (Result<(), SignInError>) -> Void) {
-        let responseBody = [ResponseBodyPropertyName.email: email,
-                            ResponseBodyPropertyName.password: password]
+        let responseBody = [AuthenticationPropertyName.email: email,
+                            AuthenticationPropertyName.password: password]
 
         AF.request(AuthRequestPath.singIn,
                    method: .post,

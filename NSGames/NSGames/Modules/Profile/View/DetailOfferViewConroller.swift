@@ -18,7 +18,7 @@ class DetailOfferViewConroller: UIViewController {
 
     let noLabel: GrayLabel = {
         let label = GrayLabel()
-        label.text = "Нет предложений для показа."
+        label.text = L10n.noShowOffers
         label.font = UIFont.systemFont(ofSize: 18)
         label.numberOfLines = 0
         label.textAlignment = .center

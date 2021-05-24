@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol CodeVerifyViewModel {
+protocol CodeVerifyViewModelProtocol {
     var email: String { get set }
     var codeVerifyError: ObservableUI<String?> { get set }
 
     func checkCode(code: String, password: String)
 }
 
-class MockCodeVerifyViewModel: CodeVerifyViewModel {
+class CodeVerifyViewModel: CodeVerifyViewModelProtocol {
 
     var email: String
     var codeVerifyError: ObservableUI<String?> = ObservableUI(nil)

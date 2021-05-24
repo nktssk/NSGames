@@ -8,6 +8,6 @@
 import Foundation
 
 enum InetErrorNames {
-    static let failedConnection = "Ошибка с подключением к сети"
-    static let localData = "Ошибка с локальными данными, перезайдите в аккаунт"
+    static let failedConnection = L10n.inetError
+    static let localData = L10n.localDataError
 }

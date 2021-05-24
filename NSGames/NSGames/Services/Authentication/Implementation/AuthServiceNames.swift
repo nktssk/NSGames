@@ -14,7 +14,7 @@ enum AuthRequestPath {
     static let changePassword = BaseUrl.host + "/forgotPassword/changePassword"
 }
 
-enum ResponseBodyPropertyName {
+enum AuthenticationPropertyName {
     static let code = "code"
     static let email = "email"
     static let password = "password"

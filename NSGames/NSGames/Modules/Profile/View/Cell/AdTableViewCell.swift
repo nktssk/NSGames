@@ -129,7 +129,7 @@ class AdTableViewCell: UITableViewCell {
         nameLabel.text = configuration.name
         numberOfOffersLabel.text = "\(configuration.numberOfOffers)"
         numberOfViewsLabel.text = "\(configuration.views)"
-        guard let url = URL(string: BaseUrl.imageUrl + configuration.photo) else { return }
+        guard let url = URL(string: BaseUrl.kingFisherHostImageUrl + configuration.photo) else { return }
         adImageView.kf.setImage(with: url, placeholder: Asset.onboardingBackground.image)
     }
 

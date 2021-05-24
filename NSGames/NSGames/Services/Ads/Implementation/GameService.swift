@@ -10,10 +10,9 @@ import Alamofire
 
 class GameService: GameServiceProtocol {
     func getStringData(id: Int, completion: @escaping (Result<GameSreenConfig, AdServiceError>) -> Void) {
-
         AF.request(AdsRequestPath.detail,
                    method: .post,
-                   parameters: ["id": id],
+                   parameters: [AdsServicePropertyName.id: id],
                    encoder: JSONParameterEncoder.default,
                    headers: HeaderService.shared.getHeaders()).responseJSON(queue: DispatchQueue.global(qos: .userInitiated)) { response in
                     if response.error != nil {

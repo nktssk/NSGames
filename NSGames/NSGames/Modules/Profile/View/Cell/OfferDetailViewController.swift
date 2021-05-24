@@ -100,7 +100,7 @@ class OfferDetailTableViewCell: UITableViewCell {
         let button = RoundedButton()
         button.backgroundColor = .grayLight
         button.setTitleColor(.gray, for: .normal)
-        button.setTitle("Написать пользователю", for: .normal)
+        button.setTitle(L10n.writeUser, for: .normal)
         return button
     }()
 

@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Animation on onbaordingScreen
 enum AdsTransitionType {
     case presentation
     case dismissal

@@ -19,6 +19,10 @@ enum AdsRequestPath {
     static let offer = BaseUrl.host + "/ad/createOffer"
 }
 
+enum AdsServicePropertyName {
+    static let id = "id"
+}
+
 struct AdFeedDto: Codable {
     let id: Int
     let liked: Bool

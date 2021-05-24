@@ -11,7 +11,7 @@ protocol ChatCoordinatorProtocol: Coordinator {
     func goToChatView(id: String, username: String)
 }
 
-class ChatCoordinator: Coordinator {
+class ChatCoordinator: ChatCoordinatorProtocol {
     private let navigationController = UINavigationController()
 
     init() {

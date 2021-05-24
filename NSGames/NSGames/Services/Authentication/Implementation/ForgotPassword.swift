@@ -8,9 +8,9 @@
 import Foundation
 import Alamofire
 
-class RestForgotPassword: ForgotPasswordServiceProtocol {
+class ForgotPassword: ForgotPasswordServiceProtocol {
     func checkEmail(email: String, completion: @escaping (Result<(), ForgotPasswordError>) -> Void) {
-        let responseBody = [ResponseBodyPropertyName.email: email]
+        let responseBody = [AuthenticationPropertyName.email: email]
 
         AF.request(AuthRequestPath.forgotPassword,
                    method: .post,

@@ -8,7 +8,6 @@
 import Foundation
 
 class MyJSONDecoder: JSONDecoder {
-
     override init() {
         super.init()
         let dateFormatter = DateFormatter()

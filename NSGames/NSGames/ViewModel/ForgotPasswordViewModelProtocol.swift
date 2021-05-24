@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol ForgotPasswordViewModel {
+protocol ForgotPasswordViewModelProtocol {
     var emailError: ObservableUI<String?> { get set }
 
     func checkEmail(email: String)
 }
 
-class MockForgotPasswordViewModel: ForgotPasswordViewModel {
+class ForgotPasswordViewModel: ForgotPasswordViewModelProtocol {
 
     var emailError: ObservableUI<String?> = ObservableUI(nil)
 

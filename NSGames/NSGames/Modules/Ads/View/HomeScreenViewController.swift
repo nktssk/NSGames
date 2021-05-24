@@ -166,6 +166,7 @@ class HomeScreenViewController: UIViewController {
         }
         viewModel?.error.observe(on: self) { [weak self] value in
             if let self = self, let value = value {
+                self.refreshControl.endRefreshing()
                 AlertPresenter.showAlert(controller: self, text: value)
             }
         }

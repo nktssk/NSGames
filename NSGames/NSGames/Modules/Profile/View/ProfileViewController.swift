@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Профиль"
+        title = L10n.profile
         bindData()
         addSubviews()
         setConstraints()
@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         viewModel?.setup()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Выйти", style: .done, target: self, action: #selector(exitButtonAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.logout, style: .done, target: self, action: #selector(exitButtonAction))
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -103,7 +103,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Объявления"
+        L10n.ads
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

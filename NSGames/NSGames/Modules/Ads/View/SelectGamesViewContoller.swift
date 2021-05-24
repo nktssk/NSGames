@@ -30,7 +30,7 @@ class SelectGamesViewContoller: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Выберите игры"
+        title = L10n.chooseGamesTitle
         setNavigationBarStyle()
         bindData()
         addSubviews()

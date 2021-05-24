@@ -7,7 +7,8 @@
 
 import Foundation
 
-// OLD VERSION
+// Old observer version
+
 public final class ObservableUI<T> {
     typealias Listener = (T) -> Void
 

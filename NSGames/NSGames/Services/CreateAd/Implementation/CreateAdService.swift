@@ -42,7 +42,7 @@ class CreateAdService: CreateAdServiceProtocol {
                     }
                     group.wait()
 
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    DispatchQueue.main.async {
                         return completion(.success(()))
                     }
         }

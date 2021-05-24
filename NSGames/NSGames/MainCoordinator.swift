@@ -28,7 +28,6 @@ class MainCoordinator {
         if KeychainService.getToken() != nil {
             goToTabBar()
         } else {
-//            goToTabBar()
             let coordinator = AuthenticationCoordinator()
             coordinator.mainCoordinator = self
             setRootViewController(coordinator.getStartViewController(), duration: 0.25)

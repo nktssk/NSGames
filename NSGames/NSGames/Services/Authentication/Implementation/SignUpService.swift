@@ -8,11 +8,11 @@
 import Foundation
 import Alamofire
 
-class RestSignUpService: SignUpServiceProtocol {
+class SignUpService: SignUpServiceProtocol {
     func signUp(username: String, email: String, password: String, completion: @escaping (Result<(), SignUpError>) -> Void) {
-        let responseBody = [ResponseBodyPropertyName.email: email,
-                            ResponseBodyPropertyName.password: password,
-                            ResponseBodyPropertyName.username: username]
+        let responseBody = [AuthenticationPropertyName.email: email,
+                            AuthenticationPropertyName.password: password,
+                            AuthenticationPropertyName.username: username]
 
         AF.request(AuthRequestPath.singUp,
                    method: .post,

@@ -25,9 +25,9 @@ class ProfileViewModel: ProfileViewModelProtocol {
     var error: Observable<String?> = Observable(nil)
 
     private let service: ProfileViewServiceProtocol
-    private let coordinator: ProfileCoordinator
+    private let coordinator: ProfileCoordinatorProtocol
 
-    init(service: ProfileViewServiceProtocol, coordinator: ProfileCoordinator) {
+    init(service: ProfileViewServiceProtocol, coordinator: ProfileCoordinatorProtocol) {
         self.service = service
         self.coordinator = coordinator
     }
@@ -38,8 +38,8 @@ class ProfileViewModel: ProfileViewModelProtocol {
             case .success(let data):
                 self?.userInfo.value = data
 
-            case .failure(let error):
-                print(error.localizedDescription)
+            case .failure:
+                self?.error.value = L10n.inetError
             }
         }
 
@@ -48,8 +48,8 @@ class ProfileViewModel: ProfileViewModelProtocol {
             case .success(let data):
                 self?.items.value = data
 
-            case .failure(let error):
-                print(error.localizedDescription)
+            case .failure:
+                self?.error.value = L10n.inetError
             }
         }
     }
@@ -61,7 +61,7 @@ class ProfileViewModel: ProfileViewModelProtocol {
                 self?.coordinator.goToAuth()
 
             case .failure:
-                self?.error.value = "Ошибка при выходе"
+                self?.error.value = L10n.logoutError
             }
         }
     }

@@ -8,12 +8,12 @@
 import Foundation
 import Alamofire
 
-class RestCodeVerifyService: CodeVerifyServiceProtocol {
+class CodeVerifyService: CodeVerifyServiceProtocol {
     func checkCode(password: String, email: String, code: String, completion: @escaping (Result<(), CodeVerifyError>) -> Void) {
 
-        let responseBody = [ResponseBodyPropertyName.email: email,
-                            ResponseBodyPropertyName.code: code,
-                            ResponseBodyPropertyName.password: password]
+        let responseBody = [AuthenticationPropertyName.email: email,
+                            AuthenticationPropertyName.code: code,
+                            AuthenticationPropertyName.password: password]
 
         DispatchQueue.global().async {
             AF.request(AuthRequestPath.changePassword,

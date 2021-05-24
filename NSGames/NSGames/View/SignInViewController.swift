@@ -11,7 +11,7 @@ import SnapKit
 class SignInViewController: UIViewController {
 
     // MARK: - MVVM properties
-    var viewModel: SignInViewModel?
+    var viewModel: SignInViewModelProtocol?
 
     // MARK: - UI
     let iconImageView: UIImageView = {
@@ -99,6 +99,8 @@ class SignInViewController: UIViewController {
 
     let scrollView = UIScrollView()
 
+    let loadingView = LoadingView()
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,6 +108,7 @@ class SignInViewController: UIViewController {
         setConstraints()
         bindData()
         title = L10n.auth
+        loadingView.isHidden = true
         view.backgroundColor = .white
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -120,6 +123,7 @@ class SignInViewController: UIViewController {
 
     @objc private func signInButtonAction() {
         viewModel?.signIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
+        self.loadingView.isHidden = false
     }
 
     @objc private func forgotPasswordButtonAction() {
@@ -149,6 +153,7 @@ class SignInViewController: UIViewController {
         stackView.addArrangedSubview(haveNoAccount)
         stackView.addArrangedSubview(signUpButton)
         scrollView.addSubview(stackView)
+        view.addSubview(loadingView)
     }
 
     private func setConstraints() {
@@ -189,6 +194,12 @@ class SignInViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(signInButton.snp.bottom).offset(10)
         }
+
+        loadingView.snp.makeConstraints { (make: ConstraintMaker) in
+            make.centerX.centerY.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.15)
+            make.width.equalTo(loadingView.snp.height)
+        }
     }
 
     private func bindData() {
@@ -196,6 +207,7 @@ class SignInViewController: UIViewController {
             guard let self = self else { return }
             self.errorLabel.text = text
             self.userDataStackView.addArrangedSubview(self.errorLabel)
+            self.loadingView.isHidden = true
         }
     }
 }

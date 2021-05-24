@@ -6,6 +6,11 @@
 
 */
 
+// Titles
+"Ad" = "Объявление";
+"Ads" = "Объявления";
+"Profile" = "Профиль";
+
 // SignIn
 "SignIn" = "Войти";
 "Email" = "Email";
@@ -56,8 +61,48 @@
 "Name" = "Название:";
 "TradeGames" = "Игры для обмена";
 "Price" = "Цена";
+"AdPhoto" = "Добавить фотографию";
+"NeedName" = "Нужно заполнить название игры";
+"NeedDescription" = "Нужно заполнить описание";
+"NeedChooseGames" = "Нужно выбрать игры для обмена или написать цену игры";
+"NeedPhoto" = "Нужна хотя бы одна фотография для объявления";
+"ChooseGames" = "Выбрать игры";
+"MakePhoto" = "Сделать фотографию";
+"ChooseFromGallery" = "Выбрать из галереи";
+"Cancel" = "Отменить";
+"ChoosenGames" = "Выбрано игр -";
+"DeletePhoto" = "Удалить фотографию";
+
+// Internet Errors
+"InetError" = "Ошибка с подключением к сети";
+"LocalDataError" = "Ошибка с локальными данными, перезайдите в аккаунт";
 
 
+// SignUp Errors
+"NeedToField" = "Пожалуйста, заполните данными поля.";
+"NeedToEnterLogin" = "Введите логин.";
+"NeedToEnterEmail" = "Введите адрес электронной почты.";
+"NeedToEnterPassword" = "Введите пароль.";
+"NeedToRepeatPassword" = "Повторите пароль.";
+"PasswordIsNotEqual" = "Пароли не совпадают.";
+"EmailIsNotFree" = "Email уже занят.";
+"ServerError" = "Ошибка сервера";
 
+// Logout
+"LogoutError" = "Ошибка при выходе";
+"Logout" = "Выйти";
 
+// Offer
+"WriteUser" = "Написать пользователю";
+"NoShowOffers" = "Нет предложений для показа.";
 
+// ListTradeGames
+"CannotLoadGames" = "Не удается загрузить список.";
+"ChooseGamesTitle" = "Выбрать игры";
+
+// TabBar
+"TabBarAd" = "Объявление";
+"TabBarChat" = "Чат";
+"TabBarFavorite" = "Избранное";
+"TabBarProfile" = "Профиль";
+"TabBarMain" = "Главная";

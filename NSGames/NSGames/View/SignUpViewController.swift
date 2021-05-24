@@ -11,7 +11,7 @@ import SnapKit
 class SignUpViewController: UIViewController {
 
     // MARK: - MVVM propertiesb
-    var viewModel: SignUpViewModel?
+    var viewModel: SignUpViewModelProtocol?
 
     // MARK: - UI
     let iconImageView: UIImageView = {

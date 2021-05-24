@@ -61,16 +61,16 @@ class CreateAdViewModel: CreateAdViewModelProtocol {
 
     func sendData(name: String?, price: String?, description: String) {
         guard let name = name else {
-            return error.value = "Нужно заполнить название игры"
+            return error.value = L10n.needName
         }
         if description.isEmpty {
-            return error.value = "Нужно заполнить описание"
+            return error.value = L10n.needDescription
         }
         if price == nil && selectedGames.value.isEmpty {
-            return error.value = "Нужно выбрать игры для обмена или написать цену игры"
+            return error.value = L10n.needChooseGames
         }
         if !hadNewImage {
-            return error.value = "Нужна хотя бы одна фотография для объявления"
+            return error.value = L10n.needPhoto
         }
 
         var data = [Data]()
@@ -88,7 +88,7 @@ class CreateAdViewModel: CreateAdViewModelProtocol {
                 self?.coordinator.goToProfilePage()
 
             case .failure:
-                break
+                self?.error.value = L10n.inetError
             }
         }
 

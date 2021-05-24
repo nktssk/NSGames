@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol SignUpViewModel {
+protocol SignUpViewModelProtocol {
     var signUpError: ObservableUI<String?> { get set }
 
     func signUp(login: String, email: String, password: String, passwordAgain: String)
 }
 
-class MockSignUpViewModel: SignUpViewModel {
+class SignUpViewModel: SignUpViewModelProtocol {
 
     private let signUpService: SignUpServiceProtocol
     private let coordinator: AuthenticationCoordinator
@@ -28,19 +28,22 @@ class MockSignUpViewModel: SignUpViewModel {
     // MARK: - SignInViewModel
     func signUp(login: String, email: String, password: String, passwordAgain: String) {
         if email.isEmpty && login.isEmpty && password.isEmpty && passwordAgain.isEmpty {
-            return signUpError.value = "Пожалуйста, заполните данными поля."
+            return signUpError.value = L10n.needToField
+        }
+        if login.isEmpty {
+            return signUpError.value = L10n.needToEnterLogin
         }
         if email.isEmpty {
-            return signUpError.value = "Введите адрес электронной почты."
+            return signUpError.value = L10n.needToEnterEmail
         }
         if password.isEmpty {
-            return signUpError.value = "Введите пароль."
+            return signUpError.value = L10n.needToEnterPassword
         }
         if passwordAgain.isEmpty {
-            return signUpError.value = "Повторите пароль."
+            return signUpError.value = L10n.needToRepeatPassword
         }
         if password != passwordAgain {
-            return signUpError.value = "Пароли не совпадают."
+            return signUpError.value = L10n.passwordIsNotEqual
         }
         signUpService.signUp(username: login, email: email, password: password) { [weak self] result in
             switch result {
@@ -50,11 +53,13 @@ class MockSignUpViewModel: SignUpViewModel {
             case .failure(let error):
                 switch error {
                 case .noConnection:
-                    self?.signUpError.value = "Нет соединения."
+                    self?.signUpError.value = L10n.inetError
+
                 case .emailIsOccupied:
-                    self?.signUpError.value = "Email уже занят."
+                    self?.signUpError.value = L10n.emailIsNotFree
+
                 case .badRequest:
-                    self?.signUpError.value = "Ошибка сервера."
+                    self?.signUpError.value = L10n.serverError
                 }
             }
         }

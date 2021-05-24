@@ -9,6 +9,7 @@ import Foundation
 
 protocol SelectGamesViewModelProtocol {
     var games: Observable<[Game]> { get set }
+    var error: Observable<String?> { get set }
     var isFiltering: Bool { get set }
 
     func getData()
@@ -21,6 +22,7 @@ protocol SelectGamesViewModelProtocol {
 class SelectGamesViewModel: SelectGamesViewModelProtocol {
 
     var games: Observable<[Game]> = Observable([])
+    var error: Observable<String?> = Observable(nil)
     var isFiltering = false
     var selected = [Int]()
     var offerId: Int?
@@ -97,8 +99,7 @@ class SelectGamesViewModel: SelectGamesViewModelProtocol {
                 self?.games.value = array
 
             case .failure:
-                // TODO: - error
-                break
+                self?.error.value = L10n.cannotLoadGames
             }
         }
     }
@@ -111,8 +112,7 @@ class SelectGamesViewModel: SelectGamesViewModelProtocol {
                 self?.games.value = array
 
             case .failure:
-                // TODO: - error
-                break
+                self?.error.value = L10n.cannotLoadGames
             }
         }
     }
@@ -125,8 +125,7 @@ class SelectGamesViewModel: SelectGamesViewModelProtocol {
                 self?.games.value = array
 
             case .failure:
-                // TODO: - error
-                print("error")
+                self?.error.value = L10n.cannotLoadGames
             }
         }
     }

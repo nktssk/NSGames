@@ -39,7 +39,7 @@ class FavoritesService: HomeScreenServiceProtocol {
     func likeAd(id: Int, completion: @escaping (Result<Void, AdServiceError>) -> Void) {
         AF.request(AdsRequestPath.like,
                    method: .post,
-                   parameters: ["id": id],
+                   parameters: [AdsServicePropertyName.id: id],
                    encoder: JSONParameterEncoder.default,
                    headers: HeaderService.shared.getHeaders()).responseJSON { response in
                     if response.error != nil {

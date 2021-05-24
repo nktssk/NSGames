@@ -23,27 +23,27 @@ class AppTabBarController: UITabBarController {
         createAdCoordinator.tabBarCoordinator = self
         profileCoordinator.mainCoordinator = mainCoordinator
         let homeController = adCoordinator.getStartViewController()
-        homeController.tabBarItem = UITabBarItem(title: "Главная",
+        homeController.tabBarItem = UITabBarItem(title: L10n.tabBarMain,
                                                  image: UIImage(named: "house.fill"),
                                                  tag: 0)
 
         let chatController = chatCoordinator.getStartViewController()
-        chatController.tabBarItem = UITabBarItem(title: "Чат",
+        chatController.tabBarItem = UITabBarItem(title: L10n.tabBarChat,
                                                  image: UIImage(named: "paperplane.fill"),
                                                  tag: 0)
 
         let profileController = profileCoordinator.getStartViewController()
-        profileController.tabBarItem = UITabBarItem(title: "Профиль",
+        profileController.tabBarItem = UITabBarItem(title: L10n.tabBarProfile,
                                                     image: UIImage(named: "person.crop.circle.fill"),
                                                     tag: 0)
 
         let favoritesController = favoritesCoordinator.getStartViewController()
-        favoritesController.tabBarItem = UITabBarItem(title: "Избранное",
+        favoritesController.tabBarItem = UITabBarItem(title: L10n.tabBarFavorite,
                                                       image: UIImage(named: "star.fill"),
                                                       tag: 0)
 
         let createAdController = createAdCoordinator.getStartViewController()
-        createAdController.tabBarItem = UITabBarItem(title: "Создать",
+        createAdController.tabBarItem = UITabBarItem(title: L10n.tabBarAd,
                                                      image: UIImage(named: "plus.app.fill"),
                                                      tag: 0)
 

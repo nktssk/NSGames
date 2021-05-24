@@ -38,7 +38,8 @@ class ChatViewModel: ChatViewModelProtocol {
             service.setListeners(myId: myId, to: otherUserId) { [weak self] result in
                 switch result {
                 case .failure(let error):
-                    self?.error.value = "Ошибка с подключением к сети + \n \(error.localizedDescription)"
+                    self?.error.value = L10n.inetError + error.localizedDescription
+
                 case .success(let array):
                     DispatchQueue.main.async {
                         self?.items.value = array

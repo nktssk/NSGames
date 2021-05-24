@@ -42,7 +42,7 @@ class MockGameViewModel: GameViewModelProtocol {
             case .success(let config):
                 self?.gameSreenConfig.value = config
                 for image in config.photoNames {
-                    if let url = URL(string: BaseUrl.imageUrl + image) {
+                    if let url = URL(string: BaseUrl.kingFisherHostImageUrl + image) {
                         KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil, completionHandler: { result in
                             switch result {
                             case .success(let downloadedImage):

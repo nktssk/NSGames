@@ -235,11 +235,6 @@ control_statement:
 convenience_type:
   severity: error
 
-cyclomatic_complexity:
-  warning: 10
-  error: 10
-  ignoresCaseStatements: false
-
 deployment_target:
   severity: error
   iOS_deployment_target: '10.0'

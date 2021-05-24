@@ -23,9 +23,9 @@ class DetailViewModel: DetailViewModelProtocol {
     let title: String
 
     private let service: DetailOfferViewServiceProtocol
-    private let coordinator: ProfileCoordinator
+    private let coordinator: ProfileCoordinatorProtocol
 
-    init(service: DetailOfferViewServiceProtocol, coordinator: ProfileCoordinator, id: Int, title: String) {
+    init(service: DetailOfferViewServiceProtocol, coordinator: ProfileCoordinatorProtocol, id: Int, title: String) {
         self.service = service
         self.coordinator = coordinator
         self.id = id

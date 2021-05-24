@@ -13,7 +13,7 @@ class AuthenticationCoordinator: Coordinator {
 
     init() {
         let controller = SignInViewController()
-        controller.viewModel = MockSignInViewModel(service: RestSignInService(), coordinator: self)
+        controller.viewModel = SignInViewModel(service: SignInService(), coordinator: self)
         navigationController.pushViewController(controller, animated: true)
     }
 
@@ -23,19 +23,19 @@ class AuthenticationCoordinator: Coordinator {
 
     func goToSignUpView() {
         let controller = SignUpViewController()
-        controller.viewModel = MockSignUpViewModel(service: RestSignUpService(), coordinator: self)
+        controller.viewModel = SignUpViewModel(service: SignUpService(), coordinator: self)
         navigationController.pushViewController(controller, animated: true)
     }
 
     func goToForgotPasswordView() {
         let controller = ForgotPasswordViewController()
-        controller.viewModel = MockForgotPasswordViewModel(service: RestForgotPassword(), coordinator: self)
+        controller.viewModel = ForgotPasswordViewModel(service: ForgotPassword(), coordinator: self)
         navigationController.pushViewController(controller, animated: true)
     }
 
     func goToCodeVerifyView(email: String) {
         let nextController = CodeVerifyViewController()
-        nextController.viewModel = MockCodeVerifyViewModel(service: RestCodeVerifyService(), coordinator: self, email: email)
+        nextController.viewModel = CodeVerifyViewModel(service: CodeVerifyService(), coordinator: self, email: email)
         navigationController.pushViewController(nextController, animated: true)
     }
 

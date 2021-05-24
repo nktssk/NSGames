@@ -9,5 +9,5 @@ import Foundation
 
 enum BaseUrl {
     static let host = "http://localhost"
-    static let imageUrl = host + "/image/"
+    static let kingFisherHostImageUrl = host + "/image/"
 }

@@ -105,7 +105,7 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
     // MARK: - Public UI Methods
     func setData(configuration: AdCollectionViewCellConfig) {
         self.configuration = configuration
-        if let url = URL(string: BaseUrl.imageUrl + configuration.image) {
+        if let url = URL(string: BaseUrl.kingFisherHostImageUrl + configuration.image) {
             imageView.kf.setImage(with: url)
         }
         nameLabel.text = configuration.name

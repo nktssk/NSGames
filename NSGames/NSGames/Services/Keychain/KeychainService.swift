@@ -8,6 +8,11 @@
 import Foundation
 import KeychainAccess
 
+enum KeychainNames {
+    static let token = "Token"
+    static let chatId = "ChatId"
+}
+
 enum KeychainService {
     private static let keychain = Keychain(service: "com.nsgames")
 

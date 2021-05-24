@@ -27,7 +27,7 @@ class CreateAdViewController: UIViewController {
 
     let addImageButton: RoundedButton = {
         let button = RoundedButton()
-        button.setTitle("Добавить фотографию", for: .normal)
+        button.setTitle(L10n.adPhoto, for: .normal)
         button.setTitleColor(.gray, for: .normal)
         button.backgroundColor = .grayLight
         return button
@@ -35,7 +35,7 @@ class CreateAdViewController: UIViewController {
 
     let staticDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Описание: "
+        label.text = L10n.description
         label.numberOfLines = 1
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 15)
@@ -44,7 +44,7 @@ class CreateAdViewController: UIViewController {
 
     let staticNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Название: "
+        label.text = L10n.name
         label.numberOfLines = 1
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 15)
@@ -53,7 +53,7 @@ class CreateAdViewController: UIViewController {
 
     let staticTradeList: UILabel = {
         let label = UILabel()
-        label.text = "Игры для обмена: "
+        label.text = L10n.tradeGames + ": "
         label.numberOfLines = 1
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 15)
@@ -62,7 +62,7 @@ class CreateAdViewController: UIViewController {
 
     let staticPriceLabel: UILabel = {
         let label = UILabel()
-        label.text = "Цена: "
+        label.text = L10n.price + ": "
         label.numberOfLines = 1
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 15)
@@ -129,7 +129,7 @@ class CreateAdViewController: UIViewController {
 
     let deleteButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Удалить фотографию", for: .normal)
+        button.setTitle(L10n.deletePhoto, for: .normal)
         button.setTitleColor(.gray, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         return button
@@ -155,7 +155,7 @@ class CreateAdViewController: UIViewController {
         setCollectionView()
         viewModel?.didLoad()
         setupTextViewAndFields()
-        tradeListButton.setTitle("Выбрать игры", for: .normal)
+        tradeListButton.setTitle(L10n.chooseGames, for: .normal)
         tradeListButton.addTarget(self, action: #selector(tradeListButtonAction), for: .touchUpInside)
         deleteButton.addTarget(self, action: #selector(deleteButtonAction), for: .touchUpInside)
         addImageButton.addTarget(self, action: #selector(addImageButtonAction), for: .touchUpInside)
@@ -197,15 +197,15 @@ class CreateAdViewController: UIViewController {
 
     @objc private func addImageButtonAction() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let actionMakePhoto = UIAlertAction(title: "Сделать фотографию", style: .default) { [weak self] _ in
+        let actionMakePhoto = UIAlertAction(title: L10n.makePhoto, style: .default) { [weak self] _ in
             self?.presentImagePickerController(type: .camera)
         }
-        let actionOpenGallery = UIAlertAction(title: "Выбрать из галереи", style: .default) { [weak self] _ in
+        let actionOpenGallery = UIAlertAction(title: L10n.chooseFromGallery, style: .default) { [weak self] _ in
             self?.presentImagePickerController(type: .photoLibrary)
         }
         alert.addAction(actionMakePhoto)
         alert.addAction(actionOpenGallery)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: L10n.cancel, style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 
@@ -303,7 +303,7 @@ class CreateAdViewController: UIViewController {
     }
 
     private func setNavigationBar() {
-        title = "Объявление"
+        title = L10n.ad
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneBarButtonAction))
     }
 
@@ -324,9 +324,9 @@ class CreateAdViewController: UIViewController {
         }
         viewModel?.selectedGames.observe(on: self) { [weak self] value in
             if value.isEmpty {
-                self?.tradeListButton.setTitle("Выбрать игры", for: .normal)
+                self?.tradeListButton.setTitle(L10n.chooseGames, for: .normal)
             } else {
-                self?.tradeListButton.setTitle("Выбрано игр - \(value.count)", for: .normal)
+                self?.tradeListButton.setTitle(L10n.choosenGames + " \(value.count)", for: .normal)
             }
         }
     }

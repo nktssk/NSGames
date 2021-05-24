@@ -28,7 +28,6 @@ class ProfileViewService: ProfileViewServiceProtocol {
                         }
                     }
         }
-        return completion(.success(UserInfo(username: "Nikita Sosyuk", email: "nikitashelov@gmail.com")))
     }
 
     func getAds(completion: @escaping (Result<[AdTableViewCellConfig], ProfileServiceError>) -> Void) {

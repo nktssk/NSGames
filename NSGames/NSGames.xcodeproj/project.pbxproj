@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		26ABAC43C0EAB5E5C54E63CF /* Pods_NSGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A310BA6390AA4C34B5EAB5AD /* Pods_NSGames.framework */; };
 		A100522826020223002E807E /* ForgotPasswordServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100522726020223002E807E /* ForgotPasswordServiceProtocol.swift */; };
-		A100522B2602024C002E807E /* RestForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100522A2602024C002E807E /* RestForgotPassword.swift */; };
-		A100522E260202F5002E807E /* ForgotPasswordError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100522D260202F5002E807E /* ForgotPasswordError.swift */; };
-		A10052312602038D002E807E /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10052302602038D002E807E /* ForgotPasswordViewModel.swift */; };
+		A100522B2602024C002E807E /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100522A2602024C002E807E /* ForgotPassword.swift */; };
+		A10052312602038D002E807E /* ForgotPasswordViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10052302602038D002E807E /* ForgotPasswordViewModelProtocol.swift */; };
 		A10547BB260B926C00FEB2FD /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10547BA260B926C00FEB2FD /* Observable.swift */; };
+		A106DF492656C52800367D18 /* NSGames.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A106DF472656C52800367D18 /* NSGames.xcdatamodeld */; };
 		A118FA0F260F3F60005D2F4D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118FA0E260F3F60005D2F4D /* Coordinator.swift */; };
 		A118FA14260F4E62005D2F4D /* SelectGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118FA13260F4E62005D2F4D /* SelectGameTableViewCell.swift */; };
 		A1340D542610743700439E1F /* GameSreenConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1340D532610743700439E1F /* GameSreenConfig.swift */; };
@@ -25,10 +25,11 @@
 		A1381FAC260E609900BDF8CD /* ChatFireBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1381FAB260E609900BDF8CD /* ChatFireBaseService.swift */; };
 		A1381FB0260E622900BDF8CD /* FirebaseNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1381FAF260E622900BDF8CD /* FirebaseNames.swift */; };
 		A1381FB7260E67F600BDF8CD /* ChatViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1381FB6260E67F600BDF8CD /* ChatViewModelProtocol.swift */; };
-		A1381FBA260E681B00BDF8CD /* ConversationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1381FB9260E681B00BDF8CD /* ConversationListViewModel.swift */; };
 		A1381FBE260E6C0D00BDF8CD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1381FBD260E6C0D00BDF8CD /* ChatViewController.swift */; };
 		A1381FC1260E6E8600BDF8CD /* RightMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1381FC0260E6E8600BDF8CD /* RightMessageTableViewCell.swift */; };
 		A1381FCA260F0F9D00BDF8CD /* LeftMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1381FC9260F0F9C00BDF8CD /* LeftMessageTableViewCell.swift */; };
+		A1384A2E26579F6A001493BA /* MockSignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1384A2D26579F6A001493BA /* MockSignUpService.swift */; };
+		A1384A302657A1BC001493BA /* SignUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1384A2F2657A1BC001493BA /* SignUpTests.swift */; };
 		A13880A526203FD700DA1604 /* DetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13880A426203FD700DA1604 /* DetailViewModelProtocol.swift */; };
 		A13880A826203FFF00DA1604 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13880A726203FFF00DA1604 /* Offer.swift */; };
 		A13880B22620552100DA1604 /* ProfileViewServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13880B12620552100DA1604 /* ProfileViewServiceProtocol.swift */; };
@@ -41,9 +42,9 @@
 		A1418B3225FE2FC100FF13CC /* HomeScreenCellCollectionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1418B3125FE2FC100FF13CC /* HomeScreenCellCollectionConstants.swift */; };
 		A148C3CA2643FF0900B078F5 /* MyJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A148C3C92643FF0900B078F5 /* MyJSONDecoder.swift */; };
 		A14A29EB2608DC33005266E8 /* SelectGamesViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14A29EA2608DC33005266E8 /* SelectGamesViewContoller.swift */; };
-		A14DBF942601FCF700705AB9 /* RestSignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DBF932601FCF700705AB9 /* RestSignInService.swift */; };
-		A14DBF972601FCFF00705AB9 /* RestSignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DBF962601FCFF00705AB9 /* RestSignUpService.swift */; };
-		A14DBF9A2601FD0400705AB9 /* RestCodeVerifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DBF992601FD0400705AB9 /* RestCodeVerifyService.swift */; };
+		A14DBF942601FCF700705AB9 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DBF932601FCF700705AB9 /* SignInService.swift */; };
+		A14DBF972601FCFF00705AB9 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DBF962601FCFF00705AB9 /* SignUpService.swift */; };
+		A14DBF9A2601FD0400705AB9 /* CodeVerifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DBF992601FD0400705AB9 /* CodeVerifyService.swift */; };
 		A1545D50263ADA6900E14484 /* ProfileServiceNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1545D4F263ADA6900E14484 /* ProfileServiceNames.swift */; };
 		A1545D55263ADB9600E14484 /* ProfileServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1545D54263ADB9600E14484 /* ProfileServiceError.swift */; };
 		A1545D5A263BF08900E14484 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1545D59263BF08900E14484 /* GoogleService-Info.plist */; };
@@ -98,24 +99,23 @@
 		A1A8B07625F250D6008CDDA4 /* BlueTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */; };
 		A1A8B07925F25133008CDDA4 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07825F25133008CDDA4 /* RoundedButton.swift */; };
 		A1A8B07C25F251BC008CDDA4 /* GrayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */; };
+		A1B1071E265795CE008DCFCC /* NSGamesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1071D265795CE008DCFCC /* NSGamesTests.swift */; };
 		A1B9EFE7262C985E00E799E2 /* CreateAdServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9EFE6262C985E00E799E2 /* CreateAdServiceProtocol.swift */; };
 		A1B9EFEC262C994700E799E2 /* CreateAdServiceNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9EFEB262C994700E799E2 /* CreateAdServiceNames.swift */; };
 		A1B9EFF0262C99C000E799E2 /* CreateAdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9EFEF262C99C000E799E2 /* CreateAdService.swift */; };
 		A1B9EFF4262C9E7C00E799E2 /* CreateAdError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9EFF3262C9E7C00E799E2 /* CreateAdError.swift */; };
 		A1C455ED25F91D5100ABD067 /* CodeVerifyServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455EC25F91D5100ABD067 /* CodeVerifyServiceProtocol.swift */; };
-		A1C455F125F91D7600ABD067 /* SignInError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455F025F91D7600ABD067 /* SignInError.swift */; };
-		A1C455F525F91D8600ABD067 /* SignUpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455F425F91D8600ABD067 /* SignUpError.swift */; };
-		A1C455F825F91DF600ABD067 /* CodeVerifyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455F725F91DF600ABD067 /* CodeVerifyError.swift */; };
-		A1C455FD25F920F100ABD067 /* CodeVerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455FC25F920F100ABD067 /* CodeVerifyViewModel.swift */; };
+		A1C455FD25F920F100ABD067 /* CodeVerifyViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455FC25F920F100ABD067 /* CodeVerifyViewModelProtocol.swift */; };
 		A1C7D66825F50F380087B41F /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C7D66725F50F380087B41F /* ForgotPasswordViewController.swift */; };
 		A1C7D67525F576340087B41F /* CodeVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C7D67425F576340087B41F /* CodeVerifyViewController.swift */; };
 		A1D05D5C261BA962007F757F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D05D5B261BA962007F757F /* KeychainService.swift */; };
-		A1D05D60261BAA1F007F757F /* KeychainNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D05D5F261BAA1F007F757F /* KeychainNames.swift */; };
 		A1D18A0F25F68B38007A5CF7 /* SignInServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D18A0E25F68B38007A5CF7 /* SignInServiceProtocol.swift */; };
-		A1D18A1325F68FF4007A5CF7 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D18A1225F68FF4007A5CF7 /* SignInViewModel.swift */; };
+		A1D18A1325F68FF4007A5CF7 /* SignInViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D18A1225F68FF4007A5CF7 /* SignInViewModelProtocol.swift */; };
 		A1D18A1A25F69B74007A5CF7 /* ObservableUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D18A1925F69B74007A5CF7 /* ObservableUI.swift */; };
 		A1D379AE25F74C43003FAAF6 /* SignUpServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D379AD25F74C43003FAAF6 /* SignUpServiceProtocol.swift */; };
-		A1D379B325F74E19003FAAF6 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D379B225F74E19003FAAF6 /* SignUpViewModel.swift */; };
+		A1D379B325F74E19003FAAF6 /* SignUpViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D379B225F74E19003FAAF6 /* SignUpViewModelProtocol.swift */; };
+		A1D6CC6C265B968D00EC3109 /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6CC6B265B968D00EC3109 /* AuthenticationError.swift */; };
+		A1D6CC6E265B9A5F00EC3109 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6CC6D265B9A5F00EC3109 /* LoadingView.swift */; };
 		A1D85FE62602528B00A6F7C6 /* HomeScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D85FE52602528B00A6F7C6 /* HomeScreenViewModelProtocol.swift */; };
 		A1D9953D25EFF071002770AF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D9953C25EFF071002770AF /* SignInViewController.swift */; };
 		A1D9954325F00564002770AF /* DataTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D9954225F00564002770AF /* DataTextField.swift */; };
@@ -132,13 +132,23 @@
 		A1FEE877264AC0BC009C89A3 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE875264AC0BC009C89A3 /* Strings.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A1B10720265795CE008DCFCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A178CE4925EFDB89003A50DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A178CE5025EFDB89003A50DC;
+			remoteInfo = NSGames;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		3D3E85A14F76736513CCCF85 /* Pods-NSGames.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NSGames.release.xcconfig"; path = "Target Support Files/Pods-NSGames/Pods-NSGames.release.xcconfig"; sourceTree = "<group>"; };
 		A100522726020223002E807E /* ForgotPasswordServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordServiceProtocol.swift; sourceTree = "<group>"; };
-		A100522A2602024C002E807E /* RestForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestForgotPassword.swift; sourceTree = "<group>"; };
-		A100522D260202F5002E807E /* ForgotPasswordError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordError.swift; sourceTree = "<group>"; };
-		A10052302602038D002E807E /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		A100522A2602024C002E807E /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
+		A10052302602038D002E807E /* ForgotPasswordViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModelProtocol.swift; sourceTree = "<group>"; };
 		A10547BA260B926C00FEB2FD /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		A106DF482656C52800367D18 /* NSGames.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NSGames.xcdatamodel; sourceTree = "<group>"; };
 		A118FA0E260F3F60005D2F4D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		A118FA13260F4E62005D2F4D /* SelectGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGameTableViewCell.swift; sourceTree = "<group>"; };
 		A1340D532610743700439E1F /* GameSreenConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSreenConfig.swift; sourceTree = "<group>"; };
@@ -151,10 +161,11 @@
 		A1381FAB260E609900BDF8CD /* ChatFireBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFireBaseService.swift; sourceTree = "<group>"; };
 		A1381FAF260E622900BDF8CD /* FirebaseNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseNames.swift; sourceTree = "<group>"; };
 		A1381FB6260E67F600BDF8CD /* ChatViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModelProtocol.swift; sourceTree = "<group>"; };
-		A1381FB9260E681B00BDF8CD /* ConversationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
 		A1381FBD260E6C0D00BDF8CD /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		A1381FC0260E6E8600BDF8CD /* RightMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMessageTableViewCell.swift; sourceTree = "<group>"; };
 		A1381FC9260F0F9C00BDF8CD /* LeftMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMessageTableViewCell.swift; sourceTree = "<group>"; };
+		A1384A2D26579F6A001493BA /* MockSignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSignUpService.swift; sourceTree = "<group>"; };
+		A1384A2F2657A1BC001493BA /* SignUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTests.swift; sourceTree = "<group>"; };
 		A13880A426203FD700DA1604 /* DetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelProtocol.swift; sourceTree = "<group>"; };
 		A13880A726203FFF00DA1604 /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		A13880B12620552100DA1604 /* ProfileViewServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewServiceProtocol.swift; sourceTree = "<group>"; };
@@ -167,9 +178,9 @@
 		A1418B3125FE2FC100FF13CC /* HomeScreenCellCollectionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCellCollectionConstants.swift; sourceTree = "<group>"; };
 		A148C3C92643FF0900B078F5 /* MyJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJSONDecoder.swift; sourceTree = "<group>"; };
 		A14A29EA2608DC33005266E8 /* SelectGamesViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGamesViewContoller.swift; sourceTree = "<group>"; };
-		A14DBF932601FCF700705AB9 /* RestSignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestSignInService.swift; sourceTree = "<group>"; };
-		A14DBF962601FCFF00705AB9 /* RestSignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestSignUpService.swift; sourceTree = "<group>"; };
-		A14DBF992601FD0400705AB9 /* RestCodeVerifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestCodeVerifyService.swift; sourceTree = "<group>"; };
+		A14DBF932601FCF700705AB9 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
+		A14DBF962601FCFF00705AB9 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
+		A14DBF992601FD0400705AB9 /* CodeVerifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyService.swift; sourceTree = "<group>"; };
 		A1545D4F263ADA6900E14484 /* ProfileServiceNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileServiceNames.swift; sourceTree = "<group>"; };
 		A1545D54263ADB9600E14484 /* ProfileServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileServiceError.swift; sourceTree = "<group>"; };
 		A1545D59263BF08900E14484 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -226,24 +237,25 @@
 		A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTextButton.swift; sourceTree = "<group>"; };
 		A1A8B07825F25133008CDDA4 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLabel.swift; sourceTree = "<group>"; };
+		A1B1071B265795CE008DCFCC /* NSGamesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSGamesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B1071D265795CE008DCFCC /* NSGamesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSGamesTests.swift; sourceTree = "<group>"; };
+		A1B1071F265795CE008DCFCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1B9EFE6262C985E00E799E2 /* CreateAdServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdServiceProtocol.swift; sourceTree = "<group>"; };
 		A1B9EFEB262C994700E799E2 /* CreateAdServiceNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdServiceNames.swift; sourceTree = "<group>"; };
 		A1B9EFEF262C99C000E799E2 /* CreateAdService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdService.swift; sourceTree = "<group>"; };
 		A1B9EFF3262C9E7C00E799E2 /* CreateAdError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdError.swift; sourceTree = "<group>"; };
 		A1C455EC25F91D5100ABD067 /* CodeVerifyServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyServiceProtocol.swift; sourceTree = "<group>"; };
-		A1C455F025F91D7600ABD067 /* SignInError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInError.swift; sourceTree = "<group>"; };
-		A1C455F425F91D8600ABD067 /* SignUpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpError.swift; sourceTree = "<group>"; };
-		A1C455F725F91DF600ABD067 /* CodeVerifyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyError.swift; sourceTree = "<group>"; };
-		A1C455FC25F920F100ABD067 /* CodeVerifyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewModel.swift; sourceTree = "<group>"; };
+		A1C455FC25F920F100ABD067 /* CodeVerifyViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewModelProtocol.swift; sourceTree = "<group>"; };
 		A1C7D66725F50F380087B41F /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		A1C7D67425F576340087B41F /* CodeVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewController.swift; sourceTree = "<group>"; };
 		A1D05D5B261BA962007F757F /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
-		A1D05D5F261BAA1F007F757F /* KeychainNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainNames.swift; sourceTree = "<group>"; };
 		A1D18A0E25F68B38007A5CF7 /* SignInServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInServiceProtocol.swift; sourceTree = "<group>"; };
-		A1D18A1225F68FF4007A5CF7 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		A1D18A1225F68FF4007A5CF7 /* SignInViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModelProtocol.swift; sourceTree = "<group>"; };
 		A1D18A1925F69B74007A5CF7 /* ObservableUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableUI.swift; sourceTree = "<group>"; };
 		A1D379AD25F74C43003FAAF6 /* SignUpServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpServiceProtocol.swift; sourceTree = "<group>"; };
-		A1D379B225F74E19003FAAF6 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		A1D379B225F74E19003FAAF6 /* SignUpViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModelProtocol.swift; sourceTree = "<group>"; };
+		A1D6CC6B265B968D00EC3109 /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
+		A1D6CC6D265B9A5F00EC3109 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		A1D85FE52602528B00A6F7C6 /* HomeScreenViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModelProtocol.swift; sourceTree = "<group>"; };
 		A1D9953C25EFF071002770AF /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A1D9954225F00564002770AF /* DataTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTextField.swift; sourceTree = "<group>"; };
@@ -271,6 +283,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A1B10718265795CE008DCFCC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -294,6 +313,7 @@
 		A106DF452656C10100367D18 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A118FA0E260F3F60005D2F4D /* Coordinator.swift */,
 				A10547BA260B926C00FEB2FD /* Observable.swift */,
 				A1D18A1925F69B74007A5CF7 /* ObservableUI.swift */,
 				A148C3C92643FF0900B078F5 /* MyJSONDecoder.swift */,
@@ -305,8 +325,18 @@
 		A106DF462656C12E00367D18 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A106DF472656C52800367D18 /* NSGames.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		A1384A2C26579F52001493BA /* SignUpModule */ = {
+			isa = PBXGroup;
+			children = (
+				A1384A2D26579F6A001493BA /* MockSignUpService.swift */,
+				A1384A2F2657A1BC001493BA /* SignUpTests.swift */,
+			);
+			path = SignUpModule;
 			sourceTree = "<group>";
 		};
 		A13880AE262054CF00DA1604 /* Profile */ = {
@@ -423,8 +453,9 @@
 		A14DBFAB2601FEC700705AB9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A17F8E22264BBA1900DE2460 /* Localizable.strings */,
 				A1FEE86E264AB928009C89A3 /* SwiftGen */,
+				A1F67DE925FE822F0007636E /* Extensions */,
+				A17F8E22264BBA1900DE2460 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -523,6 +554,7 @@
 			isa = PBXGroup;
 			children = (
 				A178CE5325EFDB89003A50DC /* NSGames */,
+				A1B1071C265795CE008DCFCC /* NSGamesTests */,
 				A178CE5225EFDB89003A50DC /* Products */,
 				4C9DA67FF61C48C91E688375 /* Pods */,
 				2C340EEDC51C7AC365943C7C /* Frameworks */,
@@ -533,6 +565,7 @@
 			isa = PBXGroup;
 			children = (
 				A178CE5125EFDB89003A50DC /* NSGames.app */,
+				A1B1071B265795CE008DCFCC /* NSGamesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -545,7 +578,6 @@
 				A14DBF9D2601FDCD00705AB9 /* Modules */,
 				A1D18A1625F690B7007A5CF7 /* Models */,
 				A1D9954125F00558002770AF /* Views */,
-				A1F67DE925FE822F0007636E /* Extensions */,
 				A14DBFAB2601FEC700705AB9 /* Resources */,
 				A189E268260B31720051D578 /* MainCoordinator.swift */,
 				A189E274260B556E0051D578 /* AppTabBarController.swift */,
@@ -571,7 +603,6 @@
 			isa = PBXGroup;
 			children = (
 				A184622E260CA331008D159F /* ConversationListViewModelProtocol.swift */,
-				A1381FB9260E681B00BDF8CD /* ConversationListViewModel.swift */,
 				A1381FB6260E67F600BDF8CD /* ChatViewModelProtocol.swift */,
 			);
 			path = ViewModel;
@@ -668,10 +699,10 @@
 			isa = PBXGroup;
 			children = (
 				A15AB9F2261F025100A549C7 /* AuthServiceNames.swift */,
-				A14DBF932601FCF700705AB9 /* RestSignInService.swift */,
-				A14DBF962601FCFF00705AB9 /* RestSignUpService.swift */,
-				A100522A2602024C002E807E /* RestForgotPassword.swift */,
-				A14DBF992601FD0400705AB9 /* RestCodeVerifyService.swift */,
+				A14DBF932601FCF700705AB9 /* SignInService.swift */,
+				A14DBF962601FCFF00705AB9 /* SignUpService.swift */,
+				A100522A2602024C002E807E /* ForgotPassword.swift */,
+				A14DBF992601FD0400705AB9 /* CodeVerifyService.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -713,10 +744,7 @@
 		A1949D06261E58370028EBC8 /* Error */ = {
 			isa = PBXGroup;
 			children = (
-				A1C455F025F91D7600ABD067 /* SignInError.swift */,
-				A1C455F425F91D8600ABD067 /* SignUpError.swift */,
-				A100522D260202F5002E807E /* ForgotPasswordError.swift */,
-				A1C455F725F91DF600ABD067 /* CodeVerifyError.swift */,
+				A1D6CC6B265B968D00EC3109 /* AuthenticationError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -724,7 +752,6 @@
 		A1949D09261E58780028EBC8 /* Keychain */ = {
 			isa = PBXGroup;
 			children = (
-				A1D05D5F261BAA1F007F757F /* KeychainNames.swift */,
 				A1D05D5B261BA962007F757F /* KeychainService.swift */,
 				A1E046AB263585310027521D /* HeaderService.swift */,
 			);
@@ -755,6 +782,16 @@
 				A1418B3125FE2FC100FF13CC /* HomeScreenCellCollectionConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		A1B1071C265795CE008DCFCC /* NSGamesTests */ = {
+			isa = PBXGroup;
+			children = (
+				A1384A2C26579F52001493BA /* SignUpModule */,
+				A1B1071D265795CE008DCFCC /* NSGamesTests.swift */,
+				A1B1071F265795CE008DCFCC /* Info.plist */,
+			);
+			path = NSGamesTests;
 			sourceTree = "<group>";
 		};
 		A1B9EFE3262C981E00E799E2 /* CreateAd */ = {
@@ -806,10 +843,10 @@
 		A1D18A0C25F688D1007A5CF7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A1D18A1225F68FF4007A5CF7 /* SignInViewModel.swift */,
-				A1D379B225F74E19003FAAF6 /* SignUpViewModel.swift */,
-				A10052302602038D002E807E /* ForgotPasswordViewModel.swift */,
-				A1C455FC25F920F100ABD067 /* CodeVerifyViewModel.swift */,
+				A1D18A1225F68FF4007A5CF7 /* SignInViewModelProtocol.swift */,
+				A1D379B225F74E19003FAAF6 /* SignUpViewModelProtocol.swift */,
+				A10052302602038D002E807E /* ForgotPasswordViewModelProtocol.swift */,
+				A1C455FC25F920F100ABD067 /* CodeVerifyViewModelProtocol.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -836,9 +873,9 @@
 				A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */,
 				A1A8B07825F25133008CDDA4 /* RoundedButton.swift */,
 				A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */,
-				A118FA0E260F3F60005D2F4D /* Coordinator.swift */,
 				A18ED8B12611F7EE0053AE37 /* ShadowView.swift */,
 				A18ED8BA261211BF0053AE37 /* TextViewWithPlaceholder.swift */,
+				A1D6CC6D265B9A5F00EC3109 /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -920,17 +957,39 @@
 			productReference = A178CE5125EFDB89003A50DC /* NSGames.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A1B1071A265795CE008DCFCC /* NSGamesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B10724265795CE008DCFCC /* Build configuration list for PBXNativeTarget "NSGamesTests" */;
+			buildPhases = (
+				A1B10717265795CE008DCFCC /* Sources */,
+				A1B10718265795CE008DCFCC /* Frameworks */,
+				A1B10719265795CE008DCFCC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1B10721265795CE008DCFCC /* PBXTargetDependency */,
+			);
+			name = NSGamesTests;
+			productName = NSGamesTests;
+			productReference = A1B1071B265795CE008DCFCC /* NSGamesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		A178CE4925EFDB89003A50DC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					A178CE5025EFDB89003A50DC = {
 						CreatedOnToolsVersion = 12.4;
+					};
+					A1B1071A265795CE008DCFCC = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = A178CE5025EFDB89003A50DC;
 					};
 				};
 			};
@@ -948,6 +1007,7 @@
 			projectRoot = "";
 			targets = (
 				A178CE5025EFDB89003A50DC /* NSGames */,
+				A1B1071A265795CE008DCFCC /* NSGamesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -961,6 +1021,13 @@
 				A17F8E24264BBA1900DE2460 /* Localizable.strings in Resources */,
 				A1545D5A263BF08900E14484 /* GoogleService-Info.plist in Resources */,
 				A178CE5E25EFDB8B003A50DC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1B10719265795CE008DCFCC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1049,18 +1116,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A100522B2602024C002E807E /* RestForgotPassword.swift in Sources */,
+				A100522B2602024C002E807E /* ForgotPassword.swift in Sources */,
 				A1381F66260E3A1700BDF8CD /* Message.swift in Sources */,
 				A1B9EFF0262C99C000E799E2 /* CreateAdService.swift in Sources */,
 				A1D18A0F25F68B38007A5CF7 /* SignInServiceProtocol.swift in Sources */,
-				A100522E260202F5002E807E /* ForgotPasswordError.swift in Sources */,
 				A184622F260CA331008D159F /* ConversationListViewModelProtocol.swift in Sources */,
 				A1949D0F261EFAA90028EBC8 /* AlertPresenter.swift in Sources */,
 				A1A8B07625F250D6008CDDA4 /* BlueTextButton.swift in Sources */,
 				A1FEE876264AC0BC009C89A3 /* Assets.swift in Sources */,
 				A1381FAC260E609900BDF8CD /* ChatFireBaseService.swift in Sources */,
 				A15AB9FD261F1E2600A549C7 /* ProfileCoordinator.swift in Sources */,
-				A14DBF9A2601FD0400705AB9 /* RestCodeVerifyService.swift in Sources */,
+				A14DBF9A2601FD0400705AB9 /* CodeVerifyService.swift in Sources */,
 				A118FA0F260F3F60005D2F4D /* Coordinator.swift in Sources */,
 				A189E27A260B5A5B0051D578 /* AdCoordinator.swift in Sources */,
 				A1B9EFF4262C9E7C00E799E2 /* CreateAdError.swift in Sources */,
@@ -1072,29 +1138,27 @@
 				A1E046B32636B1340027521D /* OnboardingCoordinator.swift in Sources */,
 				A13880BE26205FE900DA1604 /* DetailOfferViewService.swift in Sources */,
 				A189E294260B65E70051D578 /* OfferService.swift in Sources */,
-				A1C455F525F91D8600ABD067 /* SignUpError.swift in Sources */,
 				A1340D62261091FC00439E1F /* SelectGamesServiceProtocol.swift in Sources */,
-				A14DBF972601FCFF00705AB9 /* RestSignUpService.swift in Sources */,
+				A14DBF972601FCFF00705AB9 /* SignUpService.swift in Sources */,
 				A1A8B06E25F247B2008CDDA4 /* SignUpViewController.swift in Sources */,
 				A14A29EB2608DC33005266E8 /* SelectGamesViewContoller.swift in Sources */,
 				A15ABA0E261F20BE00A549C7 /* AdTableViewCellConfig.swift in Sources */,
 				A1381FBE260E6C0D00BDF8CD /* ChatViewController.swift in Sources */,
-				A14DBF942601FCF700705AB9 /* RestSignInService.swift in Sources */,
+				A14DBF942601FCF700705AB9 /* SignInService.swift in Sources */,
 				A1381F69260E3DDD00BDF8CD /* ConversationFirebaseService.swift in Sources */,
 				A1E046B72636B2050027521D /* OnboardingViewController.swift in Sources */,
 				A13880A526203FD700DA1604 /* DetailViewModelProtocol.swift in Sources */,
 				A13DCEF8263EF3160030E47E /* FavoritesService.swift in Sources */,
 				A1E04656263403D80027521D /* AdDto.swift in Sources */,
-				A1C455FD25F920F100ABD067 /* CodeVerifyViewModel.swift in Sources */,
+				A1C455FD25F920F100ABD067 /* CodeVerifyViewModelProtocol.swift in Sources */,
 				A1C455ED25F91D5100ABD067 /* CodeVerifyServiceProtocol.swift in Sources */,
 				A1F67DEB25FE823D0007636E /* Date.swift in Sources */,
 				A189E291260B65C80051D578 /* OfferServiceProtocol.swift in Sources */,
 				A1340D652610951800439E1F /* SelectGamesService.swift in Sources */,
 				A100522826020223002E807E /* ForgotPasswordServiceProtocol.swift in Sources */,
 				A1D9953D25EFF071002770AF /* SignInViewController.swift in Sources */,
-				A1381FBA260E681B00BDF8CD /* ConversationListViewModel.swift in Sources */,
+				A106DF492656C52800367D18 /* NSGames.xcdatamodeld in Sources */,
 				A1E04683263556820027521D /* AdsServiceNames.swift in Sources */,
-				A1D05D60261BAA1F007F757F /* KeychainNames.swift in Sources */,
 				A189E269260B31720051D578 /* MainCoordinator.swift in Sources */,
 				A1721D4D2625E5B700BFD38C /* CreateAdViewController.swift in Sources */,
 				A189E26D260B33480051D578 /* AuthenticationCoordinator.swift in Sources */,
@@ -1116,9 +1180,11 @@
 				A184622B260C66DE008D159F /* ConversationTableViewCell.swift in Sources */,
 				A1B9EFEC262C994700E799E2 /* CreateAdServiceNames.swift in Sources */,
 				A1C7D66825F50F380087B41F /* ForgotPasswordViewController.swift in Sources */,
-				A1D379B325F74E19003FAAF6 /* SignUpViewModel.swift in Sources */,
+				A1D379B325F74E19003FAAF6 /* SignUpViewModelProtocol.swift in Sources */,
 				A1846228260C66A0008D159F /* Conversation.swift in Sources */,
+				A1D6CC6C265B968D00EC3109 /* AuthenticationError.swift in Sources */,
 				A19F89082607563800E95875 /* GameViewController.swift in Sources */,
+				A1D6CC6E265B9A5F00EC3109 /* LoadingView.swift in Sources */,
 				A1D379AE25F74C43003FAAF6 /* SignUpServiceProtocol.swift in Sources */,
 				A17D8FDF261F748B009669EC /* OfferDetailViewController.swift in Sources */,
 				A1C7D67525F576340087B41F /* CodeVerifyViewController.swift in Sources */,
@@ -1133,11 +1199,10 @@
 				A1381FB7260E67F600BDF8CD /* ChatViewModelProtocol.swift in Sources */,
 				A13880BB26205FBA00DA1604 /* DetailOfferViewServiceProtocol.swift in Sources */,
 				A15ABA0A261F206500A549C7 /* UserInfo.swift in Sources */,
-				A1D18A1325F68FF4007A5CF7 /* SignInViewModel.swift in Sources */,
+				A1D18A1325F68FF4007A5CF7 /* SignInViewModelProtocol.swift in Sources */,
 				A148C3CA2643FF0900B078F5 /* MyJSONDecoder.swift in Sources */,
 				A1381FA9260E605E00BDF8CD /* ChatFireBaseServiceProtocol.swift in Sources */,
 				A184621E260C65FD008D159F /* ConversationListViewController.swift in Sources */,
-				A1C455F125F91D7600ABD067 /* SignInError.swift in Sources */,
 				A1D05D5C261BA962007F757F /* KeychainService.swift in Sources */,
 				A1418B2025FE246900FF13CC /* AdCollectionViewCellConfig.swift in Sources */,
 				A13880B826205D3300DA1604 /* ProfileViewService.swift in Sources */,
@@ -1152,7 +1217,7 @@
 				A1D85FE62602528B00A6F7C6 /* HomeScreenViewModelProtocol.swift in Sources */,
 				A1E0468B2635584C0027521D /* BaseUrl.swift in Sources */,
 				A1A8B07C25F251BC008CDDA4 /* GrayLabel.swift in Sources */,
-				A10052312602038D002E807E /* ForgotPasswordViewModel.swift in Sources */,
+				A10052312602038D002E807E /* ForgotPasswordViewModelProtocol.swift in Sources */,
 				A195FFBA260942DC00D3E34F /* Game.swift in Sources */,
 				A184623F260CA54A008D159F /* ConversationsFirebaseServiceProtocol.swift in Sources */,
 				A1381FB0260E622900BDF8CD /* FirebaseNames.swift in Sources */,
@@ -1160,7 +1225,6 @@
 				A15ABA04261F1E9E00A549C7 /* ProfileViewModelProtocol.swift in Sources */,
 				A13880A826203FFF00DA1604 /* Offer.swift in Sources */,
 				A1381FC1260E6E8600BDF8CD /* RightMessageTableViewCell.swift in Sources */,
-				A1C455F825F91DF600ABD067 /* CodeVerifyError.swift in Sources */,
 				A189E28E260B65510051D578 /* OfferViewModelProtocol.swift in Sources */,
 				A1846242260CA630008D159F /* ChatCoordinator.swift in Sources */,
 				A16578EE25FCD917005F19C8 /* HomeScreenViewController.swift in Sources */,
@@ -1170,7 +1234,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A1B10717265795CE008DCFCC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1384A302657A1BC001493BA /* SignUpTests.swift in Sources */,
+				A1B1071E265795CE008DCFCC /* NSGamesTests.swift in Sources */,
+				A1384A2E26579F6A001493BA /* MockSignUpService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A1B10721265795CE008DCFCC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A178CE5025EFDB89003A50DC /* NSGames */;
+			targetProxy = A1B10720265795CE008DCFCC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A178CE5F25EFDB8B003A50DC /* LaunchScreen.storyboard */ = {
@@ -1352,6 +1434,46 @@
 			};
 			name = Release;
 		};
+		A1B10722265795CE008DCFCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NSGamesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.itis.ios.NSGamesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NSGames.app/NSGames";
+			};
+			name = Debug;
+		};
+		A1B10723265795CE008DCFCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NSGamesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.itis.ios.NSGamesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NSGames.app/NSGames";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1373,7 +1495,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		A1B10724265795CE008DCFCC /* Build configuration list for PBXNativeTarget "NSGamesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B10722265795CE008DCFCC /* Debug */,
+				A1B10723265795CE008DCFCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A106DF472656C52800367D18 /* NSGames.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A106DF482656C52800367D18 /* NSGames.xcdatamodel */,
+			);
+			currentVersion = A106DF482656C52800367D18 /* NSGames.xcdatamodel */;
+			path = NSGames.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A178CE4925EFDB89003A50DC /* Project object */;
 }
