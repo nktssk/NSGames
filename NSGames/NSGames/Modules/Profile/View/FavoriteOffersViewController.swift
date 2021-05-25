@@ -1,17 +1,17 @@
 //
-//  DetailOfferViewConroller.swift
+//  FavoriteOffersViewController.swift
 //  NSGames
 //
-//  Created by Nikita Sosyuk on 08.04.2021.
+//  Created by Nikita Sosyuk on 24.05.2021.
 //
 
 import UIKit
 import SnapKit
 
-class DetailOfferViewConroller: UIViewController {
+class FavoriteOffersViewController: UIViewController {
 
     // MARK: - MVVM properties
-    var viewModel: DetailViewModelProtocol?
+    var viewModel: FavoriteOffersViewModelProtocol?
 
     // MARK: - UI
     let tableView = UITableView()
@@ -29,7 +29,7 @@ class DetailOfferViewConroller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = viewModel?.title
+        title = L10n.tabBarFavorite
         bindData()
         addSubviews()
         setConstraints()
@@ -58,11 +58,6 @@ class DetailOfferViewConroller: UIViewController {
                 self.tableView.reloadData()
             }
         }
-        viewModel?.error.observe(on: self) { [weak self] value in
-            if let self = self, let value = value {
-                AlertPresenter.showAlert(controller: self, text: value)
-            }
-        }
     }
 
     private func setConstraints() {
@@ -79,7 +74,7 @@ class DetailOfferViewConroller: UIViewController {
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
-extension DetailOfferViewConroller: UITableViewDelegate, UITableViewDataSource {
+extension FavoriteOffersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel?.items.value.count ?? 0
     }
@@ -97,21 +92,16 @@ extension DetailOfferViewConroller: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    func tableView(_ tableView: UITableView,
-                   leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let favAction = UIContextualAction(style: .normal, title: L10n.tabBarFavorite) { [weak self] ac, view, success in
-            self?.viewModel?.saveFavorite(index: indexPath.row)
-            success(true)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            viewModel?.delete(index: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
-        favAction.image = UIImage(named: "SaveIcon")
-        favAction.backgroundColor = .systemBlue
-
-        return UISwipeActionsConfiguration(actions: [favAction])
     }
 }
 
 // MARK: - OfferDetailTableViewCellDelegate
-extension DetailOfferViewConroller: OfferDetailTableViewCellDelegate {
+extension FavoriteOffersViewController: OfferDetailTableViewCellDelegate {
     func goToChat(id: Int) {
         viewModel?.goToChat(id: id)
     }

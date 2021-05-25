@@ -11,25 +11,38 @@ protocol DetailViewModelProtocol {
     var id: Int { get }
     var title: String { get }
     var items: Observable<[Offer]> { get set }
+    var error: Observable<String?> { get set }
 
     func setup()
     func goToChat(id: Int)
     func showTradeList(id: Int)
+    func saveFavorite(index: Int)
 }
 
 class DetailViewModel: DetailViewModelProtocol {
     var items: Observable<[Offer]> = Observable([])
+    var error: Observable<String?> = Observable(nil)
     let id: Int
     let title: String
 
     private let service: DetailOfferViewServiceProtocol
+    private let coreDataService: CoreDataServiceProtocol
     private let coordinator: ProfileCoordinatorProtocol
 
-    init(service: DetailOfferViewServiceProtocol, coordinator: ProfileCoordinatorProtocol, id: Int, title: String) {
+    init(service: DetailOfferViewServiceProtocol,
+         coreDataService: CoreDataServiceProtocol,
+         coordinator: ProfileCoordinatorProtocol,
+         id: Int,
+         title: String) {
         self.service = service
         self.coordinator = coordinator
+        self.coreDataService = coreDataService
         self.id = id
         self.title = title
+    }
+
+    func saveFavorite(index: Int) {
+        coreDataService.add(self.items.value[index])
     }
 
     func setup() {
@@ -39,7 +52,7 @@ class DetailViewModel: DetailViewModelProtocol {
                 self?.items.value = offers
 
             case .failure:
-                break
+                self?.error.value = L10n.inetError
             }
         }
     }

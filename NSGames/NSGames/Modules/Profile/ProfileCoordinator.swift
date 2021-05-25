@@ -11,6 +11,7 @@ protocol ProfileCoordinatorProtocol: Coordinator {
     func goToDetailOfferView(id: Int, name: String)
     func goToChat(messageId: String, username: String)
     func goToAuth()
+    func goToFavorites()
     func goToTradeList(id: Int)
 }
 
@@ -30,7 +31,18 @@ class ProfileCoordinator: ProfileCoordinatorProtocol {
 
     func goToDetailOfferView(id: Int, name: String) {
         let controller = DetailOfferViewConroller()
-        controller.viewModel = DetailViewModel(service: DetailOfferViewService(), coordinator: self, id: id, title: name)
+        controller.viewModel = DetailViewModel(service: DetailOfferViewService(),
+                                               coreDataService: CoreDataService(dataModelName: CoreDataService.offerDataModelName),
+                                               coordinator: self,
+                                               id: id,
+                                               title: name)
+        navigationController.pushViewController(controller, animated: true)
+    }
+
+    func goToFavorites() {
+        let controller = FavoriteOffersViewController()
+        controller.viewModel = FavoriteOffersViewModel(coreDataService: CoreDataService(dataModelName: CoreDataService.offerDataModelName),
+                                                       coordinator: self)
         navigationController.pushViewController(controller, animated: true)
     }
 

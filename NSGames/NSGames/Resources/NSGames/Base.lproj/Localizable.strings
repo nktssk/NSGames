@@ -95,6 +95,7 @@
 // Offer
 "WriteUser" = "Написать пользователю";
 "NoShowOffers" = "Нет предложений для показа.";
+"FavoriteOffers" = "Избранные предложения";
 
 // ListTradeGames
 "CannotLoadGames" = "Не удается загрузить список.";

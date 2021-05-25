@@ -136,7 +136,7 @@ class OfferDetailTableViewCell: UITableViewCell {
     // MARK: - Public UI Methods
     func setData(configuration: Offer) {
         usernameLabel.text = configuration.username
-        if let price = configuration.price {
+        if let price = configuration.price, price != -1000 {
             priceLabel.text = String(price)
         } else {
             priceLabel.removeFromSuperview()
@@ -148,8 +148,8 @@ class OfferDetailTableViewCell: UITableViewCell {
             descriprionLabel.removeFromSuperview()
             staticDescriprionLabel.removeFromSuperview()
         }
-        if let count = configuration.tradeListCount {
-            tradeListButton.setTitle("\(count) игр для обмена", for: .normal)
+        if let games = configuration.tradeListCount, games != 0 {
+            tradeListButton.setTitle("\(games) игр для обмена", for: .normal)
         } else {
             tradeLabel.removeFromSuperview()
             tradeListButton.removeFromSuperview()

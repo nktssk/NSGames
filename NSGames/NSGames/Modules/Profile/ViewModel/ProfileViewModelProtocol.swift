@@ -14,12 +14,12 @@ protocol ProfileViewModelProtocol {
 
     func quit()
     func setup()
+    func favorites()
     func deleteAd(index: Int)
     func didSelectItem(at: Int)
 }
 
 class ProfileViewModel: ProfileViewModelProtocol {
-
     var items: Observable<[AdTableViewCellConfig]> = Observable([])
     var userInfo: Observable<UserInfo?> = Observable(nil)
     var error: Observable<String?> = Observable(nil)
@@ -71,11 +71,14 @@ class ProfileViewModel: ProfileViewModelProtocol {
         coordinator.goToDetailOfferView(id: data.id, name: data.name)
     }
 
+    func favorites() {
+        coordinator.goToFavorites()
+    }
+
     func deleteAd(index: Int) {
         let deletedAd = items.value[index]
         items.value.remove(at: index)
         service.deleteAd(id: deletedAd.id) { [weak self] result in
-
             switch result {
             case .success:
                 break

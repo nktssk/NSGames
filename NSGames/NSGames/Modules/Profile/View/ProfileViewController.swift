@@ -35,6 +35,7 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         viewModel?.setup()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.logout, style: .done, target: self, action: #selector(exitButtonAction))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: L10n.tabBarFavorite, style: .done, target: self, action: #selector(favorites))
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +67,10 @@ class ProfileViewController: UIViewController {
     // MARK: - Objc Methods
     @objc func exitButtonAction() {
         viewModel?.quit()
+    }
+
+    @objc func favorites() {
+        viewModel?.favorites()
     }
 
     // MARK: - Private Methods

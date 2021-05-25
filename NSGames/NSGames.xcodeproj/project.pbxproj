@@ -60,6 +60,11 @@
 		A16578EE25FCD917005F19C8 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16578ED25FCD917005F19C8 /* HomeScreenViewController.swift */; };
 		A16C873D25FF9CD900AC15AD /* HomeScreenServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C873C25FF9CD900AC15AD /* HomeScreenServiceProtocol.swift */; };
 		A16C874125FF9DE500AC15AD /* HomeScreenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C874025FF9DE500AC15AD /* HomeScreenService.swift */; };
+		A16DF1AA265BEBE000AFB3E8 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DF1A9265BEBE000AFB3E8 /* CoreDataService.swift */; };
+		A16DF1B6265BEF7500AFB3E8 /* OfferDB+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DF1B4265BEF7500AFB3E8 /* OfferDB+CoreDataClass copy.swift */; };
+		A16DF1B7265BEF7500AFB3E8 /* OfferDB+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DF1B5265BEF7500AFB3E8 /* OfferDB+CoreDataProperties copy.swift */; };
+		A16DF1B9265BF61100AFB3E8 /* FavoriteOffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DF1B8265BF61100AFB3E8 /* FavoriteOffersViewController.swift */; };
+		A16DF1BB265BF66E00AFB3E8 /* FavoriteOffersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DF1BA265BF66E00AFB3E8 /* FavoriteOffersViewModel.swift */; };
 		A1721D262625DD9100BFD38C /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1721D252625DD9100BFD38C /* FavoritesCoordinator.swift */; };
 		A1721D4D2625E5B700BFD38C /* CreateAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1721D4C2625E5B700BFD38C /* CreateAdViewController.swift */; };
 		A1721D512625E5FD00BFD38C /* CreateAdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1721D502625E5FD00BFD38C /* CreateAdViewModel.swift */; };
@@ -196,13 +201,18 @@
 		A16578ED25FCD917005F19C8 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		A16C873C25FF9CD900AC15AD /* HomeScreenServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenServiceProtocol.swift; sourceTree = "<group>"; };
 		A16C874025FF9DE500AC15AD /* HomeScreenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenService.swift; sourceTree = "<group>"; };
+		A16DF1A9265BEBE000AFB3E8 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		A16DF1B4265BEF7500AFB3E8 /* OfferDB+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OfferDB+CoreDataClass copy.swift"; sourceTree = "<group>"; };
+		A16DF1B5265BEF7500AFB3E8 /* OfferDB+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OfferDB+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		A16DF1B8265BF61100AFB3E8 /* FavoriteOffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteOffersViewController.swift; sourceTree = "<group>"; };
+		A16DF1BA265BF66E00AFB3E8 /* FavoriteOffersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteOffersViewModel.swift; sourceTree = "<group>"; };
 		A1721D252625DD9100BFD38C /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		A1721D4C2625E5B700BFD38C /* CreateAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdViewController.swift; sourceTree = "<group>"; };
 		A1721D502625E5FD00BFD38C /* CreateAdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdViewModel.swift; sourceTree = "<group>"; };
 		A1721D542625E61200BFD38C /* CreateAdCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdCoordinator.swift; sourceTree = "<group>"; };
 		A178CE5125EFDB89003A50DC /* NSGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A178CE5425EFDB89003A50DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A178CE5D25EFDB8B003A50DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A178CE5D25EFDB8B003A50DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SwiftGen/Assets.xcassets; sourceTree = "<group>"; };
 		A178CE6025EFDB8B003A50DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A178CE6225EFDB8B003A50DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A17D8FD8261F7441009669EC /* DetailOfferViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOfferViewConroller.swift; sourceTree = "<group>"; };
@@ -325,7 +335,9 @@
 		A106DF462656C12E00367D18 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A16DF1AB265BED5400AFB3E8 /* Entity */,
 				A106DF472656C52800367D18 /* NSGames.xcdatamodeld */,
+				A16DF1A9265BEBE000AFB3E8 /* CoreDataService.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -453,6 +465,7 @@
 		A14DBFAB2601FEC700705AB9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A178CE5D25EFDB8B003A50DC /* Assets.xcassets */,
 				A1FEE86E264AB928009C89A3 /* SwiftGen */,
 				A1F67DE925FE822F0007636E /* Extensions */,
 				A17F8E22264BBA1900DE2460 /* Localizable.strings */,
@@ -483,6 +496,7 @@
 			children = (
 				A15ABA03261F1E9E00A549C7 /* ProfileViewModelProtocol.swift */,
 				A13880A426203FD700DA1604 /* DetailViewModelProtocol.swift */,
+				A16DF1BA265BF66E00AFB3E8 /* FavoriteOffersViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -493,6 +507,7 @@
 				A15ABA10261F214F00A549C7 /* Cell */,
 				A17D8FD8261F7441009669EC /* DetailOfferViewConroller.swift */,
 				A15ABA00261F1E6C00A549C7 /* ProfileViewController.swift */,
+				A16DF1B8265BF61100AFB3E8 /* FavoriteOffersViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -514,6 +529,15 @@
 				A17D8FDE261F748B009669EC /* OfferDetailViewController.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		A16DF1AB265BED5400AFB3E8 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				A16DF1B5265BEF7500AFB3E8 /* OfferDB+CoreDataProperties copy.swift */,
+				A16DF1B4265BEF7500AFB3E8 /* OfferDB+CoreDataClass copy.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		A1721D212625DCF600BFD38C /* Favorites */ = {
@@ -928,7 +952,6 @@
 			children = (
 				A1FEE874264AC0BC009C89A3 /* Assets.swift */,
 				A1FEE875264AC0BC009C89A3 /* Strings.swift */,
-				A178CE5D25EFDB8B003A50DC /* Assets.xcassets */,
 			);
 			path = SwiftGen;
 			sourceTree = "<group>";
@@ -940,8 +963,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A178CE6525EFDB8B003A50DC /* Build configuration list for PBXNativeTarget "NSGames" */;
 			buildPhases = (
-				BF74A7FFE440EB94F77AF022 /* [CP] Check Pods Manifest.lock */,
 				A1FEE878264AC110009C89A3 /* SwiftGen */,
+				BF74A7FFE440EB94F77AF022 /* [CP] Check Pods Manifest.lock */,
 				A147AA2825EFE89E00AB8846 /* Swift Lint */,
 				A178CE4D25EFDB89003A50DC /* Sources */,
 				A178CE4E25EFDB89003A50DC /* Frameworks */,
@@ -1136,6 +1159,7 @@
 				A1886A4626078BDF006A41F4 /* OfferViewController.swift in Sources */,
 				A16C874125FF9DE500AC15AD /* HomeScreenService.swift in Sources */,
 				A1E046B32636B1340027521D /* OnboardingCoordinator.swift in Sources */,
+				A16DF1AA265BEBE000AFB3E8 /* CoreDataService.swift in Sources */,
 				A13880BE26205FE900DA1604 /* DetailOfferViewService.swift in Sources */,
 				A189E294260B65E70051D578 /* OfferService.swift in Sources */,
 				A1340D62261091FC00439E1F /* SelectGamesServiceProtocol.swift in Sources */,
@@ -1173,6 +1197,7 @@
 				A13880B22620552100DA1604 /* ProfileViewServiceProtocol.swift in Sources */,
 				A1340D5D2610879E00439E1F /* SelectGamesViewModelProtocol.swift in Sources */,
 				A189E28B260B629A0051D578 /* GameService.swift in Sources */,
+				A16DF1B9265BF61100AFB3E8 /* FavoriteOffersViewController.swift in Sources */,
 				A1381FCA260F0F9D00BDF8CD /* LeftMessageTableViewCell.swift in Sources */,
 				A15ABA01261F1E6C00A549C7 /* ProfileViewController.swift in Sources */,
 				A15AB9EE261F011B00A549C7 /* InetErrorNames.swift in Sources */,
@@ -1187,6 +1212,7 @@
 				A1D6CC6E265B9A5F00EC3109 /* LoadingView.swift in Sources */,
 				A1D379AE25F74C43003FAAF6 /* SignUpServiceProtocol.swift in Sources */,
 				A17D8FDF261F748B009669EC /* OfferDetailViewController.swift in Sources */,
+				A16DF1BB265BF66E00AFB3E8 /* FavoriteOffersViewModel.swift in Sources */,
 				A1C7D67525F576340087B41F /* CodeVerifyViewController.swift in Sources */,
 				A1E04687263557180027521D /* AdServiceError.swift in Sources */,
 				A15AB9F3261F025100A549C7 /* AuthServiceNames.swift in Sources */,
@@ -1211,6 +1237,7 @@
 				A1340D542610743700439E1F /* GameSreenConfig.swift in Sources */,
 				A1721D512625E5FD00BFD38C /* CreateAdViewModel.swift in Sources */,
 				A189E27D260B61260051D578 /* GameViewModelProtocol.swift in Sources */,
+				A16DF1B7265BEF7500AFB3E8 /* OfferDB+CoreDataProperties copy.swift in Sources */,
 				A1545D55263ADB9600E14484 /* ProfileServiceError.swift in Sources */,
 				A1A8B07925F25133008CDDA4 /* RoundedButton.swift in Sources */,
 				A1721D262625DD9100BFD38C /* FavoritesCoordinator.swift in Sources */,
@@ -1219,6 +1246,7 @@
 				A1A8B07C25F251BC008CDDA4 /* GrayLabel.swift in Sources */,
 				A10052312602038D002E807E /* ForgotPasswordViewModelProtocol.swift in Sources */,
 				A195FFBA260942DC00D3E34F /* Game.swift in Sources */,
+				A16DF1B6265BEF7500AFB3E8 /* OfferDB+CoreDataClass copy.swift in Sources */,
 				A184623F260CA54A008D159F /* ConversationsFirebaseServiceProtocol.swift in Sources */,
 				A1381FB0260E622900BDF8CD /* FirebaseNames.swift in Sources */,
 				A10547BB260B926C00FEB2FD /* Observable.swift in Sources */,

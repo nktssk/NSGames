@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:NSGames/Services/CoreData/Entity/OfferDB+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:NSGames/Services/CoreData/Entity/OfferDB+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:NSGames.xcodeproj">
    </FileRef>
    <FileRef

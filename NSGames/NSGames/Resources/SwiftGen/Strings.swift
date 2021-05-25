@@ -54,6 +54,8 @@ internal enum L10n {
   internal static let emailIsNotFree = L10n.tr("Localizable", "EmailIsNotFree")
   /// Введите email
   internal static let enterEmail = L10n.tr("Localizable", "EnterEmail")
+  /// Избранные предложения
+  internal static let favoriteOffers = L10n.tr("Localizable", "FavoriteOffers")
   /// Забыли пароль?
   internal static let forgotPassword = L10n.tr("Localizable", "ForgotPassword")
   /// Уже есть аккаунт?
