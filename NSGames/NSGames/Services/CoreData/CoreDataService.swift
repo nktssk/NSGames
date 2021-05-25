@@ -11,17 +11,24 @@ import CoreData
 protocol CoreDataServiceProtocol {
     var mainContext: NSManagedObjectContext { get }
 
-    func add(_ offer: Offer)
+    func deleteAll()
+
+    func addOffer(_ offer: Offer)
     func deleteOffer(_ offer: Offer)
+    func fetchOffers(completion: @escaping (([Offer]) -> Void))
+
+    func saveAds(_ ads: [AdTableViewCellConfig])
+    func deleteAd(_ ad: AdTableViewCellConfig)
+    func fetchAds(completion: @escaping (([AdTableViewCellConfig]) -> Void))
 }
 
 final class CoreDataService: CoreDataServiceProtocol {
 
     static let offerDataModelName = "NSGames"
 
-    var didUpdateDataBase: ((CoreDataService) -> Void)?
-
     private let dataModelName: String
+
+    var didUpdateDataBase: ((CoreDataService) -> Void)?
 
     private lazy var storeContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: dataModelName)
@@ -63,7 +70,7 @@ final class CoreDataService: CoreDataServiceProtocol {
         }
     }
 
-    func add(_ offer: Offer) {
+    func addOffer(_ offer: Offer) {
         performSave { context in
             let fetchRequest: NSFetchRequest<OfferDB> = OfferDB.fetchRequest()
                 let predicate = NSPredicate(format: "id == %i", offer.id)
@@ -85,9 +92,105 @@ final class CoreDataService: CoreDataServiceProtocol {
             let predicate = NSPredicate(format: "id == %i", offer.id)
             fetchRequest.predicate = predicate
             do {
-                let channelsDB = try context.fetch(fetchRequest)
-                guard let channelToDelete = channelsDB.first else { return }
-                context.delete(channelToDelete)
+                let offers = try context.fetch(fetchRequest)
+                guard let offerToDelete = offers.first else { return }
+                context.delete(offerToDelete)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    func fetchOffers(completion: @escaping (([Offer]) -> Void)) {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            var result = [Offer]()
+            let fetch: NSFetchRequest<OfferDB> = OfferDB.fetchRequest()
+            if let array = try? self?.mainContext.fetch(fetch) {
+                result = array.map({ Offer(id: Int($0.id),
+                                           username: $0.username,
+                                           price: $0.price,
+                                           tradeListCount: Int($0.tradeCount),
+                                           description: $0.text,
+                                           chatId: $0.chatId) })
+            }
+            DispatchQueue.main.async {
+                return completion(result)
+            }
+        }
+    }
+
+    func saveAds(_ ads: [AdTableViewCellConfig]) {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            for ad in ads {
+                self?.performSave { context in
+                    let fetchRequest: NSFetchRequest<AdDb> = AdDb.fetchRequest()
+                        let predicate = NSPredicate(format: "id == %i", ad.id)
+                    fetchRequest.predicate = predicate
+                    do {
+                        let ads = try context.fetch(fetchRequest)
+                        if ads.isEmpty {
+                            _ = AdDb(ad: ad, context: context)
+                        }
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
+    }
+
+    func deleteAd(_ ad: AdTableViewCellConfig) {
+        performSave { context in
+            let fetchRequest: NSFetchRequest<AdDb> = AdDb.fetchRequest()
+            let predicate = NSPredicate(format: "id == %i", ad.id)
+            fetchRequest.predicate = predicate
+            do {
+                let ads = try context.fetch(fetchRequest)
+                guard let adToDelete = ads.first else { return }
+                context.delete(adToDelete)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    func fetchAds(completion: @escaping (([AdTableViewCellConfig]) -> Void)) {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            var result = [AdTableViewCellConfig]()
+            let fetch: NSFetchRequest<AdDb> = AdDb.fetchRequest()
+            if let array = try? self?.mainContext.fetch(fetch) {
+                result = array.map({ AdTableViewCellConfig(id: Int($0.id),
+                                                           name: $0.name ?? String(),
+                                                           numberOfOffers: Int($0.offersNumber),
+                                                           photo: $0.photo ?? Data(),
+                                                           views: Int($0.viewsNumber)) })
+            }
+            DispatchQueue.main.async {
+                return completion(result)
+            }
+        }
+    }
+
+    func deleteAll() {
+        performSave { context in
+            let fetchRequest: NSFetchRequest<AdDb> = AdDb.fetchRequest()
+            do {
+                let ads = try context.fetch(fetchRequest)
+                for adToDelete in ads {
+                    context.delete(adToDelete)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+
+        performSave { context in
+            let fetchRequest: NSFetchRequest<OfferDB> = OfferDB.fetchRequest()
+            do {
+                let offers = try context.fetch(fetchRequest)
+                for offerToDelete in offers {
+                    context.delete(offerToDelete)
+                }
             } catch {
                 print(error.localizedDescription)
             }

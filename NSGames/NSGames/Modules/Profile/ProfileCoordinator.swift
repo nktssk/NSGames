@@ -21,7 +21,9 @@ class ProfileCoordinator: ProfileCoordinatorProtocol {
 
     init() {
         let controller = ProfileViewController()
-        controller.viewModel = ProfileViewModel(service: ProfileViewService(), coordinator: self)
+        controller.viewModel = ProfileViewModel(service: ProfileViewService(),
+                                                coreDataService: CoreDataService(dataModelName: CoreDataService.offerDataModelName),
+                                                coordinator: self)
         navigationController.pushViewController(controller, animated: true)
     }
 
@@ -49,7 +51,9 @@ class ProfileCoordinator: ProfileCoordinatorProtocol {
     func goToChat(messageId: String, username: String) {
         let controller = ChatViewController()
         ChatFireBaseService.shared.otherUserName = username
-        controller.viewModel = ChatViewModel(service: ChatFireBaseService.shared, id: messageId, title: username)
+        controller.viewModel = ChatViewModel(service: ChatFireBaseService.shared,
+                                             id: messageId,
+                                             title: username)
         navigationController.pushViewController(controller, animated: true)
     }
 
@@ -60,7 +64,9 @@ class ProfileCoordinator: ProfileCoordinatorProtocol {
 
     func goToTradeList(id: Int) {
         let controller = SelectGamesViewContoller()
-        let viewModel = SelectGamesViewModel(service: SelectGamesService(), coordinator: AdCoordinator(), id: id)
+        let viewModel = SelectGamesViewModel(service: SelectGamesService(),
+                                             coordinator: AdCoordinator(),
+                                             id: id)
         viewModel.offerId = id
         controller.viewModel = viewModel
         navigationController.pushViewController(controller, animated: true)

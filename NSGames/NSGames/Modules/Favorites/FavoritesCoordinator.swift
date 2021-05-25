@@ -25,7 +25,9 @@ class FavoritesCoordinator: AdsCoordinatorProtocol {
 
     func goToDetailView(id: Int) {
         let controller = GameViewController()
-        controller.viewModel = MockGameViewModel(service: GameService(), coordinator: self, id: id)
+        controller.viewModel = MockGameViewModel(service: GameService(),
+                                                 coordinator: self,
+                                                 id: id)
         if ProcessInfo.processInfo.environment["animation"] == "true" {
             detailNavigationController.pushViewController(controller, animated: true)
             detailNavigationController.modalPresentationStyle = .overCurrentContext
@@ -38,7 +40,9 @@ class FavoritesCoordinator: AdsCoordinatorProtocol {
 
     func goToOfferView(id: Int) {
         let controller = OfferViewController()
-        controller.viewModel = MockOfferViewModel(service: OfferService(), coordinator: self, id: id)
+        controller.viewModel = MockOfferViewModel(service: OfferService(),
+                                                  coordinator: self,
+                                                  id: id)
         if ProcessInfo.processInfo.environment["animation"] == "true" {
             detailNavigationController.pushViewController(controller, animated: true)
         } else {
@@ -48,7 +52,9 @@ class FavoritesCoordinator: AdsCoordinatorProtocol {
 
     func goToSelectGamesView(id: Int) {
         let controller = SelectGamesViewContoller()
-        controller.viewModel = SelectGamesViewModel(service: SelectGamesService(), coordinator: self, id: id)
+        controller.viewModel = SelectGamesViewModel(service: SelectGamesService(),
+                                                    coordinator: self,
+                                                    id: id)
         if ProcessInfo.processInfo.environment["animation"] == "true" {
             detailNavigationController.pushViewController(controller, animated: true)
         } else {
@@ -59,7 +65,9 @@ class FavoritesCoordinator: AdsCoordinatorProtocol {
     func goToChat(messageId: String, username: String) {
         let controller = ChatViewController()
         ChatFireBaseService.shared.otherUserName = username
-        controller.viewModel = ChatViewModel(service: ChatFireBaseService.shared, id: messageId, title: username)
+        controller.viewModel = ChatViewModel(service: ChatFireBaseService.shared,
+                                             id: messageId,
+                                             title: username)
         if ProcessInfo.processInfo.environment["animation"] == "true" {
             detailNavigationController.pushViewController(controller, animated: true)
         } else {

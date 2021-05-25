@@ -16,8 +16,11 @@ class DetailOfferViewService: DetailOfferViewServiceProtocol {
                     if response.error != nil {
                         return completion(.failure(.noConnection))
                     }
-                    if let statusCode = response.response?.statusCode, !(200...300).contains(statusCode) {
-                        return completion(.failure(.badRequest))
+                    if let statusCode = response.response?.statusCode {
+                        StatusCodeHelper.isForbidden(statusCode: statusCode)
+                        if !(200...300).contains(statusCode) {
+                            return completion(.failure(.badRequest))
+                        }
                     }
                     if let data = response.data {
                         do {

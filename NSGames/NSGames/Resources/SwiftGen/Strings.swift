@@ -20,6 +20,8 @@ internal enum L10n {
   internal static let auth = L10n.tr("Localizable", "Auth")
   /// Покупка
   internal static let buy = L10n.tr("Localizable", "Buy")
+  /// , данные будут загружены из кэша
+  internal static let cache = L10n.tr("Localizable", "Cache")
   /// Отменить
   internal static let cancel = L10n.tr("Localizable", "Cancel")
   /// Не удается загрузить список.

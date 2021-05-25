@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/nikitasosyuk/Documents/Programming/&#x423;&#x447;&#x435;&#x431;&#x43d;&#x44b;&#x435; &#x43f;&#x440;&#x43e;&#x435;&#x43a;&#x442;&#x44b;/NSGames/NSGames-gitProject/NSGames/NSGames/NSGames/Services/CoreData/Entity/AdDb+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/nikitasosyuk/Documents/Programming/&#x423;&#x447;&#x435;&#x431;&#x43d;&#x44b;&#x435; &#x43f;&#x440;&#x43e;&#x435;&#x43a;&#x442;&#x44b;/NSGames/NSGames-gitProject/NSGames/NSGames/NSGames/Services/CoreData/Entity/AdDb+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:NSGames/Services/CoreData/Entity/OfferDB+CoreDataClass.swift">
    </FileRef>
    <FileRef

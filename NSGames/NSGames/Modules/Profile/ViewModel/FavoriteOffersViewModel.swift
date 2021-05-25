@@ -29,13 +29,8 @@ class FavoriteOffersViewModel: FavoriteOffersViewModelProtocol {
     }
 
     func setup() {
-        if let array = try? coreDataService.mainContext.fetch(OfferDB.fetchRequest()) as? [OfferDB] {
-            items.value = array.map({ Offer(id: Int($0.id),
-                                            username: $0.username,
-                                            price: $0.price,
-                                            tradeListCount: Int($0.tradeCount),
-                                            description: $0.text,
-                                            chatId: $0.chatId) })
+        coreDataService.fetchOffers { [weak self] result in
+            self?.items.value = result
         }
     }
 

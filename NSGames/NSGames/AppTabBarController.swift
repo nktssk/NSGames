@@ -52,6 +52,9 @@ class AppTabBarController: UITabBarController {
 
     func setProfileVC() {
         selectedIndex = 4
+        guard let nc = self.viewControllers?[selectedIndex] as? UINavigationController,
+              let vc = nc.topViewController as? ProfileViewController else { return }
+        vc.updateData()
     }
 
     required init?(coder: NSCoder) {

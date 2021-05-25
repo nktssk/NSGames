@@ -20,20 +20,25 @@ class CreateAdCoordinator: CreateAdCoordinatorProtocol {
 
     func getStartViewController() -> UIViewController {
         let controller = CreateAdViewController()
-        controller.viewModel = CreateAdViewModel(service: CreateAdService(), coordinator: self)
+        controller.viewModel = CreateAdViewModel(service: CreateAdService(),
+                                                 coordinator: self)
         navigationController.pushViewController(controller, animated: false)
         return navigationController
     }
 
     func goToSelectGamesView() {
         let controller = SelectGamesViewContoller()
-        controller.viewModel = SelectGamesViewModel(service: SelectGamesService(), coordinator: self, id: nil)
+        controller.viewModel = SelectGamesViewModel(service: SelectGamesService(),
+                                                    coordinator: self,
+                                                    id: nil)
         navigationController.pushViewController(controller, animated: true)
     }
 
     func goToSelectGamesView(games: [Int]) {
         let controller = SelectGamesViewContoller()
-        controller.viewModel = SelectGamesViewModel(service: SelectGamesService(), coordinator: self, id: nil)
+        controller.viewModel = SelectGamesViewModel(service: SelectGamesService(),
+                                                    coordinator: self,
+                                                    id: nil)
         controller.viewModel?.selected = games
         navigationController.pushViewController(controller, animated: true)
     }

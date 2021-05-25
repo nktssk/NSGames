@@ -23,14 +23,17 @@ class MainCoordinator {
         setRootViewController(contoller, duration: 0.25)
     }
 
+    func goToLogin() {
+        let coordinator = AuthenticationCoordinator()
+        coordinator.mainCoordinator = self
+        setRootViewController(coordinator.getStartViewController(), duration: 0.25)
+    }
+
     func onboardingAnimationFinish() {
-        KeychainService.deleteAll()
         if KeychainService.getToken() != nil {
             goToTabBar()
         } else {
-            let coordinator = AuthenticationCoordinator()
-            coordinator.mainCoordinator = self
-            setRootViewController(coordinator.getStartViewController(), duration: 0.25)
+            goToLogin()
         }
     }
 

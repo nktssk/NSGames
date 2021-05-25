@@ -24,11 +24,15 @@ class ProfileViewModel: ProfileViewModelProtocol {
     var userInfo: Observable<UserInfo?> = Observable(nil)
     var error: Observable<String?> = Observable(nil)
 
+    private let coreDataService: CoreDataServiceProtocol
     private let service: ProfileViewServiceProtocol
     private let coordinator: ProfileCoordinatorProtocol
 
-    init(service: ProfileViewServiceProtocol, coordinator: ProfileCoordinatorProtocol) {
+    init(service: ProfileViewServiceProtocol,
+         coreDataService: CoreDataServiceProtocol,
+         coordinator: ProfileCoordinatorProtocol) {
         self.service = service
+        self.coreDataService = coreDataService
         self.coordinator = coordinator
     }
 
@@ -47,9 +51,13 @@ class ProfileViewModel: ProfileViewModelProtocol {
             switch result {
             case .success(let data):
                 self?.items.value = data
+                self?.coreDataService.saveAds(data)
 
             case .failure:
-                self?.error.value = L10n.inetError
+                self?.error.value = L10n.inetError + L10n.cache
+                self?.coreDataService.fetchAds { [weak self] result in
+                    self?.items.value = result
+                }
             }
         }
     }
@@ -59,6 +67,7 @@ class ProfileViewModel: ProfileViewModelProtocol {
             switch result {
             case .success:
                 self?.coordinator.goToAuth()
+                self?.coreDataService.deleteAll()
 
             case .failure:
                 self?.error.value = L10n.logoutError
@@ -81,7 +90,7 @@ class ProfileViewModel: ProfileViewModelProtocol {
         service.deleteAd(id: deletedAd.id) { [weak self] result in
             switch result {
             case .success:
-                break
+                self?.coreDataService.deleteAd(deletedAd)
 
             case .failure:
                 self?.items.value.insert(deletedAd, at: index)

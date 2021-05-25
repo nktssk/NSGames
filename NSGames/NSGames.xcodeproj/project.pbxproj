@@ -13,6 +13,8 @@
 		A10052312602038D002E807E /* ForgotPasswordViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10052302602038D002E807E /* ForgotPasswordViewModelProtocol.swift */; };
 		A10547BB260B926C00FEB2FD /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10547BA260B926C00FEB2FD /* Observable.swift */; };
 		A106DF492656C52800367D18 /* NSGames.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A106DF472656C52800367D18 /* NSGames.xcdatamodeld */; };
+		A10D9A92265D204F00427C25 /* AdWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D9A91265D204F00427C25 /* AdWrapper.swift */; };
+		A10D9A94265D323D00427C25 /* StatusCodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D9A93265D323D00427C25 /* StatusCodeHelper.swift */; };
 		A118FA0F260F3F60005D2F4D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118FA0E260F3F60005D2F4D /* Coordinator.swift */; };
 		A118FA14260F4E62005D2F4D /* SelectGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118FA13260F4E62005D2F4D /* SelectGameTableViewCell.swift */; };
 		A1340D542610743700439E1F /* GameSreenConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1340D532610743700439E1F /* GameSreenConfig.swift */; };
@@ -111,6 +113,8 @@
 		A1B9EFF4262C9E7C00E799E2 /* CreateAdError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9EFF3262C9E7C00E799E2 /* CreateAdError.swift */; };
 		A1C455ED25F91D5100ABD067 /* CodeVerifyServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455EC25F91D5100ABD067 /* CodeVerifyServiceProtocol.swift */; };
 		A1C455FD25F920F100ABD067 /* CodeVerifyViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C455FC25F920F100ABD067 /* CodeVerifyViewModelProtocol.swift */; };
+		A1C5CF12265D1DC800FF8F7A /* AdDb+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C5CF10265D1DC800FF8F7A /* AdDb+CoreDataProperties.swift */; };
+		A1C5CF13265D1DC800FF8F7A /* AdDb+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C5CF11265D1DC800FF8F7A /* AdDb+CoreDataClass.swift */; };
 		A1C7D66825F50F380087B41F /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C7D66725F50F380087B41F /* ForgotPasswordViewController.swift */; };
 		A1C7D67525F576340087B41F /* CodeVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C7D67425F576340087B41F /* CodeVerifyViewController.swift */; };
 		A1D05D5C261BA962007F757F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D05D5B261BA962007F757F /* KeychainService.swift */; };
@@ -154,6 +158,8 @@
 		A10052302602038D002E807E /* ForgotPasswordViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModelProtocol.swift; sourceTree = "<group>"; };
 		A10547BA260B926C00FEB2FD /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		A106DF482656C52800367D18 /* NSGames.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NSGames.xcdatamodel; sourceTree = "<group>"; };
+		A10D9A91265D204F00427C25 /* AdWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdWrapper.swift; sourceTree = "<group>"; };
+		A10D9A93265D323D00427C25 /* StatusCodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCodeHelper.swift; sourceTree = "<group>"; };
 		A118FA0E260F3F60005D2F4D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		A118FA13260F4E62005D2F4D /* SelectGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGameTableViewCell.swift; sourceTree = "<group>"; };
 		A1340D532610743700439E1F /* GameSreenConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSreenConfig.swift; sourceTree = "<group>"; };
@@ -256,6 +262,8 @@
 		A1B9EFF3262C9E7C00E799E2 /* CreateAdError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdError.swift; sourceTree = "<group>"; };
 		A1C455EC25F91D5100ABD067 /* CodeVerifyServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyServiceProtocol.swift; sourceTree = "<group>"; };
 		A1C455FC25F920F100ABD067 /* CodeVerifyViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewModelProtocol.swift; sourceTree = "<group>"; };
+		A1C5CF10265D1DC800FF8F7A /* AdDb+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AdDb+CoreDataProperties.swift"; path = "/Users/nikitasosyuk/Documents/Programming/Учебные проекты/NSGames/NSGames-gitProject/NSGames/NSGames/NSGames/Services/CoreData/Entity/AdDb+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		A1C5CF11265D1DC800FF8F7A /* AdDb+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AdDb+CoreDataClass.swift"; path = "/Users/nikitasosyuk/Documents/Programming/Учебные проекты/NSGames/NSGames-gitProject/NSGames/NSGames/NSGames/Services/CoreData/Entity/AdDb+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		A1C7D66725F50F380087B41F /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		A1C7D67425F576340087B41F /* CodeVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewController.swift; sourceTree = "<group>"; };
 		A1D05D5B261BA962007F757F /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
@@ -328,6 +336,8 @@
 				A1D18A1925F69B74007A5CF7 /* ObservableUI.swift */,
 				A148C3C92643FF0900B078F5 /* MyJSONDecoder.swift */,
 				A1E0468A2635584C0027521D /* BaseUrl.swift */,
+				A10D9A91265D204F00427C25 /* AdWrapper.swift */,
+				A10D9A93265D323D00427C25 /* StatusCodeHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -534,6 +544,8 @@
 		A16DF1AB265BED5400AFB3E8 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				A1C5CF11265D1DC800FF8F7A /* AdDb+CoreDataClass.swift */,
+				A1C5CF10265D1DC800FF8F7A /* AdDb+CoreDataProperties.swift */,
 				A16DF1B5265BEF7500AFB3E8 /* OfferDB+CoreDataProperties copy.swift */,
 				A16DF1B4265BEF7500AFB3E8 /* OfferDB+CoreDataClass copy.swift */,
 			);
@@ -1140,6 +1152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A100522B2602024C002E807E /* ForgotPassword.swift in Sources */,
+				A1C5CF12265D1DC800FF8F7A /* AdDb+CoreDataProperties.swift in Sources */,
 				A1381F66260E3A1700BDF8CD /* Message.swift in Sources */,
 				A1B9EFF0262C99C000E799E2 /* CreateAdService.swift in Sources */,
 				A1D18A0F25F68B38007A5CF7 /* SignInServiceProtocol.swift in Sources */,
@@ -1158,6 +1171,7 @@
 				A15ABA17261F2B2F00A549C7 /* AdTableViewCell.swift in Sources */,
 				A1886A4626078BDF006A41F4 /* OfferViewController.swift in Sources */,
 				A16C874125FF9DE500AC15AD /* HomeScreenService.swift in Sources */,
+				A10D9A92265D204F00427C25 /* AdWrapper.swift in Sources */,
 				A1E046B32636B1340027521D /* OnboardingCoordinator.swift in Sources */,
 				A16DF1AA265BEBE000AFB3E8 /* CoreDataService.swift in Sources */,
 				A13880BE26205FE900DA1604 /* DetailOfferViewService.swift in Sources */,
@@ -1229,6 +1243,7 @@
 				A148C3CA2643FF0900B078F5 /* MyJSONDecoder.swift in Sources */,
 				A1381FA9260E605E00BDF8CD /* ChatFireBaseServiceProtocol.swift in Sources */,
 				A184621E260C65FD008D159F /* ConversationListViewController.swift in Sources */,
+				A10D9A94265D323D00427C25 /* StatusCodeHelper.swift in Sources */,
 				A1D05D5C261BA962007F757F /* KeychainService.swift in Sources */,
 				A1418B2025FE246900FF13CC /* AdCollectionViewCellConfig.swift in Sources */,
 				A13880B826205D3300DA1604 /* ProfileViewService.swift in Sources */,
@@ -1256,6 +1271,7 @@
 				A189E28E260B65510051D578 /* OfferViewModelProtocol.swift in Sources */,
 				A1846242260CA630008D159F /* ChatCoordinator.swift in Sources */,
 				A16578EE25FCD917005F19C8 /* HomeScreenViewController.swift in Sources */,
+				A1C5CF13265D1DC800FF8F7A /* AdDb+CoreDataClass.swift in Sources */,
 				A189E275260B556E0051D578 /* AppTabBarController.swift in Sources */,
 				A1FEE877264AC0BC009C89A3 /* Strings.swift in Sources */,
 				A1418B1B25FE1C6F00FF13CC /* HomeScreenCollectionViewCell.swift in Sources */,

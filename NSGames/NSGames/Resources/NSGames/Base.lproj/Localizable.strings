@@ -77,7 +77,6 @@
 "InetError" = "Ошибка с подключением к сети";
 "LocalDataError" = "Ошибка с локальными данными, перезайдите в аккаунт";
 
-
 // SignUp Errors
 "NeedToField" = "Пожалуйста, заполните данными поля.";
 "NeedToEnterLogin" = "Введите логин.";
@@ -87,6 +86,7 @@
 "PasswordIsNotEqual" = "Пароли не совпадают.";
 "EmailIsNotFree" = "Email уже занят.";
 "ServerError" = "Ошибка сервера";
+"Cache" = ", данные будут загружены из кэша";
 
 // Logout
 "LogoutError" = "Ошибка при выходе";

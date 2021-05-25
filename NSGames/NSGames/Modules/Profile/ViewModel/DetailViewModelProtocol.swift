@@ -42,7 +42,7 @@ class DetailViewModel: DetailViewModelProtocol {
     }
 
     func saveFavorite(index: Int) {
-        coreDataService.add(self.items.value[index])
+        coreDataService.addOffer(self.items.value[index])
     }
 
     func setup() {

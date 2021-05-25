@@ -16,6 +16,11 @@ class ProfileViewController: UIViewController {
     // MARK: - UI
     let tableView = UITableView(frame: CGRect.zero, style: .grouped)
     let header = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 5))
+    let refreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(updateData), for: .valueChanged)
+        return control
+    }()
 
     // MARK: - Properties
     private var isAnimated = false
@@ -30,17 +35,13 @@ class ProfileViewController: UIViewController {
         setConstraints()
         tableView.separatorStyle = .none
         tableView.tableHeaderView = header
+        tableView.refreshControl = refreshControl
         tableView.register(AdTableViewCell.self, forCellReuseIdentifier: AdTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         viewModel?.setup()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.logout, style: .done, target: self, action: #selector(exitButtonAction))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: L10n.tabBarFavorite, style: .done, target: self, action: #selector(favorites))
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        viewModel?.setup()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -69,6 +70,10 @@ class ProfileViewController: UIViewController {
         viewModel?.quit()
     }
 
+    @objc func updateData() {
+        viewModel?.setup()
+    }
+
     @objc func favorites() {
         viewModel?.favorites()
     }
@@ -80,6 +85,7 @@ class ProfileViewController: UIViewController {
 
     private func bindData() {
         viewModel?.items.observe(on: self) { [weak self] _ in
+            self?.refreshControl.endRefreshing()
             self?.tableView.reloadData()
         }
         viewModel?.userInfo.observe(on: self) { [weak self] value in
