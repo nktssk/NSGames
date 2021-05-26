@@ -68,10 +68,10 @@ internal enum L10n {
   internal static let inetError = L10n.tr("Localizable", "InetError")
   /// Ошибка с локальными данными, перезайдите в аккаунт
   internal static let localDataError = L10n.tr("Localizable", "LocalDataError")
-  /// Логин
-  internal static let login = L10n.tr("Localizable", "Login")
   /// Войдите
   internal static let logIn = L10n.tr("Localizable", "LogIn")
+  /// Логин
+  internal static let login = L10n.tr("Localizable", "Login")
   /// Выйти
   internal static let logout = L10n.tr("Localizable", "Logout")
   /// Ошибка при выходе

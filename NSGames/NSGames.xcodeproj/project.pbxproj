@@ -63,8 +63,6 @@
 		A16C873D25FF9CD900AC15AD /* HomeScreenServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C873C25FF9CD900AC15AD /* HomeScreenServiceProtocol.swift */; };
 		A16C874125FF9DE500AC15AD /* HomeScreenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C874025FF9DE500AC15AD /* HomeScreenService.swift */; };
 		A16DF1AA265BEBE000AFB3E8 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DF1A9265BEBE000AFB3E8 /* CoreDataService.swift */; };
-		A16DF1B6265BEF7500AFB3E8 /* OfferDB+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DF1B4265BEF7500AFB3E8 /* OfferDB+CoreDataClass copy.swift */; };
-		A16DF1B7265BEF7500AFB3E8 /* OfferDB+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DF1B5265BEF7500AFB3E8 /* OfferDB+CoreDataProperties copy.swift */; };
 		A16DF1B9265BF61100AFB3E8 /* FavoriteOffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DF1B8265BF61100AFB3E8 /* FavoriteOffersViewController.swift */; };
 		A16DF1BB265BF66E00AFB3E8 /* FavoriteOffersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DF1BA265BF66E00AFB3E8 /* FavoriteOffersViewModel.swift */; };
 		A1721D262625DD9100BFD38C /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1721D252625DD9100BFD38C /* FavoritesCoordinator.swift */; };
@@ -106,6 +104,8 @@
 		A1A8B07625F250D6008CDDA4 /* BlueTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */; };
 		A1A8B07925F25133008CDDA4 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07825F25133008CDDA4 /* RoundedButton.swift */; };
 		A1A8B07C25F251BC008CDDA4 /* GrayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */; };
+		A1A975E9265D785100F29F34 /* OfferDB+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A975E7265D785100F29F34 /* OfferDB+CoreDataClass copy.swift */; };
+		A1A975EA265D785100F29F34 /* OfferDB+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A975E8265D785100F29F34 /* OfferDB+CoreDataProperties copy.swift */; };
 		A1B1071E265795CE008DCFCC /* NSGamesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1071D265795CE008DCFCC /* NSGamesTests.swift */; };
 		A1B9EFE7262C985E00E799E2 /* CreateAdServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9EFE6262C985E00E799E2 /* CreateAdServiceProtocol.swift */; };
 		A1B9EFEC262C994700E799E2 /* CreateAdServiceNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9EFEB262C994700E799E2 /* CreateAdServiceNames.swift */; };
@@ -208,8 +208,6 @@
 		A16C873C25FF9CD900AC15AD /* HomeScreenServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenServiceProtocol.swift; sourceTree = "<group>"; };
 		A16C874025FF9DE500AC15AD /* HomeScreenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenService.swift; sourceTree = "<group>"; };
 		A16DF1A9265BEBE000AFB3E8 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
-		A16DF1B4265BEF7500AFB3E8 /* OfferDB+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OfferDB+CoreDataClass copy.swift"; sourceTree = "<group>"; };
-		A16DF1B5265BEF7500AFB3E8 /* OfferDB+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OfferDB+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
 		A16DF1B8265BF61100AFB3E8 /* FavoriteOffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteOffersViewController.swift; sourceTree = "<group>"; };
 		A16DF1BA265BF66E00AFB3E8 /* FavoriteOffersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteOffersViewModel.swift; sourceTree = "<group>"; };
 		A1721D252625DD9100BFD38C /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
@@ -253,6 +251,8 @@
 		A1A8B07525F250D6008CDDA4 /* BlueTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTextButton.swift; sourceTree = "<group>"; };
 		A1A8B07825F25133008CDDA4 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		A1A8B07B25F251BC008CDDA4 /* GrayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLabel.swift; sourceTree = "<group>"; };
+		A1A975E7265D785100F29F34 /* OfferDB+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OfferDB+CoreDataClass copy.swift"; sourceTree = "<group>"; };
+		A1A975E8265D785100F29F34 /* OfferDB+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OfferDB+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
 		A1B1071B265795CE008DCFCC /* NSGamesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSGamesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B1071D265795CE008DCFCC /* NSGamesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSGamesTests.swift; sourceTree = "<group>"; };
 		A1B1071F265795CE008DCFCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -546,8 +546,8 @@
 			children = (
 				A1C5CF11265D1DC800FF8F7A /* AdDb+CoreDataClass.swift */,
 				A1C5CF10265D1DC800FF8F7A /* AdDb+CoreDataProperties.swift */,
-				A16DF1B5265BEF7500AFB3E8 /* OfferDB+CoreDataProperties copy.swift */,
-				A16DF1B4265BEF7500AFB3E8 /* OfferDB+CoreDataClass copy.swift */,
+				A1A975E7265D785100F29F34 /* OfferDB+CoreDataClass copy.swift */,
+				A1A975E8265D785100F29F34 /* OfferDB+CoreDataProperties copy.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1153,6 +1153,7 @@
 			files = (
 				A100522B2602024C002E807E /* ForgotPassword.swift in Sources */,
 				A1C5CF12265D1DC800FF8F7A /* AdDb+CoreDataProperties.swift in Sources */,
+				A1A975E9265D785100F29F34 /* OfferDB+CoreDataClass copy.swift in Sources */,
 				A1381F66260E3A1700BDF8CD /* Message.swift in Sources */,
 				A1B9EFF0262C99C000E799E2 /* CreateAdService.swift in Sources */,
 				A1D18A0F25F68B38007A5CF7 /* SignInServiceProtocol.swift in Sources */,
@@ -1204,6 +1205,7 @@
 				A189E287260B62350051D578 /* GameServiceProtocol.swift in Sources */,
 				A19A934926427DD600734211 /* AdsTransition.swift in Sources */,
 				A16C873D25FF9CD900AC15AD /* HomeScreenServiceProtocol.swift in Sources */,
+				A1A975EA265D785100F29F34 /* OfferDB+CoreDataProperties copy.swift in Sources */,
 				A1E1548325FF51C4000F2007 /* PulseAnimation.swift in Sources */,
 				A1A8B06B25F22856008CDDA4 /* UIColor.swift in Sources */,
 				A18ED8B22611F7EE0053AE37 /* ShadowView.swift in Sources */,
@@ -1252,7 +1254,6 @@
 				A1340D542610743700439E1F /* GameSreenConfig.swift in Sources */,
 				A1721D512625E5FD00BFD38C /* CreateAdViewModel.swift in Sources */,
 				A189E27D260B61260051D578 /* GameViewModelProtocol.swift in Sources */,
-				A16DF1B7265BEF7500AFB3E8 /* OfferDB+CoreDataProperties copy.swift in Sources */,
 				A1545D55263ADB9600E14484 /* ProfileServiceError.swift in Sources */,
 				A1A8B07925F25133008CDDA4 /* RoundedButton.swift in Sources */,
 				A1721D262625DD9100BFD38C /* FavoritesCoordinator.swift in Sources */,
@@ -1261,7 +1262,6 @@
 				A1A8B07C25F251BC008CDDA4 /* GrayLabel.swift in Sources */,
 				A10052312602038D002E807E /* ForgotPasswordViewModelProtocol.swift in Sources */,
 				A195FFBA260942DC00D3E34F /* Game.swift in Sources */,
-				A16DF1B6265BEF7500AFB3E8 /* OfferDB+CoreDataClass copy.swift in Sources */,
 				A184623F260CA54A008D159F /* ConversationsFirebaseServiceProtocol.swift in Sources */,
 				A1381FB0260E622900BDF8CD /* FirebaseNames.swift in Sources */,
 				A10547BB260B926C00FEB2FD /* Observable.swift in Sources */,
