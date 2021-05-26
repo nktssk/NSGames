@@ -173,24 +173,11 @@ final class CoreDataService: CoreDataServiceProtocol {
 
     func deleteAll() {
         performSave { context in
-            let fetchRequest: NSFetchRequest<AdDb> = AdDb.fetchRequest()
+            let adRequest = NSBatchDeleteRequest(fetchRequest: AdDb.fetchRequest())
+            let offerRequest = NSBatchDeleteRequest(fetchRequest: OfferDB.fetchRequest())
             do {
-                let ads = try context.fetch(fetchRequest)
-                for adToDelete in ads {
-                    context.delete(adToDelete)
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-
-        performSave { context in
-            let fetchRequest: NSFetchRequest<OfferDB> = OfferDB.fetchRequest()
-            do {
-                let offers = try context.fetch(fetchRequest)
-                for offerToDelete in offers {
-                    context.delete(offerToDelete)
-                }
+                _ = try context.execute(adRequest)
+                _ = try context.execute(offerRequest)
             } catch {
                 print(error.localizedDescription)
             }
