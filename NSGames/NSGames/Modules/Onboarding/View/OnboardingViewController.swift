@@ -5,6 +5,8 @@
 //  Created by Nikita Sosyuk on 26.04.2021.
 //
 
+// swiftlint:disable all
+
 import UIKit
 import SnapKit
 
